@@ -1,11 +1,11 @@
 {
-  "guid":"codbex-invoices",
-  "repository": {
+    "guid": "codbex-invoices",
+    "repository": {
         "type": "git",
         "branch": "main",
         "url": "https://github.com/codbex/codbex-invoices.git"
-  },
-  "dependencies": [
+    },
+    "dependencies": [
         {
             "guid": "codbex-products",
             "type": "git",
@@ -22,6 +22,12 @@
             "guid": "codbex-employees",
             "type": "git",
             "url": "https://github.com/codbex/codbex-employees.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-currencies",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-currencies.git",
             "branch": "main"
         }
     ]

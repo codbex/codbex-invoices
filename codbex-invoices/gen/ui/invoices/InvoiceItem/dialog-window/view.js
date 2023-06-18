@@ -6,7 +6,7 @@
 const viewData = {
     id: "InvoiceItem-details",
     label: "InvoiceItem",
-    link: "/services/web/codbex-invoices/gen/ui/invoices//InvoiceItem/dialog-window/index.html"
+    link: "/services/web/codbex-invoices/gen/ui/invoices/InvoiceItem/dialog-window/index.html"
 };
 
 if (typeof exports !== 'undefined') {

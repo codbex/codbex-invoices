@@ -8,7 +8,7 @@ const viewData = {
     label: "InvoiceItem",
     factory: "frame",
     region: "bottom",
-    link: "/services/web/codbex-invoices/gen/ui/invoices//InvoiceItem/index.html",
+    link: "/services/web/codbex-invoices/gen/ui/invoices/InvoiceItem/index.html",
 };
 
 if (typeof exports !== 'undefined') {
