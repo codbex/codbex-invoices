@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "table": "CODBEX_INVOICETYPE,
+      "schema": "PUBLIC",
+      "file": "/codbex-invoices-data/invoice-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+    "guid": "codbex-invoices-data",
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/codbex/codbex-invoices-data.git"
+    }
+}
