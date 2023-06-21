@@ -809,6 +809,7 @@
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
                         "name": "Invoice",
+                        "relationshipCardinality": "1_n",
                         "relationshipName": "InvoiceItem_Invoice",
                         "relationshipType": "COMPOSITION",
                         "widgetDropDownKey": "Id",

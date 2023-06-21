@@ -4,13 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "InvoiceItem-details",
+    id: "InvoiceItem",
     label: "InvoiceItem",
-    link: "/services/web/codbex-invoices/gen/ui/invoices/InvoiceItem/dialog-window/index.html"
+    factory: "frame",
+    region: "bottom",
+    link: "/services/web/codbex-invoices/gen/ui/invoices/Invoice/InvoiceItem/index.html",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

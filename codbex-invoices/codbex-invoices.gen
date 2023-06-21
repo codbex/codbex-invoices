@@ -1335,11 +1335,12 @@
           "dataUnique": false,
           "isCalculatedProperty": false,
           "name": "Invoice",
+          "relationshipCardinality": "1_n",
           "relationshipName": "InvoiceItem_Invoice",
           "relationshipType": "COMPOSITION",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Number",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetType": "DROPDOWN",
           "relationshipEntityName": "Invoice",
@@ -1540,6 +1541,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
+      "masterEntity": "Invoice",
+      "masterEntityId": "Invoice",
       "hasDropdowns": true
     },
     {

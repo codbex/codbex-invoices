@@ -15,13 +15,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-invoices.invoices.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.invoices.Invoice.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-invoices.invoices.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.invoices.Invoice.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -46,15 +46,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Invoice = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(${masterEntityId}).then(function (response) {
+			entityApi.count(Invoice).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("InvoiceItem", `Unable to count InvoiceItem: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
-				let query = `${masterEntityId}=${${masterEntityId}}`;
+				let query = `Invoice=${Invoice}`;
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
 				entityApi.filter(query, offset, limit).then(function (response) {
@@ -87,7 +87,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("InvoiceItem-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Invoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsInvoice: $scope.optionsInvoice,
 				optionsProduct: $scope.optionsProduct,
@@ -99,7 +99,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("InvoiceItem-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Invoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsInvoice: $scope.optionsInvoice,
 				optionsProduct: $scope.optionsProduct,
