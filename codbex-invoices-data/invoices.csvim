@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "table": "CODBEX_INVOICETYPE,
+      "table": "CODBEX_INVOICETYPE",
       "schema": "PUBLIC",
       "file": "/codbex-invoices-data/invoice-types.csv",
       "header": true,
