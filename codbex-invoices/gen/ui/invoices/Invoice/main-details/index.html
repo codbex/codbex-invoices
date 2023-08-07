@@ -150,6 +150,19 @@
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
+                        <fd-form-label for="idOrder" dg-required="false" dg-colon="true">Order</fd-form-label>
+                        <fd-combobox-input id="idOrder"
+                            name="Order"
+                            state="{{ formErrors.Order ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Order'].$valid, 'Order')"
+                            ng-model="entity.Order"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsOrder"
+                            dg-placeholder="Search Order ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
                         <fd-form-label for="idAmount" dg-required="false" dg-colon="true">Amount</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.Amount ? false : true }}">
                             <fd-input id="idAmount"

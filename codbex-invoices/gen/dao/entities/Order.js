@@ -4,83 +4,73 @@ const daoApi = require("db/dao");
 const EntityUtils = require("codbex-invoices/gen/dao/utils/EntityUtils");
 
 let dao = daoApi.create({
-	table: "CODBEX_INVOICE",
+	table: "CODBEX_ORDER",
 	properties: [
 		{
 			name: "Id",
-			column: "INVOICE_ID",
+			column: "ORDER_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
 			name: "Number",
-			column: "INVOICE_NUMBER",
+			column: "ORDER_NUMBER",
 			type: "VARCHAR",
 		},
  {
 			name: "Date",
-			column: "INVOICE_DATE",
-			type: "DATE",
-		},
- {
-			name: "Due",
-			column: "INVOICE_DUE",
+			column: "ORDER_DATE",
 			type: "DATE",
 		},
  {
 			name: "Conditions",
-			column: "INVOICE_CONDITIONS",
+			column: "ORDER_CONDITIONS",
 			type: "VARCHAR",
 		},
  {
 			name: "Operator",
-			column: "INVOICE_OPERATOR",
+			column: "ORDER_OPERATOR",
 			type: "INTEGER",
 		},
  {
-			name: "Buyer",
-			column: "INVOICE_BUYER",
+			name: "Customer",
+			column: "ORDER_BUYER",
 			type: "INTEGER",
 		},
  {
-			name: "Seller",
-			column: "INVOICE_SELLER",
+			name: "Supplier",
+			column: "ORDER_SELLER",
 			type: "INTEGER",
 		},
  {
 			name: "Type",
-			column: "INVOICE_TYPE",
+			column: "ORDER_TYPE",
 			type: "INTEGER",
 		},
  {
 			name: "Currency",
-			column: "INVOICE_CURRENCY",
+			column: "ORDER_CURRENCY",
 			type: "VARCHAR",
 		},
  {
-			name: "Order",
-			column: "INVOICE_ORDERID",
-			type: "INTEGER",
-		},
- {
 			name: "Amount",
-			column: "INVOICE_AMOUNT",
+			column: "ORDER_AMOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "Discount",
-			column: "INVOICE_DISCOUNT",
+			column: "ORDER_DISCOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "VAT",
-			column: "INVOICE_VAT",
+			column: "ORDER_VAT",
 			type: "DOUBLE",
 		},
  {
 			name: "Total",
-			column: "INVOICE_TOTAL",
+			column: "ORDER_TOTAL",
 			type: "DOUBLE",
 		}
 ]
@@ -89,7 +79,6 @@ let dao = daoApi.create({
 exports.list = function(settings) {
 	return dao.list(settings).map(function(e) {
 		EntityUtils.setDate(e, "Date");
-		EntityUtils.setDate(e, "Due");
 		return e;
 	});
 };
@@ -97,19 +86,17 @@ exports.list = function(settings) {
 exports.get = function(id) {
 	let entity = dao.find(id);
 	EntityUtils.setDate(entity, "Date");
-	EntityUtils.setDate(entity, "Due");
 	return entity;
 };
 
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
-	EntityUtils.setLocalDate(entity, "Due");
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_INVOICE",
+		table: "CODBEX_ORDER",
 		key: {
 			name: "Id",
-			column: "INVOICE_ID",
+			column: "ORDER_ID",
 			value: id
 		}
 	});
@@ -118,13 +105,12 @@ exports.create = function(entity) {
 
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
-	// EntityUtils.setLocalDate(entity, "Due");
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_INVOICE",
+		table: "CODBEX_ORDER",
 		key: {
 			name: "Id",
-			column: "INVOICE_ID",
+			column: "ORDER_ID",
 			value: entity.Id
 		}
 	});
@@ -133,10 +119,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_INVOICE",
+		table: "CODBEX_ORDER",
 		key: {
 			name: "Id",
-			column: "INVOICE_ID",
+			column: "ORDER_ID",
 			value: id
 		}
 	});
@@ -147,7 +133,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_INVOICE"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ORDER"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -159,5 +145,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-invoices/invoices/Invoice/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-invoices/entities/Order/" + operation).send(JSON.stringify(data));
 }

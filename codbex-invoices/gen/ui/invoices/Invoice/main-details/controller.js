@@ -26,6 +26,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSeller = [];
 				$scope.optionsType = [];
 				$scope.optionsCurrency = [];
+				$scope.optionsOrder = [];
 				$scope.action = 'select';
 			});
 		});
@@ -44,6 +45,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSeller = msg.data.optionsSeller;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOrder = msg.data.optionsOrder;
 				$scope.action = 'select';
 			});
 		});
@@ -56,6 +58,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSeller = msg.data.optionsSeller;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOrder = msg.data.optionsOrder;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -77,6 +80,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSeller = msg.data.optionsSeller;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOrder = msg.data.optionsOrder;
 				$scope.action = 'update';
 			});
 		});

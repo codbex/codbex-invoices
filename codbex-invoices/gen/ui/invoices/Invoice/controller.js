@@ -88,6 +88,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSeller: $scope.optionsSeller,
 				optionsType: $scope.optionsType,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsOrder: $scope.optionsOrder,
 			});
 		};
 
@@ -102,6 +103,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSeller: $scope.optionsSeller,
 				optionsType: $scope.optionsType,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsOrder: $scope.optionsOrder,
 			});
 		};
 
@@ -114,6 +116,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSeller: $scope.optionsSeller,
 				optionsType: $scope.optionsType,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsOrder: $scope.optionsOrder,
 			});
 		};
 
@@ -153,6 +156,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSeller = [];
 		$scope.optionsType = [];
 		$scope.optionsCurrency = [];
+		$scope.optionsOrder = [];
 
 		$http.get("/services/js/codbex-invoices/gen/api/entities/Employee.js").then(function (response) {
 			$scope.optionsOperator = response.data.map(e => {
@@ -198,6 +202,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
+
+		$http.get("/services/js/codbex-invoices/gen/api/entities/Order.js").then(function (response) {
+			$scope.optionsOrder = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Number
+				}
+			});
+		});
 		$scope.optionsOperatorValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsOperator.length; i++) {
 				if ($scope.optionsOperator[i].value === optionKey) {
@@ -234,6 +247,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
 					return $scope.optionsCurrency[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsOrderValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOrder.length; i++) {
+				if ($scope.optionsOrder[i].value === optionKey) {
+					return $scope.optionsOrder[i].text;
 				}
 			}
 			return null;
