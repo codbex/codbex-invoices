@@ -223,6 +223,19 @@
                             dg-placeholder="Search Status ...">
                         </fd-combobox-input>
                     </fd-form-item>
+                    <fd-form-item horizontal="false">
+                        <fd-form-label for="idPurchaseOrder" dg-required="false" dg-colon="true">PurchaseOrder</fd-form-label>
+                        <fd-combobox-input id="idPurchaseOrder"
+                            name="PurchaseOrder"
+                            state="{{ formErrors.PurchaseOrder ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['PurchaseOrder'].$valid, 'PurchaseOrder')"
+                            ng-model="entity.PurchaseOrder"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsPurchaseOrder"
+                            dg-placeholder="Search PurchaseOrder ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
             </fd-fieldset>
         </fd-scrollbar>
 

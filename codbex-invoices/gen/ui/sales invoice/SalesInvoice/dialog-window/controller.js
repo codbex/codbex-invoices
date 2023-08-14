@@ -38,6 +38,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSeller = params.optionsSeller;
 				$scope.optionsCurrency = params.optionsCurrency;
 				$scope.optionsStatus = params.optionsStatus;
+				$scope.optionsSalesOrder = params.optionsSalesOrder;
 			}
 		}
 
