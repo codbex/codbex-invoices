@@ -1,0 +1,5 @@
+INVOICESTATUS_ID,INVOICESTATUS_NAME
+1,Active
+2,Void
+3,Paid
+4,Not Paid

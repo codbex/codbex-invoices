@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "table": "CODBEX_INVOICETYPE",
+      "table": "CODBEX_INVOICESTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-invoices-data/invoice-types.csv",
+      "file": "/codbex-invoices-data/invoice-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
