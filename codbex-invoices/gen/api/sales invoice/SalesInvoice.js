@@ -59,8 +59,8 @@ rs.service()
 	.resource("")
 		.post(function(ctx, request, response) {
 			let entity = request.getJSON();
-			entity.id = dao.create(entity);
-			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/SalesInvoice.js/" + entity.id);
+			entity.Id = dao.create(entity);
+			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/SalesInvoice.js/" + entity.Id);
 			http.sendResponseCreated(entity);
 		})
 		.produces(["application/json"])
@@ -76,7 +76,7 @@ rs.service()
 	.resource("{id}")
 		.put(function(ctx, request) {
 			let entity = request.getJSON();
-			entity.id = ctx.pathParameters.id;
+			entity.Id = ctx.pathParameters.id;
 			dao.update(entity);
 			http.sendResponseOk(entity);
 		})

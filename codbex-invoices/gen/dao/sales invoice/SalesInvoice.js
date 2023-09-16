@@ -7,7 +7,7 @@ let dao = daoApi.create({
 	table: "CODBEX_SALESINVOICE",
 	properties: [
 		{
-			name: "id",
+			name: "Id",
 			column: "SALESINVOICE_ID",
 			type: "INTEGER",
 			id: true,
@@ -103,7 +103,7 @@ exports.create = function(entity) {
 	triggerEvent("Create", {
 		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "id",
+			name: "Id",
 			column: "SALESINVOICE_ID",
 			value: id
 		}
@@ -118,9 +118,9 @@ exports.update = function(entity) {
 	triggerEvent("Update", {
 		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "id",
+			name: "Id",
 			column: "SALESINVOICE_ID",
-			value: entity.id
+			value: entity.Id
 		}
 	});
 };
@@ -130,7 +130,7 @@ exports.delete = function(id) {
 	triggerEvent("Delete", {
 		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "id",
+			name: "Id",
 			column: "SALESINVOICE_ID",
 			value: id
 		}

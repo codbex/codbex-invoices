@@ -949,7 +949,7 @@
                         "dataType": "INTEGER",
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
-                        "name": "id",
+                        "name": "Id",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetType": "TEXTBOX"

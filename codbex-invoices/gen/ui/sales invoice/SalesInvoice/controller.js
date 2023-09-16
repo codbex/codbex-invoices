@@ -98,7 +98,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.deleteEntity = function (entity) {
-			let id = entity.id;
+			let id = entity.Id;
 			messageHub.showDialogAsync(
 				'Delete SalesInvoice?',
 				`Are you sure you want to delete SalesInvoice? This action cannot be undone.`,

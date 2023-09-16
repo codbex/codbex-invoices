@@ -7,6 +7,7 @@
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "codbex-invoices.model",
+  "templateId": "template-application-angular/template/template.js",
   "perspectives": {
     "entities": {
       "views": [
@@ -1213,12 +1214,12 @@
           "dataType": "INTEGER",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "name": "id",
+          "name": "Id",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetType": "TEXTBOX",
           "dataNotNull": false,
-          "widgetLabel": "id",
+          "widgetLabel": "Id",
           "inputRule": ""
         },
         {
@@ -1531,9 +1532,9 @@
       "tooltip": "SalesInvoice",
       "type": "PRIMARY",
       "primaryKeys": [
-        "id"
+        "Id"
       ],
-      "primaryKeysString": "id",
+      "primaryKeysString": "Id",
       "hasDates": true,
       "hasDropdowns": true
     },
