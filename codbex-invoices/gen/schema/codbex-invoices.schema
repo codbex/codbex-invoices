@@ -483,6 +483,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "SALESINVOICE_SALESORDER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESINVOICE_NAME"
                     }
                 ]
             },
@@ -599,6 +607,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_PURCHASEORDER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_NAME"
                     }
                 ]
             },

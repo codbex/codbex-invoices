@@ -777,14 +777,16 @@
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
                         "name": "SalesInvoiceid",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "SalesInvoiceItem_SalesInvoice",
+                        "relationshipType": "COMPOSITION",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Number",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "SalesInvoiceItem_SalesInvoice",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "sales invoice"
+                        "relationshipEntityPerspectiveName": "salesinvoice"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -924,18 +926,18 @@
                 "dataName": "SALESINVOICEITEM",
                 "dataQuery": "",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "salesinvoiceitem",
                 "menuLabel": "SalesInvoiceItem",
                 "name": "SalesInvoiceItem",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveName": "salesinvoice",
+                "perspectiveOrder": "600",
                 "title": "SalesInvoiceItem",
                 "tooltip": "SalesInvoiceItem",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -1197,6 +1199,23 @@
                         "relationshipName": "SalesInvoice_SalesOrder",
                         "relationshipEntityName": "SalesOrder",
                         "relationshipEntityPerspectiveName": "entities"
+                    },
+                    {
+                        "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "200",
+                        "dataName": "SALESINVOICE_NAME",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity SalesInvoice",
@@ -1204,15 +1223,15 @@
                 "dataName": "SALESINVOICE",
                 "dataQuery": "",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "salesinvoice",
                 "menuLabel": "SalesInvoice",
                 "name": "SalesInvoice",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveName": "sales invoice",
-                "perspectiveOrder": "100",
+                "perspectiveName": "salesinvoice",
+                "perspectiveOrder": "600",
                 "title": "SalesInvoice",
                 "tooltip": "SalesInvoice",
                 "type": "PRIMARY"
@@ -1477,6 +1496,23 @@
                         "relationshipName": "PurchaseInvoice_PurchaseOrder",
                         "relationshipEntityName": "PurchaseOrder",
                         "relationshipEntityPerspectiveName": "entities"
+                    },
+                    {
+                        "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "200",
+                        "dataName": "PURCHASEINVOICE_NAME",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity PurchaseInvoice",
@@ -1484,15 +1520,15 @@
                 "dataName": "PURCHASEINVOICE",
                 "dataQuery": "",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "purchaseinvoice",
                 "menuLabel": "PurchaseInvoice",
                 "name": "PurchaseInvoice",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
-                "perspectiveName": "purchase invoice",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
+                "perspectiveName": "purchaseinvoice",
+                "perspectiveOrder": "610",
                 "title": "PurchaseInvoice",
                 "tooltip": "PurchaseInvoice",
                 "type": "PRIMARY"
@@ -1527,14 +1563,16 @@
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
                         "name": "PurchaseInvoice",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "PurchaseInvoiceItem_PurchaseInvoice",
+                        "relationshipType": "COMPOSITION",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Number",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "PurchaseInvoiceItem_PurchaseInvoice",
                         "relationshipEntityName": "PurchaseInvoice",
-                        "relationshipEntityPerspectiveName": "purchase invoice"
+                        "relationshipEntityPerspectiveName": "purchaseinvoice"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -1688,18 +1726,18 @@
                 "dataName": "PURCHASEINVOICEITEM",
                 "dataQuery": "",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "purchaseinvoiceitem",
                 "menuLabel": "PurchaseInvoiceItem",
                 "name": "PurchaseInvoiceItem",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
+                "perspectiveName": "purchaseinvoice",
+                "perspectiveOrder": "610",
                 "title": "PurchaseInvoiceItem",
                 "tooltip": "PurchaseInvoiceItem",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -2252,16 +2290,16 @@
                 "order": "999"
             },
             {
-                "name": "sales invoice",
+                "name": "salesinvoice",
                 "label": "Sales Invoice",
                 "icon": "/services/web/resources/unicons/invoice.svg",
-                "order": "100"
+                "order": "600"
             },
             {
-                "name": "purchase invoice",
+                "name": "purchaseinvoice",
                 "label": "Purchase Invoice",
-                "icon": "/services/web/resources/unicons/bill.svg",
-                "order": "100"
+                "icon": "/services/web/resources/unicons/receipt.svg",
+                "order": "610"
             }
         ],
         "navigations": []

@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "InvoiceStatus-details",
-    label: "InvoiceStatus",
-    link: "/services/web/codbex-invoices/gen/ui/settings/InvoiceStatus/dialog-window/index.html",
-    perspectiveName: "settings"
+    id: "SalesInvoiceItem-details",
+    label: "SalesInvoiceItem",
+    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/SalesInvoiceItem/dialog-window/index.html",
+    perspectiveName: "salesinvoice"
 };
 
 if (typeof exports !== 'undefined') {

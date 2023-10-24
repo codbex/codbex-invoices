@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "InvoiceStatus",
-    label: "InvoiceStatus",
+    id: "SalesInvoice",
+    label: "SalesInvoice",
     factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-invoices/gen/ui/settings/InvoiceStatus/index.html",
-    perspectiveName: "settings"
+    region: "left",
+    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/index.html",
+    perspectiveName: "salesinvoice"
 };
 
 if (typeof exports !== 'undefined') {
