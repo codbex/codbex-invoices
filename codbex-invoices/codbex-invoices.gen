@@ -1548,7 +1548,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+          "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date'];",
           "dataAutoIncrement": false,
           "dataLength": "200",
           "dataName": "SALESINVOICE_NAME",
@@ -1885,7 +1885,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+            "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date'];",
             "dataAutoIncrement": false,
             "dataLength": "200",
             "dataName": "SALESINVOICE_NAME",
@@ -2223,7 +2223,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+          "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date'];",
           "dataAutoIncrement": false,
           "dataLength": "200",
           "dataName": "PURCHASEINVOICE_NAME",
@@ -2560,7 +2560,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date']",
+            "calculatedPropertyExpression": "entity['Number'] + '/' + entity['Date'];",
             "dataAutoIncrement": false,
             "dataLength": "200",
             "dataName": "PURCHASEINVOICE_NAME",

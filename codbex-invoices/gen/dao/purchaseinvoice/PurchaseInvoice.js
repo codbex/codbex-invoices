@@ -104,7 +104,7 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
 	EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date'];
+	entity["Name"] = entity['Number'] + '/' + entity['Date'];;
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
 		table: "CODBEX_PURCHASEINVOICE",
@@ -120,7 +120,7 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
 	// EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date']
+	entity["Name"] = entity['Number'] + '/' + entity['Date'];
 	dao.update(entity);
 	triggerEvent("Update", {
 		table: "CODBEX_PURCHASEINVOICE",
