@@ -295,7 +295,7 @@
                 ]
             },
             {
-                "name": "CODBEX_SALESINVOICEITEM",
+                "name": "CODBEX_NAME",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -381,6 +381,13 @@
                         "identity": true,
                         "nullable": true,
                         "name": "SALESINVOICE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "SALESINVOICE_NAME"
                     },
                     {
                         "type": "VARCHAR",
@@ -483,14 +490,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "SALESINVOICE_SALESORDER"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SALESINVOICE_NAME"
                     }
                 ]
             },
@@ -505,6 +504,13 @@
                         "identity": true,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "PURCHASEINVOICE_NAME"
                     },
                     {
                         "type": "VARCHAR",
@@ -607,14 +613,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_PURCHASEORDER"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_NAME"
                     }
                 ]
             },
@@ -937,28 +935,28 @@
                 ]
             },
             {
-                "name": "SalesInvoiceItem_SalesInvoice",
+                "name": "Name_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICEITEM",
-                "constraintName": "SalesInvoiceItem_SalesInvoice",
+                "table": "CODBEX_NAME",
+                "constraintName": "Name_SalesInvoice",
                 "columns": "SALESINVOICEITEM_SALESINVOICEID",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "SalesInvoiceItem_UoM",
+                "name": "Name_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICEITEM",
-                "constraintName": "SalesInvoiceItem_UoM",
+                "table": "CODBEX_NAME",
+                "constraintName": "Name_UoM",
                 "columns": "SALESINVOICEITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "SalesInvoiceItem_Product",
+                "name": "Name_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICEITEM",
-                "constraintName": "SalesInvoiceItem_Product",
+                "table": "CODBEX_NAME",
+                "constraintName": "Name_Product",
                 "columns": "SALESINVOICEITEM_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"

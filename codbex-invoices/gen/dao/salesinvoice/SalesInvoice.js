@@ -14,6 +14,12 @@ let dao = daoApi.create({
 			autoIncrement: true,
 		},
  {
+			name: "Name",
+			column: "SALESINVOICE_NAME",
+			type: "VARCHAR",
+			required: true
+		},
+ {
 			name: "Number",
 			column: "SALESINVOICE_NUMBER",
 			type: "VARCHAR",
@@ -77,11 +83,6 @@ let dao = daoApi.create({
 			name: "SalesOrder",
 			column: "SALESINVOICE_SALESORDER",
 			type: "INTEGER",
-		},
- {
-			name: "Name",
-			column: "SALESINVOICE_NAME",
-			type: "VARCHAR",
 		}
 ]
 });
@@ -104,7 +105,6 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
 	EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date'];;
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
 		table: "CODBEX_SALESINVOICE",
@@ -120,7 +120,6 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
 	// EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date'];
 	dao.update(entity);
 	triggerEvent("Update", {
 		table: "CODBEX_SALESINVOICE",

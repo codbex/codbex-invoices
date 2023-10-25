@@ -194,7 +194,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsSalesOrder = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Number
+					text: e.Name
 				}
 			});
 		});

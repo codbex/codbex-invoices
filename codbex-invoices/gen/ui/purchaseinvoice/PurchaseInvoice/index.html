@@ -34,8 +34,9 @@
 						navigated="next.Id === selectedEntity.Id"
 						ng-click="action == 'select' ? selectEntity(next) : ''">
 						<fd-list-content
-							item-title="{{next.Number}}">
+							item-title="{{next.Name}}">
 							<fd-list-byline dg-align="left">
+								{{next.Number}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
 								{{next.Conditions}} |
@@ -47,8 +48,7 @@
 								{{next.VAT}} |
 								{{next.Total}} |
 								{{optionsStatusValue(next.Status)}} |
-								{{optionsPurchaseOrderValue(next.PurchaseOrder)}} |
-								{{next.Name}}
+								{{optionsPurchaseOrderValue(next.PurchaseOrder)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>
