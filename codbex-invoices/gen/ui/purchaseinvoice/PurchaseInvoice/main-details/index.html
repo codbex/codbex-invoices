@@ -73,6 +73,19 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
+                        <fd-form-label for="idSupplier" dg-required="false" dg-colon="true">Supplier</fd-form-label>
+                        <fd-combobox-input id="idSupplier"
+                            name="Supplier"
+                            state="{{ formErrors.Supplier ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Supplier'].$valid, 'Supplier')"
+                            ng-model="entity.Supplier"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsSupplier"
+                            dg-placeholder="Search Supplier ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
                         <fd-form-label for="idDue" dg-required="false" dg-colon="true">Due</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.Due ? false : true }}">
                             <fd-input id="idDue"
@@ -105,32 +118,6 @@
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idOperator" dg-required="false" dg-colon="true">Operator</fd-form-label>
-                        <fd-combobox-input id="idOperator"
-                            name="Operator"
-                            state="{{ formErrors.Operator ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['Operator'].$valid, 'Operator')"
-                            ng-model="entity.Operator"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsOperator"
-                            dg-placeholder="Search Operator ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idBuyer" dg-required="false" dg-colon="true">Buyer</fd-form-label>
-                        <fd-combobox-input id="idBuyer"
-                            name="Buyer"
-                            state="{{ formErrors.Buyer ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['Buyer'].$valid, 'Buyer')"
-                            ng-model="entity.Buyer"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsBuyer"
-                            dg-placeholder="Search Buyer ...">
-                        </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
                         <fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
@@ -245,6 +232,19 @@
                             dg-disabled="action === 'select'"
                             dropdown-items="optionsPurchaseOrder"
                             dg-placeholder="Search PurchaseOrder ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
+                        <fd-form-label for="idOperator" dg-required="false" dg-colon="true">Operator</fd-form-label>
+                        <fd-combobox-input id="idOperator"
+                            name="Operator"
+                            state="{{ formErrors.Operator ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Operator'].$valid, 'Operator')"
+                            ng-model="entity.Operator"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsOperator"
+                            dg-placeholder="Search Operator ...">
                         </fd-combobox-input>
                     </fd-form-item>
 

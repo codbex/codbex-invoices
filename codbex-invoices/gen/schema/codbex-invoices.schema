@@ -2,142 +2,6 @@
     "schema": {
         "structures": [
             {
-                "name": "CODBEX_EMPLOYEE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "EMPLOYEE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_FIRSTNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_MIDDLENAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_LASTNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_EMAIL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_PHONE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_ORGANISATIONID"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PARTNER",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PARTNER_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PARTNER_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PARTNER_PARTNERTYPEID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_ADDRESS"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_CITY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_POSTALCODE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_EMAIL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_PHONE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PARTNER_FAX"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PARTNER_COUNTRYID"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_CURRENCY",
                 "type": "TABLE",
                 "columns": [
@@ -295,7 +159,7 @@
                 ]
             },
             {
-                "name": "CODBEX_NAME",
+                "name": "CODBEX_SALESINVOICEITEM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -404,6 +268,14 @@
                         "name": "SALESINVOICE_DATE"
                     },
                     {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESINVOICE_CUSTOMERID"
+                    },
+                    {
                         "type": "DATE",
                         "length": 20,
                         "precision": "NaN",
@@ -418,22 +290,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "SALESINVOICE_CONDITIONS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SALESINVOICE_OPERATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SALESINVOICE_SELLER"
                     },
                     {
                         "type": "VARCHAR",
@@ -489,7 +345,15 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "SALESINVOICE_SALESORDER"
+                        "name": "SALESINVOICE_SALESORDERID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESINVOICE_OPERATOR"
                     }
                 ]
             },
@@ -527,6 +391,14 @@
                         "name": "PURCHASEINVOICE_DATE"
                     },
                     {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_SUPPLIER"
+                    },
+                    {
                         "type": "DATE",
                         "length": 20,
                         "precision": "NaN",
@@ -541,22 +413,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_CONDITIONS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_OPERATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_BUYER"
                     },
                     {
                         "type": "VARCHAR",
@@ -613,6 +469,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_PURCHASEORDER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_OPERATOR"
                     }
                 ]
             },
@@ -703,6 +567,86 @@
                 ]
             },
             {
+                "name": "CODBEX_CUSTOMER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_POSTALCODE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_PHONE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_FAX"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CUSTOMER_COUNTRYID"
+                    }
+                ]
+            },
+            {
                 "name": "CODBEX_SALESORDER",
                 "type": "TABLE",
                 "columns": [
@@ -718,11 +662,19 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESORDER_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_NUMBER"
+                        "name": "SALESORDER_NUMBER"
                     },
                     {
                         "type": "DATE",
@@ -730,7 +682,23 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_DATE"
+                        "name": "SALESORDER_DATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESORDER_CUSTOMER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESORDER_OPERATOR"
                     },
                     {
                         "type": "VARCHAR",
@@ -738,23 +706,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_CONDITIONS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "ORDER_OPERATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "ORDER_BUYER"
+                        "name": "SALESORDER_CONDITIONS"
                     },
                     {
                         "type": "VARCHAR",
@@ -762,7 +714,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_CURRENCY"
+                        "name": "SALESORDER_CURRENCY"
                     },
                     {
                         "type": "DOUBLE",
@@ -770,7 +722,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_AMOUNT"
+                        "name": "SALESORDER_AMOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -778,7 +730,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_DISCOUNT"
+                        "name": "SALESORDER_DISCOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -786,7 +738,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_VAT"
+                        "name": "SALESORDER_VAT"
                     },
                     {
                         "type": "DOUBLE",
@@ -794,21 +746,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_TOTAL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 50,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "ORDER_REFERENCENUMBER"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PurchaseInvoice"
+                        "name": "SALESORDER_TOTAL"
                     },
                     {
                         "type": "INTEGER",
@@ -817,6 +755,86 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "SALESORDER_STATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SUPPLIER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_POSTALCODE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_PHONE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_FAX"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SUPPLIER_COUNTRY"
                     }
                 ]
             },
@@ -836,11 +854,19 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEORDER_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_NUMBER"
+                        "name": "PURCHASEORDER_NUMBER"
                     },
                     {
                         "type": "DATE",
@@ -848,7 +874,23 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_DATE"
+                        "name": "PURCHASEORDER_DATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEORDER_SUPPLIER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEORDER_OPERATOR"
                     },
                     {
                         "type": "VARCHAR",
@@ -856,19 +898,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_CONDITIONS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "ORDER_OPERATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "ORDER_CUSTOMER"
+                        "name": "PURCHASEORDER_CONDITIONS"
                     },
                     {
                         "type": "VARCHAR",
@@ -876,7 +906,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_CURRENCY"
+                        "name": "PURCHASEORDER_CURRENCY"
                     },
                     {
                         "type": "DOUBLE",
@@ -884,7 +914,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_AMOUNT"
+                        "name": "PURCHASEORDER_AMOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -892,7 +922,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_DISCOUNT"
+                        "name": "PURCHASEORDER_DISCOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -900,7 +930,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_VAT"
+                        "name": "PURCHASEORDER_VAT"
                     },
                     {
                         "type": "DOUBLE",
@@ -908,21 +938,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ORDER_TOTAL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 50,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "ORDER_REFERENCENUMBER"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "ORDER_REFERENCECONTEXT"
+                        "name": "PURCHASEORDER_TOTAL"
                     },
                     {
                         "type": "INTEGER",
@@ -935,49 +951,110 @@
                 ]
             },
             {
-                "name": "Name_SalesInvoice",
+                "name": "CODBEX_EMPLOYEE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_FIRSTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_MIDDLENAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_LASTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_PHONE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_ORGANISATIONID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_NAME",
-                "constraintName": "Name_SalesInvoice",
+                "table": "CODBEX_SALESINVOICEITEM",
+                "constraintName": "SalesInvoiceItem_SalesInvoice",
                 "columns": "SALESINVOICEITEM_SALESINVOICEID",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "Name_UoM",
+                "name": "SalesInvoiceItem_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_NAME",
-                "constraintName": "Name_UoM",
+                "table": "CODBEX_SALESINVOICEITEM",
+                "constraintName": "SalesInvoiceItem_UoM",
                 "columns": "SALESINVOICEITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "Name_Product",
+                "name": "SalesInvoiceItem_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_NAME",
-                "constraintName": "Name_Product",
+                "table": "CODBEX_SALESINVOICEITEM",
+                "constraintName": "SalesInvoiceItem_Product",
                 "columns": "SALESINVOICEITEM_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             },
             {
-                "name": "SalesInvoice_Employee",
+                "name": "SalesInvoice_Customer",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_Employee",
-                "columns": "SALESINVOICE_OPERATOR",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
-                "name": "SalesInvoice_Partner",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_Partner",
-                "columns": "SALESINVOICE_SELLER",
-                "referencedTable": "CODBEX_PARTNER",
-                "referencedColumns": "PARTNER_ID"
+                "constraintName": "SalesInvoice_Customer",
+                "columns": "SALESINVOICE_CUSTOMERID",
+                "referencedTable": "CODBEX_CUSTOMER",
+                "referencedColumns": "CUSTOMER_ID"
             },
             {
                 "name": "SalesInvoice_Currency",
@@ -1002,27 +1079,27 @@
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
                 "constraintName": "SalesInvoice_SalesOrder",
-                "columns": "SALESINVOICE_SALESORDER",
+                "columns": "SALESINVOICE_SALESORDERID",
                 "referencedTable": "CODBEX_SALESORDER",
                 "referencedColumns": "SALESORDER_ID"
             },
             {
-                "name": "PurchaseInvoice_Employee",
+                "name": "SalesInvoice_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_Employee",
-                "columns": "PURCHASEINVOICE_OPERATOR",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_Employee",
+                "columns": "SALESINVOICE_OPERATOR",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "PurchaseInvoice_Partner",
+                "name": "PurchaseInvoice_Supplier",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_Partner",
-                "columns": "PURCHASEINVOICE_BUYER",
-                "referencedTable": "CODBEX_PARTNER",
-                "referencedColumns": "PARTNER_ID"
+                "constraintName": "PurchaseInvoice_Supplier",
+                "columns": "PURCHASEINVOICE_SUPPLIER",
+                "referencedTable": "CODBEX_SUPPLIER",
+                "referencedColumns": "SUPPLIER_ID"
             },
             {
                 "name": "PurchaseInvoice_Currency",
@@ -1050,6 +1127,15 @@
                 "columns": "PURCHASEINVOICE_PURCHASEORDER",
                 "referencedTable": "CODBEX_PURCHASEORDER",
                 "referencedColumns": "PURCHASEORDER_ID"
+            },
+            {
+                "name": "PurchaseInvoice_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_Employee",
+                "columns": "PURCHASEINVOICE_OPERATOR",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "PurchaseInvoiceItem_PurchaseInvoice",

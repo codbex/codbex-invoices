@@ -30,6 +30,11 @@ let dao = daoApi.create({
 			type: "DATE",
 		},
  {
+			name: "Customer",
+			column: "SALESINVOICE_CUSTOMERID",
+			type: "INTEGER",
+		},
+ {
 			name: "Due",
 			column: "SALESINVOICE_DUE",
 			type: "DATE",
@@ -38,16 +43,6 @@ let dao = daoApi.create({
 			name: "Conditions",
 			column: "SALESINVOICE_CONDITIONS",
 			type: "VARCHAR",
-		},
- {
-			name: "Operator",
-			column: "SALESINVOICE_OPERATOR",
-			type: "INTEGER",
-		},
- {
-			name: "Seller",
-			column: "SALESINVOICE_SELLER",
-			type: "INTEGER",
 		},
  {
 			name: "Currency",
@@ -81,7 +76,12 @@ let dao = daoApi.create({
 		},
  {
 			name: "SalesOrder",
-			column: "SALESINVOICE_SALESORDER",
+			column: "SALESINVOICE_SALESORDERID",
+			type: "INTEGER",
+		},
+ {
+			name: "Operator",
+			column: "SALESINVOICE_OPERATOR",
 			type: "INTEGER",
 		}
 ]

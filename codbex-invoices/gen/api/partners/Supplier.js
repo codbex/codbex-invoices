@@ -1,5 +1,5 @@
 const rs = require("http/rs");
-const dao = require("codbex-invoices/gen/dao/salesinvoice/Name");
+const dao = require("codbex-invoices/gen/dao/partners/Supplier");
 const http = require("codbex-invoices/gen/api/utils/http");
 
 rs.service()
@@ -23,11 +23,9 @@ rs.service()
 				http.sendInternalServerError(error.message);
 			}
         })
-	.resource("count/{SalesInvoiceid}")
+	.resource("count")
 		.get(function(ctx, request) {
-			let SalesInvoiceid = parseInt(ctx.pathParameters.SalesInvoiceid);
-			SalesInvoiceid = isNaN(SalesInvoiceid) ? ctx.pathParameters.SalesInvoiceid : SalesInvoiceid;
-			http.sendResponseOk("" + dao.count(SalesInvoiceid));
+			http.sendResponseOk("" + dao.count());
 		})
 		.catch(function(ctx, error) {
             if (error.name === "ForbiddenError") {
@@ -45,7 +43,7 @@ rs.service()
 			if (entity) {
 			    http.sendResponseOk(entity);
 			} else {
-				http.sendResponseNotFound("Name not found");
+				http.sendResponseNotFound("Supplier not found");
 			}
 		})
 		.produces(["application/json"])
@@ -62,7 +60,7 @@ rs.service()
 		.post(function(ctx, request, response) {
 			let entity = request.getJSON();
 			entity.Id = dao.create(entity);
-			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/Name.js/" + entity.Id);
+			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/Supplier.js/" + entity.Id);
 			http.sendResponseCreated(entity);
 		})
 		.produces(["application/json"])
@@ -100,7 +98,7 @@ rs.service()
 				dao.delete(id);
 				http.sendResponseNoContent();
 			} else {
-				http.sendResponseNotFound("Name not found");
+				http.sendResponseNotFound("Supplier not found");
 			}
 		})
 		.catch(function(ctx, error) {

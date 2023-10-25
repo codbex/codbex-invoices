@@ -21,11 +21,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
-				$scope.optionsOperator = [];
-				$scope.optionsBuyer = [];
+				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsStatus = [];
 				$scope.optionsPurchaseOrder = [];
+				$scope.optionsOperator = [];
 				$scope.action = 'select';
 			});
 		});
@@ -39,11 +39,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsBuyer = msg.data.optionsBuyer;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsPurchaseOrder = msg.data.optionsPurchaseOrder;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'select';
 			});
 		});
@@ -51,11 +51,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsBuyer = msg.data.optionsBuyer;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsPurchaseOrder = msg.data.optionsPurchaseOrder;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -73,11 +73,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsBuyer = msg.data.optionsBuyer;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsPurchaseOrder = msg.data.optionsPurchaseOrder;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'update';
 			});
 		});

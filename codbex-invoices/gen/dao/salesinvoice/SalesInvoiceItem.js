@@ -3,7 +3,7 @@ const producer = require("messaging/producer");
 const daoApi = require("db/dao");
 
 let dao = daoApi.create({
-	table: "CODBEX_NAME",
+	table: "CODBEX_SALESINVOICEITEM",
 	properties: [
 		{
 			name: "Id",
@@ -71,7 +71,7 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_NAME",
+		table: "CODBEX_SALESINVOICEITEM",
 		key: {
 			name: "Id",
 			column: "SALESINVOICEITEM_ID",
@@ -84,7 +84,7 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_NAME",
+		table: "CODBEX_SALESINVOICEITEM",
 		key: {
 			name: "Id",
 			column: "SALESINVOICEITEM_ID",
@@ -96,7 +96,7 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_NAME",
+		table: "CODBEX_SALESINVOICEITEM",
 		key: {
 			name: "Id",
 			column: "SALESINVOICEITEM_ID",
@@ -106,7 +106,7 @@ exports.delete = function(id) {
 };
 
 exports.count = function (SalesInvoiceid) {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_NAME" WHERE "SALESINVOICEITEM_SALESINVOICEID" = ?', [SalesInvoiceid]);
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESINVOICEITEM" WHERE "SALESINVOICEITEM_SALESINVOICEID" = ?', [SalesInvoiceid]);
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -130,5 +130,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-invoices/salesinvoice/Name/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-invoices/salesinvoice/SalesInvoiceItem/" + operation).send(JSON.stringify(data));
 }

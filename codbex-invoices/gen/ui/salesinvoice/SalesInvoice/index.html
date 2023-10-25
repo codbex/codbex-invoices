@@ -38,17 +38,17 @@
 							<fd-list-byline dg-align="left">
 								{{next.Number}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
+								{{optionsCustomerValue(next.Customer)}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
 								{{next.Conditions}} |
-								{{optionsOperatorValue(next.Operator)}} |
-								{{optionsSellerValue(next.Seller)}} |
 								{{optionsCurrencyValue(next.Currency)}} |
 								{{next.Amount}} |
 								{{next.Discount}} |
 								{{next.VAT}} |
 								{{next.Total}} |
 								{{optionsStatusValue(next.Status)}} |
-								{{optionsSalesOrderValue(next.SalesOrder)}}
+								{{optionsSalesOrderValue(next.SalesOrder)}} |
+								{{optionsOperatorValue(next.Operator)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

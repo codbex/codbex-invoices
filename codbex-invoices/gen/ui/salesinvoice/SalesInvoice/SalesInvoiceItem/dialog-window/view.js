@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Name-details",
-    label: "Name",
-    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/Name/dialog-window/index.html",
+    id: "SalesInvoiceItem-details",
+    label: "SalesInvoiceItem",
+    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/SalesInvoiceItem/dialog-window/index.html",
     perspectiveName: "salesinvoice"
 };
 

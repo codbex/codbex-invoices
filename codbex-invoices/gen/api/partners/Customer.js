@@ -1,5 +1,5 @@
 const rs = require("http/rs");
-const dao = require("codbex-invoices/gen/dao/entities/PurchaseOrder");
+const dao = require("codbex-invoices/gen/dao/partners/Customer");
 const http = require("codbex-invoices/gen/api/utils/http");
 
 rs.service()
@@ -43,7 +43,7 @@ rs.service()
 			if (entity) {
 			    http.sendResponseOk(entity);
 			} else {
-				http.sendResponseNotFound("PurchaseOrder not found");
+				http.sendResponseNotFound("Customer not found");
 			}
 		})
 		.produces(["application/json"])
@@ -60,7 +60,7 @@ rs.service()
 		.post(function(ctx, request, response) {
 			let entity = request.getJSON();
 			entity.Id = dao.create(entity);
-			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/PurchaseOrder.js/" + entity.Id);
+			response.setHeader("Content-Location", "/services/js/codbex-invoices/gen/api/Customer.js/" + entity.Id);
 			http.sendResponseCreated(entity);
 		})
 		.produces(["application/json"])
@@ -98,7 +98,7 @@ rs.service()
 				dao.delete(id);
 				http.sendResponseNoContent();
 			} else {
-				http.sendResponseNotFound("PurchaseOrder not found");
+				http.sendResponseNotFound("Customer not found");
 			}
 		})
 		.catch(function(ctx, error) {

@@ -4,78 +4,73 @@ const daoApi = require("db/dao");
 const EntityUtils = require("codbex-invoices/gen/dao/utils/EntityUtils");
 
 let dao = daoApi.create({
-	table: "CODBEX_SALESORDER",
+	table: "CODBEX_PURCHASEORDER",
 	properties: [
 		{
 			name: "Id",
-			column: "SALESORDER_ID",
+			column: "PURCHASEORDER_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
+			name: "Name",
+			column: "PURCHASEORDER_NAME",
+			type: "VARCHAR",
+		},
+ {
 			name: "Number",
-			column: "ORDER_NUMBER",
+			column: "PURCHASEORDER_NUMBER",
 			type: "VARCHAR",
 		},
  {
 			name: "Date",
-			column: "ORDER_DATE",
+			column: "PURCHASEORDER_DATE",
 			type: "DATE",
 		},
  {
-			name: "Conditions",
-			column: "ORDER_CONDITIONS",
-			type: "VARCHAR",
+			name: "Supplier",
+			column: "PURCHASEORDER_SUPPLIER",
+			type: "INTEGER",
 		},
  {
 			name: "Operator",
-			column: "ORDER_OPERATOR",
+			column: "PURCHASEORDER_OPERATOR",
 			type: "INTEGER",
 		},
  {
-			name: "Supplier",
-			column: "ORDER_BUYER",
-			type: "INTEGER",
+			name: "Conditions",
+			column: "PURCHASEORDER_CONDITIONS",
+			type: "VARCHAR",
 		},
  {
 			name: "Currency",
-			column: "ORDER_CURRENCY",
+			column: "PURCHASEORDER_CURRENCY",
 			type: "VARCHAR",
 		},
  {
 			name: "Amount",
-			column: "ORDER_AMOUNT",
+			column: "PURCHASEORDER_AMOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "Discount",
-			column: "ORDER_DISCOUNT",
+			column: "PURCHASEORDER_DISCOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "VAT",
-			column: "ORDER_VAT",
+			column: "PURCHASEORDER_VAT",
 			type: "DOUBLE",
 		},
  {
 			name: "Total",
-			column: "ORDER_TOTAL",
+			column: "PURCHASEORDER_TOTAL",
 			type: "DOUBLE",
 		},
  {
-			name: "ReferenceNumber",
-			column: "ORDER_REFERENCENUMBER",
-			type: "VARCHAR",
-		},
- {
-			name: "PurchaseInvoice",
-			column: "PurchaseInvoice",
-			type: "VARCHAR",
-		},
- {
 			name: "Status",
-			column: "SALESORDER_STATUS",
+			column: "PURCHASEORDER_STATUS",
 			type: "INTEGER",
 		}
 ]
@@ -98,10 +93,10 @@ exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_SALESORDER",
+		table: "CODBEX_PURCHASEORDER",
 		key: {
 			name: "Id",
-			column: "SALESORDER_ID",
+			column: "PURCHASEORDER_ID",
 			value: id
 		}
 	});
@@ -112,10 +107,10 @@ exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_SALESORDER",
+		table: "CODBEX_PURCHASEORDER",
 		key: {
 			name: "Id",
-			column: "SALESORDER_ID",
+			column: "PURCHASEORDER_ID",
 			value: entity.Id
 		}
 	});
@@ -124,10 +119,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_SALESORDER",
+		table: "CODBEX_PURCHASEORDER",
 		key: {
 			name: "Id",
-			column: "SALESORDER_ID",
+			column: "PURCHASEORDER_ID",
 			value: id
 		}
 	});
@@ -138,7 +133,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESORDER"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEORDER"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -150,5 +145,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-invoices/entities/SalesOrder/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-invoices/PurchaseOrder/PurchaseOrder/" + operation).send(JSON.stringify(data));
 }
