@@ -225,7 +225,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-invoices/gen/api/undefined/undefinedService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-employees/gen/api/Employees/EmployeeService.ts").then(function (response) {
 			$scope.optionsOperator = response.data.map(e => {
 				return {
 					value: e.Id,
