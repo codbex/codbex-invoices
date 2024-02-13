@@ -7,10 +7,10 @@ export interface PurchaseInvoiceItemEntity {
     readonly Id: number;
     PurchaseInvoice: number;
     Name: string;
-    Product?: number;
+    Product: number;
     Quantity: number;
-    UoM?: number;
-    Price?: number;
+    UoM: number;
+    Price: number;
     Net?: number;
     VAT?: number;
     Gross?: number;
@@ -19,10 +19,10 @@ export interface PurchaseInvoiceItemEntity {
 export interface PurchaseInvoiceItemCreateEntity {
     readonly PurchaseInvoice: number;
     readonly Name: string;
-    readonly Product?: number;
+    readonly Product: number;
     readonly Quantity: number;
-    readonly UoM?: number;
-    readonly Price?: number;
+    readonly UoM: number;
+    readonly Price: number;
 }
 
 export interface PurchaseInvoiceItemUpdateEntity extends PurchaseInvoiceItemCreateEntity {
@@ -162,6 +162,7 @@ export class PurchaseInvoiceItemRepository {
                 name: "Product",
                 column: "PURCHASEINVOICEITEM_PRODUCT",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Quantity",
@@ -173,11 +174,13 @@ export class PurchaseInvoiceItemRepository {
                 name: "UoM",
                 column: "PURCHASEINVOICEITEM_UOM",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Price",
                 column: "PURCHASEINVOICEITEM_PRICE",
                 type: "DOUBLE",
+                required: true
             },
             {
                 name: "Net",

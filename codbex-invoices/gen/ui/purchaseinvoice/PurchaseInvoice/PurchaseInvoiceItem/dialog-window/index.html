@@ -44,7 +44,7 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row fd-form-item">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idProduct" dg-required="false" dg-colon="true">Product</fd-form-label>
+                        	<fd-form-label for="idProduct" dg-required="true" dg-colon="true">Product</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idProduct"
@@ -84,7 +84,7 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row fd-form-item">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idUoM" dg-required="false" dg-colon="true">UoM</fd-form-label>
+                        	<fd-form-label for="idUoM" dg-required="true" dg-colon="true">UoM</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idUoM"
@@ -101,14 +101,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row fd-form-item">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPrice" dg-required="false" dg-colon="true">Price</fd-form-label>
+                        	<fd-form-label for="idPrice" dg-required="true" dg-colon="true">Price</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ formErrors.Price ? false : true }}">
 	                            <fd-input id="idPrice"
 	                                name="Price"
 	                                state="{{ formErrors.Price ? 'error' : '' }}"
-									ng-required="false"
+									ng-required="true"
 	                                ng-change="isValid(formFieldset['Price'].$valid, 'Price')"
 	                                ng-model="entity.Price"
 	                                ng-readonly="action === 'select'"

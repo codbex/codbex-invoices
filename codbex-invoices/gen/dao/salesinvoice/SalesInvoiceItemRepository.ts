@@ -5,11 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface SalesInvoiceItemEntity {
     readonly Id: number;
-    SalesInvoice?: number;
+    SalesInvoice: number;
     Name: string;
-    Product?: number;
+    Product: number;
     Quantity: number;
-    UoM?: number;
+    UoM: number;
     Price: number;
     Net?: number;
     VAT?: string;
@@ -17,11 +17,11 @@ export interface SalesInvoiceItemEntity {
 }
 
 export interface SalesInvoiceItemCreateEntity {
-    readonly SalesInvoice?: number;
+    readonly SalesInvoice: number;
     readonly Name: string;
-    readonly Product?: number;
+    readonly Product: number;
     readonly Quantity: number;
-    readonly UoM?: number;
+    readonly UoM: number;
     readonly Price: number;
 }
 
@@ -151,6 +151,7 @@ export class SalesInvoiceItemRepository {
                 name: "SalesInvoice",
                 column: "SALESINVOICEITEM_SALESINVOICE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Name",
@@ -162,6 +163,7 @@ export class SalesInvoiceItemRepository {
                 name: "Product",
                 column: "SALESINVOICEITEM_PRODUCT",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Quantity",
@@ -173,6 +175,7 @@ export class SalesInvoiceItemRepository {
                 name: "UoM",
                 column: "SALESINVOICEITEM_UOM",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Price",

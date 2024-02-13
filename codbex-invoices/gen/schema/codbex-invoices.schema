@@ -39,7 +39,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICEITEM_SALESINVOICE"
                     },
                     {
@@ -54,7 +53,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICEITEM_PRODUCT"
                     },
                     {
@@ -69,7 +67,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICEITEM_UOM"
                     },
                     {
@@ -470,7 +467,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_PRODUCT"
                     },
                     {
@@ -485,7 +481,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_UOM"
                     },
                     {
@@ -493,7 +488,6 @@
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_PRICE"
                     },
                     {
