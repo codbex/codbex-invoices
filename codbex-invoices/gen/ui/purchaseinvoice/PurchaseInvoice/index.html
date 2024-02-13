@@ -16,7 +16,7 @@
 	</head>
 
 	<body class="dg-vbox">
-		<fd-toolbar has-title="true" class="fd-toolbar">
+		<fd-toolbar has-title="true">
 			<fd-toolbar-title>Items ({{dataCount}})</fd-toolbar-title>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
 			<fd-button compact="true" dg-type="transparent" dg-label="Create"
@@ -26,6 +26,19 @@
 			<fd-button compact="true" dg-type="transparent" dg-label="Delete"
 				state="{{selectedEntity == null || action == 'update'? 'disabled' : ''}}" ng-click="deleteEntity()">
 			</fd-button>
+			<fd-popover ng-show="pageActions.length > 0">
+				<fd-popover-control>
+					<fd-button compact="true" glyph="sap-icon--overflow" dg-type="transparent"
+						aria-label="Header Menu Button">
+					</fd-button>
+				</fd-popover-control>
+				<fd-popover-body dg-align="bottom-right">
+					<fd-menu aria-label="Header Menu" no-backdrop="true" no-shadow="true">
+						<fd-menu-item ng-repeat="action in pageActions" title="{{action.label}}"
+							ng-click="triggerPageAction(action.id)"></fd-menu-item>
+					</fd-menu>
+				</fd-popover-body>
+			</fd-popover>
 		</fd-toolbar>
 		<fd-scrollbar>
 			<fd-list list-type="navigation-indication" byline="true" state="disabled">
@@ -34,21 +47,25 @@
 						navigated="next.Id === selectedEntity.Id"
 						ng-click="action == 'select' ? selectEntity(next) : ''">
 						<fd-list-content
-							item-title="{{next.Name}}">
+							item-title="{{next.Number}}">
 							<fd-list-byline dg-align="left">
-								{{next.Number}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
-								{{optionsSupplierValue(next.Supplier)}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
-								{{next.Conditions}} |
+								{{optionsSupplierValue(next.Supplier)}} |
+								{{next.Net}} |
 								{{optionsCurrencyValue(next.Currency)}} |
-								{{next.Amount}} |
+								{{next.Gross}} |
 								{{next.Discount}} |
 								{{next.VAT}} |
 								{{next.Total}} |
+								{{next.Conditions}} |
 								{{optionsStatusValue(next.Status)}} |
-								{{optionsPurchaseOrderValue(next.PurchaseOrder)}} |
-								{{optionsOperatorValue(next.Operator)}}
+								{{optionsOperatorValue(next.Operator)}} |
+								{{next.Document}} |
+								{{optionsCompanyValue(next.Company)}} |
+								{{next.Name}} |
+								{{next.UUID}} |
+								{{next.Reference}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

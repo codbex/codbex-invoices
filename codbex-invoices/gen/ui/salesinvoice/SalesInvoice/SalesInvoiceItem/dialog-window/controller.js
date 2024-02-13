@@ -3,7 +3,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItem.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
@@ -24,6 +24,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if ($scope.action === "create") {
 					// Set Errors for required fields only
 					$scope.formErrors = {
+						Name: true,
+						Quantity: true,
+						Price: true,
 
 					};
 				}
@@ -31,7 +34,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = params.entity;
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsSalesInvoiceid = params.optionsSalesInvoiceid;
+				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
+				$scope.optionsProduct = params.optionsProduct;
+				$scope.optionsUoM = params.optionsUoM;
 			}
 		}
 

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/ui/custom-action-dialog/view.js",
+    "extensionPoint": "codbex-invoices-dialog-window",
+    "description": "codbex-invoices - Custom Action Dialog Window"
+}

@@ -3,9 +3,38 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItem.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+
+		//-----------------Custom Actions-------------------//
+		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-invoices-custom-action").then(function (response) {
+			$scope.pageActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceItem" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceItem" && e.type === "entity");
+		});
+
+		$scope.triggerPageAction = function (actionId) {
+			for (const next of $scope.pageActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-invoices-custom-action", {
+						src: next.link,
+					});
+					break;
+				}
+			}
+		};
+
+		$scope.triggerEntityAction = function (actionId, selectedEntity) {
+			for (const next of $scope.entityActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-invoices-custom-action", {
+						src: `${next.link}?id=${selectedEntity.Id}`,
+					});
+					break;
+				}
+			}
+		};
+		//-----------------Custom Actions-------------------//
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -46,15 +75,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber) {
-			let SalesInvoiceid = $scope.selectedMainEntityId;
+			let SalesInvoice = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(SalesInvoiceid).then(function (response) {
+			entityApi.count(SalesInvoice).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("SalesInvoiceItem", `Unable to count SalesInvoiceItem: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
-				let query = `SalesInvoiceid=${SalesInvoiceid}`;
+				let query = `SalesInvoice=${SalesInvoice}`;
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
 				entityApi.filter(query, offset, limit).then(function (response) {
@@ -76,7 +105,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "select",
 				entity: entity,
-				optionsSalesInvoiceid: $scope.optionsSalesInvoiceid,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
+				optionsProduct: $scope.optionsProduct,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
@@ -85,9 +116,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "SalesInvoiceid",
+				selectedMainEntityKey: "SalesInvoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsSalesInvoiceid: $scope.optionsSalesInvoiceid,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
+				optionsProduct: $scope.optionsProduct,
+				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
@@ -95,9 +128,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "SalesInvoiceid",
+				selectedMainEntityKey: "SalesInvoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsSalesInvoiceid: $scope.optionsSalesInvoiceid,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
+				optionsProduct: $scope.optionsProduct,
+				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
@@ -131,20 +166,58 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsSalesInvoiceid = [];
+		$scope.optionsSalesInvoice = [];
+		$scope.optionsProduct = [];
+		$scope.optionsUoM = [];
 
-		$http.get("/services/js/codbex-invoices/gen/api/salesinvoice/SalesInvoice.js").then(function (response) {
-			$scope.optionsSalesInvoiceid = response.data.map(e => {
+
+		$http.get("/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceService.ts").then(function (response) {
+			$scope.optionsSalesInvoice = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Number
 				}
 			});
 		});
-		$scope.optionsSalesInvoiceidValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsSalesInvoiceid.length; i++) {
-				if ($scope.optionsSalesInvoiceid[i].value === optionKey) {
-					return $scope.optionsSalesInvoiceid[i].text;
+
+		$http.get("/services/ts/codbex-products/gen/api/Products/ProductService.ts").then(function (response) {
+			$scope.optionsProduct = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-uoms/gen/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
+			$scope.optionsUoM = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsSalesInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSalesInvoice.length; i++) {
+				if ($scope.optionsSalesInvoice[i].value === optionKey) {
+					return $scope.optionsSalesInvoice[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsProductValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProduct.length; i++) {
+				if ($scope.optionsProduct[i].value === optionKey) {
+					return $scope.optionsProduct[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsUoMValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsUoM.length; i++) {
+				if ($scope.optionsUoM[i].value === optionKey) {
+					return $scope.optionsUoM[i].text;
 				}
 			}
 			return null;
