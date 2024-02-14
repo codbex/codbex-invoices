@@ -218,7 +218,7 @@
 									ng-required="false"
 	                                ng-change="isValid(formFieldset['Total'].$valid, 'Total')"
 	                                ng-model="entity.Total"
-	                                ng-readonly="action === 'select'"
+	                                ng-readonly="true"
 	                                ng-minlength="${property.minLength} || 0"
 	                                ng-maxlength="${property.maxLength} || -1"
 	                                dg-input-rules="{ patterns: [''] }"

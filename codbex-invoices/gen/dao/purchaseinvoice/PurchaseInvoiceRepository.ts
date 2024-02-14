@@ -36,7 +36,6 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Gross?: number;
     readonly Discount?: number;
     readonly VAT?: number;
-    readonly Total?: number;
     readonly Conditions?: string;
     readonly Status?: number;
     readonly Operator?: number;
@@ -351,6 +350,8 @@ export class PurchaseInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
+        (entity as PurchaseInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
+        // @ts-ignore
         (entity as PurchaseInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         const id = this.dao.insert(entity);
         this.triggerEvent({
@@ -369,6 +370,8 @@ export class PurchaseInvoiceRepository {
     public update(entity: PurchaseInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as PurchaseInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         this.dao.update(entity);
@@ -414,11 +417,11 @@ export class PurchaseInvoiceRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: PurchaseInvoiceEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: PurchaseInvoiceEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PURCHASEINVOICE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {

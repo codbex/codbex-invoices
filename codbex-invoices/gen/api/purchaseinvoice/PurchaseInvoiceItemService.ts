@@ -10,7 +10,14 @@ class PurchaseInvoiceItemService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
+            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
+            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
             const options: PurchaseInvoiceItemEntityOptions = {
+                $filter: {
+                    equals: {
+                        PurchaseInvoice: PurchaseInvoice
+                    }
+                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -33,12 +40,28 @@ class PurchaseInvoiceItemService {
         }
     }
 
-    @Get("/count/:PurchaseInvoice")
-    public count(_: any, ctx: any) {
+    @Get("/count")
+    public count() {
         try {
-            let PurchaseInvoice = parseInt(ctx.pathParameters.PurchaseInvoice);
-            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.pathParameters.PurchaseInvoice : PurchaseInvoice;
-            return this.repository.count(PurchaseInvoice);
+            return this.repository.count();
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/count")
+    public countWithFilter(filter: any) {
+        try {
+            return this.repository.count(filter);
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/search")
+    public search(filter: any) {
+        try {
+            return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }

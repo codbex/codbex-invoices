@@ -483,7 +483,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpression": "",
+                        "calculatedPropertyExpression": "entity[\"Gross\"] - (entity[\"Gross\"] * (entity[\"Discount\"] / 100)) + (entity[\"Taxes\"] / 100) + entity[\"VAT\"];",
                         "dataAutoIncrement": "false",
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_TOTAL",
@@ -493,7 +493,7 @@
                         "dataScale": "NaN",
                         "dataType": "DOUBLE",
                         "dataUnique": "false",
-                        "isCalculatedProperty": "false",
+                        "isCalculatedProperty": "true",
                         "name": "Total",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
@@ -916,7 +916,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpression": "",
+                        "calculatedPropertyExpression": "entity[\"Gross\"] - (entity[\"Gross\"] * (entity[\"Discount\"] / 100)) + (entity[\"Taxes\"] / 100) + entity[\"VAT\"];",
                         "dataAutoIncrement": "false",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_TOTAL",
@@ -926,7 +926,7 @@
                         "dataScale": "NaN",
                         "dataType": "DOUBLE",
                         "dataUnique": "false",
-                        "isCalculatedProperty": "false",
+                        "isCalculatedProperty": "true",
                         "name": "Total",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",

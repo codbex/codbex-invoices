@@ -40,7 +40,6 @@ export interface SalesInvoiceCreateEntity {
     readonly Discount?: number;
     readonly Taxes?: number;
     readonly VAT?: number;
-    readonly Total?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
@@ -393,6 +392,8 @@ export class SalesInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
+        (entity as SalesInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
+        // @ts-ignore
         (entity as SalesInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         const id = this.dao.insert(entity);
         this.triggerEvent({
@@ -411,6 +412,8 @@ export class SalesInvoiceRepository {
     public update(entity: SalesInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as SalesInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
         // @ts-ignore
         (entity as SalesInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         this.dao.update(entity);
@@ -456,11 +459,11 @@ export class SalesInvoiceRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: SalesInvoiceEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: SalesInvoiceEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__SALESINVOICE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
