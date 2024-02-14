@@ -102,6 +102,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: entity.Id,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
+				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
@@ -116,6 +118,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
+				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
@@ -128,6 +132,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.selectedEntity,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
+				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
@@ -167,6 +173,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsSupplier = [];
 		$scope.optionsCurrency = [];
+		$scope.optionsPaymentMethod = [];
+		$scope.optionsSentMethod = [];
 		$scope.optionsStatus = [];
 		$scope.optionsOperator = [];
 		$scope.optionsCompany = [];
@@ -183,6 +191,24 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$http.get("/services/ts/codbex-currencies/gen/api/Currencies/CurrencyService.ts").then(function (response) {
 			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-invoices/gen/api/settings/PaymentMethodService.ts").then(function (response) {
+			$scope.optionsPaymentMethod = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-invoices/gen/api/settings/SentMethodService.ts").then(function (response) {
+			$scope.optionsSentMethod = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -229,6 +255,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
 					return $scope.optionsCurrency[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsPaymentMethodValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPaymentMethod.length; i++) {
+				if ($scope.optionsPaymentMethod[i].value === optionKey) {
+					return $scope.optionsPaymentMethod[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsSentMethodValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSentMethod.length; i++) {
+				if ($scope.optionsSentMethod[i].value === optionKey) {
+					return $scope.optionsSentMethod[i].text;
 				}
 			}
 			return null;

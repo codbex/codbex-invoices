@@ -127,6 +127,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCustomer: $scope.optionsCustomer,
 			});
 		};
 
@@ -136,6 +137,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCustomer: $scope.optionsCustomer,
 			});
 		};
 
@@ -149,6 +151,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCustomer: $scope.optionsCustomer,
 			}, null, false);
 		};
 
@@ -161,6 +164,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCustomer: $scope.optionsCustomer,
 			}, null, false);
 		};
 
@@ -197,6 +201,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSalesInvoice = [];
 		$scope.optionsProduct = [];
 		$scope.optionsUoM = [];
+		$scope.optionsCustomer = [];
 
 
 		$http.get("/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceService.ts").then(function (response) {
@@ -226,6 +231,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-invoices/gen/api/undefined/undefinedService.ts").then(function (response) {
+			$scope.optionsCustomer = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsSalesInvoiceValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsSalesInvoice.length; i++) {
 				if ($scope.optionsSalesInvoice[i].value === optionKey) {
@@ -246,6 +260,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsUoM.length; i++) {
 				if ($scope.optionsUoM[i].value === optionKey) {
 					return $scope.optionsUoM[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCustomerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
+				if ($scope.optionsCustomer[i].value === optionKey) {
+					return $scope.optionsCustomer[i].text;
 				}
 			}
 			return null;

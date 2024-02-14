@@ -379,13 +379,13 @@
                     </fd-form-item>
 					<fd-form-item class="fd-row fd-form-item">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
+							<fd-form-label for="idName" dg-required="true" dg-colon="true">Name</fd-form-label>
 						</div>
 						<div class="fd-col  fd-col-md--8 ">
 							<fd-textarea id="idName"
 								name="Name"
 								state="{{ formErrors.Name ? 'error' : '' }}"
-								ng-required="false"
+								ng-required="true"
 								ng-change="isValid(formFieldset['Name'].$valid, 'Name')"
 								ng-model="entity.Name"
 	                            ng-readonly="true"
@@ -399,14 +399,14 @@
 					</fd-form-item>
                     <fd-form-item class="fd-row fd-form-item">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idUUID" dg-required="false" dg-colon="true">UUID</fd-form-label>
+                        	<fd-form-label for="idUUID" dg-required="true" dg-colon="true">UUID</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ formErrors.UUID ? false : true }}">
 	                            <fd-input id="idUUID"
 	                                name="UUID"
 	                                state="{{ formErrors.UUID ? 'error' : '' }}"
-									ng-required="false"
+									ng-required="true"
 	                                ng-change="isValid(formFieldset['UUID'].$valid, 'UUID')"
 	                                ng-model="entity.UUID"
 	                                ng-readonly="action === 'select'"

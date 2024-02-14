@@ -40,6 +40,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.formErrors = {};
 				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
+				$scope.optionsPaymentMethod = [];
+				$scope.optionsSentMethod = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
@@ -58,6 +60,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
+				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
@@ -70,6 +74,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
+				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
@@ -79,6 +85,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					Number: true,
 					Date: true,
 					Supplier: true,
+					Name: true,
+					UUID: true,
 				};
 			});
 		});
@@ -94,6 +102,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
+				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;

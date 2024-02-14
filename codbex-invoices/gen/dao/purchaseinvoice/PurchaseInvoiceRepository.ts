@@ -17,12 +17,14 @@ export interface PurchaseInvoiceEntity {
     VAT?: number;
     Total?: number;
     Conditions?: string;
+    PaymentMethod?: number;
+    SentMethod?: number;
     Status?: number;
     Operator?: number;
     Document?: string;
     Company?: number;
-    Name?: string;
-    UUID?: string;
+    Name: string;
+    UUID: string;
     Reference?: string;
 }
 
@@ -37,11 +39,13 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Discount?: number;
     readonly VAT?: number;
     readonly Conditions?: string;
+    readonly PaymentMethod?: number;
+    readonly SentMethod?: number;
     readonly Status?: number;
     readonly Operator?: number;
     readonly Document?: string;
     readonly Company?: number;
-    readonly UUID?: string;
+    readonly UUID: string;
     readonly Reference?: string;
 }
 
@@ -64,6 +68,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
+            SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
@@ -85,6 +91,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
+            SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
@@ -106,6 +114,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
+            SentMethod?: number;
             Status?: number;
             Operator?: number;
             Document?: string;
@@ -127,6 +137,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
+            SentMethod?: number;
             Status?: number;
             Operator?: number;
             Document?: string;
@@ -148,6 +160,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
+            SentMethod?: number;
             Status?: number;
             Operator?: number;
             Document?: string;
@@ -169,6 +183,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
+            SentMethod?: number;
             Status?: number;
             Operator?: number;
             Document?: string;
@@ -190,6 +206,8 @@ export interface PurchaseInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
+            SentMethod?: number;
             Status?: number;
             Operator?: number;
             Document?: string;
@@ -288,6 +306,16 @@ export class PurchaseInvoiceRepository {
                 type: "VARCHAR",
             },
             {
+                name: "PaymentMethod",
+                column: "PURCHASEINVOICE_PAYMENTMETHOD",
+                type: "INTEGER",
+            },
+            {
+                name: "SentMethod",
+                column: "PURCHASEINVOICE_SENTMETHOD",
+                type: "INTEGER",
+            },
+            {
                 name: "Status",
                 column: "PURCHASEINVOICE_STATUS",
                 type: "INTEGER",
@@ -311,11 +339,13 @@ export class PurchaseInvoiceRepository {
                 name: "Name",
                 column: "PURCHASEINVOICE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "UUID",
                 column: "PURCHASEINVOICE_UUID",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Reference",

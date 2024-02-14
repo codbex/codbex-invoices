@@ -11,8 +11,8 @@ export interface SalesInvoiceItemEntity {
     Quantity: number;
     UoM: number;
     Price: number;
-    Net?: number;
-    VAT?: string;
+    Customer: number;
+    Taxes?: number;
     Gross?: number;
 }
 
@@ -23,6 +23,9 @@ export interface SalesInvoiceItemCreateEntity {
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
+    readonly Customer: number;
+    readonly Taxes?: number;
+    readonly Gross?: number;
 }
 
 export interface SalesInvoiceItemUpdateEntity extends SalesInvoiceItemCreateEntity {
@@ -39,8 +42,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Net?: number | number[];
-            VAT?: string | string[];
+            Customer?: number | number[];
+            Taxes?: number | number[];
             Gross?: number | number[];
         };
         notEquals?: {
@@ -51,8 +54,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Net?: number | number[];
-            VAT?: string | string[];
+            Customer?: number | number[];
+            Taxes?: number | number[];
             Gross?: number | number[];
         };
         contains?: {
@@ -63,8 +66,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Net?: number;
-            VAT?: string;
+            Customer?: number;
+            Taxes?: number;
             Gross?: number;
         };
         greaterThan?: {
@@ -75,8 +78,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Net?: number;
-            VAT?: string;
+            Customer?: number;
+            Taxes?: number;
             Gross?: number;
         };
         greaterThanOrEqual?: {
@@ -87,8 +90,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Net?: number;
-            VAT?: string;
+            Customer?: number;
+            Taxes?: number;
             Gross?: number;
         };
         lessThan?: {
@@ -99,8 +102,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Net?: number;
-            VAT?: string;
+            Customer?: number;
+            Taxes?: number;
             Gross?: number;
         };
         lessThanOrEqual?: {
@@ -111,8 +114,8 @@ export interface SalesInvoiceItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Net?: number;
-            VAT?: string;
+            Customer?: number;
+            Taxes?: number;
             Gross?: number;
         };
     },
@@ -184,14 +187,15 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Net",
-                column: "SALESINVOICEITEM_NET",
-                type: "DOUBLE",
+                name: "Customer",
+                column: "PURCHASEORDER_CUSTOMER",
+                type: "INTEGER",
+                required: true
             },
             {
-                name: "VAT",
-                column: "SALESINVOICEITEM_VAT",
-                type: "VARCHAR",
+                name: "Taxes",
+                column: "SALESINVOICEITEM_TAXES",
+                type: "DOUBLE",
             },
             {
                 name: "Gross",
@@ -217,12 +221,6 @@ export class SalesInvoiceItemRepository {
     }
 
     public create(entity: SalesInvoiceItemCreateEntity): number {
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];;
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;;
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];;
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -238,12 +236,6 @@ export class SalesInvoiceItemRepository {
     }
 
     public update(entity: SalesInvoiceItemUpdateEntity): void {
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];;
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;;
-        // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];;
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

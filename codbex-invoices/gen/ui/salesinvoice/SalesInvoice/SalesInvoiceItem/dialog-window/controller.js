@@ -29,6 +29,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						Quantity: true,
 						UoM: true,
 						Price: true,
+						Customer: true,
 
 					};
 				}
@@ -39,6 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
 				$scope.optionsProduct = params.optionsProduct;
 				$scope.optionsUoM = params.optionsUoM;
+				$scope.optionsCustomer = params.optionsCustomer;
 			}
 		}
 

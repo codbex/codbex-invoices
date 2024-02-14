@@ -24,8 +24,8 @@ export interface SalesInvoiceEntity {
     Operator?: number;
     Document?: string;
     Company?: number;
-    Name?: string;
-    UUID?: string;
+    Name: string;
+    UUID: string;
     Reference?: string;
 }
 
@@ -47,7 +47,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Operator?: number;
     readonly Document?: string;
     readonly Company?: number;
-    readonly UUID?: string;
+    readonly UUID: string;
     readonly Reference?: string;
 }
 
@@ -353,11 +353,13 @@ export class SalesInvoiceRepository {
                 name: "Name",
                 column: "SALESINVOICE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "UUID",
                 column: "SALESINVOICE_UUID",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Reference",

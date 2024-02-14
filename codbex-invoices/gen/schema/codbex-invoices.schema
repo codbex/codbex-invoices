@@ -77,20 +77,19 @@
                         "name": "SALESINVOICEITEM_PRICE"
                     },
                     {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "PURCHASEORDER_CUSTOMER"
+                    },
+                    {
                         "type": "DOUBLE",
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "SALESINVOICEITEM_NET"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SALESINVOICEITEM_VAT"
+                        "name": "SALESINVOICEITEM_TAXES"
                     },
                     {
                         "type": "DOUBLE",
@@ -260,7 +259,6 @@
                         "length": 200,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_NAME"
                     },
                     {
@@ -268,7 +266,6 @@
                         "length": 36,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_UUID"
                     },
                     {
@@ -384,6 +381,22 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
+                        "name": "PURCHASEINVOICE_PAYMENTMETHOD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_SENTMETHOD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
                         "name": "PURCHASEINVOICE_STATUS"
                     },
                     {
@@ -415,7 +428,6 @@
                         "length": 200,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_NAME"
                     },
                     {
@@ -423,7 +435,6 @@
                         "length": 36,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_UUID"
                     },
                     {
@@ -1266,6 +1277,24 @@
                 "columns": "PURCHASEINVOICE_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "PurchaseInvoice_PaymentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_PaymentMethod",
+                "columns": "PURCHASEINVOICE_PAYMENTMETHOD",
+                "referencedTable": "CODBEX_PAYMENTMETHOD",
+                "referencedColumns": "PAYMENTMETHOD_ID"
+            },
+            {
+                "name": "PurchaseInvoice_SentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_SentMethod",
+                "columns": "PURCHASEINVOICE_SENTMETHOD",
+                "referencedTable": "CODBEX_SENTMETHOD",
+                "referencedColumns": "SENTMETHOD_ID"
             },
             {
                 "name": "PurchaseInvoice_InvoiceStatus",

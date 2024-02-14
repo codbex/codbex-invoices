@@ -85,6 +85,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					Number: true,
 					Date: true,
 					Customer: true,
+					Name: true,
+					UUID: true,
 				};
 			});
 		});
