@@ -193,7 +193,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsCurrency = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Name
+					text: e.Code
 				}
 			});
 		});
