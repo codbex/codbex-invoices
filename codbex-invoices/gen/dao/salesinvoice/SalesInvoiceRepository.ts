@@ -20,12 +20,12 @@ export interface SalesInvoiceEntity {
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod?: number;
-    Status?: number;
+    SalesInvoiceStatus: number;
     Operator?: number;
     Document?: string;
     Company?: number;
-    Name: string;
-    UUID: string;
+    Name?: string;
+    UUID?: string;
     Reference?: string;
 }
 
@@ -40,14 +40,14 @@ export interface SalesInvoiceCreateEntity {
     readonly Discount?: number;
     readonly Taxes?: number;
     readonly VAT?: number;
+    readonly Total?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
-    readonly Status?: number;
+    readonly SalesInvoiceStatus: number;
     readonly Operator?: number;
     readonly Document?: string;
     readonly Company?: number;
-    readonly UUID: string;
     readonly Reference?: string;
 }
 
@@ -73,7 +73,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            Status?: number | number[];
+            SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -97,7 +97,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            Status?: number | number[];
+            SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -121,7 +121,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            SalesInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -145,7 +145,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            SalesInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -169,7 +169,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            SalesInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -193,7 +193,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            SalesInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -217,7 +217,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            SalesInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -330,9 +330,10 @@ export class SalesInvoiceRepository {
                 type: "INTEGER",
             },
             {
-                name: "Status",
-                column: "SALESINVOICE_STATUS",
+                name: "SalesInvoiceStatus",
+                column: "SALESINVOICE_SALESINVOICESTATUS",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Operator",
@@ -353,13 +354,11 @@ export class SalesInvoiceRepository {
                 name: "Name",
                 column: "SALESINVOICE_NAME",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "UUID",
                 column: "SALESINVOICE_UUID",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Reference",
@@ -394,9 +393,15 @@ export class SalesInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
-        (entity as SalesInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
+        (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
-        (entity as SalesInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
+        (entity as SalesInvoiceEntity).UUID = require("sdk/utils/uuid").random();
+        if (!entity.Discount) {
+            entity.Discount = "0";
+        }
+        if (!entity.Taxes) {
+            entity.Taxes = "0";
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -414,10 +419,6 @@ export class SalesInvoiceRepository {
     public update(entity: SalesInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
-        // @ts-ignore
-        (entity as SalesInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
-        // @ts-ignore
-        (entity as SalesInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

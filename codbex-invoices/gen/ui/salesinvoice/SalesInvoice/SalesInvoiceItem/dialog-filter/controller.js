@@ -18,9 +18,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
 				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
-				$scope.optionsProduct = params.optionsProduct;
 				$scope.optionsUoM = params.optionsUoM;
-				$scope.optionsCustomer = params.optionsCustomer;
 			}
 		}
 
@@ -64,9 +62,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Product) {
-				filter.$filter.equals.Product = entity.Product;
-			}
 			if (entity.Quantity) {
 				filter.$filter.equals.Quantity = entity.Quantity;
 			}
@@ -76,11 +71,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Price) {
 				filter.$filter.equals.Price = entity.Price;
 			}
-			if (entity.Customer) {
-				filter.$filter.equals.Customer = entity.Customer;
+			if (entity.Net) {
+				filter.$filter.equals.Net = entity.Net;
 			}
-			if (entity.Taxes) {
-				filter.$filter.equals.Taxes = entity.Taxes;
+			if (entity.VAT) {
+				filter.$filter.equals.VAT = entity.VAT;
 			}
 			if (entity.Gross) {
 				filter.$filter.equals.Gross = entity.Gross;

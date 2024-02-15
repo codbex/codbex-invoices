@@ -14,17 +14,18 @@ export interface PurchaseInvoiceEntity {
     Currency?: number;
     Gross?: number;
     Discount?: number;
+    Taxes?: number;
     VAT?: number;
     Total?: number;
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod?: number;
-    Status?: number;
+    PurchaseInvoiceStatus: number;
     Operator?: number;
     Document?: string;
     Company?: number;
-    Name: string;
-    UUID: string;
+    Name?: string;
+    UUID?: string;
     Reference?: string;
 }
 
@@ -37,15 +38,16 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Currency?: number;
     readonly Gross?: number;
     readonly Discount?: number;
+    readonly Taxes?: number;
     readonly VAT?: number;
+    readonly Total?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
-    readonly Status?: number;
+    readonly PurchaseInvoiceStatus: number;
     readonly Operator?: number;
     readonly Document?: string;
     readonly Company?: number;
-    readonly UUID: string;
     readonly Reference?: string;
 }
 
@@ -65,12 +67,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number | number[];
             Gross?: number | number[];
             Discount?: number | number[];
+            Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            Status?: number | number[];
+            PurchaseInvoiceStatus?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -88,12 +91,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number | number[];
             Gross?: number | number[];
             Discount?: number | number[];
+            Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            Status?: number | number[];
+            PurchaseInvoiceStatus?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -111,12 +115,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number;
             Gross?: number;
             Discount?: number;
+            Taxes?: number;
             VAT?: number;
             Total?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            PurchaseInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -134,12 +139,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number;
             Gross?: number;
             Discount?: number;
+            Taxes?: number;
             VAT?: number;
             Total?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            PurchaseInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -157,12 +163,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number;
             Gross?: number;
             Discount?: number;
+            Taxes?: number;
             VAT?: number;
             Total?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            PurchaseInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -180,12 +187,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number;
             Gross?: number;
             Discount?: number;
+            Taxes?: number;
             VAT?: number;
             Total?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            PurchaseInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -203,12 +211,13 @@ export interface PurchaseInvoiceEntityOptions {
             Currency?: number;
             Gross?: number;
             Discount?: number;
+            Taxes?: number;
             VAT?: number;
             Total?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            Status?: number;
+            PurchaseInvoiceStatus?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -291,6 +300,11 @@ export class PurchaseInvoiceRepository {
                 type: "DOUBLE",
             },
             {
+                name: "Taxes",
+                column: "PURCHASEINVOICE_TAXES",
+                type: "DOUBLE",
+            },
+            {
                 name: "VAT",
                 column: "PURCHASEINVOICE_VAT",
                 type: "DOUBLE",
@@ -316,9 +330,10 @@ export class PurchaseInvoiceRepository {
                 type: "INTEGER",
             },
             {
-                name: "Status",
-                column: "PURCHASEINVOICE_STATUS",
+                name: "PurchaseInvoiceStatus",
+                column: "PURCHASEINVOICE_PURCHASEINVOICESTATUS",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Operator",
@@ -339,13 +354,11 @@ export class PurchaseInvoiceRepository {
                 name: "Name",
                 column: "PURCHASEINVOICE_NAME",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "UUID",
                 column: "PURCHASEINVOICE_UUID",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Reference",
@@ -380,9 +393,9 @@ export class PurchaseInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
+        (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + entity["Date"] + "/" + entity["Total"];
         // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
+        (entity as PurchaseInvoiceEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -400,10 +413,6 @@ export class PurchaseInvoiceRepository {
     public update(entity: PurchaseInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
-        // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Total = entity["Gross"] - (entity["Gross"] * (entity["Discount"] / 100)) + (entity["Taxes"] / 100) + entity["VAT"];;
-        // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Name = entity['Number'] + '/' + entity['Date'] + '/' + entity["Total"];;
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

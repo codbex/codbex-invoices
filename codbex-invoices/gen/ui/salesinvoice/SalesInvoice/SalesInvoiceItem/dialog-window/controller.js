@@ -25,11 +25,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					// Set Errors for required fields only
 					$scope.formErrors = {
 						Name: true,
-						Product: true,
 						Quantity: true,
 						UoM: true,
 						Price: true,
-						Customer: true,
 
 					};
 				}
@@ -38,9 +36,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
 				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
-				$scope.optionsProduct = params.optionsProduct;
 				$scope.optionsUoM = params.optionsUoM;
-				$scope.optionsCustomer = params.optionsCustomer;
 			}
 		}
 

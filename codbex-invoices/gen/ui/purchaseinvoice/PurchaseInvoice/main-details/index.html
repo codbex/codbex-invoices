@@ -18,8 +18,8 @@
     <body class="dg-vbox">
         <fd-scrollbar class="dg-full-height">
             <fd-fieldset class="fd-margin--md" ng-form="formFieldset">
-                <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container fd-form-group">
-                    <fd-form-item class="fd-row fd-form-item">
+                <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idNumber" dg-required="true" dg-colon="true">Number</fd-form-label>
                         </div>
@@ -42,7 +42,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDate" dg-required="true" dg-colon="true">Date</fd-form-label>
                         </div>
@@ -61,7 +61,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDue" dg-required="false" dg-colon="true">Due</fd-form-label>
                         </div>
@@ -80,7 +80,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSupplier" dg-required="true" dg-colon="true">Supplier</fd-form-label>
                         </div>
@@ -97,7 +97,7 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idNet" dg-required="false" dg-colon="true">Net</fd-form-label>
                         </div>
@@ -120,7 +120,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
                         </div>
@@ -137,7 +137,7 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idGross" dg-required="false" dg-colon="true">Gross</fd-form-label>
                         </div>
@@ -160,7 +160,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDiscount" dg-required="false" dg-colon="true">Discount</fd-form-label>
                         </div>
@@ -183,7 +183,30 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idTaxes" dg-required="false" dg-colon="true">Taxes</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-form-input-message-group dg-inactive="{{ formErrors.Taxes ? false : true }}">
+	                            <fd-input id="idTaxes"
+	                                name="Taxes"
+	                                state="{{ formErrors.Taxes ? 'error' : '' }}"
+									ng-required="false"
+	                                ng-change="isValid(formFieldset['Taxes'].$valid, 'Taxes')"
+	                                ng-model="entity.Taxes"
+	                                ng-readonly="action === 'select'"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                dg-input-rules="{ patterns: [''] }"
+	                                type="text"
+	                                placeholder="Enter Taxes">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
                         </div>
@@ -206,7 +229,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idTotal" dg-required="false" dg-colon="true">Total</fd-form-label>
                         </div>
@@ -218,7 +241,7 @@
 									ng-required="false"
 	                                ng-change="isValid(formFieldset['Total'].$valid, 'Total')"
 	                                ng-model="entity.Total"
-	                                ng-readonly="true"
+	                                ng-readonly="action === 'select'"
 	                                ng-minlength="${property.minLength} || 0"
 	                                ng-maxlength="${property.maxLength} || -1"
 	                                dg-input-rules="{ patterns: [''] }"
@@ -229,7 +252,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-					<fd-form-item class="fd-row fd-form-item">
+					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
 							<fd-form-label for="idConditions" dg-required="false" dg-colon="true">Conditions</fd-form-label>
 						</div>
@@ -249,7 +272,7 @@
 							<fd-form-message dg-type="error" ng-show="formErrors.Conditions">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPaymentMethod" dg-required="false" dg-colon="true">PaymentMethod</fd-form-label>
                         </div>
@@ -266,7 +289,7 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSentMethod" dg-required="false" dg-colon="true">SentMethod</fd-form-label>
                         </div>
@@ -283,24 +306,24 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
+                        	<fd-form-label for="idPurchaseInvoiceStatus" dg-required="true" dg-colon="true">PurchaseInvoiceStatus</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idStatus"
-	                            name="Status"
-	                            state="{{ formErrors.Status ? 'error' : '' }}"
+	                        <fd-combobox-input id="idPurchaseInvoiceStatus"
+	                            name="PurchaseInvoiceStatus"
+	                            state="{{ formErrors.PurchaseInvoiceStatus ? 'error' : '' }}"
 	                            ng-required="true"
-	                            ng-change="isValid(formFieldset['Status'].$valid, 'Status')"
-	                            ng-model="entity.Status"
+	                            ng-change="isValid(formFieldset['PurchaseInvoiceStatus'].$valid, 'PurchaseInvoiceStatus')"
+	                            ng-model="entity.PurchaseInvoiceStatus"
 	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsStatus"
-	                            dg-placeholder="Search Status ...">
+	                            dropdown-items="optionsPurchaseInvoiceStatus"
+	                            dg-placeholder="Search PurchaseInvoiceStatus ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idOperator" dg-required="false" dg-colon="true">Operator</fd-form-label>
                         </div>
@@ -317,7 +340,7 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-					<fd-form-item class="fd-row fd-form-item">
+					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
 							<fd-form-label for="idDocument" dg-required="false" dg-colon="true">Document</fd-form-label>
 						</div>
@@ -337,7 +360,7 @@
 							<fd-form-message dg-type="error" ng-show="formErrors.Document">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCompany" dg-required="false" dg-colon="true">Company</fd-form-label>
                         </div>
@@ -354,15 +377,15 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-					<fd-form-item class="fd-row fd-form-item">
+					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idName" dg-required="true" dg-colon="true">Name</fd-form-label>
+							<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
 						</div>
 						<div class="fd-col  fd-col-md--8 ">
 							<fd-textarea id="idName"
 								name="Name"
 								state="{{ formErrors.Name ? 'error' : '' }}"
-								ng-required="true"
+								ng-required="false"
 								ng-change="isValid(formFieldset['Name'].$valid, 'Name')"
 								ng-model="entity.Name"
 	                            ng-readonly="true"
@@ -374,19 +397,19 @@
 							<fd-form-message dg-type="error" ng-show="formErrors.Name">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idUUID" dg-required="true" dg-colon="true">UUID</fd-form-label>
+                        	<fd-form-label for="idUUID" dg-required="false" dg-colon="true">UUID</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ formErrors.UUID ? false : true }}">
 	                            <fd-input id="idUUID"
 	                                name="UUID"
 	                                state="{{ formErrors.UUID ? 'error' : '' }}"
-									ng-required="true"
+									ng-required="false"
 	                                ng-change="isValid(formFieldset['UUID'].$valid, 'UUID')"
 	                                ng-model="entity.UUID"
-	                                ng-readonly="action === 'select'"
+	                                ng-readonly="true"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="36.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
@@ -397,7 +420,7 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row fd-form-item">
+                    <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idReference" dg-required="false" dg-colon="true">Reference</fd-form-label>
                         </div>

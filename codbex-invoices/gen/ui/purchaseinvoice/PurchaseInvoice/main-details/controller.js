@@ -42,7 +42,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = [];
 				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
-				$scope.optionsStatus = [];
+				$scope.optionsPurchaseInvoiceStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
 				$scope.action = 'select';
@@ -62,7 +62,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'select';
@@ -76,7 +76,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
@@ -85,8 +85,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					Number: true,
 					Date: true,
 					Supplier: true,
-					Name: true,
-					UUID: true,
+					PurchaseInvoiceStatus: true,
 				};
 			});
 		});
@@ -104,7 +103,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'update';

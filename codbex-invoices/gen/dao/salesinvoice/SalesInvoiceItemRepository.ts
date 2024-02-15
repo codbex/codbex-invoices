@@ -7,25 +7,20 @@ export interface SalesInvoiceItemEntity {
     readonly Id: number;
     SalesInvoice: number;
     Name: string;
-    Product: number;
     Quantity: number;
     UoM: number;
     Price: number;
-    Customer: number;
-    Taxes?: number;
+    Net?: number;
+    VAT?: number;
     Gross?: number;
 }
 
 export interface SalesInvoiceItemCreateEntity {
     readonly SalesInvoice: number;
     readonly Name: string;
-    readonly Product: number;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
-    readonly Customer: number;
-    readonly Taxes?: number;
-    readonly Gross?: number;
 }
 
 export interface SalesInvoiceItemUpdateEntity extends SalesInvoiceItemCreateEntity {
@@ -38,84 +33,77 @@ export interface SalesInvoiceItemEntityOptions {
             Id?: number | number[];
             SalesInvoice?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Customer?: number | number[];
-            Taxes?: number | number[];
+            Net?: number | number[];
+            VAT?: number | number[];
             Gross?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             SalesInvoice?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Customer?: number | number[];
-            Taxes?: number | number[];
+            Net?: number | number[];
+            VAT?: number | number[];
             Gross?: number | number[];
         };
         contains?: {
             Id?: number;
             SalesInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Customer?: number;
-            Taxes?: number;
+            Net?: number;
+            VAT?: number;
             Gross?: number;
         };
         greaterThan?: {
             Id?: number;
             SalesInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Customer?: number;
-            Taxes?: number;
+            Net?: number;
+            VAT?: number;
             Gross?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Customer?: number;
-            Taxes?: number;
+            Net?: number;
+            VAT?: number;
             Gross?: number;
         };
         lessThan?: {
             Id?: number;
             SalesInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Customer?: number;
-            Taxes?: number;
+            Net?: number;
+            VAT?: number;
             Gross?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Customer?: number;
-            Taxes?: number;
+            Net?: number;
+            VAT?: number;
             Gross?: number;
         };
     },
@@ -163,12 +151,6 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Product",
-                column: "SALESINVOICEITEM_PRODUCT",
-                type: "INTEGER",
-                required: true
-            },
-            {
                 name: "Quantity",
                 column: "SALESINVOICEITEM_QUANTITY",
                 type: "DOUBLE",
@@ -187,14 +169,13 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Customer",
-                column: "PURCHASEORDER_CUSTOMER",
-                type: "INTEGER",
-                required: true
+                name: "Net",
+                column: "SALESINVOICEITEM_NET",
+                type: "DOUBLE",
             },
             {
-                name: "Taxes",
-                column: "SALESINVOICEITEM_TAXES",
+                name: "VAT",
+                column: "SALESINVOICEITEM_VAT",
                 type: "DOUBLE",
             },
             {
@@ -221,6 +202,12 @@ export class SalesInvoiceItemRepository {
     }
 
     public create(entity: SalesInvoiceItemCreateEntity): number {
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -236,6 +223,12 @@ export class SalesInvoiceItemRepository {
     }
 
     public update(entity: SalesInvoiceItemUpdateEntity): void {
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        // @ts-ignore
+        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

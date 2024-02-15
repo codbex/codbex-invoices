@@ -104,7 +104,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsStatus: $scope.optionsStatus,
+				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -120,7 +120,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsStatus: $scope.optionsStatus,
+				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -134,7 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsStatus: $scope.optionsStatus,
+				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -175,7 +175,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsCurrency = [];
 		$scope.optionsPaymentMethod = [];
 		$scope.optionsSentMethod = [];
-		$scope.optionsStatus = [];
+		$scope.optionsSalesInvoiceStatus = [];
 		$scope.optionsOperator = [];
 		$scope.optionsCompany = [];
 
@@ -216,8 +216,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-invoices/gen/api/settings/InvoiceStatusService.ts").then(function (response) {
-			$scope.optionsStatus = response.data.map(e => {
+		$http.get("/services/ts/codbex-invoices/gen/api/settings/SalesInvoiceStatusService.ts").then(function (response) {
+			$scope.optionsSalesInvoiceStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -275,10 +275,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatus.length; i++) {
-				if ($scope.optionsStatus[i].value === optionKey) {
-					return $scope.optionsStatus[i].text;
+		$scope.optionsSalesInvoiceStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSalesInvoiceStatus.length; i++) {
+				if ($scope.optionsSalesInvoiceStatus[i].value === optionKey) {
+					return $scope.optionsSalesInvoiceStatus[i].text;
 				}
 			}
 			return null;

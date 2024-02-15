@@ -7,7 +7,6 @@ export interface PurchaseInvoiceItemEntity {
     readonly Id: number;
     PurchaseInvoice: number;
     Name: string;
-    Product: number;
     Quantity: number;
     UoM: number;
     Price: number;
@@ -19,7 +18,6 @@ export interface PurchaseInvoiceItemEntity {
 export interface PurchaseInvoiceItemCreateEntity {
     readonly PurchaseInvoice: number;
     readonly Name: string;
-    readonly Product: number;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
@@ -35,7 +33,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -47,7 +44,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
             Name?: string | string[];
-            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -59,7 +55,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number;
             PurchaseInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -71,7 +66,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number;
             PurchaseInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -83,7 +77,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number;
             PurchaseInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -95,7 +88,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number;
             PurchaseInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -107,7 +99,6 @@ export interface PurchaseInvoiceItemEntityOptions {
             Id?: number;
             PurchaseInvoice?: number;
             Name?: string;
-            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -156,12 +147,6 @@ export class PurchaseInvoiceItemRepository {
                 name: "Name",
                 column: "PURCHASEINVOICEITEM_NAME",
                 type: "VARCHAR",
-                required: true
-            },
-            {
-                name: "Product",
-                column: "PURCHASEINVOICEITEM_PRODUCT",
-                type: "INTEGER",
                 required: true
             },
             {
@@ -217,11 +202,11 @@ export class PurchaseInvoiceItemRepository {
 
     public create(entity: PurchaseInvoiceItemCreateEntity): number {
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];;
+        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];;
+        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -238,11 +223,11 @@ export class PurchaseInvoiceItemRepository {
 
     public update(entity: PurchaseInvoiceItemUpdateEntity): void {
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];;
+        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];;
+        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
