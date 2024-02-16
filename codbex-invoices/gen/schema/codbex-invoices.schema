@@ -44,14 +44,14 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -59,7 +59,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -67,7 +67,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -118,7 +118,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -129,12 +129,11 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_CURRENCY"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -142,7 +141,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -151,7 +150,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -160,7 +159,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -168,9 +167,10 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
+                        "defaultValue": "0",
                         "nullable": true,
                         "name": "SALESINVOICE_TOTAL"
                     },
@@ -298,7 +298,7 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
+                        "length": 18,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -309,46 +309,46 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_CURRENCY"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_GROSS"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_DISCOUNT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_TAXES"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_VAT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "defaultValue": "0",
                         "nullable": true,
                         "name": "PURCHASEINVOICE_TOTAL"
                     },
@@ -475,32 +475,32 @@
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "name": "PURCHASEINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_NET"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_VAT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_GROSS"
                     }

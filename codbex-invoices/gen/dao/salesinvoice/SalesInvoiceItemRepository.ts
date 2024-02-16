@@ -203,11 +203,11 @@ export class SalesInvoiceItemRepository {
 
     public create(entity: SalesInvoiceItemCreateEntity): number {
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
+        (entity as SalesInvoiceItemEntity).Net = Math.round((entity["Quantity"] * entity["Price"]) * 100) / 100;
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = Math.round((entity["Net"] * 0.2) * 100) / 100;
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
+        (entity as SalesInvoiceItemEntity).Gross = Math.round((entity["Net"] + entity["VAT"]) * 100) / 100;
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -224,11 +224,11 @@ export class SalesInvoiceItemRepository {
 
     public update(entity: SalesInvoiceItemUpdateEntity): void {
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
+        (entity as SalesInvoiceItemEntity).Net = Math.round((entity["Quantity"] * entity["Price"]) * 100) / 100;
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = Math.round((entity["Net"] * 0.2) * 100) / 100;
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
+        (entity as SalesInvoiceItemEntity).Gross = Math.round((entity["Net"] + entity["VAT"]) * 100) / 100;
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

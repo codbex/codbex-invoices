@@ -17,6 +17,7 @@ export const trigger = (event) => {
     let net = 0;
     let vat = 0;
     let gross = 0;
+    let total = 0;
     for (let i = 0; i < items.length; i++) {
         if (items[i].Net) {
             net += items[i].Net;
@@ -27,12 +28,15 @@ export const trigger = (event) => {
 
     const header = SalesInvoiceDao.findById(item.SalesInvoice);
 
-    // header.Discount ??= 0;
-    // header.Taxes ??= 0;
-    header.Net = net;
-    header.VAT = vat;
-    header.Gross = gross;
-    header.Total = header.Gross - (header.Gross * header.Discount / 100) + (header.Gross * header.Taxes / 100) + header.VAT;
+    header.Total ??= 0;
+    header.Net = Math.round(net * 100) / 100;
+    header.VAT = Math.round(vat * 100) / 100;
+    header.Gross = Math.round(gross * 100) / 100;
+
+    total = header.Gross - (header.Gross * header.Discount / 100) + (header.Gross * header.Taxes / 100) + header.VAT;
+    header.Total = total.toFixed(2);
+
     header.Name = header.Name.substring(0, header.Name.lastIndexOf("/") + 1) + header.Total;
+
     SalesInvoiceDao.update(header);
 }

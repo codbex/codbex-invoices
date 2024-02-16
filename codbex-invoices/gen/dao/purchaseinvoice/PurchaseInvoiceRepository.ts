@@ -11,7 +11,7 @@ export interface PurchaseInvoiceEntity {
     Due?: Date;
     Supplier: number;
     Net?: number;
-    Currency?: number;
+    Currency: number;
     Gross?: number;
     Discount?: number;
     Taxes?: number;
@@ -35,7 +35,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Due?: Date;
     readonly Supplier: number;
     readonly Net?: number;
-    readonly Currency?: number;
+    readonly Currency: number;
     readonly Gross?: number;
     readonly Discount?: number;
     readonly Taxes?: number;
@@ -288,6 +288,7 @@ export class PurchaseInvoiceRepository {
                 name: "Currency",
                 column: "PURCHASEINVOICE_CURRENCY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Gross",
@@ -393,9 +394,12 @@ export class PurchaseInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + entity["Date"] + "/" + entity["Total"];
+        (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + (typeof entity["Total"] !== 'undefined') ? value : 0;;
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).UUID = require("sdk/utils/uuid").random();
+        if (!entity.Total) {
+            entity.Total = "0";
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

@@ -85,6 +85,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					Number: true,
 					Date: true,
 					Customer: true,
+					Currency: true,
 					SalesInvoiceStatus: true,
 				};
 			});
