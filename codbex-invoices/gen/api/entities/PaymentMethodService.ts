@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { PaymentMethodRepository, PaymentMethodEntityOptions } from "../../dao/settings/PaymentMethodRepository";
+import { PaymentMethodRepository, PaymentMethodEntityOptions } from "../../dao/entities/PaymentMethodRepository";
 import { HttpUtils } from "../utils/HttpUtils";
 
 @Controller
@@ -25,7 +25,7 @@ class PaymentMethodService {
     public create(entity: any) {
         try {
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/settings/PaymentMethodService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/entities/PaymentMethodService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

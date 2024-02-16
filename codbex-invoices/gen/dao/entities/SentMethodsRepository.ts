@@ -3,20 +3,20 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface SentMethodEntity {
+export interface SentMethodsEntity {
     readonly Id: number;
     Name?: string;
 }
 
-export interface SentMethodCreateEntity {
+export interface SentMethodsCreateEntity {
     readonly Name?: string;
 }
 
-export interface SentMethodUpdateEntity extends SentMethodCreateEntity {
+export interface SentMethodsUpdateEntity extends SentMethodsCreateEntity {
     readonly Id: number;
 }
 
-export interface SentMethodEntityOptions {
+export interface SentMethodsEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -47,17 +47,17 @@ export interface SentMethodEntityOptions {
             Name?: string;
         };
     },
-    $select?: (keyof SentMethodEntity)[],
-    $sort?: string | (keyof SentMethodEntity)[],
+    $select?: (keyof SentMethodsEntity)[],
+    $sort?: string | (keyof SentMethodsEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface SentMethodEntityEvent {
+interface SentMethodsEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<SentMethodEntity>;
+    readonly entity: Partial<SentMethodsEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -65,21 +65,21 @@ interface SentMethodEntityEvent {
     }
 }
 
-export class SentMethodRepository {
+export class SentMethodsRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_SENTMETHOD",
+        table: "CODBEX_SENTMETHODS",
         properties: [
             {
                 name: "Id",
-                column: "SENTMETHOD_ID",
+                column: "SENTMETHODS_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "SENTMETHOD_NAME",
+                column: "SENTMETHODS_NAME",
                 type: "VARCHAR",
             }
         ]
@@ -88,56 +88,56 @@ export class SentMethodRepository {
     private readonly dao;
 
     constructor(dataSource?: string) {
-        this.dao = daoApi.create(SentMethodRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(SentMethodsRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: SentMethodEntityOptions): SentMethodEntity[] {
+    public findAll(options?: SentMethodsEntityOptions): SentMethodsEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): SentMethodEntity | undefined {
+    public findById(id: number): SentMethodsEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: SentMethodCreateEntity): number {
+    public create(entity: SentMethodsCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_SENTMETHOD",
+            table: "CODBEX_SENTMETHODS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SENTMETHOD_ID",
+                column: "SENTMETHODS_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: SentMethodUpdateEntity): void {
+    public update(entity: SentMethodsUpdateEntity): void {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_SENTMETHOD",
+            table: "CODBEX_SENTMETHODS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SENTMETHOD_ID",
+                column: "SENTMETHODS_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: SentMethodCreateEntity | SentMethodUpdateEntity): number {
-        const id = (entity as SentMethodUpdateEntity).Id;
+    public upsert(entity: SentMethodsCreateEntity | SentMethodsUpdateEntity): number {
+        const id = (entity as SentMethodsUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as SentMethodUpdateEntity);
+            this.update(entity as SentMethodsUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -149,22 +149,22 @@ export class SentMethodRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_SENTMETHOD",
+            table: "CODBEX_SENTMETHODS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SENTMETHOD_ID",
+                column: "SENTMETHODS_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: SentMethodEntityOptions): number {
+    public count(options?: SentMethodsEntityOptions): number {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: SentMethodEntityOptions): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SENTMETHOD"');
+    public customDataCount(options?: SentMethodsEntityOptions): number {
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SENTMETHODS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -175,8 +175,8 @@ export class SentMethodRepository {
         return 0;
     }
 
-    private async triggerEvent(data: SentMethodEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/settings/SentMethod", ["trigger"]);
+    private async triggerEvent(data: SentMethodsEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/entities/SentMethods", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -184,6 +184,6 @@ export class SentMethodRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/settings/SentMethod").send(JSON.stringify(data));
+        producer.queue("codbex-invoices/entities/SentMethods").send(JSON.stringify(data));
     }
 }

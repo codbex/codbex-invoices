@@ -196,7 +196,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "SALESINVOICE_SENTMETHOD"
+                        "name": "SALESINVOICE_SENTMETHODS"
                     },
                     {
                         "type": "INTEGER",
@@ -374,7 +374,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PURCHASEINVOICE_SENTMETHOD"
+                        "name": "PURCHASEINVOICE_SENTMETHODS"
                     },
                     {
                         "type": "INTEGER",
@@ -503,47 +503,6 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_GROSS"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTMETHOD",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTMETHOD_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "name": "PAYMENTMETHOD_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_SENTMETHOD",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SENTMETHOD_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SENTMETHOD_NAME"
                     }
                 ]
             },
@@ -1048,6 +1007,46 @@
                 ]
             },
             {
+                "name": "CODBEX_PAYMENTMETHOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SENTMETHODS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SENTMETHODS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SENTMETHODS_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -1093,13 +1092,13 @@
                 "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
-                "name": "SalesInvoice_SentMethod",
+                "name": "SalesInvoice_SentMethods",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_SentMethod",
-                "columns": "SALESINVOICE_SENTMETHOD",
-                "referencedTable": "CODBEX_SENTMETHOD",
-                "referencedColumns": "SENTMETHOD_ID"
+                "constraintName": "SalesInvoice_SentMethods",
+                "columns": "SALESINVOICE_SENTMETHODS",
+                "referencedTable": "CODBEX_SENTMETHODS",
+                "referencedColumns": "SENTMETHODS_ID"
             },
             {
                 "name": "SalesInvoice_SalesInvoiceStatus",
@@ -1156,13 +1155,13 @@
                 "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
-                "name": "PurchaseInvoice_SentMethod",
+                "name": "PurchaseInvoice_SentMethods",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_SentMethod",
-                "columns": "PURCHASEINVOICE_SENTMETHOD",
-                "referencedTable": "CODBEX_SENTMETHOD",
-                "referencedColumns": "SENTMETHOD_ID"
+                "constraintName": "PurchaseInvoice_SentMethods",
+                "columns": "PURCHASEINVOICE_SENTMETHODS",
+                "referencedTable": "CODBEX_SENTMETHODS",
+                "referencedColumns": "SENTMETHODS_ID"
             },
             {
                 "name": "PurchaseInvoice_PurchaseInvoiceStatus",

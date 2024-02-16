@@ -5,11 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface PaymentMethodEntity {
     readonly Id: number;
-    Name: string;
+    Name?: string;
 }
 
 export interface PaymentMethodCreateEntity {
-    readonly Name: string;
+    readonly Name?: string;
 }
 
 export interface PaymentMethodUpdateEntity extends PaymentMethodCreateEntity {
@@ -81,7 +81,6 @@ export class PaymentMethodRepository {
                 name: "Name",
                 column: "PAYMENTMETHOD_NAME",
                 type: "VARCHAR",
-                required: true
             }
         ]
     };
@@ -177,7 +176,7 @@ export class PaymentMethodRepository {
     }
 
     private async triggerEvent(data: PaymentMethodEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/settings/PaymentMethod", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/entities/PaymentMethod", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -185,6 +184,6 @@ export class PaymentMethodRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/settings/PaymentMethod").send(JSON.stringify(data));
+        producer.queue("codbex-invoices/entities/PaymentMethod").send(JSON.stringify(data));
     }
 }

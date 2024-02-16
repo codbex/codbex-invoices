@@ -41,7 +41,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsPaymentMethod = [];
-				$scope.optionsSentMethod = [];
+				$scope.optionsSentMethods = [];
 				$scope.optionsPurchaseInvoiceStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
@@ -61,7 +61,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
-				$scope.optionsSentMethod = msg.data.optionsSentMethod;
+				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
@@ -75,7 +75,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
-				$scope.optionsSentMethod = msg.data.optionsSentMethod;
+				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
@@ -103,7 +103,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
-				$scope.optionsSentMethod = msg.data.optionsSentMethod;
+				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;

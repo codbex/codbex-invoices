@@ -1,16 +1,16 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { SentMethodRepository, SentMethodEntityOptions } from "../../dao/settings/SentMethodRepository";
+import { SentMethodsRepository, SentMethodsEntityOptions } from "../../dao/entities/SentMethodsRepository";
 import { HttpUtils } from "../utils/HttpUtils";
 
 @Controller
-class SentMethodService {
+class SentMethodsService {
 
-    private readonly repository = new SentMethodRepository();
+    private readonly repository = new SentMethodsRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: SentMethodEntityOptions = {
+            const options: SentMethodsEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -25,7 +25,7 @@ class SentMethodService {
     public create(entity: any) {
         try {
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/settings/SentMethodService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/entities/SentMethodsService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -68,7 +68,7 @@ class SentMethodService {
             if (entity) {
                 return entity
             } else {
-                HttpUtils.sendResponseNotFound("SentMethod not found");
+                HttpUtils.sendResponseNotFound("SentMethods not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -95,7 +95,7 @@ class SentMethodService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("SentMethod not found");
+                HttpUtils.sendResponseNotFound("SentMethods not found");
             }
         } catch (error: any) {
             this.handleError(error);
