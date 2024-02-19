@@ -8,12 +8,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
 		$scope.entity = {};
+		$scope.forms = {
+			details: {},
+		};
 		$scope.formHeaders = {
 			select: "SalesInvoice Details",
 			create: "Create SalesInvoice",
 			update: "Update SalesInvoice"
 		};
-		$scope.formErrors = {};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
@@ -37,10 +39,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.formErrors = {};
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
-				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethods = [];
 				$scope.optionsSalesInvoiceStatus = [];
 				$scope.optionsOperator = [];
@@ -60,7 +60,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
@@ -74,20 +73,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
-				// Set Errors for required fields only
-				$scope.formErrors = {
-					Number: true,
-					Date: true,
-					Customer: true,
-					Currency: true,
-					SalesInvoiceStatus: true,
-				};
 			});
 		});
 
@@ -102,7 +92,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethods = msg.data.optionsSentMethods;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
@@ -111,17 +100,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 		//-----------------Events-------------------//
-
-		$scope.isValid = function (isValid, property) {
-			$scope.formErrors[property] = !isValid ? true : undefined;
-			for (let next in $scope.formErrors) {
-				if ($scope.formErrors[next] === true) {
-					$scope.isFormValid = false;
-					return;
-				}
-			}
-			$scope.isFormValid = true;
-		};
 
 		$scope.create = function () {
 			entityApi.create($scope.entity).then(function (response) {

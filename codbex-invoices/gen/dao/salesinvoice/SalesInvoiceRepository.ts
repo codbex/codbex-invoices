@@ -18,7 +18,6 @@ export interface SalesInvoiceEntity {
     VAT?: number;
     Total?: number;
     Conditions?: string;
-    PaymentMethod?: number;
     SentMethods?: number;
     SalesInvoiceStatus: number;
     Operator?: number;
@@ -42,7 +41,6 @@ export interface SalesInvoiceCreateEntity {
     readonly VAT?: number;
     readonly Total?: number;
     readonly Conditions?: string;
-    readonly PaymentMethod?: number;
     readonly SentMethods?: number;
     readonly SalesInvoiceStatus: number;
     readonly Operator?: number;
@@ -71,7 +69,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
-            PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -95,7 +92,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
-            PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -119,7 +115,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -143,7 +138,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -167,7 +161,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -191,7 +184,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -215,7 +207,6 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -319,11 +310,6 @@ export class SalesInvoiceRepository {
                 name: "Conditions",
                 column: "SALESINVOICE_CONDITIONS",
                 type: "VARCHAR",
-            },
-            {
-                name: "PaymentMethod",
-                column: "SALESINVOICE_PAYMENTMETHOD",
-                type: "INTEGER",
             },
             {
                 name: "SentMethods",
