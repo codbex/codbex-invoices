@@ -34,9 +34,12 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Date: Date;
     readonly Due?: Date;
     readonly Supplier: number;
+    readonly Net?: number;
     readonly Currency: number;
+    readonly Gross?: number;
     readonly Discount?: number;
     readonly Taxes?: number;
+    readonly Total?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethods?: number;
@@ -394,6 +397,12 @@ export class PurchaseInvoiceRepository {
         (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).UUID = require("sdk/utils/uuid").random();
+        if (!entity.Discount) {
+            entity.Discount = "0";
+        }
+        if (!entity.Taxes) {
+            entity.Taxes = "0";
+        }
         if (!entity.Total) {
             entity.Total = "0";
         }
