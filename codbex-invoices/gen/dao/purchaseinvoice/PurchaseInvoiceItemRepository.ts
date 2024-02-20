@@ -164,23 +164,23 @@ export class PurchaseInvoiceItemRepository {
             {
                 name: "Price",
                 column: "PURCHASEINVOICEITEM_PRICE",
-                type: "DOUBLE",
+                type: "DECIMAL",
                 required: true
             },
             {
                 name: "Net",
                 column: "PURCHASEINVOICEITEM_NET",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "VAT",
                 column: "PURCHASEINVOICEITEM_VAT",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Gross",
                 column: "PURCHASEINVOICEITEM_GROSS",
-                type: "DOUBLE",
+                type: "DECIMAL",
             }
         ]
     };
@@ -202,11 +202,11 @@ export class PurchaseInvoiceItemRepository {
 
     public create(entity: PurchaseInvoiceItemCreateEntity): number {
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Net = Math.round((entity["Quantity"] * entity["Price"]) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = Math.round((entity["Net"] * 0.2) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Gross = Math.round((entity["Net"] + entity["VAT"]) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -223,11 +223,11 @@ export class PurchaseInvoiceItemRepository {
 
     public update(entity: PurchaseInvoiceItemUpdateEntity): void {
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Net = Math.round((entity["Quantity"] * entity["Price"]) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = Math.round((entity["Net"] * 0.2) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).Gross = Math.round((entity["Net"] + entity["VAT"]) * 100) / 100;
+        (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

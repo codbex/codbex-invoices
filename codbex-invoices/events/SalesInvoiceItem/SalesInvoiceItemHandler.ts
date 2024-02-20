@@ -29,12 +29,12 @@ export const trigger = (event) => {
     const header = SalesInvoiceDao.findById(item.SalesInvoice);
 
     header.Total ??= 0;
-    header.Net = Math.round(net * 100) / 100;
-    header.VAT = Math.round(vat * 100) / 100;
-    header.Gross = Math.round(gross * 100) / 100;
+    header.Net = net;
+    header.VAT = vat;
+    header.Gross = gross;
 
     total = header.Gross - (header.Gross * header.Discount / 100) + (header.Gross * header.Taxes / 100) + header.VAT;
-    header.Total = total.toFixed(2);
+    header.Total = total;
 
     header.Name = header.Name.substring(0, header.Name.lastIndexOf("/") + 1) + header.Total;
 

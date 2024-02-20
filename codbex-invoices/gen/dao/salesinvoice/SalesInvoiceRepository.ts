@@ -18,13 +18,14 @@ export interface SalesInvoiceEntity {
     VAT?: number;
     Total?: number;
     Conditions?: string;
+    PaymentMethod?: number;
     SentMethods?: number;
     SalesInvoiceStatus: number;
     Operator?: number;
     Document?: string;
     Company?: number;
     Name?: string;
-    UUID?: string;
+    UUID: string;
     Reference?: string;
 }
 
@@ -41,6 +42,7 @@ export interface SalesInvoiceCreateEntity {
     readonly VAT?: number;
     readonly Total?: number;
     readonly Conditions?: string;
+    readonly PaymentMethod?: number;
     readonly SentMethods?: number;
     readonly SalesInvoiceStatus: number;
     readonly Operator?: number;
@@ -69,6 +71,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -92,6 +95,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number | number[];
             Total?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -115,6 +119,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -138,6 +143,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -161,6 +167,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -184,6 +191,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -207,6 +215,7 @@ export interface SalesInvoiceEntityOptions {
             VAT?: number;
             Total?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethods?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -246,6 +255,7 @@ export class SalesInvoiceRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+                required: true
             },
             {
                 name: "Number",
@@ -273,7 +283,7 @@ export class SalesInvoiceRepository {
             {
                 name: "Net",
                 column: "SALESINVOICE_NET",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Currency",
@@ -284,32 +294,37 @@ export class SalesInvoiceRepository {
             {
                 name: "Gross",
                 column: "SALESINVOICE_GROSS",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Discount",
                 column: "SALESINVOICE_DISCOUNT",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Taxes",
                 column: "SALESINVOICE_TAXES",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "VAT",
                 column: "SALESINVOICE_VAT",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Total",
                 column: "SALESINVOICE_TOTAL",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Conditions",
                 column: "SALESINVOICE_CONDITIONS",
                 type: "VARCHAR",
+            },
+            {
+                name: "PaymentMethod",
+                column: "SALESINVOICE_PAYMENTMETHOD",
+                type: "INTEGER",
             },
             {
                 name: "SentMethods",
@@ -346,6 +361,7 @@ export class SalesInvoiceRepository {
                 name: "UUID",
                 column: "SALESINVOICE_UUID",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Reference",
@@ -380,7 +396,7 @@ export class SalesInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
-        (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + (typeof entity["Total"] !== 'undefined') ? value : 0;;
+        (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
         (entity as SalesInvoiceEntity).UUID = require("sdk/utils/uuid").random();
         if (!entity.Discount) {
