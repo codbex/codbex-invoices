@@ -3,10 +3,12 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface SalesInvoiceEntity {
     readonly Id: number;
-    Number: string;
+    Number?: string;
     Date: Date;
     Due?: Date;
     Customer: number;
@@ -30,7 +32,6 @@ export interface SalesInvoiceEntity {
 }
 
 export interface SalesInvoiceCreateEntity {
-    readonly Number: string;
     readonly Date: Date;
     readonly Due?: Date;
     readonly Customer: number;
@@ -261,7 +262,6 @@ export class SalesInvoiceRepository {
                 name: "Number",
                 column: "SALESINVOICE_NUMBER",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Date",
@@ -395,6 +395,8 @@ export class SalesInvoiceRepository {
     public create(entity: SalesInvoiceCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as SalesInvoiceEntity).Number = new NumberGeneratorService().generate(5);
         // @ts-ignore
         (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore

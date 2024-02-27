@@ -90,6 +90,7 @@
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
+                        "nullable": true,
                         "name": "SALESINVOICE_NUMBER"
                     },
                     {
@@ -270,7 +271,14 @@
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
+                        "nullable": true,
                         "name": "PURCHASEINVOICE_NUMBER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_ORIGINALNUMBER"
                     },
                     {
                         "type": "DATE",

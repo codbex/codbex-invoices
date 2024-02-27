@@ -3,10 +3,13 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface PurchaseInvoiceEntity {
     readonly Id: number;
-    Number: string;
+    Number?: string;
+    OriginalNumber?: string;
     Date: Date;
     Due?: Date;
     Supplier: number;
@@ -30,7 +33,7 @@ export interface PurchaseInvoiceEntity {
 }
 
 export interface PurchaseInvoiceCreateEntity {
-    readonly Number: string;
+    readonly OriginalNumber?: string;
     readonly Date: Date;
     readonly Due?: Date;
     readonly Supplier: number;
@@ -59,6 +62,7 @@ export interface PurchaseInvoiceEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
+            OriginalNumber?: string | string[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Supplier?: number | number[];
@@ -83,6 +87,7 @@ export interface PurchaseInvoiceEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
+            OriginalNumber?: string | string[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Supplier?: number | number[];
@@ -107,6 +112,7 @@ export interface PurchaseInvoiceEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
+            OriginalNumber?: string;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -131,6 +137,7 @@ export interface PurchaseInvoiceEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
+            OriginalNumber?: string;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -155,6 +162,7 @@ export interface PurchaseInvoiceEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
+            OriginalNumber?: string;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -179,6 +187,7 @@ export interface PurchaseInvoiceEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
+            OriginalNumber?: string;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -203,6 +212,7 @@ export interface PurchaseInvoiceEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
+            OriginalNumber?: string;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -260,7 +270,11 @@ export class PurchaseInvoiceRepository {
                 name: "Number",
                 column: "PURCHASEINVOICE_NUMBER",
                 type: "VARCHAR",
-                required: true
+            },
+            {
+                name: "OriginalNumber",
+                column: "PURCHASEINVOICE_ORIGINALNUMBER",
+                type: "VARCHAR",
             },
             {
                 name: "Date",
@@ -393,6 +407,8 @@ export class PurchaseInvoiceRepository {
     public create(entity: PurchaseInvoiceCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as PurchaseInvoiceEntity).Number = new NumberGeneratorService().generate(14);
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
