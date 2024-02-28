@@ -1,5 +1,6 @@
 # codbex-invoices
-## Invoices Management Applications
+
+## Invoices Management Module
 
 ### Model
 
