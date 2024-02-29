@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Name-filter",
-    label: "Name Filter",
-    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/Name/dialog-filter/index.html",
+    id: "SalesInvoiceItem-filter",
+    label: "SalesInvoiceItem Filter",
+    link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/SalesInvoiceItem/dialog-filter/index.html",
     perspectiveName: "salesinvoice"
 };
 

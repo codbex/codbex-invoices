@@ -106,8 +106,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Total) {
 				filter.$filter.equals.Total = entity.Total;
 			}
-			if (entity.Document) {
-				filter.$filter.contains.Document = entity.Document;
+			if (entity.Conditions) {
+				filter.$filter.contains.Conditions = entity.Conditions;
 			}
 			if (entity.PaymentMethod) {
 				filter.$filter.equals.PaymentMethod = entity.PaymentMethod;

@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Name';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/NameService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
@@ -12,9 +12,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Name Details",
-			create: "Create Name",
-			update: "Update Name"
+			select: "SalesInvoiceItem Details",
+			create: "Create SalesInvoiceItem",
+			update: "Update SalesInvoiceItem"
 		};
 		$scope.action = 'select';
 
@@ -37,12 +37,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					messageHub.showAlertError("Name", `Unable to create Name: '${response.message}'`);
+					messageHub.showAlertError("SalesInvoiceItem", `Unable to create SalesInvoiceItem: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Name", "Name successfully created");
+				messageHub.showAlertSuccess("SalesInvoiceItem", "SalesInvoiceItem successfully created");
 			});
 		};
 
@@ -52,19 +52,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Name", `Unable to update Name: '${response.message}'`);
+					messageHub.showAlertError("SalesInvoiceItem", `Unable to update SalesInvoiceItem: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Name", "Name successfully updated");
+				messageHub.showAlertSuccess("SalesInvoiceItem", "SalesInvoiceItem successfully updated");
 			});
 		};
 
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("Name-details");
+			messageHub.closeDialogWindow("SalesInvoiceItem-details");
 		};
 
 	}]);

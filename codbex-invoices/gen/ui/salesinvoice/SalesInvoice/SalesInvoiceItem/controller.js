@@ -1,16 +1,16 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Name';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/NameService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
 		//-----------------Custom Actions-------------------//
 		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-invoices-custom-action").then(function (response) {
-			$scope.pageActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "Name" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "Name" && e.type === "entity");
+			$scope.pageActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceItem" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceItem" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (actionId) {
@@ -99,7 +99,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			filter.$filter.equals.SalesInvoice = SalesInvoice;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Name", `Unable to count Name: '${response.message}'`);
+					messageHub.showAlertError("SalesInvoiceItem", `Unable to count SalesInvoiceItem: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
@@ -107,7 +107,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Name", `Unable to list/filter Name: '${response.message}'`);
+						messageHub.showAlertError("SalesInvoiceItem", `Unable to list/filter SalesInvoiceItem: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -121,7 +121,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Name-details", {
+			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "select",
 				entity: entity,
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
@@ -130,7 +130,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Name-filter", {
+			messageHub.showDialogWindow("SalesInvoiceItem-filter", {
 				entity: $scope.filterEntity,
 				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsUoM: $scope.optionsUoM,
@@ -139,7 +139,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Name-details", {
+			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "create",
 				entity: {},
 				selectedMainEntityKey: "SalesInvoice",
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Name-details", {
+			messageHub.showDialogWindow("SalesInvoiceItem-details", {
 				action: "update",
 				entity: entity,
 				selectedMainEntityKey: "SalesInvoice",
@@ -163,8 +163,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Name?',
-				`Are you sure you want to delete Name? This action cannot be undone.`,
+				'Delete SalesInvoiceItem?',
+				`Are you sure you want to delete SalesInvoiceItem? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -179,7 +179,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Name", `Unable to delete Name: '${response.message}'`);
+							messageHub.showAlertError("SalesInvoiceItem", `Unable to delete SalesInvoiceItem: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

@@ -2,7 +2,7 @@
     "schema": {
         "structures": [
             {
-                "name": "CODBEX_SALESORDER_NAME",
+                "name": "CODBEX_SALESINVOICEITEM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -86,12 +86,12 @@
                         "name": "SALESINVOICE_ID"
                     },
                     {
-                        "type": "INTEGER",
-                        "length": 0,
+                        "type": "VARCHAR",
+                        "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "GOODSISSUE_CURRENCY"
+                        "name": "SALESINVOICE_NUMBER"
                     },
                     {
                         "type": "DATE",
@@ -368,7 +368,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "SALESORDER_DOCUMENT"
+                        "name": "PURCHASEINVOICE_CONDITIONS"
                     },
                     {
                         "type": "INTEGER",
@@ -557,31 +557,22 @@
                 ]
             },
             {
-                "name": "Name_SalesInvoice",
+                "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_SALESORDER_NAME",
-                "constraintName": "Name_SalesInvoice",
+                "table": "CODBEX_SALESINVOICEITEM",
+                "constraintName": "SalesInvoiceItem_SalesInvoice",
                 "columns": "SALESINVOICEITEM_SALESINVOICE",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "Name_UoM",
+                "name": "SalesInvoiceItem_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_SALESORDER_NAME",
-                "constraintName": "Name_UoM",
+                "table": "CODBEX_SALESINVOICEITEM",
+                "constraintName": "SalesInvoiceItem_UoM",
                 "columns": "SALESINVOICEITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
-            },
-            {
-                "name": "SalesInvoice_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_Currency",
-                "columns": "GOODSISSUE_CURRENCY",
-                "referencedTable": "CODBEX_CURRENCY",
-                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "SalesInvoice_Customer",

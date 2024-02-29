@@ -3,7 +3,7 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface NameEntity {
+export interface SalesInvoiceItemEntity {
     readonly Id: number;
     SalesInvoice: number;
     Name: string;
@@ -15,7 +15,7 @@ export interface NameEntity {
     Gross: number;
 }
 
-export interface NameCreateEntity {
+export interface SalesInvoiceItemCreateEntity {
     readonly SalesInvoice: number;
     readonly Name: string;
     readonly Quantity: number;
@@ -23,11 +23,11 @@ export interface NameCreateEntity {
     readonly Price: number;
 }
 
-export interface NameUpdateEntity extends NameCreateEntity {
+export interface SalesInvoiceItemUpdateEntity extends SalesInvoiceItemCreateEntity {
     readonly Id: number;
 }
 
-export interface NameEntityOptions {
+export interface SalesInvoiceItemEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -107,17 +107,17 @@ export interface NameEntityOptions {
             Gross?: number;
         };
     },
-    $select?: (keyof NameEntity)[],
-    $sort?: string | (keyof NameEntity)[],
+    $select?: (keyof SalesInvoiceItemEntity)[],
+    $sort?: string | (keyof SalesInvoiceItemEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface NameEntityEvent {
+interface SalesInvoiceItemEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<NameEntity>;
+    readonly entity: Partial<SalesInvoiceItemEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -125,10 +125,10 @@ interface NameEntityEvent {
     }
 }
 
-export class NameRepository {
+export class SalesInvoiceItemRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_SALESORDER_NAME",
+        table: "CODBEX_SALESINVOICEITEM",
         properties: [
             {
                 name: "Id",
@@ -192,29 +192,29 @@ export class NameRepository {
     private readonly dao;
 
     constructor(dataSource?: string) {
-        this.dao = daoApi.create(NameRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(SalesInvoiceItemRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: NameEntityOptions): NameEntity[] {
+    public findAll(options?: SalesInvoiceItemEntityOptions): SalesInvoiceItemEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): NameEntity | undefined {
+    public findById(id: number): SalesInvoiceItemEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: NameCreateEntity): number {
+    public create(entity: SalesInvoiceItemCreateEntity): number {
         // @ts-ignore
-        (entity as NameEntity).Net = entity["Quantity"] * entity["Price"];
+        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as NameEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as NameEntity).Gross = entity["Net"] + entity["VAT"];
+        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_SALESORDER_NAME",
+            table: "CODBEX_SALESINVOICEITEM",
             entity: entity,
             key: {
                 name: "Id",
@@ -225,17 +225,17 @@ export class NameRepository {
         return id;
     }
 
-    public update(entity: NameUpdateEntity): void {
+    public update(entity: SalesInvoiceItemUpdateEntity): void {
         // @ts-ignore
-        (entity as NameEntity).Net = entity["Quantity"] * entity["Price"];
+        (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as NameEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
-        (entity as NameEntity).Gross = entity["Net"] + entity["VAT"];
+        (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_SALESORDER_NAME",
+            table: "CODBEX_SALESINVOICEITEM",
             entity: entity,
             key: {
                 name: "Id",
@@ -245,15 +245,15 @@ export class NameRepository {
         });
     }
 
-    public upsert(entity: NameCreateEntity | NameUpdateEntity): number {
-        const id = (entity as NameUpdateEntity).Id;
+    public upsert(entity: SalesInvoiceItemCreateEntity | SalesInvoiceItemUpdateEntity): number {
+        const id = (entity as SalesInvoiceItemUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as NameUpdateEntity);
+            this.update(entity as SalesInvoiceItemUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -265,7 +265,7 @@ export class NameRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_SALESORDER_NAME",
+            table: "CODBEX_SALESINVOICEITEM",
             entity: entity,
             key: {
                 name: "Id",
@@ -275,11 +275,11 @@ export class NameRepository {
         });
     }
 
-    public count(options?: NameEntityOptions): number {
+    public count(options?: SalesInvoiceItemEntityOptions): number {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: NameEntityOptions): number {
+    public customDataCount(options?: SalesInvoiceItemEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__SALESINVOICEITEM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -291,8 +291,8 @@ export class NameRepository {
         return 0;
     }
 
-    private async triggerEvent(data: NameEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/salesinvoice/Name", ["trigger"]);
+    private async triggerEvent(data: SalesInvoiceItemEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/salesinvoice/SalesInvoiceItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -300,6 +300,6 @@ export class NameRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices/salesinvoice/Name").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/salesinvoice/SalesInvoiceItem").send(JSON.stringify(data));
     }
 }

@@ -1,18 +1,18 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { NameRepository, NameEntityOptions } from "../../dao/salesinvoice/NameRepository";
+import { SalesInvoiceItemRepository, SalesInvoiceItemEntityOptions } from "../../dao/salesinvoice/SalesInvoiceItemRepository";
 import { HttpUtils } from "../utils/HttpUtils";
 
 @Controller
-class NameService {
+class SalesInvoiceItemService {
 
-    private readonly repository = new NameRepository();
+    private readonly repository = new SalesInvoiceItemRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
             let SalesInvoice = parseInt(ctx.queryParameters.SalesInvoice);
             SalesInvoice = isNaN(SalesInvoice) ? ctx.queryParameters.SalesInvoice : SalesInvoice;
-            const options: NameEntityOptions = {
+            const options: SalesInvoiceItemEntityOptions = {
                 $filter: {
                     equals: {
                         SalesInvoice: SalesInvoice
@@ -32,7 +32,7 @@ class NameService {
     public create(entity: any) {
         try {
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/salesinvoice/NameService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -75,7 +75,7 @@ class NameService {
             if (entity) {
                 return entity
             } else {
-                HttpUtils.sendResponseNotFound("Name not found");
+                HttpUtils.sendResponseNotFound("SalesInvoiceItem not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -102,7 +102,7 @@ class NameService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Name not found");
+                HttpUtils.sendResponseNotFound("SalesInvoiceItem not found");
             }
         } catch (error: any) {
             this.handleError(error);

@@ -20,7 +20,7 @@ export interface PurchaseInvoiceEntity {
     Taxes?: number;
     VAT?: number;
     Total?: number;
-    Document?: string;
+    Conditions?: string;
     PaymentMethod?: number;
     SentMethods?: number;
     PurchaseInvoiceStatus: number;
@@ -43,7 +43,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Discount?: number;
     readonly Taxes?: number;
     readonly Total?: number;
-    readonly Document?: string;
+    readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethods?: number;
     readonly PurchaseInvoiceStatus: number;
@@ -73,7 +73,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
-            Document?: string | string[];
+            Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             PurchaseInvoiceStatus?: number | number[];
@@ -98,7 +98,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
-            Document?: string | string[];
+            Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethods?: number | number[];
             PurchaseInvoiceStatus?: number | number[];
@@ -123,7 +123,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
-            Document?: string;
+            Conditions?: string;
             PaymentMethod?: number;
             SentMethods?: number;
             PurchaseInvoiceStatus?: number;
@@ -148,7 +148,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
-            Document?: string;
+            Conditions?: string;
             PaymentMethod?: number;
             SentMethods?: number;
             PurchaseInvoiceStatus?: number;
@@ -173,7 +173,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
-            Document?: string;
+            Conditions?: string;
             PaymentMethod?: number;
             SentMethods?: number;
             PurchaseInvoiceStatus?: number;
@@ -198,7 +198,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
-            Document?: string;
+            Conditions?: string;
             PaymentMethod?: number;
             SentMethods?: number;
             PurchaseInvoiceStatus?: number;
@@ -223,7 +223,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
-            Document?: string;
+            Conditions?: string;
             PaymentMethod?: number;
             SentMethods?: number;
             PurchaseInvoiceStatus?: number;
@@ -330,8 +330,8 @@ export class PurchaseInvoiceRepository {
                 type: "DECIMAL",
             },
             {
-                name: "Document",
-                column: "SALESORDER_DOCUMENT",
+                name: "Conditions",
+                column: "PURCHASEINVOICE_CONDITIONS",
                 type: "VARCHAR",
             },
             {

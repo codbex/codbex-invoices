@@ -1,5 +1,5 @@
 {
-    "module": "codbex-invoices/gen/ui/salesinvoice/SalesInvoice/Name/view.js",
+    "module": "codbex-invoices/gen/ui/salesinvoice/SalesInvoice/SalesInvoiceItem/view.js",
     "extensionPoint": "codbex-invoices-view",
     "description": "codbex-invoices - Application View - Details"
 }

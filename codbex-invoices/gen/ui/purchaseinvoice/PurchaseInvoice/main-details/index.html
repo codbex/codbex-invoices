@@ -229,21 +229,21 @@
                     </fd-form-item>
 					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idDocument" dg-required="false" dg-colon="true">Document</fd-form-label>
+							<fd-form-label for="idConditions" dg-required="false" dg-colon="true">Conditions</fd-form-label>
 						</div>
 						<div class="fd-col fd-col-md--8 fd-col--12">
-							<fd-textarea id="idDocument"
-								name="Document"
-								state="{{ forms.details['Document'].$valid ? '' : 'error' }}"
+							<fd-textarea id="idConditions"
+								name="Conditions"
+								state="{{ forms.details['Conditions'].$valid ? '' : 'error' }}"
 								ng-required="false"
-								ng-model="entity.Document"
+								ng-model="entity.Conditions"
 	                            ng-readonly="action === 'select'"
 								ng-minlength="0.0 || 0"
 								ng-maxlength="200.0 || -1"
 								dg-input-rules="{ patterns: [''] }"
-								placeholder="Enter Document">
+								placeholder="Enter Conditions">
 							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Document'].$valid">Incorrect Input</fd-form-message>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Conditions'].$valid">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
                     <fd-form-item class="fd-row">

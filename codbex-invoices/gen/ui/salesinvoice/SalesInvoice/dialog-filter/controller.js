@@ -31,7 +31,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = params.entity ?? {};
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsCurrency = params.optionsCurrency;
 				$scope.optionsCustomer = params.optionsCustomer;
 				$scope.optionsCurrency = params.optionsCurrency;
 				$scope.optionsPaymentMethod = params.optionsPaymentMethod;
@@ -65,8 +64,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Id) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Currency) {
-				filter.$filter.equals.Currency = entity.Currency;
+			if (entity.Number) {
+				filter.$filter.contains.Number = entity.Number;
 			}
 			if (entity.DateFrom) {
 				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
