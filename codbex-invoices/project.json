@@ -1,0 +1,69 @@
+{
+    "guid": "codbex-invoices",
+    "dependencies": [
+        {
+            "guid": "codbex-countries",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-countries.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-companies",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-companies.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-currencies",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-currencies.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-uoms",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-uoms.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-partners",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-partners.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-methods",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-methods.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-employees",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-employees.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-number-generator",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-number-generator.git",
+            "branch": "main"
+        }
+    ],
+    "actions": [
+        {
+            "name": "Build TypeScript",
+            "commands": [
+                {
+                    "os": "unix",
+                    "command": "tsc"
+                },
+                {
+                    "os": "windows",
+                    "command": "cmd /c tsc"
+                }
+            ],
+            "registry": "true"
+        }
+    ]
+}

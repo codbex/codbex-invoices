@@ -1,0 +1,4 @@
+{
+    "name": "codbex-invoices-custom-action",
+    "description": "codbex-invoices - Extension Point for the Application Custom Action Providers"
+}
