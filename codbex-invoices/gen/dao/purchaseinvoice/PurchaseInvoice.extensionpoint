@@ -1,1 +1,4 @@
-{"location":"codbex-invoices/gen/dao/purchaseinvoice/PurchaseInvoice.extensionpoint","name":"codbex-invoices/purchaseinvoice/PurchaseInvoice","description":"Extension Point for codbex-invoices purchaseinvoice PurchaseInvoice"}
+{
+    "name": "codbex-invoices-purchaseinvoice-PurchaseInvoice",
+    "description": "Extension Point for the codbex-invoices-purchaseinvoice-PurchaseInvoice entity"
+}

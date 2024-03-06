@@ -1,1 +1,4 @@
-{"location":"codbex-invoices/gen/dao/salesinvoice/SalesInvoiceItem.extensionpoint","name":"codbex-invoices/salesinvoice/SalesInvoiceItem","description":"Extension Point for codbex-invoices salesinvoice SalesInvoiceItem"}
+{
+    "name": "codbex-invoices-salesinvoice-SalesInvoiceItem",
+    "description": "Extension Point for the codbex-invoices-salesinvoice-SalesInvoiceItem entity"
+}

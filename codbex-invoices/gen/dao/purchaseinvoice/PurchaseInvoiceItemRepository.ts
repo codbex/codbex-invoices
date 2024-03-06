@@ -6,7 +6,7 @@ import { dao as daoApi } from "sdk/db";
 export interface PurchaseInvoiceItemEntity {
     readonly Id: number;
     PurchaseInvoice: number;
-    Name: string;
+    Product: number;
     Quantity: number;
     UoM: number;
     Price: number;
@@ -17,7 +17,7 @@ export interface PurchaseInvoiceItemEntity {
 
 export interface PurchaseInvoiceItemCreateEntity {
     readonly PurchaseInvoice: number;
-    readonly Name: string;
+    readonly Product: number;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
@@ -32,7 +32,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         equals?: {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -43,7 +43,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         notEquals?: {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -54,7 +54,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         contains?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -65,7 +65,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         greaterThan?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -76,7 +76,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -87,7 +87,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         lessThan?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -98,7 +98,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -144,9 +144,9 @@ export class PurchaseInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Name",
-                column: "PURCHASEINVOICEITEM_NAME",
-                type: "VARCHAR",
+                name: "Product",
+                column: "PURCHASEINVOICEITEM_PRODUCT",
+                type: "INTEGER",
                 required: true
             },
             {
@@ -275,7 +275,7 @@ export class PurchaseInvoiceItemRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: PurchaseInvoiceItemEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PURCHASEINVOICEITEM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -288,7 +288,7 @@ export class PurchaseInvoiceItemRepository {
     }
 
     private async triggerEvent(data: PurchaseInvoiceItemEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/purchaseinvoice/PurchaseInvoiceItem", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoiceItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -296,6 +296,6 @@ export class PurchaseInvoiceItemRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/purchaseinvoice/PurchaseInvoiceItem").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/purchaseinvoice/PurchaseInvoiceItem").send(JSON.stringify(data));
     }
 }

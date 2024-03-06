@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-invoices/gen/ui/salesinvoice/SalesInvoice/main-details/index.html",
-    perspectiveName: "salesinvoice"
+    perspectiveName: "salesinvoice",
 };
 
 if (typeof exports !== 'undefined') {

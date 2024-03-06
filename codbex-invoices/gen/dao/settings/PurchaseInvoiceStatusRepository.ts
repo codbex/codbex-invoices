@@ -163,7 +163,7 @@ export class PurchaseInvoiceStatusRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: PurchaseInvoiceStatusEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEINVOICESTATUS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -176,7 +176,7 @@ export class PurchaseInvoiceStatusRepository {
     }
 
     private async triggerEvent(data: PurchaseInvoiceStatusEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/settings/PurchaseInvoiceStatus", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-PurchaseInvoiceStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -184,6 +184,6 @@ export class PurchaseInvoiceStatusRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/settings/PurchaseInvoiceStatus").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/settings/PurchaseInvoiceStatus").send(JSON.stringify(data));
     }
 }

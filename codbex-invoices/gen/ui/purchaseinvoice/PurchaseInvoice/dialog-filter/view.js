@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PurchaseInvoiceItem-details",
-    label: "PurchaseInvoiceItem",
-    link: "/services/web/codbex-invoices/gen/ui/purchaseinvoice/PurchaseInvoice/PurchaseInvoiceItem/dialog-window/index.html",
+    id: "PurchaseInvoice-filter",
+    label: "PurchaseInvoice Filter",
+    link: "/services/web/codbex-invoices/gen/ui/purchaseinvoice/PurchaseInvoice/dialog-filter/index.html",
     perspectiveName: "purchaseinvoice",
 };
 

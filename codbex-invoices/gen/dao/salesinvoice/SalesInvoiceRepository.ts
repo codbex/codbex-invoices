@@ -10,7 +10,7 @@ export interface SalesInvoiceEntity {
     readonly Id: number;
     Number?: string;
     Date: Date;
-    Due?: Date;
+    Due: Date;
     Customer: number;
     Net?: number;
     Currency: number;
@@ -33,7 +33,7 @@ export interface SalesInvoiceEntity {
 
 export interface SalesInvoiceCreateEntity {
     readonly Date: Date;
-    readonly Due?: Date;
+    readonly Due: Date;
     readonly Customer: number;
     readonly Net?: number;
     readonly Currency: number;
@@ -273,6 +273,7 @@ export class SalesInvoiceRepository {
                 name: "Due",
                 column: "SALESINVOICE_DUE",
                 type: "DATE",
+                required: true
             },
             {
                 name: "Customer",
@@ -474,7 +475,7 @@ export class SalesInvoiceRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: SalesInvoiceEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__SALESINVOICE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -487,7 +488,7 @@ export class SalesInvoiceRepository {
     }
 
     private async triggerEvent(data: SalesInvoiceEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/salesinvoice/SalesInvoice", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoice", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -495,6 +496,6 @@ export class SalesInvoiceRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/salesinvoice/SalesInvoice").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/salesinvoice/SalesInvoice").send(JSON.stringify(data));
     }
 }

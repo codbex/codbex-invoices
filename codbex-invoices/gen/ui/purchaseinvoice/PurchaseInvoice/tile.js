@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/codbex-invoices/gen/ui/purchaseinvoice/index.html",
         order: "100",
-        groupOrder: "610"
+        groupOrder: "610",
     };
 };

@@ -1,8 +1,12 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { PurchaseInvoiceRepository, PurchaseInvoiceEntityOptions } from "../../dao/purchaseinvoice/PurchaseInvoiceRepository";
+import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoice", ["validate"]);
 
 @Controller
 class PurchaseInvoiceService {
@@ -26,6 +30,7 @@ class PurchaseInvoiceService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/purchaseinvoice/PurchaseInvoiceService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -68,7 +73,7 @@ class PurchaseInvoiceService {
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
-                return entity
+                return entity;
             } else {
                 HttpUtils.sendResponseNotFound("PurchaseInvoice not found");
             }
@@ -81,6 +86,7 @@ class PurchaseInvoiceService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -113,4 +119,47 @@ class PurchaseInvoiceService {
             HttpUtils.sendInternalServerError(error.message);
         }
     }
+
+    private validateEntity(entity: any): void {
+        if (entity.Number?.length > 20) {
+            throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.OriginalNumber?.length > 20) {
+            throw new ValidationError(`The 'OriginalNumber' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
+        }
+        if (entity.Due === null || entity.Due === undefined) {
+            throw new ValidationError(`The 'Due' property is required, provide a valid value`);
+        }
+        if (entity.Supplier === null || entity.Supplier === undefined) {
+            throw new ValidationError(`The 'Supplier' property is required, provide a valid value`);
+        }
+        if (entity.Currency === null || entity.Currency === undefined) {
+            throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
+        if (entity.Conditions?.length > 200) {
+            throw new ValidationError(`The 'Conditions' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.PurchaseInvoiceStatus === null || entity.PurchaseInvoiceStatus === undefined) {
+            throw new ValidationError(`The 'PurchaseInvoiceStatus' property is required, provide a valid value`);
+        }
+        if (entity.Document?.length > 200) {
+            throw new ValidationError(`The 'Document' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.Name?.length > 200) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.UUID?.length > 36) {
+            throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);
+        }
+        if (entity.Reference?.length > 36) {
+            throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
+        }
+    }
+
 }

@@ -11,7 +11,7 @@ export interface PurchaseInvoiceEntity {
     Number?: string;
     OriginalNumber?: string;
     Date: Date;
-    Due?: Date;
+    Due: Date;
     Supplier: number;
     Net?: number;
     Currency: number;
@@ -35,13 +35,14 @@ export interface PurchaseInvoiceEntity {
 export interface PurchaseInvoiceCreateEntity {
     readonly OriginalNumber?: string;
     readonly Date: Date;
-    readonly Due?: Date;
+    readonly Due: Date;
     readonly Supplier: number;
     readonly Net?: number;
     readonly Currency: number;
     readonly Gross?: number;
     readonly Discount?: number;
     readonly Taxes?: number;
+    readonly VAT?: number;
     readonly Total?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
@@ -286,6 +287,7 @@ export class PurchaseInvoiceRepository {
                 name: "Due",
                 column: "PURCHASEINVOICE_DUE",
                 type: "DATE",
+                required: true
             },
             {
                 name: "Supplier",
@@ -486,7 +488,7 @@ export class PurchaseInvoiceRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: PurchaseInvoiceEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PURCHASEINVOICE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -499,7 +501,7 @@ export class PurchaseInvoiceRepository {
     }
 
     private async triggerEvent(data: PurchaseInvoiceEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/purchaseinvoice/PurchaseInvoice", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoice", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -507,6 +509,6 @@ export class PurchaseInvoiceRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/purchaseinvoice/PurchaseInvoice").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/purchaseinvoice/PurchaseInvoice").send(JSON.stringify(data));
     }
 }

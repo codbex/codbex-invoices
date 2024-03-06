@@ -163,7 +163,7 @@ export class SalesInvoiceStatusRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: SalesInvoiceStatusEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESINVOICESTATUS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -176,7 +176,7 @@ export class SalesInvoiceStatusRepository {
     }
 
     private async triggerEvent(data: SalesInvoiceStatusEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/settings/SalesInvoiceStatus", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -184,6 +184,6 @@ export class SalesInvoiceStatusRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/settings/SalesInvoiceStatus").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/settings/SalesInvoiceStatus").send(JSON.stringify(data));
     }
 }

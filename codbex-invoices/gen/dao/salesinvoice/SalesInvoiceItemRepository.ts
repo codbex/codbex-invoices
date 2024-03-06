@@ -6,7 +6,7 @@ import { dao as daoApi } from "sdk/db";
 export interface SalesInvoiceItemEntity {
     readonly Id: number;
     SalesInvoice: number;
-    Name: string;
+    Product: number;
     Quantity: number;
     UoM: number;
     Price: number;
@@ -17,7 +17,7 @@ export interface SalesInvoiceItemEntity {
 
 export interface SalesInvoiceItemCreateEntity {
     readonly SalesInvoice: number;
-    readonly Name: string;
+    readonly Product: number;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
@@ -32,7 +32,7 @@ export interface SalesInvoiceItemEntityOptions {
         equals?: {
             Id?: number | number[];
             SalesInvoice?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -43,7 +43,7 @@ export interface SalesInvoiceItemEntityOptions {
         notEquals?: {
             Id?: number | number[];
             SalesInvoice?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -54,7 +54,7 @@ export interface SalesInvoiceItemEntityOptions {
         contains?: {
             Id?: number;
             SalesInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -65,7 +65,7 @@ export interface SalesInvoiceItemEntityOptions {
         greaterThan?: {
             Id?: number;
             SalesInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -76,7 +76,7 @@ export interface SalesInvoiceItemEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -87,7 +87,7 @@ export interface SalesInvoiceItemEntityOptions {
         lessThan?: {
             Id?: number;
             SalesInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -98,7 +98,7 @@ export interface SalesInvoiceItemEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
-            Name?: string;
+            Product?: number;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -145,9 +145,9 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Name",
-                column: "SALESINVOICEITEM_NAME",
-                type: "VARCHAR",
+                name: "Product",
+                column: "SALESINVOICEITEM_PRODUCT",
+                type: "INTEGER",
                 required: true
             },
             {
@@ -279,7 +279,7 @@ export class SalesInvoiceItemRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: SalesInvoiceItemEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__SALESINVOICEITEM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -292,7 +292,7 @@ export class SalesInvoiceItemRepository {
     }
 
     private async triggerEvent(data: SalesInvoiceItemEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices/salesinvoice/SalesInvoiceItem", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoiceItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -300,6 +300,6 @@ export class SalesInvoiceItemRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-invoices/salesinvoice/SalesInvoiceItem").send(JSON.stringify(data));
+        producer.topic("codbex-invoices/salesinvoice/SalesInvoiceItem").send(JSON.stringify(data));
     }
 }

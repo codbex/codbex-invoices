@@ -29,49 +29,29 @@
                 <fd-form-group dg-header="PurchaseInvoiceItem Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPurchaseInvoice" dg-required="false" dg-colon="true">PurchaseInvoice</fd-form-label>
+                        	<fd-form-label for="idProduct" dg-required="true" dg-colon="true">Product</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idPurchaseInvoice"
-	                            name="PurchaseInvoice"
-	                            state="{{ forms.details['PurchaseInvoice'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.PurchaseInvoice"
-	                            dropdown-items="optionsPurchaseInvoice"
-	                            dg-placeholder="Search PurchaseInvoice ...">
+	                        <fd-combobox-input id="idProduct"
+	                            name="Product"
+	                            state="{{ forms.details['Product'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.Product"
+	                            dropdown-items="optionsProduct"
+	                            dg-placeholder="Search Product ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
-					<fd-form-item class="fd-row">
-						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
-						</div>
-						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idName"
-								name="Name"
-								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-								ng-required="false"
-								ng-model="entity.Name"
-	                            ng-readonly="action === 'select'"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="20.0 || -1"
-								dg-input-rules="{ patterns: [''] }"
-								placeholder="Enter Name">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Name'].$valid">Incorrect Input</fd-form-message>
-						</div>
-					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idQuantity" dg-required="false" dg-colon="true">Quantity</fd-form-label>
+                        	<fd-form-label for="idQuantity" dg-required="true" dg-colon="true">Quantity</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
 	                        <fd-step-input dg-id="idQuantity"
 								name="Quantity"
 								state="{{ forms.details['Quantity'].$valid ? '' : 'error' }}"
-								dg-required="false"
+								dg-required="true"
 								ng-model="entity.Quantity"
-								is-readonly="action === 'select'"
 								placeholder="Enter Quantity"
 								>
 							</fd-step-input>
@@ -79,13 +59,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idUoM" dg-required="false" dg-colon="true">UoM</fd-form-label>
+                        	<fd-form-label for="idUoM" dg-required="true" dg-colon="true">UoM</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-combobox-input id="idUoM"
 	                            name="UoM"
 	                            state="{{ forms.details['UoM'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.UoM"
 	                            dropdown-items="optionsUoM"
 	                            dg-placeholder="Search UoM ...">
@@ -94,15 +74,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPrice" dg-required="false" dg-colon="true">Price</fd-form-label>
+                        	<fd-form-label for="idPrice" dg-required="true" dg-colon="true">Price</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
 	                        <fd-step-input dg-id="idPrice"
 								name="Price"
 								state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
-								dg-required="false"
+								dg-required="true"
 								ng-model="entity.Price"
-								is-readonly="action === 'select'"
 								placeholder="Enter Price"
 								>
 							</fd-step-input>
@@ -118,7 +97,6 @@
 								state="{{ forms.details['Net'].$valid ? '' : 'error' }}"
 								dg-required="false"
 								ng-model="entity.Net"
-								is-readonly="true"
 								placeholder="Enter Net"
 								>
 							</fd-step-input>
@@ -134,7 +112,6 @@
 								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
 								dg-required="false"
 								ng-model="entity.VAT"
-								is-readonly="true"
 								placeholder="Enter VAT"
 								>
 							</fd-step-input>
@@ -150,7 +127,6 @@
 								state="{{ forms.details['Gross'].$valid ? '' : 'error' }}"
 								dg-required="false"
 								ng-model="entity.Gross"
-								is-readonly="true"
 								placeholder="Enter Gross"
 								>
 							</fd-step-input>
