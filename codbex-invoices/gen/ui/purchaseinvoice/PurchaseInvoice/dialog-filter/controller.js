@@ -34,7 +34,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSupplier = params.optionsSupplier;
 				$scope.optionsCurrency = params.optionsCurrency;
 				$scope.optionsPaymentMethod = params.optionsPaymentMethod;
-				$scope.optionsSentMethods = params.optionsSentMethods;
+				$scope.optionsSentMethod = params.optionsSentMethod;
 				$scope.optionsPurchaseInvoiceStatus = params.optionsPurchaseInvoiceStatus;
 				$scope.optionsOperator = params.optionsOperator;
 				$scope.optionsCompany = params.optionsCompany;
@@ -112,8 +112,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.PaymentMethod) {
 				filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
 			}
-			if (entity.SentMethods) {
-				filter.$filter.equals.SentMethods = entity.SentMethods;
+			if (entity.SentMethod) {
+				filter.$filter.equals.SentMethod = entity.SentMethod;
 			}
 			if (entity.PurchaseInvoiceStatus) {
 				filter.$filter.equals.PurchaseInvoiceStatus = entity.PurchaseInvoiceStatus;

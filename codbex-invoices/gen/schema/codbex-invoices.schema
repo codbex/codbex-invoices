@@ -194,7 +194,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "SALESINVOICE_SENTMETHODS"
+                        "name": "SALESINVOICE_SENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
@@ -380,7 +380,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PURCHASEINVOICE_SENTMETHODS"
+                        "name": "PURCHASEINVOICE_SENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
@@ -607,13 +607,13 @@
                 "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
-                "name": "SalesInvoice_SentMethods",
+                "name": "SalesInvoice_SentMethod",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_SentMethods",
-                "columns": "SALESINVOICE_SENTMETHODS",
-                "referencedTable": "CODBEX_SENTMETHODS",
-                "referencedColumns": "SENTMETHODS_ID"
+                "constraintName": "SalesInvoice_SentMethod",
+                "columns": "SALESINVOICE_SENTMETHOD",
+                "referencedTable": "CODBEX_SENTMETHOD",
+                "referencedColumns": "SENTMETHOD_ID"
             },
             {
                 "name": "SalesInvoice_SalesInvoiceStatus",
@@ -670,13 +670,13 @@
                 "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
-                "name": "PurchaseInvoice_SentMethods",
+                "name": "PurchaseInvoice_SentMethod",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_SentMethods",
-                "columns": "PURCHASEINVOICE_SENTMETHODS",
-                "referencedTable": "CODBEX_SENTMETHODS",
-                "referencedColumns": "SENTMETHODS_ID"
+                "constraintName": "PurchaseInvoice_SentMethod",
+                "columns": "PURCHASEINVOICE_SENTMETHOD",
+                "referencedTable": "CODBEX_SENTMETHOD",
+                "referencedColumns": "SENTMETHOD_ID"
             },
             {
                 "name": "PurchaseInvoice_PurchaseInvoiceStatus",
