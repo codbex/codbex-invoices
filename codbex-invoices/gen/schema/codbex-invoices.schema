@@ -553,6 +553,26 @@
                 ]
             },
             {
+                "name": "CODBEX_PAYMENTMETHOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -562,13 +582,13 @@
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "SalesInvoiceItem_Product",
+                "name": "SalesInvoiceItem_SentMethod",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
-                "constraintName": "SalesInvoiceItem_Product",
+                "constraintName": "SalesInvoiceItem_SentMethod",
                 "columns": "SALESINVOICEITEM_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
+                "referencedTable": "CODBEX_SENTMETHOD",
+                "referencedColumns": "SENTMETHOD_ID"
             },
             {
                 "name": "SalesInvoiceItem_UoM",
@@ -715,13 +735,13 @@
                 "referencedColumns": "PURCHASEINVOICE_ID"
             },
             {
-                "name": "PurchaseInvoiceItem_Product",
+                "name": "PurchaseInvoiceItem_SentMethod",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICEITEM",
-                "constraintName": "PurchaseInvoiceItem_Product",
+                "constraintName": "PurchaseInvoiceItem_SentMethod",
                 "columns": "PURCHASEINVOICEITEM_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
+                "referencedTable": "CODBEX_SENTMETHOD",
+                "referencedColumns": "SENTMETHOD_ID"
             },
             {
                 "name": "PurchaseInvoiceItem_UoM",
