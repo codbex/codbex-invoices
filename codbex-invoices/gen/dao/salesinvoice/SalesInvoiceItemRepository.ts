@@ -8,7 +8,7 @@ export interface SalesInvoiceItemEntity {
     SalesInvoice: number;
     Product: number;
     Quantity: number;
-    UoM?: number;
+    UoM: number;
     Price: number;
     Net: number;
     VAT: number;
@@ -19,7 +19,7 @@ export interface SalesInvoiceItemCreateEntity {
     readonly SalesInvoice: number;
     readonly Product: number;
     readonly Quantity: number;
-    readonly UoM?: number;
+    readonly UoM: number;
     readonly Price: number;
 }
 
@@ -160,6 +160,7 @@ export class SalesInvoiceItemRepository {
                 name: "UoM",
                 column: "SALESINVOICEITEM_UOM",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Price",

@@ -40,7 +40,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICEITEM_UOM"
                     },
                     {
@@ -209,7 +208,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_OPERATOR"
                     },
                     {
@@ -395,7 +393,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_OPERATOR"
                     },
                     {
@@ -478,7 +475,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_UOM"
                     },
                     {

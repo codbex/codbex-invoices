@@ -24,7 +24,7 @@ export interface PurchaseInvoiceEntity {
     PaymentMethod?: number;
     SentMethod?: number;
     PurchaseInvoiceStatus: number;
-    Operator?: number;
+    Operator: number;
     Document?: string;
     Company?: number;
     Name?: string;
@@ -48,7 +48,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
     readonly PurchaseInvoiceStatus: number;
-    readonly Operator?: number;
+    readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
     readonly Reference?: string;
@@ -356,6 +356,7 @@ export class PurchaseInvoiceRepository {
                 name: "Operator",
                 column: "PURCHASEINVOICE_OPERATOR",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Document",

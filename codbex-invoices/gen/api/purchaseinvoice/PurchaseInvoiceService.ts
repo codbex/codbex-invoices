@@ -145,6 +145,9 @@ class PurchaseInvoiceService {
         if (entity.PurchaseInvoiceStatus === null || entity.PurchaseInvoiceStatus === undefined) {
             throw new ValidationError(`The 'PurchaseInvoiceStatus' property is required, provide a valid value`);
         }
+        if (entity.Operator === null || entity.Operator === undefined) {
+            throw new ValidationError(`The 'Operator' property is required, provide a valid value`);
+        }
         if (entity.Document?.length > 200) {
             throw new ValidationError(`The 'Document' exceeds the maximum length of [200] characters`);
         }
