@@ -1,27 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { SalesInvoiceItemRepository, SalesInvoiceItemEntityOptions } from "../../dao/salesinvoice/SalesInvoiceItemRepository";
+import { EmployeeRepository, EmployeeEntityOptions } from "../../dao/Employees/EmployeeRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoiceItem", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-Employees-Employee", ["validate"]);
 
 @Controller
-class SalesInvoiceItemService {
+class EmployeeService {
 
-    private readonly repository = new SalesInvoiceItemRepository();
+    private readonly repository = new EmployeeRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let SalesInvoice = parseInt(ctx.queryParameters.SalesInvoice);
-            SalesInvoice = isNaN(SalesInvoice) ? ctx.queryParameters.SalesInvoice : SalesInvoice;
-            const options: SalesInvoiceItemEntityOptions = {
-                $filter: {
-                    equals: {
-                        SalesInvoice: SalesInvoice
-                    }
-                },
+            const options: EmployeeEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -37,7 +30,7 @@ class SalesInvoiceItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/Employees/EmployeeService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -80,7 +73,7 @@ class SalesInvoiceItemService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("SalesInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("Employee not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -108,7 +101,7 @@ class SalesInvoiceItemService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("SalesInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("Employee not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -126,17 +119,23 @@ class SalesInvoiceItemService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.SalesInvoice === null || entity.SalesInvoice === undefined) {
-            throw new ValidationError(`The 'SalesInvoice' property is required, provide a valid value`);
+        if (entity.FirstName?.length > 50) {
+            throw new ValidationError(`The 'FirstName' exceeds the maximum length of [50] characters`);
         }
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
+        if (entity.MiddleName?.length > 50) {
+            throw new ValidationError(`The 'MiddleName' exceeds the maximum length of [50] characters`);
         }
-        if (entity.Quantity === null || entity.Quantity === undefined) {
-            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
+        if (entity.LastName?.length > 50) {
+            throw new ValidationError(`The 'LastName' exceeds the maximum length of [50] characters`);
         }
-        if (entity.Price === null || entity.Price === undefined) {
-            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        if (entity.Email?.length > 100) {
+            throw new ValidationError(`The 'Email' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Phone?.length > 20) {
+            throw new ValidationError(`The 'Phone' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.Name?.length > 150) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [150] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

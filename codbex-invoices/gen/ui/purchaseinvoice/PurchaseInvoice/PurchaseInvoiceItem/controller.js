@@ -208,7 +208,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-methods/gen/api/Methods/SentMethodService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-products/gen/api/Products/ProductService.ts").then(function (response) {
 			$scope.optionsProduct = response.data.map(e => {
 				return {
 					value: e.Id,
