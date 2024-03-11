@@ -1,5 +1,5 @@
 {
     "module": "codbex-invoices/events/PurchaseInvoiceItem/PurchaseInvoiceItemHandler.ts",
-    "extensionPoint": "codbex-invoices/purchaseinvoice/PurchaseInvoiceItem",
+    "extensionPoint": "codbex-invoices-purchaseinvoice-PurchaseInvoiceItem",
     "description": "PurchaseInvoiceItem Extension"
 }

@@ -44,6 +44,12 @@
             "branch": "main"
         },
         {
+            "guid": "codbex-products",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-products.git",
+            "branch": "main"
+        },
+        {
             "guid": "codbex-number-generator",
             "type": "git",
             "url": "https://github.com/codbex/codbex-number-generator.git",
