@@ -184,6 +184,6 @@ export class PurchaseInvoiceStatusRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices/settings/PurchaseInvoiceStatus").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-settings-PurchaseInvoiceStatus").send(JSON.stringify(data));
     }
 }

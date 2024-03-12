@@ -296,6 +296,6 @@ export class PurchaseInvoiceItemRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices/purchaseinvoice/PurchaseInvoiceItem").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-purchaseinvoice-PurchaseInvoiceItem").send(JSON.stringify(data));
     }
 }

@@ -497,6 +497,6 @@ export class SalesInvoiceRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices/salesinvoice/SalesInvoice").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-salesinvoice-SalesInvoice").send(JSON.stringify(data));
     }
 }

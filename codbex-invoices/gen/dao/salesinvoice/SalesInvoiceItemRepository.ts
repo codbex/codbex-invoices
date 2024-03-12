@@ -300,6 +300,6 @@ export class SalesInvoiceItemRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices/salesinvoice/SalesInvoiceItem").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-salesinvoice-SalesInvoiceItem").send(JSON.stringify(data));
     }
 }
