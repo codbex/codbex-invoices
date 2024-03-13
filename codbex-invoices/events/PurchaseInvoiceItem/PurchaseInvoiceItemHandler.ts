@@ -17,6 +17,7 @@ export const trigger = (event) => {
     let net = 0;
     let vat = 0;
     let gross = 0;
+    let total = 0;
 
     for (let i = 0; i < items.length; i++) {
         if (items[i].Net) {
@@ -29,8 +30,8 @@ export const trigger = (event) => {
     const header = PurchaseInvoiceDao.findById(item.PurchaseInvoice);
 
     header.Total ??= 0;
-    header.Net = net * 100;
-    header.VAT = vat * 100;
+    header.Net = net;
+    header.VAT = vat;
     header.Gross = gross;
 
     total = header.Gross - (header.Gross * header.Discount / 100) + (header.Gross * header.Taxes / 100) + header.VAT;
