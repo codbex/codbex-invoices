@@ -142,6 +142,12 @@ class PurchaseInvoiceService {
         if (entity.Conditions?.length > 200) {
             throw new ValidationError(`The 'Conditions' exceeds the maximum length of [200] characters`);
         }
+        if (entity.PaymentMethod === null || entity.PaymentMethod === undefined) {
+            throw new ValidationError(`The 'PaymentMethod' property is required, provide a valid value`);
+        }
+        if (entity.SentMethod === null || entity.SentMethod === undefined) {
+            throw new ValidationError(`The 'SentMethod' property is required, provide a valid value`);
+        }
         if (entity.PurchaseInvoiceStatus === null || entity.PurchaseInvoiceStatus === undefined) {
             throw new ValidationError(`The 'PurchaseInvoiceStatus' property is required, provide a valid value`);
         }

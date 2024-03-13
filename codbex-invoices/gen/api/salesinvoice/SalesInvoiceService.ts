@@ -139,6 +139,12 @@ class SalesInvoiceService {
         if (entity.Conditions?.length > 200) {
             throw new ValidationError(`The 'Conditions' exceeds the maximum length of [200] characters`);
         }
+        if (entity.PaymentMethod === null || entity.PaymentMethod === undefined) {
+            throw new ValidationError(`The 'PaymentMethod' property is required, provide a valid value`);
+        }
+        if (entity.SentMethod === null || entity.SentMethod === undefined) {
+            throw new ValidationError(`The 'SentMethod' property is required, provide a valid value`);
+        }
         if (entity.SalesInvoiceStatus === null || entity.SalesInvoiceStatus === undefined) {
             throw new ValidationError(`The 'SalesInvoiceStatus' property is required, provide a valid value`);
         }

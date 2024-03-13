@@ -20,8 +20,8 @@ export interface SalesInvoiceEntity {
     VAT?: number;
     Total?: number;
     Conditions?: string;
-    PaymentMethod?: number;
-    SentMethod?: number;
+    PaymentMethod: number;
+    SentMethod: number;
     SalesInvoiceStatus: number;
     Operator: number;
     Document?: string;
@@ -43,8 +43,8 @@ export interface SalesInvoiceCreateEntity {
     readonly VAT?: number;
     readonly Total?: number;
     readonly Conditions?: string;
-    readonly PaymentMethod?: number;
-    readonly SentMethod?: number;
+    readonly PaymentMethod: number;
+    readonly SentMethod: number;
     readonly SalesInvoiceStatus: number;
     readonly Operator: number;
     readonly Document?: string;
@@ -326,11 +326,13 @@ export class SalesInvoiceRepository {
                 name: "PaymentMethod",
                 column: "SALESINVOICE_PAYMENTMETHOD",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "SentMethod",
                 column: "SALESINVOICE_SENTMETHOD",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "SalesInvoiceStatus",

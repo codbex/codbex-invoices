@@ -185,7 +185,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_PAYMENTMETHOD"
                     },
                     {
@@ -193,7 +192,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SALESINVOICE_SENTMETHOD"
                     },
                     {
@@ -370,7 +368,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_PAYMENTMETHOD"
                     },
                     {
@@ -378,7 +375,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_SENTMETHOD"
                     },
                     {
