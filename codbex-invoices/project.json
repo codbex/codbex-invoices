@@ -50,6 +50,12 @@
             "branch": "main"
         },
         {
+            "guid": "codbex-payments",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-payments.git",
+            "branch": "main"
+        },
+        {
             "guid": "codbex-number-generator",
             "type": "git",
             "url": "https://github.com/codbex/codbex-number-generator.git",

@@ -6,14 +6,14 @@ import { dao as daoApi } from "sdk/db";
 export interface PurchaseInvoicePaymentEntity {
     readonly Id: number;
     PurchaseInvoice?: number;
-    SupplierPayment?: number;
-    Amount?: number;
+    SupplierPayment: number;
+    Amount: number;
 }
 
 export interface PurchaseInvoicePaymentCreateEntity {
     readonly PurchaseInvoice?: number;
-    readonly SupplierPayment?: number;
-    readonly Amount?: number;
+    readonly SupplierPayment: number;
+    readonly Amount: number;
 }
 
 export interface PurchaseInvoicePaymentUpdateEntity extends PurchaseInvoicePaymentCreateEntity {
@@ -104,11 +104,13 @@ export class PurchaseInvoicePaymentRepository {
                 name: "SupplierPayment",
                 column: "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Amount",
                 column: "PURCHASEINVOICEPAYMENT_AMOUNT",
                 type: "DECIMAL",
+                required: true
             }
         ]
     };
@@ -204,7 +206,7 @@ export class PurchaseInvoicePaymentRepository {
     }
 
     private async triggerEvent(data: PurchaseInvoicePaymentEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-entities-PurchaseInvoicePayment", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoicePayment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -212,6 +214,6 @@ export class PurchaseInvoicePaymentRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices-entities-PurchaseInvoicePayment").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-purchaseinvoice-PurchaseInvoicePayment").send(JSON.stringify(data));
     }
 }

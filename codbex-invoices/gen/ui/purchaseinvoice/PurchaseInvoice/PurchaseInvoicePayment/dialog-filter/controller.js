@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoicePayment';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoicePaymentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/purchaseinvoice/PurchaseInvoicePaymentService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
@@ -19,8 +19,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = params.entity ?? {};
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
-				$scope.optionsCustomerPayment = params.optionsCustomerPayment;
+				$scope.optionsPurchaseInvoice = params.optionsPurchaseInvoice;
+				$scope.optionsSupplierPayment = params.optionsSupplierPayment;
 			}
 		}
 
@@ -47,11 +47,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Id) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.SalesInvoice) {
-				filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
+			if (entity.PurchaseInvoice) {
+				filter.$filter.equals.PurchaseInvoice = entity.PurchaseInvoice;
 			}
-			if (entity.CustomerPayment) {
-				filter.$filter.equals.CustomerPayment = entity.CustomerPayment;
+			if (entity.SupplierPayment) {
+				filter.$filter.equals.SupplierPayment = entity.SupplierPayment;
 			}
 			if (entity.Amount) {
 				filter.$filter.equals.Amount = entity.Amount;
@@ -69,7 +69,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("SalesInvoicePayment-filter");
+			messageHub.closeDialogWindow("PurchaseInvoicePayment-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

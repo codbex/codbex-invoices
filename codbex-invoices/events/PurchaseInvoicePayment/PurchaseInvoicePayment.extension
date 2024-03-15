@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/events/PurchaseInvoicePayment/PurchaseInvoicePaymentHandler.ts",
+    "extensionPoint": "codbex-invoices-purchaseinvoice-PurchaseInvoicePayment",
+    "description": "PurchaseInvoicePayment Extension"
+}

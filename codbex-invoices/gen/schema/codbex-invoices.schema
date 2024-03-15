@@ -40,6 +40,7 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
+                        "nullable": true,
                         "name": "SALESINVOICEITEM_UOM"
                     },
                     {
@@ -171,6 +172,15 @@
                         "defaultValue": "0",
                         "nullable": true,
                         "name": "SALESINVOICE_TOTAL"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 20,
+                        "precision": "16",
+                        "scale": "2",
+                        "defaultValue": "0",
+                        "nullable": true,
+                        "name": "SALESINVOICE_PAID"
                     },
                     {
                         "type": "VARCHAR",
@@ -356,6 +366,15 @@
                         "name": "PURCHASEINVOICE_TOTAL"
                     },
                     {
+                        "type": "DECIMAL",
+                        "length": 20,
+                        "precision": "16",
+                        "scale": "2",
+                        "defaultValue": "0",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_PAID"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 200,
                         "precision": "NaN",
@@ -471,6 +490,7 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
+                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_UOM"
                     },
                     {
@@ -569,7 +589,8 @@
                     {
                         "type": "INTEGER",
                         "length": 0,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "SALESINVOICEPAYMENT_CUSTOMERPAYMENT"
                     },
                     {
@@ -577,244 +598,7 @@
                         "length": 20,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "SALESINVOICEPAYMENT_AMOUNT"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_CUSTOMERPAYMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_ID"
-                    },
-                    {
-                        "type": "DATE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_DATE"
-                    },
-                    {
-                        "type": "DATE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_VALOR"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 22,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COMPANYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 22,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COUNTERPARTYNAME"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 20,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_AMOUNT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_CURRENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_REASON"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COMPANY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_UUID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_REFERENCE"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_SUPPLIERPAYMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_ID"
-                    },
-                    {
-                        "type": "DATE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_DATE"
-                    },
-                    {
-                        "type": "DATE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_VALOR"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 22,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COMPANYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 22,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COUNTERPARTYNAME"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 20,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_AMOUNT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_CURRENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_REASON"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COMPANY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_UUID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_REFERENCE"
                     }
                 ]
             },
@@ -843,7 +627,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT"
                     },
                     {
@@ -851,7 +634,6 @@
                         "length": 20,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEPAYMENT_AMOUNT"
                     }
                 ]

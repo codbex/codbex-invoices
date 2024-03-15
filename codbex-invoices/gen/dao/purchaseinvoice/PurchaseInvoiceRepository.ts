@@ -20,6 +20,7 @@ export interface PurchaseInvoiceEntity {
     Taxes?: number;
     VAT?: number;
     Total?: number;
+    Paid?: number;
     Conditions?: string;
     PaymentMethod: number;
     SentMethod: number;
@@ -44,6 +45,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Taxes?: number;
     readonly VAT?: number;
     readonly Total?: number;
+    readonly Paid?: number;
     readonly Conditions?: string;
     readonly PaymentMethod: number;
     readonly SentMethod: number;
@@ -74,6 +76,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
+            Paid?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
@@ -99,6 +102,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
+            Paid?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
@@ -124,6 +128,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -149,6 +154,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -174,6 +180,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -199,6 +206,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -224,6 +232,7 @@ export interface PurchaseInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -332,6 +341,11 @@ export class PurchaseInvoiceRepository {
                 type: "DECIMAL",
             },
             {
+                name: "Paid",
+                column: "PURCHASEINVOICE_PAID",
+                type: "DECIMAL",
+            },
+            {
                 name: "Conditions",
                 column: "PURCHASEINVOICE_CONDITIONS",
                 type: "VARCHAR",
@@ -426,6 +440,9 @@ export class PurchaseInvoiceRepository {
         }
         if (!entity.Total) {
             entity.Total = "0";
+        }
+        if (!entity.Paid) {
+            entity.Paid = "0";
         }
         const id = this.dao.insert(entity);
         this.triggerEvent({

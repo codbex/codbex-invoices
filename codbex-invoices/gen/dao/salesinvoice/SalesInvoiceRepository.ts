@@ -19,6 +19,7 @@ export interface SalesInvoiceEntity {
     Taxes?: number;
     VAT?: number;
     Total?: number;
+    Paid?: number;
     Conditions?: string;
     PaymentMethod: number;
     SentMethod: number;
@@ -42,6 +43,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Taxes?: number;
     readonly VAT?: number;
     readonly Total?: number;
+    readonly Paid?: number;
     readonly Conditions?: string;
     readonly PaymentMethod: number;
     readonly SentMethod: number;
@@ -71,6 +73,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
+            Paid?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
@@ -95,6 +98,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number | number[];
             VAT?: number | number[];
             Total?: number | number[];
+            Paid?: number | number[];
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
@@ -119,6 +123,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -143,6 +148,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -167,6 +173,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -191,6 +198,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -215,6 +223,7 @@ export interface SalesInvoiceEntityOptions {
             Taxes?: number;
             VAT?: number;
             Total?: number;
+            Paid?: number;
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
@@ -318,6 +327,11 @@ export class SalesInvoiceRepository {
                 type: "DECIMAL",
             },
             {
+                name: "Paid",
+                column: "SALESINVOICE_PAID",
+                type: "DECIMAL",
+            },
+            {
                 name: "Conditions",
                 column: "SALESINVOICE_CONDITIONS",
                 type: "VARCHAR",
@@ -413,6 +427,9 @@ export class SalesInvoiceRepository {
         }
         if (!entity.Total) {
             entity.Total = "0";
+        }
+        if (!entity.Paid) {
+            entity.Paid = "0";
         }
         const id = this.dao.insert(entity);
         this.triggerEvent({
