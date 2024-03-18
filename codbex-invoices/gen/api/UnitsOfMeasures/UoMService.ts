@@ -1,27 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PurchaseInvoiceItemRepository, PurchaseInvoiceItemEntityOptions } from "../../dao/purchaseinvoice/PurchaseInvoiceItemRepository";
+import { UoMRepository, UoMEntityOptions } from "../../dao/UnitsOfMeasures/UoMRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoiceItem", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-UnitsOfMeasures-UoM", ["validate"]);
 
 @Controller
-class PurchaseInvoiceItemService {
+class UoMService {
 
-    private readonly repository = new PurchaseInvoiceItemRepository();
+    private readonly repository = new UoMRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
-            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
-            const options: PurchaseInvoiceItemEntityOptions = {
-                $filter: {
-                    equals: {
-                        PurchaseInvoice: PurchaseInvoice
-                    }
-                },
+            const options: UoMEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -37,7 +30,7 @@ class PurchaseInvoiceItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/purchaseinvoice/PurchaseInvoiceItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/api/UnitsOfMeasures/UoMService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -75,12 +68,12 @@ class PurchaseInvoiceItemService {
     @Get("/:id")
     public getById(_: any, ctx: any) {
         try {
-            const id = parseInt(ctx.pathParameters.id);
+            const id = ctx.pathParameters.id;
             const entity = this.repository.findById(id);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("UoM not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -108,7 +101,7 @@ class PurchaseInvoiceItemService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("UoM not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -126,20 +119,20 @@ class PurchaseInvoiceItemService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
+        if (entity.Id?.length > 20) {
+            throw new ValidationError(`The 'Id' exceeds the maximum length of [20] characters`);
         }
-        if (entity.Quantity === null || entity.Quantity === undefined) {
-            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
+        if (entity.Name?.length > 100) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
         }
-        if (entity.UoM === null || entity.UoM === undefined) {
-            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
+        if (entity.ISO?.length > 20) {
+            throw new ValidationError(`The 'ISO' exceeds the maximum length of [20] characters`);
         }
-        if (entity.UoM?.length > 20) {
-            throw new ValidationError(`The 'UoM' exceeds the maximum length of [20] characters`);
+        if (entity.SAP?.length > 20) {
+            throw new ValidationError(`The 'SAP' exceeds the maximum length of [20] characters`);
         }
-        if (entity.Price === null || entity.Price === undefined) {
-            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        if (entity.Dimension?.length > 50) {
+            throw new ValidationError(`The 'Dimension' exceeds the maximum length of [50] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -56,6 +56,12 @@
             "branch": "main"
         },
         {
+            "guid": "codbex-cities",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-cities.git",
+            "branch": "main"
+        },
+        {
             "guid": "codbex-number-generator",
             "type": "git",
             "url": "https://github.com/codbex/codbex-number-generator.git",
