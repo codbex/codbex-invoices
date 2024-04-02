@@ -404,7 +404,7 @@ export class PurchaseInvoiceRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(PurchaseInvoiceRepository.DEFINITION, null, dataSource);
     }
 
@@ -432,17 +432,17 @@ export class PurchaseInvoiceRepository {
         (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).UUID = require("sdk/utils/uuid").random();
-        if (!entity.Discount) {
-            entity.Discount = "0";
+        if (entity.Discount === undefined || entity.Discount === null) {
+            (entity as PurchaseInvoiceEntity).Discount = 0;
         }
-        if (!entity.Taxes) {
-            entity.Taxes = "0";
+        if (entity.Taxes === undefined || entity.Taxes === null) {
+            (entity as PurchaseInvoiceEntity).Taxes = 0;
         }
-        if (!entity.Total) {
-            entity.Total = "0";
+        if (entity.Total === undefined || entity.Total === null) {
+            (entity as PurchaseInvoiceEntity).Total = 0;
         }
-        if (!entity.Paid) {
-            entity.Paid = "0";
+        if (entity.Paid === undefined || entity.Paid === null) {
+            (entity as PurchaseInvoiceEntity).Paid = 0;
         }
         const id = this.dao.insert(entity);
         this.triggerEvent({

@@ -8,7 +8,7 @@ export interface PurchaseInvoiceItemEntity {
     PurchaseInvoice: number;
     Product: number;
     Quantity: number;
-    UoM: string;
+    UoM: number;
     Price: number;
     Net?: number;
     VAT?: number;
@@ -19,7 +19,7 @@ export interface PurchaseInvoiceItemCreateEntity {
     readonly PurchaseInvoice: number;
     readonly Product: number;
     readonly Quantity: number;
-    readonly UoM: string;
+    readonly UoM: number;
     readonly Price: number;
 }
 
@@ -34,7 +34,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number | number[];
             Product?: number | number[];
             Quantity?: number | number[];
-            UoM?: string | string[];
+            UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
             VAT?: number | number[];
@@ -45,7 +45,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number | number[];
             Product?: number | number[];
             Quantity?: number | number[];
-            UoM?: string | string[];
+            UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
             VAT?: number | number[];
@@ -56,7 +56,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number;
             Product?: number;
             Quantity?: number;
-            UoM?: string;
+            UoM?: number;
             Price?: number;
             Net?: number;
             VAT?: number;
@@ -67,7 +67,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number;
             Product?: number;
             Quantity?: number;
-            UoM?: string;
+            UoM?: number;
             Price?: number;
             Net?: number;
             VAT?: number;
@@ -78,7 +78,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number;
             Product?: number;
             Quantity?: number;
-            UoM?: string;
+            UoM?: number;
             Price?: number;
             Net?: number;
             VAT?: number;
@@ -89,7 +89,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number;
             Product?: number;
             Quantity?: number;
-            UoM?: string;
+            UoM?: number;
             Price?: number;
             Net?: number;
             VAT?: number;
@@ -100,7 +100,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             PurchaseInvoice?: number;
             Product?: number;
             Quantity?: number;
-            UoM?: string;
+            UoM?: number;
             Price?: number;
             Net?: number;
             VAT?: number;
@@ -158,7 +158,7 @@ export class PurchaseInvoiceItemRepository {
             {
                 name: "UoM",
                 column: "PURCHASEINVOICEITEM_UOM",
-                type: "VARCHAR",
+                type: "INTEGER",
                 required: true
             },
             {
@@ -187,7 +187,7 @@ export class PurchaseInvoiceItemRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(PurchaseInvoiceItemRepository.DEFINITION, null, dataSource);
     }
 

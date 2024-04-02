@@ -1,1 +1,5 @@
-{"module":"codbex-invoices/gen/ui/launchpad/menu-help.js","extensionPoint":"codbex-invoices-menu","description":"codbex-invoices - Application Menu"}
+{
+    "module": "codbex-invoices/gen/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-invoices-menu",
+    "description": "codbex-invoices - Application Menu"
+}
