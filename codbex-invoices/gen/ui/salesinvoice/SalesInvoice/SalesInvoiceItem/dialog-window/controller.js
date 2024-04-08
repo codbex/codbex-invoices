@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceItemService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -18,19 +18,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 		$scope.action = 'select';
 
-		if (window != null && window.frameElement != null && window.frameElement.hasAttribute("data-parameters")) {
-			let dataParameters = window.frameElement.getAttribute("data-parameters");
-			if (dataParameters) {
-				let params = JSON.parse(dataParameters);
-				$scope.action = params.action;
-
-				$scope.entity = params.entity;
-				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
-				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsSalesInvoice = params.optionsSalesInvoice;
-				$scope.optionsProduct = params.optionsProduct;
-				$scope.optionsUoM = params.optionsUoM;
-			}
+		let params = ViewParameters.get();
+		if (Object.keys(params).length) {
+			$scope.action = params.action;
+			$scope.entity = params.entity;
+			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsSalesInvoice = params.optionsSalesInvoice;
+			$scope.optionsProduct = params.optionsProduct;
+			$scope.optionsUoM = params.optionsUoM;
 		}
 
 		$scope.create = function () {

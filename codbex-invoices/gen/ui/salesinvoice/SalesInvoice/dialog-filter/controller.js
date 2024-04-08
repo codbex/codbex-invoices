@@ -1,44 +1,38 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
+angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
 		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoice';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/api/salesinvoice/SalesInvoiceService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 
-		if (window != null && window.frameElement != null && window.frameElement.hasAttribute("data-parameters")) {
-			let dataParameters = window.frameElement.getAttribute("data-parameters");
-			if (dataParameters) {
-				let params = JSON.parse(dataParameters);
-				if (params?.entity?.DateFrom) {
-					params.entity.DateFrom = new Date(params.entity.DateFrom);
-				}
-				if (params?.entity?.DateTo) {
-					params.entity.DateTo = new Date(params.entity.DateTo);
-				}
-				if (params?.entity?.DueFrom) {
-					params.entity.DueFrom = new Date(params.entity.DueFrom);
-				}
-				if (params?.entity?.DueTo) {
-					params.entity.DueTo = new Date(params.entity.DueTo);
-				}
-				$scope.entity = params.entity ?? {};
-				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
-				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsCustomer = params.optionsCustomer;
-				$scope.optionsCurrency = params.optionsCurrency;
-				$scope.optionsPaymentMethod = params.optionsPaymentMethod;
-				$scope.optionsSentMethod = params.optionsSentMethod;
-				$scope.optionsSalesInvoiceStatus = params.optionsSalesInvoiceStatus;
-				$scope.optionsOperator = params.optionsOperator;
-				$scope.optionsCompany = params.optionsCompany;
+		let params = ViewParameters.get();
+		if (Object.keys(params).length) {
+			if (params?.entity?.DateFrom) {
+				params.entity.DateFrom = new Date(params.entity.DateFrom);
 			}
+			if (params?.entity?.DateTo) {
+				params.entity.DateTo = new Date(params.entity.DateTo);
+			}
+			if (params?.entity?.DueFrom) {
+				params.entity.DueFrom = new Date(params.entity.DueFrom);
+			}
+			if (params?.entity?.DueTo) {
+				params.entity.DueTo = new Date(params.entity.DueTo);
+			}
+			$scope.entity = params.entity ?? {};
+			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsCustomer = params.optionsCustomer;
+			$scope.optionsCurrency = params.optionsCurrency;
+			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
+			$scope.optionsSentMethod = params.optionsSentMethod;
+			$scope.optionsSalesInvoiceStatus = params.optionsSalesInvoiceStatus;
+			$scope.optionsOperator = params.optionsOperator;
+			$scope.optionsCompany = params.optionsCompany;
 		}
 
 		$scope.filter = function () {

@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: "salesinvoice",
-	name: "salesinvoice",
-	link: "/services/web/codbex-invoices/gen/ui/salesinvoice/index.html",
-	order: "600",
-	icon: "/services/web/resources/unicons/invoice.svg",
+	id: 'salesinvoice',
+	name: 'salesinvoice',
+	link: '/services/web/codbex-invoices/gen/ui/salesinvoice/index.html',
+	order: 600,
+	icon: '/services/web/resources/unicons/invoice.svg',
 };
 
 if (typeof exports !== 'undefined') {
