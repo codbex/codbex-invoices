@@ -14,6 +14,8 @@
 
 #### Management
 
-![model](images/invoices-management.png)
+![model](images/invoices-sales-invoices.png)
 
-![model](images/invoices-invoice-type.png)
+![model](images/invoices-purchase-invoices.png)
+
+![model](images/invoices-statuses.png)
