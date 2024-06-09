@@ -5,7 +5,7 @@
  */
 const perspectiveData = {
 	id: 'purchaseinvoice',
-	name: 'purchaseinvoice',
+	name: '${perspectiveLabel}',
 	link: '/services/web/codbex-invoices/gen/ui/purchaseinvoice/index.html',
 	order: 610,
 	icon: '/services/web/resources/unicons/receipt.svg',

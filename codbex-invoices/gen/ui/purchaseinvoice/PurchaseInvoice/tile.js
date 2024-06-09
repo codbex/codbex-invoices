@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "purchaseinvoice",
+        group: "codbex-invoices",
         name: "PurchaseInvoice",
         caption: "Manage entity PurchaseInvoice",
         tooltip: "PurchaseInvoice",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "${generateReport}",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-invoices/gen/ui/purchaseinvoice/index.html",
         order: "100",
         groupOrder: "610",

@@ -5,7 +5,7 @@
  */
 const perspectiveData = {
 	id: 'settings',
-	name: 'settings',
+	name: '${perspectiveLabel}',
 	link: '/services/web/codbex-invoices/gen/ui/settings/index.html',
 	order: 999,
 	icon: '/services/web/resources/unicons/wrench.svg',

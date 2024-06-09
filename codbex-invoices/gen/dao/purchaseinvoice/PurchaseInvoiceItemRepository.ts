@@ -125,6 +125,10 @@ interface PurchaseInvoiceItemEntityEvent {
     }
 }
 
+interface PurchaseInvoiceItemUpdateEntityEvent extends PurchaseInvoiceItemEntityEvent {
+    readonly previousEntity: PurchaseInvoiceItemEntity;
+}
+
 export class PurchaseInvoiceItemRepository {
 
     private static readonly DEFINITION = {
@@ -228,11 +232,13 @@ export class PurchaseInvoiceItemRepository {
         (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_PURCHASEINVOICEITEM",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "PURCHASEINVOICEITEM_ID",
@@ -287,7 +293,7 @@ export class PurchaseInvoiceItemRepository {
         return 0;
     }
 
-    private async triggerEvent(data: PurchaseInvoiceItemEntityEvent) {
+    private async triggerEvent(data: PurchaseInvoiceItemEntityEvent | PurchaseInvoiceItemUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoiceItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

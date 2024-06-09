@@ -65,6 +65,10 @@ interface SalesInvoiceStatusEntityEvent {
     }
 }
 
+interface SalesInvoiceStatusUpdateEntityEvent extends SalesInvoiceStatusEntityEvent {
+    readonly previousEntity: SalesInvoiceStatusEntity;
+}
+
 export class SalesInvoiceStatusRepository {
 
     private static readonly DEFINITION = {
@@ -116,11 +120,13 @@ export class SalesInvoiceStatusRepository {
     }
 
     public update(entity: SalesInvoiceStatusUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_SALESINVOICESTATUS",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "SALESINVOICESTATUS_ID",
@@ -175,7 +181,7 @@ export class SalesInvoiceStatusRepository {
         return 0;
     }
 
-    private async triggerEvent(data: SalesInvoiceStatusEntityEvent) {
+    private async triggerEvent(data: SalesInvoiceStatusEntityEvent | SalesInvoiceStatusUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

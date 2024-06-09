@@ -48,7 +48,8 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice"
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -73,7 +74,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoiceItem_Product",
                         "relationshipEntityName": "Product",
-                        "relationshipEntityPerspectiveName": "Products"
+                        "relationshipEntityPerspectiveName": "Products",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -118,7 +120,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoiceItem_UoM",
                         "relationshipEntityName": "UoM",
-                        "relationshipEntityPerspectiveName": "UnitsOfMeasures"
+                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -205,7 +208,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}_SALESINVOICEITEM\"",
                 "dataName": "SALESINVOICEITEM",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
@@ -214,6 +217,7 @@
                 "name": "SalesInvoiceItem",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
                 "perspectiveName": "salesinvoice",
                 "perspectiveOrder": "600",
                 "perspectiveRole": "",
@@ -326,7 +330,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_Customer",
                         "relationshipEntityName": "Customer",
-                        "relationshipEntityPerspectiveName": "Customers"
+                        "relationshipEntityPerspectiveName": "Customers",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -371,7 +376,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -540,7 +546,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
-                        "relationshipEntityPerspectiveName": "Methods"
+                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -565,7 +572,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
-                        "relationshipEntityPerspectiveName": "Methods"
+                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -590,7 +598,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_SalesInvoiceStatus",
                         "relationshipEntityName": "SalesInvoiceStatus",
-                        "relationshipEntityPerspectiveName": "settings"
+                        "relationshipEntityPerspectiveName": "settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -615,7 +624,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_Employee",
                         "relationshipEntityName": "Employee",
-                        "relationshipEntityPerspectiveName": "Employees"
+                        "relationshipEntityPerspectiveName": "Employees",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -660,7 +670,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
@@ -727,7 +738,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}_SALESINVOICE\"",
                 "dataName": "SALESINVOICE",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE_MASTER",
@@ -737,6 +748,7 @@
                 "name": "SalesInvoice",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
                 "perspectiveName": "salesinvoice",
                 "perspectiveOrder": "600",
                 "perspectiveRole": "",
@@ -867,7 +879,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_Supplier",
                         "relationshipEntityName": "Supplier",
-                        "relationshipEntityPerspectiveName": "Suppliers"
+                        "relationshipEntityPerspectiveName": "Suppliers",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -912,7 +925,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1081,7 +1095,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
-                        "relationshipEntityPerspectiveName": "Methods"
+                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1106,7 +1121,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
-                        "relationshipEntityPerspectiveName": "Methods"
+                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1131,7 +1147,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_PurchaseInvoiceStatus",
                         "relationshipEntityName": "PurchaseInvoiceStatus",
-                        "relationshipEntityPerspectiveName": "settings"
+                        "relationshipEntityPerspectiveName": "settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1156,7 +1173,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_Employee",
                         "relationshipEntityName": "Employee",
-                        "relationshipEntityPerspectiveName": "Employees"
+                        "relationshipEntityPerspectiveName": "Employees",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1201,7 +1219,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoice_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
@@ -1268,7 +1287,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}_PURCHASEINVOICE\"",
                 "dataName": "PURCHASEINVOICE",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE_MASTER",
@@ -1278,6 +1297,7 @@
                 "name": "PurchaseInvoice",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
+                "perspectiveLabel": "Purchase Invoice",
                 "perspectiveName": "purchaseinvoice",
                 "perspectiveOrder": "610",
                 "perspectiveRole": "",
@@ -1330,7 +1350,8 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "PurchaseInvoice",
-                        "relationshipEntityPerspectiveName": "purchaseinvoice"
+                        "relationshipEntityPerspectiveName": "purchaseinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1355,7 +1376,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoiceItem_Product",
                         "relationshipEntityName": "Product",
-                        "relationshipEntityPerspectiveName": "Products"
+                        "relationshipEntityPerspectiveName": "Products",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1400,7 +1422,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoiceItem_UoM",
                         "relationshipEntityName": "UoM",
-                        "relationshipEntityPerspectiveName": "UnitsOfMeasures"
+                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1487,7 +1510,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}_PURCHASEINVOICEITEM\"",
                 "dataName": "PURCHASEINVOICEITEM",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
@@ -1496,6 +1519,7 @@
                 "name": "PurchaseInvoiceItem",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
+                "perspectiveLabel": "Purchase Invoice",
                 "perspectiveName": "purchaseinvoice",
                 "perspectiveOrder": "610",
                 "perspectiveRole": "",
@@ -1546,7 +1570,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESINVOICESTATUS\"",
                 "dataName": "SALESINVOICESTATUS",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1555,6 +1579,7 @@
                 "name": "SalesInvoiceStatus",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "settings",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
@@ -1605,7 +1630,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PURCHASEINVOICESTATUS\"",
                 "dataName": "PURCHASEINVOICESTATUS",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1614,6 +1639,7 @@
                 "name": "PurchaseInvoiceStatus",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "settings",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
@@ -1998,7 +2024,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PRODUCT\"",
                 "dataName": "PRODUCT",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2007,6 +2033,7 @@
                 "name": "Product",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Products",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -2059,7 +2086,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTMETHOD\"",
                 "dataName": "PAYMENTMETHOD",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2068,6 +2095,7 @@
                 "name": "PaymentMethod",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Methods",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -2124,7 +2152,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SENTMETHOD\"",
                 "dataName": "SENTMETHOD",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2133,6 +2161,7 @@
                 "name": "SentMethod",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Methods",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -2377,7 +2406,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CUSTOMER\"",
                 "dataName": "CUSTOMER",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2386,6 +2415,7 @@
                 "name": "Customer",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/user-plus.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Customers",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -2630,7 +2660,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SUPPLIER\"",
                 "dataName": "SUPPLIER",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2639,6 +2669,7 @@
                 "name": "Supplier",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/user-minus.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Suppliers",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -2881,7 +2912,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COMPANY\"",
                 "dataName": "COMPANY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -2890,6 +2921,7 @@
                 "name": "Company",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Companies",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -3044,7 +3076,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CURRENCY\"",
                 "dataName": "CURRENCY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -3053,6 +3085,7 @@
                 "name": "Currency",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/dollar-alt.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Currencies",
                 "perspectiveOrder": "990",
                 "perspectiveRole": "",
@@ -3243,7 +3276,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}EMPLOYEE\"",
                 "dataName": "EMPLOYEE",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -3252,6 +3285,7 @@
                 "name": "Employee",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Employees",
                 "perspectiveOrder": "101",
                 "perspectiveRole": "",
@@ -3306,7 +3340,8 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice"
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -3331,7 +3366,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoicePayment_CustomerPayment",
                         "relationshipEntityName": "CustomerPayment",
-                        "relationshipEntityPerspectiveName": "CustomerPayment"
+                        "relationshipEntityPerspectiveName": "CustomerPayment",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -3361,7 +3397,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESINVOICEPAYMENT\"",
                 "dataName": "SALESINVOICEPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
@@ -3370,6 +3406,7 @@
                 "name": "SalesInvoicePayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
                 "perspectiveName": "salesinvoice",
                 "perspectiveOrder": "600",
                 "perspectiveRole": "",
@@ -3670,7 +3707,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CUSTOMERPAYMENT\"",
                 "dataName": "CUSTOMERPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -3679,6 +3716,7 @@
                 "name": "CustomerPayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "CustomerPayment",
                 "perspectiveOrder": "10",
                 "perspectiveRole": "",
@@ -3981,7 +4019,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SUPPLIERPAYMENT\"",
                 "dataName": "SUPPLIERPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -3990,6 +4028,7 @@
                 "name": "SupplierPayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/box.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "SupplierPayment",
                 "perspectiveOrder": "20",
                 "perspectiveRole": "",
@@ -4044,7 +4083,8 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "PurchaseInvoice",
-                        "relationshipEntityPerspectiveName": "purchaseinvoice"
+                        "relationshipEntityPerspectiveName": "purchaseinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -4069,7 +4109,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PurchaseInvoicePayment_SupplierPayment",
                         "relationshipEntityName": "SupplierPayment",
-                        "relationshipEntityPerspectiveName": "SupplierPayment"
+                        "relationshipEntityPerspectiveName": "SupplierPayment",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -4099,7 +4140,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PURCHASEINVOICEPAYMENT\"",
                 "dataName": "PURCHASEINVOICEPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
@@ -4108,6 +4149,7 @@
                 "name": "PurchaseInvoicePayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
+                "perspectiveLabel": "Purchase Invoice",
                 "perspectiveName": "purchaseinvoice",
                 "perspectiveOrder": "610",
                 "perspectiveRole": "",
@@ -4302,7 +4344,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}UOM\"",
                 "dataName": "UOM",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -4311,6 +4353,7 @@
                 "name": "UoM",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/arrows-resize-v.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "UnitsOfMeasures",
                 "perspectiveOrder": "980",
                 "perspectiveRole": "",

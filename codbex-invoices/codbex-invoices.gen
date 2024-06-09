@@ -9,6 +9,7 @@
   "workspaceName": "workspace",
   "filePath": "codbex-invoices.model",
   "templateId": "template-application-angular/template/template.js",
+  "fileName": "codbex-invoices",
   "perspectives": {
     "salesinvoice": {
       "views": [

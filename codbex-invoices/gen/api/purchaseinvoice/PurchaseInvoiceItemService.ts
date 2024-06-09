@@ -14,17 +14,21 @@ class PurchaseInvoiceItemService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
-            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
             const options: PurchaseInvoiceItemEntityOptions = {
-                $filter: {
-                    equals: {
-                        PurchaseInvoice: PurchaseInvoice
-                    }
-                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
+            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
+
+            if (PurchaseInvoice !== undefined) {
+                options.$filter = {
+                    equals: {
+                        PurchaseInvoice: PurchaseInvoice
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
