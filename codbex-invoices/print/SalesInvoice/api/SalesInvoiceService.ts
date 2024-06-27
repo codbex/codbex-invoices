@@ -1,12 +1,12 @@
-import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../codbex-invoices/gen/dao/salesinvoice/SalesInvoiceRepository";
-import { SalesInvoiceItemRepository as SalesInvoiceItemDao } from "../../../../codbex-invoices/gen/dao/salesinvoice/SalesInvoiceItemRepository";
-import { CustomerRepository as CustomerDao } from "../../../../codbex-partners/gen/dao/Customers/CustomerRepository";
-import { ProductRepository as ProductDao } from "../../../../codbex-products/gen/dao/Products/ProductRepository";
-import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/dao/Companies/CompanyRepository";
-import { CityRepository as CityDao } from "../../../../codbex-cities/gen/dao/Cities/CityRepository";
-import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/dao/Countries/CountryRepository";
-import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/dao/Methods/PaymentMethodRepository";
-import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/dao/Methods/SentMethodRepository";
+import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository";
+import { SalesInvoiceItemRepository as SalesInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceItemRepository";
+import { CustomerRepository as CustomerDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Customers/CustomerRepository";
+import { ProductRepository as ProductDao } from "../../../../codbex-products/gen/codbex-products/dao/Products/ProductRepository";
+import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
+import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Cities/CityRepository";
+import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Countries/CountryRepository";
+import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Methods/PaymentMethodRepository";
+import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Methods/SentMethodRepository";
 
 import { Controller, Get } from "sdk/http";
 
