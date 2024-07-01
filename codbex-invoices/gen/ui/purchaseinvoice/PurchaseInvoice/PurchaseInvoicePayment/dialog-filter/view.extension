@@ -1,5 +1,0 @@
-{
-    "module": "codbex-invoices/gen/ui/purchaseinvoice/PurchaseInvoice/PurchaseInvoicePayment/dialog-filter/view.js",
-    "extensionPoint": "codbex-invoices-dialog-window",
-    "description": "codbex-invoices - Application Dialog Window"
-}

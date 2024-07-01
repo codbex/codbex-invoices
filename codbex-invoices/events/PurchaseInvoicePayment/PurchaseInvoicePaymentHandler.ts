@@ -1,5 +1,5 @@
-import { PurchaseInvoiceRepository } from "../../gen/dao/purchaseinvoice/PurchaseInvoiceRepository";
-import { PurchaseInvoicePaymentRepository } from "../../gen/dao/purchaseinvoice/PurchaseInvoicePaymentRepository";
+import { PurchaseInvoiceRepository } from "../../gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceRepository";
+import { PurchaseInvoicePaymentRepository } from "../../gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoicePaymentRepository";
 
 export const trigger = (event) => {
     const PurchaseInvoiceDao = new PurchaseInvoiceRepository();
