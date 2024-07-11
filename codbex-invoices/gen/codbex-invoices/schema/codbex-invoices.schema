@@ -7,55 +7,46 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "name": "SALESINVOICEITEM_ID"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICEITEM_SALESINVOICE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICEITEM_PRODUCT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "name": "SALESINVOICEITEM_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 20,
                         "name": "SALESINVOICEITEM_UOM"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_NET"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_VAT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_GROSS"
@@ -68,7 +59,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "name": "SALESINVOICE_ID"
@@ -81,22 +71,18 @@
                     },
                     {
                         "type": "DATE",
-                        "length": 20,
                         "name": "SALESINVOICE_DATE"
                     },
                     {
                         "type": "DATE",
-                        "length": 20,
                         "name": "SALESINVOICE_DUE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_CUSTOMER"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -104,12 +90,10 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_CURRENCY"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -117,7 +101,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -126,7 +109,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -135,7 +117,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -143,7 +124,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -152,7 +132,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -167,22 +146,18 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_PAYMENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_SENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_SALESINVOICESTATUS"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICE_OPERATOR"
                     },
                     {
@@ -193,7 +168,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "SALESINVOICE_COMPANY"
                     },
@@ -222,7 +196,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "name": "PURCHASEINVOICE_ID"
@@ -241,22 +214,18 @@
                     },
                     {
                         "type": "DATE",
-                        "length": 20,
                         "name": "PURCHASEINVOICE_DATE"
                     },
                     {
                         "type": "DATE",
-                        "length": 20,
                         "name": "PURCHASEINVOICE_DUE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_SUPPLIER"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -264,12 +233,10 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_CURRENCY"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -277,7 +244,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -286,7 +252,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -295,7 +260,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -303,7 +267,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -312,7 +275,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -327,22 +289,18 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_PAYMENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_SENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_PURCHASEINVOICESTATUS"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICE_OPERATOR"
                     },
                     {
@@ -353,7 +311,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_COMPANY"
                     },
@@ -383,7 +340,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -391,34 +347,28 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICEITEM_PURCHASEINVOICE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICEITEM_PRODUCT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "name": "PURCHASEINVOICEITEM_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 20,
                         "name": "PURCHASEINVOICEITEM_UOM"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "PURCHASEINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -426,7 +376,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -434,7 +383,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -448,7 +396,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -468,7 +415,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -488,7 +434,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -496,18 +441,15 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "SALESINVOICEPAYMENT_SALESINVOICE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "SALESINVOICEPAYMENT_CUSTOMERPAYMENT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEPAYMENT_AMOUNT"
@@ -520,7 +462,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -528,18 +469,15 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PURCHASEINVOICEPAYMENT_PURCHASEINVOICE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "name": "PURCHASEINVOICEPAYMENT_AMOUNT"
