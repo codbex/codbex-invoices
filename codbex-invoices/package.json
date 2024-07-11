@@ -18,7 +18,7 @@
         "@codbex/codbex-partners": "0.1.0",
         "@codbex/codbex-methods": "0.1.0",
         "@codbex/codbex-methods-data": "0.1.0",
-        "@codbex/codbex-employees": "0.1.0",
+        "@codbex/codbex-employees": "0.2.0",
         "@codbex/codbex-products": "0.1.0",
         "@codbex/codbex-products-data": "0.1.0",
         "@codbex/codbex-payments": "0.1.0",
