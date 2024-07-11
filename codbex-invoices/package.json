@@ -11,7 +11,7 @@
     "dependencies": {
         "@codbex/codbex-countries": "0.1.0",
         "@codbex/codbex-countries-data": "0.1.0",
-        "@codbex/codbex-companies": "0.1.0",
+        "@codbex/codbex-companies": "0.2.0",
         "@codbex/codbex-currencies": "0.1.0",
         "@codbex/codbex-currencies-data": "0.1.0",
         "@codbex/codbex-uoms": "0.1.0",
