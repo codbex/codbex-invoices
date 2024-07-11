@@ -23,7 +23,7 @@
         "@codbex/codbex-products-data": "0.1.0",
         "@codbex/codbex-payments": "0.1.0",
         "@codbex/codbex-payments-data": "0.1.0",
-        "@codbex/codbex-cities": "0.1.0",
+        "@codbex/codbex-cities": "0.2.0",
         "@codbex/codbex-number-generator": "0.1.0"
     }
 }
