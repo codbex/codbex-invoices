@@ -31,6 +31,7 @@ export interface PurchaseInvoiceEntity {
     Name?: string;
     UUID?: string;
     Reference?: string;
+    Store?: number;
 }
 
 export interface PurchaseInvoiceCreateEntity {
@@ -54,6 +55,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Document?: string;
     readonly Company?: number;
     readonly Reference?: string;
+    readonly Store?: number;
 }
 
 export interface PurchaseInvoiceUpdateEntity extends PurchaseInvoiceCreateEntity {
@@ -87,6 +89,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            Store?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -113,6 +116,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            Store?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -139,6 +143,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            Store?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -165,6 +170,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            Store?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -191,6 +197,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            Store?: number;
         };
         lessThan?: {
             Id?: number;
@@ -217,6 +224,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            Store?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -243,6 +251,7 @@ export interface PurchaseInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            Store?: number;
         };
     },
     $select?: (keyof PurchaseInvoiceEntity)[],
@@ -402,6 +411,11 @@ export class PurchaseInvoiceRepository {
                 name: "Reference",
                 column: "PURCHASEINVOICE_REFERENCE",
                 type: "VARCHAR",
+            },
+            {
+                name: "Store",
+                column: "PURCHASEINVOICE_STORE",
+                type: "INTEGER",
             }
         ]
     };
