@@ -3,6 +3,27 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
+<<<<<<< HEAD
+    $scope.generateInvoice = function () {
+        const creditNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/";
+
+        creditNoteData = {
+            Date: new Date(),
+            salesInvoice: params.id
+        }
+
+        $http.post(creditNoteUrl, creditNoteData)
+            .catch(function (error) {
+                debugger;
+                console.log("Error creating credit note: ", error);
+                $scope.closeDialog();
+            });
+    };
+
+    $scope.closeDialog = function () {
+        $scope.showDialog = false;
+        messageHub.closeDialogWindow("credit-note-generate");
+=======
     const purchaseOrderDataUrl = "/services/ts/codbex-invoice/events/generate/PurchaseInvoice/api/GeneratePurchaseInvoiceService.ts/purchaseOrderData/" + params.id;
     $http.get(purchaseOrderDataUrl)
         .then(function (response) {
@@ -52,6 +73,7 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
     $scope.closeDialog = function () {
         $scope.showDialog = false;
         messageHub.closeDialogWindow("purchase-invoice-generate");
+>>>>>>> branch 'feat/debit-credit-notes' of https://github.com/codbex/codbex-invoices.git
     };
 
     document.getElementById("dialog").style.display = "block";
