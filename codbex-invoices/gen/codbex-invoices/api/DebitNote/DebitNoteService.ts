@@ -3,6 +3,8 @@ import { Extensions } from "sdk/extensions"
 import { DebitNoteRepository, DebitNoteEntityOptions } from "../../dao/DebitNote/DebitNoteRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-invoices-DebitNote-DebitNote", ["validate"]);
 
