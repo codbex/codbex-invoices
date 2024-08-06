@@ -3063,7 +3063,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DATE"
                     },
                     {
                         "dataName": "DEBITNOTE_PURCHASEINVOICE",
@@ -3071,10 +3071,12 @@
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "PurchaseInvoice",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
+                        "widgetType": "DROPDOWN",
                         "relationshipName": "DebitNote_PurchaseInvoice",
                         "relationshipEntityName": "PurchaseInvoice",
                         "relationshipEntityPerspectiveName": "purchaseinvoice",
@@ -3140,17 +3142,19 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DATE"
                     },
                     {
                         "dataName": "CREDITNOTE_SALESINVOICE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "name": "SalesInvoice",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
+                        "widgetType": "DROPDOWN",
                         "relationshipName": "CreditNote_SalesInvoice",
                         "relationshipEntityName": "SalesInvoice",
                         "relationshipEntityPerspectiveName": "salesinvoice",

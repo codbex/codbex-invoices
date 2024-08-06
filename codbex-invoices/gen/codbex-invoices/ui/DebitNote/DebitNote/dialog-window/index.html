@@ -53,7 +53,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDate" dg-required="true" dg-colon="true">Date</fd-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col  fd-col-md--2 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Date'].$valid }}">
 	                            <fd-input id="idDate"
 	                                name="Date"
@@ -61,13 +61,9 @@
 									ng-required="true"
 	                                ng-model="entity.Date"
 	                                ng-readonly="action === 'select'"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                dg-input-rules="{ patterns: [''] }"
-	                                type="text"
-	                                placeholder="Enter Date">
+	                                type="date">
 	                            </fd-input>
-	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
@@ -76,21 +72,15 @@
                         	<fd-form-label for="idPurchaseInvoice" dg-required="true" dg-colon="true">PurchaseInvoice</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PurchaseInvoice'].$valid }}">
-	                            <fd-input id="idPurchaseInvoice"
-	                                name="PurchaseInvoice"
-	                                state="{{ forms.details['PurchaseInvoice'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.PurchaseInvoice"
-	                                ng-readonly="action === 'select'"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                dg-input-rules="{ patterns: [''] }"
-	                                type="text"
-	                                placeholder="Enter PurchaseInvoice">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <fd-combobox-input id="idPurchaseInvoice"
+	                            name="PurchaseInvoice"
+	                            state="{{ forms.details['PurchaseInvoice'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.PurchaseInvoice"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsPurchaseInvoice"
+	                            dg-placeholder="Search PurchaseInvoice ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>

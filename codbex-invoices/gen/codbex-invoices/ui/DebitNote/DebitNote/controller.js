@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -114,12 +114,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("DebitNote-details", {
 				action: "select",
 				entity: entity,
+				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("DebitNote-filter", {
 				entity: $scope.filterEntity,
+				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			});
 		};
 
@@ -128,6 +130,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("DebitNote-details", {
 				action: "create",
 				entity: {},
+				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			}, null, false);
 		};
 
@@ -135,6 +138,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("DebitNote-details", {
 				action: "update",
 				entity: entity,
+				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			}, null, false);
 		};
 
@@ -166,5 +170,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsPurchaseInvoice = [];
+
+
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts").then(function (response) {
+			$scope.optionsPurchaseInvoice = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsPurchaseInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPurchaseInvoice.length; i++) {
+				if ($scope.optionsPurchaseInvoice[i].value === optionKey) {
+					return $scope.optionsPurchaseInvoice[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

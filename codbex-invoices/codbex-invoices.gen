@@ -6732,7 +6732,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DATE",
           "dataNotNull": true,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -6751,10 +6751,12 @@
           "dataType": "INTEGER",
           "isRequiredProperty": true,
           "name": "PurchaseInvoice",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "DebitNote_PurchaseInvoice",
           "relationshipEntityName": "PurchaseInvoice",
           "relationshipEntityPerspectiveName": "purchaseinvoice",
@@ -6765,7 +6767,7 @@
           "dataUnique": false,
           "isCalculatedProperty": false,
           "widgetLabel": "PurchaseInvoice",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -6799,7 +6801,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDates": true
+      "hasDates": true,
+      "hasDropdowns": true
     },
     {
       "properties": [
@@ -6858,7 +6861,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DATE",
           "dataNotNull": true,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -6876,10 +6879,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "SalesInvoice",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "CreditNote_SalesInvoice",
           "relationshipEntityName": "SalesInvoice",
           "relationshipEntityPerspectiveName": "salesinvoice",
@@ -6891,7 +6896,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "SalesInvoice",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -6925,7 +6930,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDates": true
+      "hasDates": true,
+      "hasDropdowns": true
     }
   ]
 }

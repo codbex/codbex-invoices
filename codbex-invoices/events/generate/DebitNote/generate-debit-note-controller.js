@@ -3,78 +3,28 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
-<<<<<<< HEAD
     $scope.generateInvoice = function () {
-        const creditNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/";
+        const debitNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts";
 
-        creditNoteData = {
+        debitNoteData = {
             Date: new Date(),
             salesInvoice: params.id
         }
 
-        $http.post(creditNoteUrl, creditNoteData)
+        $http.post(debitNoteUrl, debitNoteData)
             .catch(function (error) {
                 debugger;
-                console.log("Error creating credit note: ", error);
+                alert("Error creating credit note: " + error.data.message);
+                // console.log("Error creating credit note:" + error.data.message);
                 $scope.closeDialog();
             });
     };
 
     $scope.closeDialog = function () {
         $scope.showDialog = false;
-        messageHub.closeDialogWindow("credit-note-generate");
-=======
-    const purchaseOrderDataUrl = "/services/ts/codbex-invoice/events/generate/PurchaseInvoice/api/GeneratePurchaseInvoiceService.ts/purchaseOrderData/" + params.id;
-    $http.get(purchaseOrderDataUrl)
-        .then(function (response) {
-            $scope.PurchaseOrderData = response.data;
-        });
-
-    const purchaseOrderItemsUrl = "/services/ts/codbex-invoice/events/generate/PurchaseInvoice/api/GeneratePurchaseInvoiceService.ts/purchaseOrderItemsData/" + params.id;
-    $http.get(purchaseOrderItemsUrl)
-        .then(function (response) {
-            $scope.PurchaseOrderItemsData = response.data;
-        });
-
-    $scope.generateInvoice = function () {
-        const invoiceUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts/";
-
-        $http.post(invoiceUrl, $scope.PurchaseOrderData)
-            .then(function (response) {
-                $scope.Invoice = response.data
-                if (!angular.equals($scope.OrderItems, {})) {
-                    $scope.PurchaseOrderItemsData.forEach(orderItem => {
-                        const purchaseInvoiceItem = {
-                            "PurchaseInvoice": $scope.Invoice.Id,
-                            "Product": orderItem.Product,
-                            "Quantity": orderItem.Quantity,
-                            "UoM": orderItem.UoM,
-                            "Price": orderItem.Price,
-                            "Net": orderItem.Net,
-                            "VAT": orderItem.VAT,
-                            "Gross": orderItem.Gross
-                        };
-                        let invoiceItemUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts/"
-                        $http.post(invoiceItemUrl, purchaseInvoiceItem);
-                    });
-                }
-
-                console.log("Invoice created successfully: ", response.data);
-                //alert("Invoice created successfully");
-                $scope.closeDialog();
-            })
-            .catch(function (error) {
-                console.error("Error creating invoice: ", error);
-                //alert("Error creating purchase invoice");
-                $scope.closeDialog();
-            });
+        messageHub.closeDialogWindow("debit-note-generate");
     };
 
-    $scope.closeDialog = function () {
-        $scope.showDialog = false;
-        messageHub.closeDialogWindow("purchase-invoice-generate");
->>>>>>> branch 'feat/debit-credit-notes' of https://github.com/codbex/codbex-invoices.git
-    };
-
+    // @ts-ignore
     document.getElementById("dialog").style.display = "block";
 }]);

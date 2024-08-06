@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -114,12 +114,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("CreditNote-details", {
 				action: "select",
 				entity: entity,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("CreditNote-filter", {
 				entity: $scope.filterEntity,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			});
 		};
 
@@ -128,6 +130,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("CreditNote-details", {
 				action: "create",
 				entity: {},
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			}, null, false);
 		};
 
@@ -135,6 +138,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("CreditNote-details", {
 				action: "update",
 				entity: entity,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			}, null, false);
 		};
 
@@ -166,5 +170,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsSalesInvoice = [];
+
+
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts").then(function (response) {
+			$scope.optionsSalesInvoice = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsSalesInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSalesInvoice.length; i++) {
+				if ($scope.optionsSalesInvoice[i].value === optionKey) {
+					return $scope.optionsSalesInvoice[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);
