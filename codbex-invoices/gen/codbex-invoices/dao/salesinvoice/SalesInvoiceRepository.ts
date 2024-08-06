@@ -414,6 +414,15 @@ export class SalesInvoiceRepository {
     }
 
     public findAll(options?: SalesInvoiceEntityOptions): SalesInvoiceEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Number,";
+        // @ts-ignore
+        options.$order = "DESC";
         return this.dao.list(options).map((e: SalesInvoiceEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Due");
