@@ -8,13 +8,14 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
 
         creditNoteData = {
             Date: new Date(),
-            salesInvoice: params.id
+            SalesInvoice: params.id
         }
 
         $http.post(creditNoteUrl, creditNoteData)
+            .then($scope.closeDialog)
             .catch(function (error) {
                 alert("Error creating credit note:" + error.data.message);
-                console.log("Error creating credit note:" + error.data.message);
+                // console.log("Error creating credit note:" + error.data.message);
                 $scope.closeDialog();
             });
     };

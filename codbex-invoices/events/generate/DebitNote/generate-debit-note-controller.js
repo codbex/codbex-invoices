@@ -8,10 +8,11 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
 
         debitNoteData = {
             Date: new Date(),
-            salesInvoice: params.id
+            PurchaseInvoice: params.id
         }
 
         $http.post(debitNoteUrl, debitNoteData)
+            .then($scope.closeDialog)
             .catch(function (error) {
                 debugger;
                 alert("Error creating credit note: " + error.data.message);
