@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/events/generate/CreditNote/credit-note-generate.js",
+    "extensionPoint": "codbex-invoices-custom-action",
+    "description": "Generate Credit Note From Sales Invoice Custom Action"
+}

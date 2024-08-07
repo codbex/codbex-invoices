@@ -4,7 +4,7 @@
 
 ### Model
 
-![model](images/invoices-model.png)
+<img width="1296" alt="image" src="https://github.com/user-attachments/assets/c094f30c-610f-4713-8bf1-b07363ccba07">
 
 ### Application
 

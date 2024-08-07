@@ -50,9 +50,9 @@
 						<fd-list-content
 							item-title="{{next.Number}}">
 							<fd-list-byline dg-align="left">
+								{{optionsCustomerValue(next.Customer)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
-								{{optionsCustomerValue(next.Customer)}} |
 								{{next.Net}} |
 								{{optionsCurrencyValue(next.Currency)}} |
 								{{next.Gross}} |

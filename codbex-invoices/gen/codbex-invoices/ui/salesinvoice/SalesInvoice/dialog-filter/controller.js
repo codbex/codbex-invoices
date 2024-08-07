@@ -61,6 +61,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Number) {
 				filter.$filter.contains.Number = entity.Number;
 			}
+			if (entity.Customer !== undefined) {
+				filter.$filter.equals.Customer = entity.Customer;
+			}
 			if (entity.DateFrom) {
 				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
 			}
@@ -72,9 +75,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.DueTo) {
 				filter.$filter.lessThanOrEqual.Due = entity.DueTo;
-			}
-			if (entity.Customer !== undefined) {
-				filter.$filter.equals.Customer = entity.Customer;
 			}
 			if (entity.Net !== undefined) {
 				filter.$filter.equals.Net = entity.Net;

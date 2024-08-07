@@ -124,14 +124,14 @@ class SalesInvoiceService {
         if (entity.Number?.length > 20) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }
+        if (entity.Customer === null || entity.Customer === undefined) {
+            throw new ValidationError(`The 'Customer' property is required, provide a valid value`);
+        }
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
         if (entity.Due === null || entity.Due === undefined) {
             throw new ValidationError(`The 'Due' property is required, provide a valid value`);
-        }
-        if (entity.Customer === null || entity.Customer === undefined) {
-            throw new ValidationError(`The 'Customer' property is required, provide a valid value`);
         }
         if (entity.Currency === null || entity.Currency === undefined) {
             throw new ValidationError(`The 'Currency' property is required, provide a valid value`);

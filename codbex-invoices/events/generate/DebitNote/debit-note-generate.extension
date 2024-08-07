@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/events/generate/DebitNote/debit-note-generate.js",
+    "extensionPoint": "codbex-invoices-custom-action",
+    "description": "Generate Debit Note From Purchase Invoice Custom Action"
+}
