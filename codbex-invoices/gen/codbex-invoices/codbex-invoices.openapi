@@ -3631,6 +3631,9 @@ components:
           type: string
           minLength: 0
           maxLength: 36
+        Store:
+          type: integer
+          format: int32
     SalesInvoiceFilterOptions:
       type: object
       properties:
@@ -3830,6 +3833,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                Store:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -4023,6 +4034,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                Store:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -4067,6 +4086,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
             greaterThan:
               type: object
               properties:
@@ -4141,6 +4161,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -4215,6 +4238,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -4289,6 +4315,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -4363,14 +4392,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Number", "Date", "Due", "Customer", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference"]
+          example: ["Id", "Number", "Date", "Due", "Customer", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,Due,Customer,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference"
+            example: "Id,Number,Date,Due,Customer,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -4471,6 +4503,9 @@ components:
           type: string
           minLength: 0
           maxLength: 36
+        Store:
+          type: integer
+          format: int32
     PurchaseInvoiceFilterOptions:
       type: object
       properties:
@@ -4681,6 +4716,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                Store:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -4885,6 +4928,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                Store:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -4933,6 +4984,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
             greaterThan:
               type: object
               properties:
@@ -5011,6 +5063,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -5089,6 +5144,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -5167,6 +5225,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -5245,14 +5306,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                Store:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Number", "OriginalNumber", "Date", "Due", "Supplier", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "PurchaseInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference"]
+          example: ["Id", "Number", "OriginalNumber", "Date", "Due", "Supplier", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "PurchaseInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,OriginalNumber,Date,Due,Supplier,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,PurchaseInvoiceStatus,Operator,Document,Company,Name,UUID,Reference"
+            example: "Id,Number,OriginalNumber,Date,Due,Supplier,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,PurchaseInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
         $order:
           type: string
           enum: ["asc", "desc"]

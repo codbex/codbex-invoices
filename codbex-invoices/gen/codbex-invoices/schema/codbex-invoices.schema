@@ -187,6 +187,11 @@
                         "length": 36,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SALESINVOICE_STORE"
                     }
                 ]
             },
@@ -331,6 +336,11 @@
                         "length": 36,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_STORE"
                     }
                 ]
             },
@@ -575,6 +585,15 @@
                 "referencedColumns": "COMPANY_ID"
             },
             {
+                "name": "SalesInvoice_Store",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_Store",
+                "columns": "SALESINVOICE_STORE",
+                "referencedTable": "CODBEX_STORE",
+                "referencedColumns": "STORE_ID"
+            },
+            {
                 "name": "PurchaseInvoice_Supplier",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
@@ -636,6 +655,15 @@
                 "columns": "PURCHASEINVOICE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "PurchaseInvoice_Store",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_Store",
+                "columns": "PURCHASEINVOICE_STORE",
+                "referencedTable": "CODBEX_STORE",
+                "referencedColumns": "STORE_ID"
             },
             {
                 "name": "PurchaseInvoiceItem_PurchaseInvoice",
