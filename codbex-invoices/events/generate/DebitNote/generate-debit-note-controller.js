@@ -1,31 +1,29 @@
-const app = angular.module('templateApp', ['ideUI', 'ideView']);
-app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
+const debitNoteApp = angular.module('DebitNoteApp', ['ideUI', 'ideView']);
+
+debitNoteApp.controller('DebitNoteController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
-    $scope.generateInvoice = function () {
-        const debitNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts";
+    $scope.submitCopy = function (newNet) {
+        const debitNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/";
 
-        debitNoteData = {
+        const debitNoteData = {
             Date: new Date(),
-            SalesInvoice: params.id
+            SalesInvoice: params.id,
+            NewNet: newNet
         }
 
         $http.post(debitNoteUrl, debitNoteData)
             .then($scope.closeDialog)
             .catch(function (error) {
-                debugger;
-                alert("Error creating credit note: " + error.data.message);
-                // console.log("Error creating credit note:" + error.data.message);
+                alert("Error creating debit note:" + error.data.message);
+                // console.log("Error creating debit note:" + error.data.message);
                 $scope.closeDialog();
             });
-    };
+    }
 
     $scope.closeDialog = function () {
         $scope.showDialog = false;
         messageHub.closeDialogWindow("debit-note-generate");
     };
-
-    // @ts-ignore
-    document.getElementById("dialog").style.display = "block";
 }]);

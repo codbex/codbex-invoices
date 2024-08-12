@@ -1,14 +1,16 @@
-const app = angular.module('templateApp', ['ideUI', 'ideView']);
-app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
+const creditNoteApp = angular.module('CreditNoteApp', ['ideUI', 'ideView']);
+
+creditNoteApp.controller('CreditNoteController', ['$scope', '$http', 'ViewParameters', 'messageHub', function ($scope, $http, ViewParameters, messageHub) {
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
-    $scope.generateInvoice = function () {
+    $scope.submitCopy = function (newNet) {
         const creditNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/";
 
-        creditNoteData = {
+        const creditNoteData = {
             Date: new Date(),
-            SalesInvoice: params.id
+            SalesInvoice: params.id,
+            NewNet: newNet
         }
 
         $http.post(creditNoteUrl, creditNoteData)
@@ -18,13 +20,10 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
                 // console.log("Error creating credit note:" + error.data.message);
                 $scope.closeDialog();
             });
-    };
+    }
 
     $scope.closeDialog = function () {
         $scope.showDialog = false;
         messageHub.closeDialogWindow("credit-note-generate");
     };
-
-    // @ts-ignore
-    document.getElementById("dialog").style.display = "block";
 }]);
