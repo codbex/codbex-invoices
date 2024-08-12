@@ -10,12 +10,14 @@ export interface DebitNoteEntity {
     readonly Id: number;
     Number?: string;
     Date: Date;
-    PurchaseInvoice: number;
+    SalesInvoice?: number;
+    NewNet: number;
 }
 
 export interface DebitNoteCreateEntity {
     readonly Date: Date;
-    readonly PurchaseInvoice: number;
+    readonly SalesInvoice?: number;
+    readonly NewNet: number;
 }
 
 export interface DebitNoteUpdateEntity extends DebitNoteCreateEntity {
@@ -28,43 +30,50 @@ export interface DebitNoteEntityOptions {
             Id?: number | number[];
             Number?: string | string[];
             Date?: Date | Date[];
-            PurchaseInvoice?: number | number[];
+            SalesInvoice?: number | number[];
+            NewNet?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
             Date?: Date | Date[];
-            PurchaseInvoice?: number | number[];
+            SalesInvoice?: number | number[];
+            NewNet?: number | number[];
         };
         contains?: {
             Id?: number;
             Number?: string;
             Date?: Date;
-            PurchaseInvoice?: number;
+            SalesInvoice?: number;
+            NewNet?: number;
         };
         greaterThan?: {
             Id?: number;
             Number?: string;
             Date?: Date;
-            PurchaseInvoice?: number;
+            SalesInvoice?: number;
+            NewNet?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
             Date?: Date;
-            PurchaseInvoice?: number;
+            SalesInvoice?: number;
+            NewNet?: number;
         };
         lessThan?: {
             Id?: number;
             Number?: string;
             Date?: Date;
-            PurchaseInvoice?: number;
+            SalesInvoice?: number;
+            NewNet?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
             Date?: Date;
-            PurchaseInvoice?: number;
+            SalesInvoice?: number;
+            NewNet?: number;
         };
     },
     $select?: (keyof DebitNoteEntity)[],
@@ -113,9 +122,14 @@ export class DebitNoteRepository {
                 required: true
             },
             {
-                name: "PurchaseInvoice",
-                column: "DEBITNOTE_PURCHASEINVOICE",
+                name: "SalesInvoice",
+                column: "DEBITNOTE_SALESINVOICE",
                 type: "INTEGER",
+            },
+            {
+                name: "NewNet",
+                column: "DEBITNOTE_NEWNET",
+                type: "DECIMAL",
                 required: true
             }
         ]

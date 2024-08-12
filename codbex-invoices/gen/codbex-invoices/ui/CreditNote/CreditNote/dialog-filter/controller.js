@@ -58,6 +58,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.SalesInvoice !== undefined) {
 				filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
 			}
+			if (entity.NewNet !== undefined) {
+				filter.$filter.equals.NewNet = entity.NewNet;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

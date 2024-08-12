@@ -78,16 +78,40 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPurchaseInvoice" dg-colon="true">PurchaseInvoice</fd-form-label>
+                        	<fd-form-label for="idSalesInvoice" dg-colon="true">SalesInvoice</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idPurchaseInvoice"
-	                            name="PurchaseInvoice"
-	                            state="{{ forms.details['PurchaseInvoice'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.PurchaseInvoice"
-	                            dropdown-items="optionsPurchaseInvoice"
-	                            dg-placeholder="Search PurchaseInvoice ...">
-	                        </fd-combobox-input>
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SalesInvoice'].$valid }}">
+	                            <fd-input id="idSalesInvoice"
+	                                name="SalesInvoice"
+	                                state="{{ forms.details['SalesInvoice'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.SalesInvoice"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                type="text"
+	                                placeholder="Enter SalesInvoice">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idNewNet" dg-colon="true">NewNet</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['NewNet'].$valid }}">
+	                            <fd-input id="idNewNet"
+	                                name="NewNet"
+	                                state="{{ forms.details['NewNet'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.NewNet"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                type="text"
+	                                placeholder="Enter NewNet">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>

@@ -127,8 +127,8 @@ class DebitNoteService {
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
-        if (entity.PurchaseInvoice === null || entity.PurchaseInvoice === undefined) {
-            throw new ValidationError(`The 'PurchaseInvoice' property is required, provide a valid value`);
+        if (entity.NewNet === null || entity.NewNet === undefined) {
+            throw new ValidationError(`The 'NewNet' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

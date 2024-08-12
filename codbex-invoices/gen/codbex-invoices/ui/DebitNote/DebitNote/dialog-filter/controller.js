@@ -20,7 +20,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsPurchaseInvoice = params.optionsPurchaseInvoice;
 		}
 
 		$scope.filter = function () {
@@ -55,8 +54,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
 			}
-			if (entity.PurchaseInvoice !== undefined) {
-				filter.$filter.equals.PurchaseInvoice = entity.PurchaseInvoice;
+			if (entity.SalesInvoice !== undefined) {
+				filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
+			}
+			if (entity.NewNet !== undefined) {
+				filter.$filter.equals.NewNet = entity.NewNet;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

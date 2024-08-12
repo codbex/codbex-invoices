@@ -11,11 +11,13 @@ export interface CreditNoteEntity {
     Number: string;
     Date: Date;
     SalesInvoice?: number;
+    NewNet: number;
 }
 
 export interface CreditNoteCreateEntity {
     readonly Date: Date;
     readonly SalesInvoice?: number;
+    readonly NewNet: number;
 }
 
 export interface CreditNoteUpdateEntity extends CreditNoteCreateEntity {
@@ -29,42 +31,49 @@ export interface CreditNoteEntityOptions {
             Number?: string | string[];
             Date?: Date | Date[];
             SalesInvoice?: number | number[];
+            NewNet?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
             Date?: Date | Date[];
             SalesInvoice?: number | number[];
+            NewNet?: number | number[];
         };
         contains?: {
             Id?: number;
             Number?: string;
             Date?: Date;
             SalesInvoice?: number;
+            NewNet?: number;
         };
         greaterThan?: {
             Id?: number;
             Number?: string;
             Date?: Date;
             SalesInvoice?: number;
+            NewNet?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
             Date?: Date;
             SalesInvoice?: number;
+            NewNet?: number;
         };
         lessThan?: {
             Id?: number;
             Number?: string;
             Date?: Date;
             SalesInvoice?: number;
+            NewNet?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
             Date?: Date;
             SalesInvoice?: number;
+            NewNet?: number;
         };
     },
     $select?: (keyof CreditNoteEntity)[],
@@ -92,7 +101,7 @@ interface CreditNoteUpdateEntityEvent extends CreditNoteEntityEvent {
 export class CreditNoteRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_CREDITNOTE",
+        table: "CODBEX_NOTE",
         properties: [
             {
                 name: "Id",
@@ -117,6 +126,12 @@ export class CreditNoteRepository {
                 name: "SalesInvoice",
                 column: "CREDITNOTE_SALESINVOICE",
                 type: "INTEGER",
+            },
+            {
+                name: "NewNet",
+                column: "NOTE_NEWNET",
+                type: "DECIMAL",
+                required: true
             }
         ]
     };
@@ -147,7 +162,7 @@ export class CreditNoteRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_CREDITNOTE",
+            table: "CODBEX_NOTE",
             entity: entity,
             key: {
                 name: "Id",
@@ -164,7 +179,7 @@ export class CreditNoteRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_CREDITNOTE",
+            table: "CODBEX_NOTE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -195,7 +210,7 @@ export class CreditNoteRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_CREDITNOTE",
+            table: "CODBEX_NOTE",
             entity: entity,
             key: {
                 name: "Id",

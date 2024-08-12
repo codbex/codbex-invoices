@@ -7025,7 +7025,7 @@ components:
       type: object
       required:
         - Date
-        - PurchaseInvoice
+        - NewNet
       properties:
         Id:
           type: integer
@@ -7036,9 +7036,12 @@ components:
           maxLength: 30
           readOnly: true
         Date:
-        PurchaseInvoice:
+        SalesInvoice:
           type: integer
           format: int32
+        NewNet:
+          type: number
+          format: double
     DebitNoteFilterOptions:
       type: object
       properties:
@@ -7069,7 +7072,7 @@ components:
                         maxLength: 30
                 Date:
                   oneOf:
-                PurchaseInvoice:
+                SalesInvoice:
                   oneOf:
                     - type: integer
                       format: int32
@@ -7077,6 +7080,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                NewNet:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
             notEquals:
               type: object
               properties:
@@ -7101,7 +7112,7 @@ components:
                         maxLength: 30
                 Date:
                   oneOf:
-                PurchaseInvoice:
+                SalesInvoice:
                   oneOf:
                     - type: integer
                       format: int32
@@ -7109,6 +7120,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                NewNet:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
             contains:
               type: object
               properties:
@@ -7118,7 +7137,8 @@ components:
                   minLength: 0
                   maxLength: 30
                 Date:
-                PurchaseInvoice:
+                SalesInvoice:
+                NewNet:
             greaterThan:
               type: object
               properties:
@@ -7130,9 +7150,12 @@ components:
                   minLength: 0
                   maxLength: 30
                 Date:
-                PurchaseInvoice:
+                SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             greaterThanOrEqual:
               type: object
               properties:
@@ -7144,9 +7167,12 @@ components:
                   minLength: 0
                   maxLength: 30
                 Date:
-                PurchaseInvoice:
+                SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             lessThan:
               type: object
               properties:
@@ -7158,9 +7184,12 @@ components:
                   minLength: 0
                   maxLength: 30
                 Date:
-                PurchaseInvoice:
+                SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             lessThanOrEqual:
               type: object
               properties:
@@ -7172,17 +7201,20 @@ components:
                   minLength: 0
                   maxLength: 30
                 Date:
-                PurchaseInvoice:
+                SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
         $select:
           type: array
-          example: ["Id", "Number", "Date", "PurchaseInvoice"]
+          example: ["Id", "Number", "Date", "SalesInvoice", "NewNet"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,PurchaseInvoice"
+            example: "Id,Number,Date,SalesInvoice,NewNet"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -7197,6 +7229,7 @@ components:
       type: object
       required:
         - Date
+        - NewNet
       properties:
         Id:
           type: integer
@@ -7210,6 +7243,9 @@ components:
         SalesInvoice:
           type: integer
           format: int32
+        NewNet:
+          type: number
+          format: double
     CreditNoteFilterOptions:
       type: object
       properties:
@@ -7248,6 +7284,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                NewNet:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
             notEquals:
               type: object
               properties:
@@ -7280,6 +7324,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                NewNet:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
             contains:
               type: object
               properties:
@@ -7290,6 +7342,7 @@ components:
                   maxLength: 30
                 Date:
                 SalesInvoice:
+                NewNet:
             greaterThan:
               type: object
               properties:
@@ -7304,6 +7357,9 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             greaterThanOrEqual:
               type: object
               properties:
@@ -7318,6 +7374,9 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             lessThan:
               type: object
               properties:
@@ -7332,6 +7391,9 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
             lessThanOrEqual:
               type: object
               properties:
@@ -7346,14 +7408,17 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
+                NewNet:
+                  type: number
+                  format: double
         $select:
           type: array
-          example: ["Id", "Number", "Date", "SalesInvoice"]
+          example: ["Id", "Number", "Date", "SalesInvoice", "NewNet"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,SalesInvoice"
+            example: "Id,Number,Date,SalesInvoice,NewNet"
         $order:
           type: string
           enum: ["asc", "desc"]

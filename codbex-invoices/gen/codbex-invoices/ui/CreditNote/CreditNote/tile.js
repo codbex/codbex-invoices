@@ -8,12 +8,12 @@ exports.getTile = function () {
         group: "codbex-invoices",
         name: "CreditNote",
         caption: "Manage entity CreditNote",
-        tooltip: "CreditNote",
+        tooltip: "Note",
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-invoices/gen/codbex-invoices/ui/CreditNote/index.html",
         order: "100",
-        groupOrder: "605",
+        groupOrder: "100",
     };
 };

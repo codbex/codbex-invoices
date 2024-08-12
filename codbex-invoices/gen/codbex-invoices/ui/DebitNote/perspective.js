@@ -5,10 +5,10 @@
  */
 const perspectiveData = {
 	id: 'DebitNote',
-	name: 'DebitNote',
+	name: 'Entities',
 	link: '/services/web/codbex-invoices/gen/codbex-invoices/ui/DebitNote/index.html',
-	order: 615,
-	icon: '/services/web/resources/unicons/backward.svg',
+	order: 100,
+	icon: '/services/web/resources/unicons/copy.svg',
 };
 
 if (typeof exports !== 'undefined') {

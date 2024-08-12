@@ -5,10 +5,10 @@
  */
 const perspectiveData = {
 	id: 'CreditNote',
-	name: 'CreditNote',
+	name: 'Entities',
 	link: '/services/web/codbex-invoices/gen/codbex-invoices/ui/CreditNote/index.html',
-	order: 605,
-	icon: '/services/web/resources/unicons/forward.svg',
+	order: 100,
+	icon: '/services/web/resources/unicons/copy.svg',
 };
 
 if (typeof exports !== 'undefined') {

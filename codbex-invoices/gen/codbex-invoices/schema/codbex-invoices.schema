@@ -507,12 +507,17 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "DEBITNOTE_PURCHASEINVOICE"
+                        "nullable": true,
+                        "name": "DEBITNOTE_SALESINVOICE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "name": "DEBITNOTE_NEWNET"
                     }
                 ]
             },
             {
-                "name": "CODBEX_CREDITNOTE",
+                "name": "CODBEX_NOTE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -535,6 +540,10 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "CREDITNOTE_SALESINVOICE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "name": "NOTE_NEWNET"
                     }
                 ]
             },
@@ -755,18 +764,18 @@
                 "referencedColumns": "SUPPLIERPAYMENT_ID"
             },
             {
-                "name": "DebitNote_PurchaseInvoice",
+                "name": "DebitNote_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_DEBITNOTE",
-                "constraintName": "DebitNote_PurchaseInvoice",
-                "columns": "DEBITNOTE_PURCHASEINVOICE",
-                "referencedTable": "CODBEX_PURCHASEINVOICE",
-                "referencedColumns": "PURCHASEINVOICE_ID"
+                "constraintName": "DebitNote_SalesInvoice",
+                "columns": "DEBITNOTE_SALESINVOICE",
+                "referencedTable": "CODBEX_SALESINVOICE",
+                "referencedColumns": "SALESINVOICE_ID"
             },
             {
                 "name": "CreditNote_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_CREDITNOTE",
+                "table": "CODBEX_NOTE",
                 "constraintName": "CreditNote_SalesInvoice",
                 "columns": "CREDITNOTE_SALESINVOICE",
                 "referencedTable": "CODBEX_SALESINVOICE",

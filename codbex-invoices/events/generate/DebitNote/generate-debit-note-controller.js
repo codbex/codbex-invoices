@@ -8,7 +8,7 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
 
         debitNoteData = {
             Date: new Date(),
-            PurchaseInvoice: params.id
+            SalesInvoice: params.id
         }
 
         $http.post(debitNoteUrl, debitNoteData)

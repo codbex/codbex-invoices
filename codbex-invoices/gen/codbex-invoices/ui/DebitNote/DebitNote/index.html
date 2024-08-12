@@ -30,7 +30,8 @@
 					<tr fd-table-row>
 						<th fd-table-header-cell>Number</th>
 						<th fd-table-header-cell>Date</th>
-						<th fd-table-header-cell>PurchaseInvoice</th>
+						<th fd-table-header-cell>SalesInvoice</th>
+						<th fd-table-header-cell>NewNet</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -44,9 +45,8 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next.Date" ng-readonly="true"></fd-input>
 						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsPurchaseInvoiceValue(next.PurchaseInvoice)}}
-						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.SalesInvoice}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.NewNet}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>
