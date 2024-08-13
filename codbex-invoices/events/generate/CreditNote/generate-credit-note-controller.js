@@ -4,14 +4,19 @@ creditNoteApp.controller('CreditNoteController', ['$scope', '$http', 'ViewParame
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
-    $scope.submitCopy = function (newNet) {
+    const salesInvoiceDataUrl = "/services/ts/codbex-order-invoice-ext/generate/SalesInvoice/api/GenerateSalesInvoiceService.ts/salesInvoiceData/" + params.id;
+    $http.get(salesInvoiceDataUrl)
+        .then(function (response) {
+            $scope.SalesInvoiceData = response.data;
+        });
+
+    $scope.submitCopy = function (net) {
         const creditNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/";
 
         const creditNoteData = {
-            Date: new Date(),
-            SalesInvoice: params.id,
-            NewNet: newNet
-        }
+            ...$scope.SalesInvoiceData,
+            "Net": net
+        };
 
         $http.post(creditNoteUrl, creditNoteData)
             .then($scope.closeDialog)

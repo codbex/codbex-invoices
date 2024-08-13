@@ -17,8 +17,8 @@ tags:
   - name: settings
   - name: salesinvoice
   - name: purchaseinvoice
-  - name: Note
-  - name: Note
+  - name: DebitNote
+  - name: CreditNote
 paths:
   /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
     get:
@@ -3200,7 +3200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts:
     get:
       summary: List DebitNote
       parameters:
@@ -3221,7 +3221,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Note
+        - DebitNote
       responses:
         200:
           description: Successful Request
@@ -3252,7 +3252,7 @@ paths:
     post:
       summary: Create DebitNote
       tags:
-        - Note
+        - DebitNote
       requestBody:
         content:
           application/json:
@@ -3284,7 +3284,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/{id}:
     get:
       summary: Get DebitNote by Id
       parameters:
@@ -3295,7 +3295,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - DebitNote
       responses:
         200:
           description: Successful Request
@@ -3333,7 +3333,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - DebitNote
       requestBody:
         content:
           application/json:
@@ -3381,7 +3381,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - DebitNote
       responses:
         204:
           description: Successful Request
@@ -3403,11 +3403,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/count:
     get:
       summary: Count the number of DebitNote
       tags:
-        - Note
+        - DebitNote
       responses:
         200:
           description: Successful Request
@@ -3431,7 +3431,7 @@ paths:
     post:
       summary: Count the number of DebitNote by DebitNoteFilterOptions
       tags:
-        - Note
+        - DebitNote
       requestBody:
         content:
           application/json:
@@ -3513,11 +3513,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/search:
     post:
       summary: Search DebitNote by DebitNoteFilterOptions
       tags:
-        - Note
+        - DebitNote
       requestBody:
         content:
           application/json:
@@ -3600,7 +3600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts:
     get:
       summary: List CreditNote
       parameters:
@@ -3621,7 +3621,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Note
+        - CreditNote
       responses:
         200:
           description: Successful Request
@@ -3652,7 +3652,7 @@ paths:
     post:
       summary: Create CreditNote
       tags:
-        - Note
+        - CreditNote
       requestBody:
         content:
           application/json:
@@ -3684,7 +3684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/{id}:
     get:
       summary: Get CreditNote by Id
       parameters:
@@ -3695,7 +3695,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - CreditNote
       responses:
         200:
           description: Successful Request
@@ -3733,7 +3733,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - CreditNote
       requestBody:
         content:
           application/json:
@@ -3781,7 +3781,7 @@ paths:
           schema:
             type: string
       tags:
-        - Note
+        - CreditNote
       responses:
         204:
           description: Successful Request
@@ -3803,11 +3803,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/count:
     get:
       summary: Count the number of CreditNote
       tags:
-        - Note
+        - CreditNote
       responses:
         200:
           description: Successful Request
@@ -3831,7 +3831,7 @@ paths:
     post:
       summary: Count the number of CreditNote by CreditNoteFilterOptions
       tags:
-        - Note
+        - CreditNote
       requestBody:
         content:
           application/json:
@@ -3913,11 +3913,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/search:
     post:
       summary: Search CreditNote by CreditNoteFilterOptions
       tags:
-        - Note
+        - CreditNote
       requestBody:
         content:
           application/json:
