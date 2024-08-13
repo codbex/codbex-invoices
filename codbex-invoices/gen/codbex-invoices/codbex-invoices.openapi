@@ -17,8 +17,8 @@ tags:
   - name: settings
   - name: salesinvoice
   - name: purchaseinvoice
-  - name: DebitNote
-  - name: CreditNote
+  - name: Note
+  - name: Note
 paths:
   /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
     get:
@@ -3200,7 +3200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts:
     get:
       summary: List DebitNote
       parameters:
@@ -3221,7 +3221,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - DebitNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3252,7 +3252,7 @@ paths:
     post:
       summary: Create DebitNote
       tags:
-        - DebitNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3284,7 +3284,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/{id}:
     get:
       summary: Get DebitNote by Id
       parameters:
@@ -3295,7 +3295,7 @@ paths:
           schema:
             type: string
       tags:
-        - DebitNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3333,7 +3333,7 @@ paths:
           schema:
             type: string
       tags:
-        - DebitNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3381,7 +3381,7 @@ paths:
           schema:
             type: string
       tags:
-        - DebitNote
+        - Note
       responses:
         204:
           description: Successful Request
@@ -3403,11 +3403,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/count:
     get:
       summary: Count the number of DebitNote
       tags:
-        - DebitNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3431,7 +3431,7 @@ paths:
     post:
       summary: Count the number of DebitNote by DebitNoteFilterOptions
       tags:
-        - DebitNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3513,11 +3513,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Note/DebitNoteService.ts/search:
     post:
       summary: Search DebitNote by DebitNoteFilterOptions
       tags:
-        - DebitNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3600,7 +3600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts:
     get:
       summary: List CreditNote
       parameters:
@@ -3621,7 +3621,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - CreditNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3652,7 +3652,7 @@ paths:
     post:
       summary: Create CreditNote
       tags:
-        - CreditNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3684,7 +3684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/{id}:
     get:
       summary: Get CreditNote by Id
       parameters:
@@ -3695,7 +3695,7 @@ paths:
           schema:
             type: string
       tags:
-        - CreditNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3733,7 +3733,7 @@ paths:
           schema:
             type: string
       tags:
-        - CreditNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3781,7 +3781,7 @@ paths:
           schema:
             type: string
       tags:
-        - CreditNote
+        - Note
       responses:
         204:
           description: Successful Request
@@ -3803,11 +3803,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/count:
     get:
       summary: Count the number of CreditNote
       tags:
-        - CreditNote
+        - Note
       responses:
         200:
           description: Successful Request
@@ -3831,7 +3831,7 @@ paths:
     post:
       summary: Count the number of CreditNote by CreditNoteFilterOptions
       tags:
-        - CreditNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -3913,11 +3913,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Note/CreditNoteService.ts/search:
     post:
       summary: Search CreditNote by CreditNoteFilterOptions
       tags:
-        - CreditNote
+        - Note
       requestBody:
         content:
           application/json:
@@ -7025,7 +7025,7 @@ components:
       type: object
       required:
         - Date
-        - NewNet
+        - Net
       properties:
         Id:
           type: integer
@@ -7035,13 +7035,40 @@ components:
           minLength: 0
           maxLength: 30
           readOnly: true
+        Customer:
+          type: integer
+          format: int32
         Date:
         SalesInvoice:
           type: integer
           format: int32
-        NewNet:
+        Net:
           type: number
           format: double
+        Currency:
+          type: integer
+          format: int32
+        VAT:
+          type: number
+          format: double
+          readOnly: true
+        Gross:
+          type: number
+          format: double
+          readOnly: true
+        Taxes:
+          type: number
+          format: double
+        Total:
+          type: number
+          format: double
+          readOnly: true
+        PaymentMethod:
+          type: integer
+          format: int32
+        Company:
+          type: integer
+          format: int32
     DebitNoteFilterOptions:
       type: object
       properties:
@@ -7070,6 +7097,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 30
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 SalesInvoice:
@@ -7080,7 +7115,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                NewNet:
+                Net:
                   oneOf:
                     - type: number
                       format: double
@@ -7088,6 +7123,62 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Gross:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Taxes:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -7110,6 +7201,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 30
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 SalesInvoice:
@@ -7120,7 +7219,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                NewNet:
+                Net:
                   oneOf:
                     - type: number
                       format: double
@@ -7128,6 +7227,62 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Gross:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Taxes:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -7136,9 +7291,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
                 Date:
                 SalesInvoice:
-                NewNet:
+                Net:
+                Currency:
+                VAT:
+                Gross:
+                Taxes:
+                Total:
+                PaymentMethod:
+                Company:
             greaterThan:
               type: object
               properties:
@@ -7149,13 +7312,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -7166,13 +7353,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -7183,13 +7394,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -7200,21 +7435,45 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Number", "Date", "SalesInvoice", "NewNet"]
+          example: ["Id", "Number", "Customer", "Date", "SalesInvoice", "Net", "Currency", "VAT", "Gross", "Taxes", "Total", "PaymentMethod", "Company"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,SalesInvoice,NewNet"
+            example: "Id,Number,Customer,Date,SalesInvoice,Net,Currency,VAT,Gross,Taxes,Total,PaymentMethod,Company"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -7229,7 +7488,7 @@ components:
       type: object
       required:
         - Date
-        - NewNet
+        - Net
       properties:
         Id:
           type: integer
@@ -7239,13 +7498,40 @@ components:
           minLength: 0
           maxLength: 30
           readOnly: true
+        Customer:
+          type: integer
+          format: int32
         Date:
         SalesInvoice:
           type: integer
           format: int32
-        NewNet:
+        Net:
           type: number
           format: double
+        Currency:
+          type: integer
+          format: int32
+        VAT:
+          type: number
+          format: double
+          readOnly: true
+        Gross:
+          type: number
+          format: double
+          readOnly: true
+        Taxes:
+          type: number
+          format: double
+        Total:
+          type: number
+          format: double
+          readOnly: true
+        PaymentMethod:
+          type: integer
+          format: int32
+        Company:
+          type: integer
+          format: int32
     CreditNoteFilterOptions:
       type: object
       properties:
@@ -7274,6 +7560,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 30
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 SalesInvoice:
@@ -7284,7 +7578,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                NewNet:
+                Net:
                   oneOf:
                     - type: number
                       format: double
@@ -7292,6 +7586,62 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Gross:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Taxes:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -7314,6 +7664,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 30
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 SalesInvoice:
@@ -7324,7 +7682,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                NewNet:
+                Net:
                   oneOf:
                     - type: number
                       format: double
@@ -7332,6 +7690,62 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Gross:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Taxes:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -7340,9 +7754,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
                 Date:
                 SalesInvoice:
-                NewNet:
+                Net:
+                Currency:
+                VAT:
+                Gross:
+                Taxes:
+                Total:
+                PaymentMethod:
+                Company:
             greaterThan:
               type: object
               properties:
@@ -7353,13 +7775,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -7370,13 +7816,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -7387,13 +7857,37 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -7404,21 +7898,45 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 30
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 SalesInvoice:
                   type: integer
                   format: int32
-                NewNet:
+                Net:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
+                VAT:
+                  type: number
+                  format: double
+                Gross:
+                  type: number
+                  format: double
+                Taxes:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                PaymentMethod:
+                  type: integer
+                  format: int32
+                Company:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Number", "Date", "SalesInvoice", "NewNet"]
+          example: ["Id", "Number", "Customer", "Date", "SalesInvoice", "Net", "Currency", "VAT", "Gross", "Taxes", "Total", "PaymentMethod", "Company"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,SalesInvoice,NewNet"
+            example: "Id,Number,Customer,Date,SalesInvoice,Net,Currency,VAT,Gross,Taxes,Total,PaymentMethod,Company"
         $order:
           type: string
           enum: ["asc", "desc"]
