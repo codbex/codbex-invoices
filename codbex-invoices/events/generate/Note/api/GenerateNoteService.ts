@@ -23,4 +23,14 @@ class GenerateSalesInvoiceService {
             "Company": salesInvoice.Company
         };
     }
+
+    @Get("/salesInvoiceNet/:salesInvoiceId")
+    public salesInvoiceData(_: any, ctx: any) {
+        const salesInvoiceId = ctx.pathParameters.salesInvoiceId;
+        let salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
+
+        return {
+            "Net": salesInvoice.Net
+        };
+    }
 }
