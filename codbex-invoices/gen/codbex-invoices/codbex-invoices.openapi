@@ -7024,7 +7024,6 @@ components:
     DebitNote:
       type: object
       required:
-        - Date
         - Net
       properties:
         Id:
@@ -7487,7 +7486,6 @@ components:
     CreditNote:
       type: object
       required:
-        - Date
         - Net
       properties:
         Id:

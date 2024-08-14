@@ -124,9 +124,6 @@ class DebitNoteService {
         if (entity.Number?.length > 30) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [30] characters`);
         }
-        if (entity.Date === null || entity.Date === undefined) {
-            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
-        }
         if (entity.Net === null || entity.Net === undefined) {
             throw new ValidationError(`The 'Net' property is required, provide a valid value`);
         }
