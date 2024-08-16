@@ -551,6 +551,7 @@
           "dataLength": "20",
           "dataName": "SALESINVOICE_NUMBER",
           "dataNullable": true,
+          "dataOrderBy": "DESC",
           "dataType": "VARCHAR",
           "isCalculatedProperty": true,
           "name": "Number",
@@ -1186,6 +1187,7 @@
           "dataLength": "20",
           "dataName": "SALESINVOICE_NUMBER",
           "dataNullable": true,
+          "dataOrderBy": "DESC",
           "dataType": "VARCHAR",
           "isCalculatedProperty": true,
           "name": "Number",
@@ -1785,6 +1787,7 @@
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
+          "dataOrderBy": "DESC",
           "dataType": "VARCHAR",
           "isCalculatedProperty": true,
           "name": "Number",
@@ -2348,6 +2351,31 @@
           "minLength": 0,
           "maxLength": 36,
           "inputRule": ""
+        },
+        {
+          "dataName": "PURCHASEINVOICE_STORE",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "name": "Store",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "relationshipName": "PurchaseInvoice_Store",
+          "relationshipEntityName": "Store",
+          "relationshipEntityPerspectiveName": "Stores",
+          "relationshipEntityPerspectiveLabel": "Stores",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Store",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity PurchaseInvoice",
@@ -2402,6 +2430,11 @@
           "name": "Company",
           "project": "codbex-companies",
           "genFolderName": "codbex-companies"
+        },
+        {
+          "name": "Store",
+          "project": "codbex-inventory",
+          "genFolderName": "codbex-inventory"
         }
       ],
       "primaryKeys": [
@@ -2414,6 +2447,7 @@
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
+          "dataOrderBy": "DESC",
           "dataType": "VARCHAR",
           "isCalculatedProperty": true,
           "name": "Number",
@@ -2977,6 +3011,31 @@
             "dataTypeTypescript": "string",
             "minLength": 0,
             "maxLength": 36,
+            "inputRule": ""
+          },
+          {
+            "dataName": "PURCHASEINVOICE_STORE",
+            "dataNullable": true,
+            "dataType": "INTEGER",
+            "name": "Store",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "TEXTBOX",
+            "relationshipName": "PurchaseInvoice_Store",
+            "relationshipEntityName": "Store",
+            "relationshipEntityPerspectiveName": "Stores",
+            "relationshipEntityPerspectiveLabel": "Stores",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isRequiredProperty": false,
+            "isCalculatedProperty": false,
+            "widgetLabel": "Store",
+            "widgetDropdownUrl": "",
+            "dataTypeJava": "int",
+            "dataTypeTypescript": "number",
             "inputRule": ""
           }
         ]

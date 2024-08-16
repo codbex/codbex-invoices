@@ -178,6 +178,7 @@
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_NUMBER",
                         "dataNullable": "true",
+                        "dataOrderBy": "DESC",
                         "dataType": "VARCHAR",
                         "isCalculatedProperty": "true",
                         "name": "Number",
@@ -532,6 +533,7 @@
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_NUMBER",
                         "dataNullable": "true",
+                        "dataOrderBy": "DESC",
                         "dataType": "VARCHAR",
                         "isCalculatedProperty": "true",
                         "name": "Number",
@@ -838,6 +840,22 @@
                         "widgetLength": "36",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "PURCHASEINVOICE_STORE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Store",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "PurchaseInvoice_Store",
+                        "relationshipEntityName": "Store",
+                        "relationshipEntityPerspectiveName": "Stores",
+                        "relationshipEntityPerspectiveLabel": "Stores"
                     }
                 ],
                 "caption": "Manage entity PurchaseInvoice",
