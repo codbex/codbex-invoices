@@ -187,6 +187,11 @@
                         "length": 36,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SALESINVOICE_STORE"
                     }
                 ]
             },
@@ -717,6 +722,15 @@
                 "columns": "SALESINVOICE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "SalesInvoice_Store",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_Store",
+                "columns": "SALESINVOICE_STORE",
+                "referencedTable": "CODBEX_STORE",
+                "referencedColumns": "STORE_ID"
             },
             {
                 "name": "PurchaseInvoice_Supplier",
