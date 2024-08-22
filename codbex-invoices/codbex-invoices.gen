@@ -7268,7 +7268,7 @@
       "perspectiveRole": "",
       "title": "SalesInvoiceType",
       "tooltip": "SalesInvoiceType",
-      "type": "PROJECTION",
+      "type": "SETTING",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
