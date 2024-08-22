@@ -9,6 +9,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 export interface SalesInvoiceEntity {
     readonly Id: number;
     Number?: string;
+    SalesInvoiceType?: number;
     Date: Date;
     Due: Date;
     Customer: number;
@@ -34,6 +35,7 @@ export interface SalesInvoiceEntity {
 }
 
 export interface SalesInvoiceCreateEntity {
+    readonly SalesInvoiceType?: number;
     readonly Date: Date;
     readonly Due: Date;
     readonly Customer: number;
@@ -65,6 +67,7 @@ export interface SalesInvoiceEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
+            SalesInvoiceType?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Customer?: number | number[];
@@ -91,6 +94,7 @@ export interface SalesInvoiceEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
+            SalesInvoiceType?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Customer?: number | number[];
@@ -117,6 +121,7 @@ export interface SalesInvoiceEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Customer?: number;
@@ -143,6 +148,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Customer?: number;
@@ -169,6 +175,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Customer?: number;
@@ -195,6 +202,7 @@ export interface SalesInvoiceEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Customer?: number;
@@ -221,6 +229,7 @@ export interface SalesInvoiceEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Customer?: number;
@@ -284,6 +293,11 @@ export class SalesInvoiceRepository {
                 name: "Number",
                 column: "SALESINVOICE_NUMBER",
                 type: "VARCHAR",
+            },
+            {
+                name: "SalesInvoiceType",
+                column: "SALESINVOICE_SALESINVOICETYPE",
+                type: "INTEGER",
             },
             {
                 name: "Date",

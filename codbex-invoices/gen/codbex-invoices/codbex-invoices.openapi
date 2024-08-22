@@ -3565,6 +3565,9 @@ components:
           minLength: 0
           maxLength: 20
           readOnly: true
+        SalesInvoiceType:
+          type: integer
+          format: int32
         Date:
         Due:
         Customer:
@@ -3662,6 +3665,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                SalesInvoiceType:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Due:
@@ -3863,6 +3874,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                SalesInvoiceType:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Due:
@@ -4050,6 +4069,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                SalesInvoiceType:
                 Date:
                 Due:
                 Customer:
@@ -4097,6 +4117,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                SalesInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Customer:
@@ -4174,6 +4197,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                SalesInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Customer:
@@ -4251,6 +4277,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                SalesInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Customer:
@@ -4328,6 +4357,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                SalesInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Customer:
@@ -4397,12 +4429,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Number", "Date", "Due", "Customer", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
+          example: ["Id", "Number", "SalesInvoiceType", "Date", "Due", "Customer", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Date,Due,Customer,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
+            example: "Id,Number,SalesInvoiceType,Date,Due,Customer,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
         $order:
           type: string
           enum: ["asc", "desc"]

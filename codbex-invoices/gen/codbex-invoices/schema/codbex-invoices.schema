@@ -70,6 +70,11 @@
                         "name": "SALESINVOICE_NUMBER"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SALESINVOICE_SALESINVOICETYPE"
+                    },
+                    {
                         "type": "DATE",
                         "name": "SALESINVOICE_DATE"
                     },
@@ -520,6 +525,15 @@
                 "columns": "SALESINVOICEITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
+            },
+            {
+                "name": "SalesInvoice_SalesInvoiceType",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_SalesInvoiceType",
+                "columns": "SALESINVOICE_SALESINVOICETYPE",
+                "referencedTable": "CODBEX_SALESINVOICETYPE",
+                "referencedColumns": "SALESINVOICETYPE_ID"
             },
             {
                 "name": "SalesInvoice_Customer",

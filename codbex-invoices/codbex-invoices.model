@@ -188,6 +188,22 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "SALESINVOICE_SALESINVOICETYPE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "SalesInvoiceType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Type",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "SalesInvoice_SalesInvoiceType",
+                        "relationshipEntityName": "SalesInvoiceType",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataName": "SALESINVOICE_DATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -3245,6 +3261,53 @@
                 "projectionReferencedModel": "/workspace/codbex-inventory/codbex-inventory.model",
                 "title": "Store",
                 "tooltip": "Store",
+                "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "SALESINVOICETYPE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "SALESINVOICETYPE_TYPE",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Type",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity SalesInvoiceType",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESINVOICETYPE\"",
+                "dataName": "SALESINVOICETYPE",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "salesinvoicetype",
+                "menuLabel": "SalesInvoiceType",
+                "name": "SalesInvoiceType",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "SalesInvoiceType",
+                "tooltip": "SalesInvoiceType",
                 "type": "PROJECTION"
             }
         ],
