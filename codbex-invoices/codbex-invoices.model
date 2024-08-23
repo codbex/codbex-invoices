@@ -359,23 +359,6 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataName": "SALESINVOICE_PAYMENTMETHOD",
-                        "dataNullable": "false",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "PaymentMethod",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "SalesInvoice_PaymentMethod",
-                        "relationshipEntityName": "PaymentMethod",
-                        "relationshipEntityPerspectiveName": "Methods",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataName": "SALESINVOICE_SENTMETHOD",
                         "dataNullable": "false",
                         "dataType": "INTEGER",

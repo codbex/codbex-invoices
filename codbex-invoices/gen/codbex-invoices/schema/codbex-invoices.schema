@@ -151,10 +151,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "SALESINVOICE_PAYMENTMETHOD"
-                    },
-                    {
-                        "type": "INTEGER",
                         "name": "SALESINVOICE_SENTMETHOD"
                     },
                     {
@@ -571,15 +567,6 @@
                 "columns": "SALESINVOICE_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
-            },
-            {
-                "name": "SalesInvoice_PaymentMethod",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_PaymentMethod",
-                "columns": "SALESINVOICE_PAYMENTMETHOD",
-                "referencedTable": "CODBEX_PAYMENTMETHOD",
-                "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
                 "name": "SalesInvoice_SentMethod",
