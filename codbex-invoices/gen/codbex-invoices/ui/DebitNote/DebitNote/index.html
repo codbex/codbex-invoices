@@ -52,26 +52,15 @@
 							<fd-list-byline dg-align="left">
 								{{optionsCustomerValue(next.Customer)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
-								{{next.Due | date: "dd/MMM/yyyy"}} |
+								{{optionsSalesInvoiceValue(next.SalesInvoice)}} |
 								{{next.Net}} |
 								{{optionsCurrencyValue(next.Currency)}} |
-								{{next.Gross}} |
-								{{next.Discount}} |
-								{{next.Taxes}} |
 								{{next.VAT}} |
+								{{next.Gross}} |
+								{{next.Taxes}} |
 								{{next.Total}} |
-								{{next.Paid}} |
-								{{next.Conditions}} |
 								{{optionsPaymentMethodValue(next.PaymentMethod)}} |
-								{{optionsSentMethodValue(next.SentMethod)}} |
-								{{optionsSalesInvoiceStatusValue(next.SalesInvoiceStatus)}} |
-								{{optionsOperatorValue(next.Operator)}} |
-								{{next.Document}} |
-								{{optionsCompanyValue(next.Company)}} |
-								{{next.Name}} |
-								{{next.UUID}} |
-								{{next.Reference}} |
-								{{next.Store}}
+								{{optionsCompanyValue(next.Company)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>
