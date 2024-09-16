@@ -11,19 +11,19 @@
     "dependencies": {
         "@codbex/codbex-countries": "0.2.0",
         "@codbex/codbex-countries-data": "0.2.0",
-        "@codbex/codbex-companies": "0.2.0",
+        "@codbex/codbex-companies": "0.3.0",
         "@codbex/codbex-currencies": "0.2.0",
         "@codbex/codbex-currencies-data": "0.2.0",
-        "@codbex/codbex-uoms": "0.2.0",
-        "@codbex/codbex-partners": "0.2.0",
+        "@codbex/codbex-uoms": "0.3.0",
+        "@codbex/codbex-partners": "0.3.0",
         "@codbex/codbex-methods": "0.2.0",
         "@codbex/codbex-methods-data": "0.2.0",
-        "@codbex/codbex-employees": "0.2.0",
-        "@codbex/codbex-products": "0.2.0",
-        "@codbex/codbex-products-data": "0.2.0",
-        "@codbex/codbex-payments": "0.2.0",
-        "@codbex/codbex-payments-data": "0.2.0",
+        "@codbex/codbex-employees": "0.3.0",
+        "@codbex/codbex-products": "0.3.0",
+        "@codbex/codbex-products-data": "0.3.0",
+        "@codbex/codbex-payments": "0.3.0",
+        "@codbex/codbex-payments-data": "0.3.0",
         "@codbex/codbex-cities": "0.2.0",
-        "@codbex/codbex-number-generator": "0.2.0"
+        "@codbex/codbex-number-generator": "0.3.0"
     }
 }
