@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-invoices/widgets/services/total-sales.js",
+    "description": "Total Sales Profit  Widget"
+}
