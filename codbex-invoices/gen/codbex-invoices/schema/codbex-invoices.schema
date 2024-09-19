@@ -29,24 +29,28 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_NET"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_VAT"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_GROSS"
@@ -71,6 +75,11 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SALESINVOICE_SALESINVOICETYPE"
+                    },
+                    {
+                        "type": "INTEGER",
                         "name": "SALESINVOICE_CUSTOMER"
                     },
                     {
@@ -83,6 +92,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -94,6 +104,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -101,6 +112,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -109,6 +121,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -117,6 +130,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -124,6 +138,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -132,6 +147,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -143,10 +159,6 @@
                         "length": 200,
                         "nullable": true,
                         "name": "SALESINVOICE_CONDITIONS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "SALESINVOICE_PAYMENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
@@ -231,6 +243,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -242,6 +255,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -249,6 +263,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -257,6 +272,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -265,6 +281,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -272,6 +289,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -280,6 +298,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
@@ -336,11 +355,6 @@
                         "length": 36,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_REFERENCE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_STORE"
                     }
                 ]
             },
@@ -373,12 +387,14 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "PURCHASEINVOICEITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -386,6 +402,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -393,6 +410,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -460,6 +478,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEPAYMENT_AMOUNT"
@@ -488,6 +507,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "PURCHASEINVOICEPAYMENT_AMOUNT"
@@ -639,6 +659,25 @@
                 ]
             },
             {
+                "name": "CODBEX_SALESINVOICETYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SALESINVOICETYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICETYPE_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -666,6 +705,15 @@
                 "referencedColumns": "UOM_ID"
             },
             {
+                "name": "SalesInvoice_SalesInvoiceType",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_SalesInvoiceType",
+                "columns": "SALESINVOICE_SALESINVOICETYPE",
+                "referencedTable": "CODBEX_SALESINVOICETYPE",
+                "referencedColumns": "SALESINVOICETYPE_ID"
+            },
+            {
                 "name": "SalesInvoice_Customer",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
@@ -682,15 +730,6 @@
                 "columns": "SALESINVOICE_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
-            },
-            {
-                "name": "SalesInvoice_PaymentMethod",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_PaymentMethod",
-                "columns": "SALESINVOICE_PAYMENTMETHOD",
-                "referencedTable": "CODBEX_PAYMENTMETHOD",
-                "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
                 "name": "SalesInvoice_SentMethod",
@@ -799,15 +838,6 @@
                 "columns": "PURCHASEINVOICE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "PurchaseInvoice_Store",
-                "type": "foreignKey",
-                "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_Store",
-                "columns": "PURCHASEINVOICE_STORE",
-                "referencedTable": "CODBEX_STORE",
-                "referencedColumns": "STORE_ID"
             },
             {
                 "name": "PurchaseInvoiceItem_PurchaseInvoice",

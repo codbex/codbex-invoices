@@ -9,6 +9,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 export interface SalesInvoiceEntity {
     readonly Id: number;
     Number?: string;
+    SalesInvoiceType?: number;
     Customer: number;
     Date: Date;
     Due: Date;
@@ -21,7 +22,6 @@ export interface SalesInvoiceEntity {
     Total?: number;
     Paid?: number;
     Conditions?: string;
-    PaymentMethod: number;
     SentMethod: number;
     SalesInvoiceStatus: number;
     Operator: number;
@@ -34,6 +34,7 @@ export interface SalesInvoiceEntity {
 }
 
 export interface SalesInvoiceCreateEntity {
+    readonly SalesInvoiceType?: number;
     readonly Customer: number;
     readonly Date: Date;
     readonly Due: Date;
@@ -46,7 +47,6 @@ export interface SalesInvoiceCreateEntity {
     readonly Total?: number;
     readonly Paid?: number;
     readonly Conditions?: string;
-    readonly PaymentMethod: number;
     readonly SentMethod: number;
     readonly SalesInvoiceStatus: number;
     readonly Operator: number;
@@ -65,6 +65,7 @@ export interface SalesInvoiceEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
+            SalesInvoiceType?: number | number[];
             Customer?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
@@ -77,7 +78,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number | number[];
             Paid?: number | number[];
             Conditions?: string | string[];
-            PaymentMethod?: number | number[];
             SentMethod?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -91,6 +91,7 @@ export interface SalesInvoiceEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
+            SalesInvoiceType?: number | number[];
             Customer?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
@@ -103,7 +104,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number | number[];
             Paid?: number | number[];
             Conditions?: string | string[];
-            PaymentMethod?: number | number[];
             SentMethod?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -117,6 +117,7 @@ export interface SalesInvoiceEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -129,7 +130,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -143,6 +143,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -155,7 +156,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -169,6 +169,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -181,7 +182,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -195,6 +195,7 @@ export interface SalesInvoiceEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -207,7 +208,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -221,6 +221,7 @@ export interface SalesInvoiceEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
+            SalesInvoiceType?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -233,7 +234,6 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
-            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -284,6 +284,11 @@ export class SalesInvoiceRepository {
                 name: "Number",
                 column: "SALESINVOICE_NUMBER",
                 type: "VARCHAR",
+            },
+            {
+                name: "SalesInvoiceType",
+                column: "SALESINVOICE_SALESINVOICETYPE",
+                type: "INTEGER",
             },
             {
                 name: "Customer",
@@ -350,12 +355,6 @@ export class SalesInvoiceRepository {
                 type: "VARCHAR",
             },
             {
-                name: "PaymentMethod",
-                column: "SALESINVOICE_PAYMENTMETHOD",
-                type: "INTEGER",
-                required: true
-            },
-            {
                 name: "SentMethod",
                 column: "SALESINVOICE_SENTMETHOD",
                 type: "INTEGER",
@@ -414,15 +413,6 @@ export class SalesInvoiceRepository {
     }
 
     public findAll(options?: SalesInvoiceEntityOptions): SalesInvoiceEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
-        }
-        // @ts-ignore
-        options.$sort += "Number,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: SalesInvoiceEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Due");

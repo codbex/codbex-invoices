@@ -80,6 +80,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -95,6 +96,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_NET",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -110,6 +112,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -125,6 +128,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_GROSS",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -178,7 +182,6 @@
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_NUMBER",
                         "dataNullable": "true",
-                        "dataOrderBy": "DESC",
                         "dataType": "VARCHAR",
                         "isCalculatedProperty": "true",
                         "name": "Number",
@@ -186,6 +189,22 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "SALESINVOICE_SALESINVOICETYPE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "SalesInvoiceType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "SalesInvoice_SalesInvoiceType",
+                        "relationshipEntityName": "SalesInvoiceType",
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "SALESINVOICE_CUSTOMER",
@@ -227,6 +246,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -256,6 +276,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -269,6 +290,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -282,6 +304,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -294,6 +317,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -307,6 +331,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -320,6 +345,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -341,23 +367,6 @@
                         "widgetLength": "200",
                         "widgetSize": "",
                         "widgetType": "TEXTAREA"
-                    },
-                    {
-                        "dataName": "SALESINVOICE_PAYMENTMETHOD",
-                        "dataNullable": "false",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "PaymentMethod",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "SalesInvoice_PaymentMethod",
-                        "relationshipEntityName": "PaymentMethod",
-                        "relationshipEntityPerspectiveName": "Methods",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "SALESINVOICE_SENTMETHOD",
@@ -533,7 +542,6 @@
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_NUMBER",
                         "dataNullable": "true",
-                        "dataOrderBy": "DESC",
                         "dataType": "VARCHAR",
                         "isCalculatedProperty": "true",
                         "name": "Number",
@@ -593,6 +601,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -622,6 +631,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -635,6 +645,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -648,6 +659,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -660,6 +672,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -673,6 +686,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -686,6 +700,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -840,22 +855,6 @@
                         "widgetLength": "36",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "PURCHASEINVOICE_STORE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Store",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "PurchaseInvoice_Store",
-                        "relationshipEntityName": "Store",
-                        "relationshipEntityPerspectiveName": "Stores",
-                        "relationshipEntityPerspectiveLabel": "Stores"
                     }
                 ],
                 "caption": "Manage entity PurchaseInvoice",
@@ -958,6 +957,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -973,6 +973,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -988,6 +989,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1003,6 +1005,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1370,6 +1373,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
+                        "dataLength": "18",
                         "dataName": "PRODUCT_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2352,6 +2356,7 @@
                     },
                     {
                         "dataDefaultValue": "",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -2472,6 +2477,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
+                        "dataLength": "18",
                         "dataName": "CUSTOMERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2694,6 +2700,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
+                        "dataLength": "18",
                         "dataName": "SUPPLIERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2883,6 +2890,7 @@
                     },
                     {
                         "dataDefaultValue": "",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -3127,6 +3135,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_NEWNET",
                         "dataNullable": "false",
                         "dataPrecision": "NaN",
@@ -3154,6 +3163,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3169,6 +3179,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3182,6 +3193,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3196,6 +3208,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3321,6 +3334,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_NEWNET",
                         "dataNullable": "false",
                         "dataPrecision": "NaN",
@@ -3348,6 +3362,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3363,6 +3378,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3376,6 +3392,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3390,6 +3407,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3636,6 +3654,53 @@
                 "title": "Store",
                 "tooltip": "Store",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "SALESINVOICETYPE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "SALESINVOICETYPE_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity SalesInvoiceType",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESINVOICETYPE\"",
+                "dataName": "SALESINVOICETYPE",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "salesinvoicetype",
+                "menuLabel": "SalesInvoiceType",
+                "name": "SalesInvoiceType",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
+                "perspectiveName": "salesinvoice",
+                "perspectiveOrder": "600",
+                "perspectiveRole": "",
+                "title": "SalesInvoiceType",
+                "tooltip": "SalesInvoiceType",
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [

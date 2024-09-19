@@ -48,6 +48,25 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idSalesInvoiceType" dg-colon="true">SalesInvoiceType</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SalesInvoiceType'].$valid }}">
+	                            <fd-input id="idSalesInvoiceType"
+	                                name="SalesInvoiceType"
+	                                state="{{ forms.details['SalesInvoiceType'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.SalesInvoiceType"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                type="text"
+	                                placeholder="Enter SalesInvoiceType">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCustomer" dg-colon="true">Customer</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -250,20 +269,6 @@
 					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPaymentMethod" dg-colon="true">PaymentMethod</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idPaymentMethod"
-	                            name="PaymentMethod"
-	                            state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.PaymentMethod"
-	                            dropdown-items="optionsPaymentMethod"
-	                            dg-placeholder="Search PaymentMethod ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSentMethod" dg-colon="true">SentMethod</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -393,18 +398,13 @@
                         	<fd-form-label for="idStore" dg-colon="true">Store</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Store'].$valid }}">
-	                            <fd-input id="idStore"
-	                                name="Store"
-	                                state="{{ forms.details['Store'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Store"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Store">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <fd-combobox-input id="idStore"
+	                            name="Store"
+	                            state="{{ forms.details['Store'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Store"
+	                            dropdown-items="optionsStore"
+	                            dg-placeholder="Search Store ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>
