@@ -265,6 +265,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -281,6 +283,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -343,6 +351,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -359,6 +369,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -1493,6 +1509,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1509,6 +1527,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1571,6 +1595,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1587,6 +1613,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -4407,7 +4439,7 @@ components:
       type: object
       required:
         - SalesInvoice
-        - Product
+        - Name
         - Quantity
         - UoM
         - Price
@@ -4418,9 +4450,10 @@ components:
         SalesInvoice:
           type: integer
           format: int32
-        Product:
-          type: integer
-          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
         Quantity:
           type: number
           format: double
@@ -4467,14 +4500,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                Name:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Quantity:
                   oneOf:
                     - type: number
@@ -4542,14 +4578,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                Name:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Quantity:
                   oneOf:
                     - type: number
@@ -4603,7 +4642,10 @@ components:
               properties:
                 Id:
                 SalesInvoice:
-                Product:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                 UoM:
                 Price:
@@ -4619,9 +4661,10 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -4649,9 +4692,10 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -4679,9 +4723,10 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -4709,9 +4754,10 @@ components:
                 SalesInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -4732,12 +4778,12 @@ components:
                   format: double
         $select:
           type: array
-          example: ["Id", "SalesInvoice", "Product", "Quantity", "UoM", "Price", "Net", "VAT", "Gross"]
+          example: ["Id", "SalesInvoice", "Name", "Quantity", "UoM", "Price", "Net", "VAT", "Gross"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SalesInvoice,Product,Quantity,UoM,Price,Net,VAT,Gross"
+            example: "Id,SalesInvoice,Name,Quantity,UoM,Price,Net,VAT,Gross"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -4803,6 +4849,9 @@ components:
           type: string
           minLength: 0
           maxLength: 200
+        PaymentMethod:
+          type: integer
+          format: int32
         SentMethod:
           type: integer
           format: int32
@@ -4959,6 +5008,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 SentMethod:
                   oneOf:
                     - type: integer
@@ -5160,6 +5217,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 SentMethod:
                   oneOf:
                     - type: integer
@@ -5268,6 +5333,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                PaymentMethod:
                 SentMethod:
                 SalesInvoiceStatus:
                 Operator:
@@ -5335,6 +5401,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                PaymentMethod:
+                  type: integer
+                  format: int32
                 SentMethod:
                   type: integer
                   format: int32
@@ -5412,6 +5481,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                PaymentMethod:
+                  type: integer
+                  format: int32
                 SentMethod:
                   type: integer
                   format: int32
@@ -5489,6 +5561,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                PaymentMethod:
+                  type: integer
+                  format: int32
                 SentMethod:
                   type: integer
                   format: int32
@@ -5566,6 +5641,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                PaymentMethod:
+                  type: integer
+                  format: int32
                 SentMethod:
                   type: integer
                   format: int32
@@ -5599,12 +5677,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Number", "SalesInvoiceType", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
+          example: ["Id", "Number", "SalesInvoiceType", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,SalesInvoiceType,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
+            example: "Id,Number,SalesInvoiceType,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -6500,7 +6578,7 @@ components:
     PurchaseInvoiceItem:
       type: object
       required:
-        - Product
+        - Name
         - Quantity
         - UoM
         - Price
@@ -6511,9 +6589,10 @@ components:
         PurchaseInvoice:
           type: integer
           format: int32
-        Product:
-          type: integer
-          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
         Quantity:
           type: number
           format: double
@@ -6560,14 +6639,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                Name:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Quantity:
                   oneOf:
                     - type: number
@@ -6635,14 +6717,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                Name:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Quantity:
                   oneOf:
                     - type: number
@@ -6696,7 +6781,10 @@ components:
               properties:
                 Id:
                 PurchaseInvoice:
-                Product:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                 UoM:
                 Price:
@@ -6712,9 +6800,10 @@ components:
                 PurchaseInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -6742,9 +6831,10 @@ components:
                 PurchaseInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -6772,9 +6862,10 @@ components:
                 PurchaseInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -6802,9 +6893,10 @@ components:
                 PurchaseInvoice:
                   type: integer
                   format: int32
-                Product:
-                  type: integer
-                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Quantity:
                   type: number
                   format: double
@@ -6825,12 +6917,12 @@ components:
                   format: double
         $select:
           type: array
-          example: ["Id", "PurchaseInvoice", "Product", "Quantity", "UoM", "Price", "Net", "VAT", "Gross"]
+          example: ["Id", "PurchaseInvoice", "Name", "Quantity", "UoM", "Price", "Net", "VAT", "Gross"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,PurchaseInvoice,Product,Quantity,UoM,Price,Net,VAT,Gross"
+            example: "Id,PurchaseInvoice,Name,Quantity,UoM,Price,Net,VAT,Gross"
         $order:
           type: string
           enum: ["asc", "desc"]

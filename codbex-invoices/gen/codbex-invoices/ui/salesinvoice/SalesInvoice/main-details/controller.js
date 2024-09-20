@@ -40,8 +40,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsSalesInvoiceType = [];
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
+				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
 				$scope.optionsSalesInvoiceStatus = [];
 				$scope.optionsOperator = [];
@@ -60,8 +62,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
@@ -74,8 +78,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
@@ -94,8 +100,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;

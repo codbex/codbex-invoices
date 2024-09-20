@@ -22,6 +22,7 @@ export interface SalesInvoiceEntity {
     Total?: number;
     Paid?: number;
     Conditions?: string;
+    PaymentMethod?: number;
     SentMethod: number;
     SalesInvoiceStatus: number;
     Operator: number;
@@ -47,6 +48,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Total?: number;
     readonly Paid?: number;
     readonly Conditions?: string;
+    readonly PaymentMethod?: number;
     readonly SentMethod: number;
     readonly SalesInvoiceStatus: number;
     readonly Operator: number;
@@ -78,6 +80,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number | number[];
             Paid?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
             SentMethod?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -104,6 +107,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number | number[];
             Paid?: number | number[];
             Conditions?: string | string[];
+            PaymentMethod?: number | number[];
             SentMethod?: number | number[];
             SalesInvoiceStatus?: number | number[];
             Operator?: number | number[];
@@ -130,6 +134,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -156,6 +161,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -182,6 +188,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -208,6 +215,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -234,6 +242,7 @@ export interface SalesInvoiceEntityOptions {
             Total?: number;
             Paid?: number;
             Conditions?: string;
+            PaymentMethod?: number;
             SentMethod?: number;
             SalesInvoiceStatus?: number;
             Operator?: number;
@@ -355,6 +364,11 @@ export class SalesInvoiceRepository {
                 type: "VARCHAR",
             },
             {
+                name: "PaymentMethod",
+                column: "SALESINVOICE_PAYMENTMETHOD",
+                type: "INTEGER",
+            },
+            {
                 name: "SentMethod",
                 column: "SALESINVOICE_SENTMETHOD",
                 type: "INTEGER",
@@ -413,6 +427,15 @@ export class SalesInvoiceRepository {
     }
 
     public findAll(options?: SalesInvoiceEntityOptions): SalesInvoiceEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Number,";
+        // @ts-ignore
+        options.$order = "DESC";
         return this.dao.list(options).map((e: SalesInvoiceEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Due");

@@ -133,8 +133,11 @@ class SalesInvoiceItemService {
         if (entity.SalesInvoice === null || entity.SalesInvoice === undefined) {
             throw new ValidationError(`The 'SalesInvoice' property is required, provide a valid value`);
         }
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
         if (entity.Quantity === null || entity.Quantity === undefined) {
             throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);

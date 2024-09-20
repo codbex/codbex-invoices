@@ -51,18 +51,13 @@
                         	<fd-form-label for="idSalesInvoiceType" dg-colon="true">SalesInvoiceType</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SalesInvoiceType'].$valid }}">
-	                            <fd-input id="idSalesInvoiceType"
-	                                name="SalesInvoiceType"
-	                                state="{{ forms.details['SalesInvoiceType'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.SalesInvoiceType"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter SalesInvoiceType">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <fd-combobox-input id="idSalesInvoiceType"
+	                            name="SalesInvoiceType"
+	                            state="{{ forms.details['SalesInvoiceType'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.SalesInvoiceType"
+	                            dropdown-items="optionsSalesInvoiceType"
+	                            dg-placeholder="Search SalesInvoiceType ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -267,6 +262,20 @@
 							<fd-form-message dg-type="error" ng-show="!forms.details['Conditions'].$valid">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idPaymentMethod" dg-colon="true">PaymentMethod</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idPaymentMethod"
+	                            name="PaymentMethod"
+	                            state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.PaymentMethod"
+	                            dropdown-items="optionsPaymentMethod"
+	                            dg-placeholder="Search PaymentMethod ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSentMethod" dg-colon="true">SentMethod</fd-form-label>

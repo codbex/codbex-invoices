@@ -16,8 +16,9 @@
                         "name": "SALESINVOICEITEM_SALESINVOICE"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "SALESINVOICEITEM_PRODUCT"
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "SALESINVOICEITEM_NAME"
                     },
                     {
                         "type": "DOUBLE",
@@ -159,6 +160,11 @@
                         "length": 200,
                         "nullable": true,
                         "name": "SALESINVOICE_CONDITIONS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SALESINVOICE_PAYMENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
@@ -374,8 +380,9 @@
                         "name": "PURCHASEINVOICEITEM_PURCHASEINVOICE"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "PURCHASEINVOICEITEM_PRODUCT"
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "PURCHASEINVOICEITEM_NAME"
                     },
                     {
                         "type": "DOUBLE",
@@ -687,15 +694,6 @@
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "SalesInvoiceItem_Product",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICEITEM",
-                "constraintName": "SalesInvoiceItem_Product",
-                "columns": "SALESINVOICEITEM_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
-            },
-            {
                 "name": "SalesInvoiceItem_UoM",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -730,6 +728,15 @@
                 "columns": "SALESINVOICE_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "SalesInvoice_PaymentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_PaymentMethod",
+                "columns": "SALESINVOICE_PAYMENTMETHOD",
+                "referencedTable": "CODBEX_PAYMENTMETHOD",
+                "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
                 "name": "SalesInvoice_SentMethod",
@@ -847,15 +854,6 @@
                 "columns": "PURCHASEINVOICEITEM_PURCHASEINVOICE",
                 "referencedTable": "CODBEX_PURCHASEINVOICE",
                 "referencedColumns": "PURCHASEINVOICE_ID"
-            },
-            {
-                "name": "PurchaseInvoiceItem_Product",
-                "type": "foreignKey",
-                "table": "CODBEX_PURCHASEINVOICEITEM",
-                "constraintName": "PurchaseInvoiceItem_Product",
-                "columns": "PURCHASEINVOICEITEM_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
             },
             {
                 "name": "PurchaseInvoiceItem_UoM",
