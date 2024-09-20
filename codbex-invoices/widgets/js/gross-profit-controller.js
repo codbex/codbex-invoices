@@ -24,16 +24,9 @@ angular.module('gross-profit', ['ideUI', 'ideView'])
                 calculateGrossProfit();
             });
 
-        const orderServiceUrl = "/services/ts/codbex-invoices/widgets/api/OrderService.ts/orderData";
-        $http.get(orderServiceUrl)
-            .then(function (response) {
-                $scope.OrderData = response.data;
-                calculateGrossProfit();
-            });
-
         function calculateGrossProfit() {
             if ($scope.InvoiceData && $scope.OrderData) {
-                $scope.GrossProfit = (($scope.InvoiceData.SalesInvoiceTotal + $scope.OrderData.SalesOrderTotal) - ($scope.InvoiceData.PurchaseInvoiceTotal + $scope.OrderData.PurchaseOrderTotal)).toFixed(2);
+                $scope.GrossProfit = (($scope.InvoiceData.SalesInvoiceTotal) - ($scope.InvoiceData.PurchaseInvoiceTotal)).toFixed(2);
             }
         }
     }]);

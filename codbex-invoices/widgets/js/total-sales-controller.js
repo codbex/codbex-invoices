@@ -1,5 +1,5 @@
 angular.module('total-sales', ['ideUI', 'ideView'])
-    .controller('totalSalesController', ['$scope', '$document', '$http', 'messageHub', function ($scope, $http, messageHub) {
+    .controller('totalSalesController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
         $scope.state = {
             isBusy: true,
             error: false,

@@ -1,5 +1,5 @@
 angular.module('total-receivables', ['ideUI', 'ideView'])
-    .controller('totalReceivablesController', ['$scope', '$document', '$http', 'messageHub', function ($scope, $http, messageHub) {
+    .controller('totalReceivablesController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
         $scope.state = {
             isBusy: true,
             error: false,
@@ -20,10 +20,10 @@ angular.module('total-receivables', ['ideUI', 'ideView'])
         $scope.today = new Date();
 
 
-        const orderServiceUrl = "/services/ts/codbex-invoices/widgets/api/OrderService.ts/orderData";
-        $http.get(orderServiceUrl)
+        const invoiceServiceUrl = "/services/ts/codbex-invoices/widgets/api/InvoiceService.ts/invoiceData";
+        $http.get(invoiceServiceUrl)
             .then(function (response) {
-                $scope.OrderData = response.data;
+                $scope.InvoiceData = response.data;
             });
 
     }]);

@@ -1,5 +1,5 @@
-angular.module('gross-profit', ['ideUI', 'ideView'])
-    .controller('grossProfitController', ['$scope', '$document', '$http', 'messageHub', function ($scope, $http, messageHub) {
+angular.module('unpaid-sales-invoices', ['ideUI', 'ideView'])
+    .controller('unpaidSalesInvoicesController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
         $scope.state = {
             isBusy: true,
             error: false,
