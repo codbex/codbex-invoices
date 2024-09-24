@@ -3407,6 +3407,7 @@
                         "dataName": "SALESINVOICETYPE_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",

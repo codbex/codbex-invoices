@@ -8472,6 +8472,7 @@ components:
     SalesInvoiceType:
       type: object
       required:
+        - Name
       properties:
         Id:
           type: integer
