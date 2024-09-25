@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-navigations",
+    "module": "codbex-invoices/navigation/services/purchase-invoices.js",
+    "description": "Purchase Invoices Navigation"
+}
