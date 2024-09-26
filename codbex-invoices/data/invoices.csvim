@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_SALESINVOICESTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-invoices-data/sales-invoice-statuses.csv",
+      "file": "/codbex-invoices/data/sales-invoice-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -14,7 +14,7 @@
     {
       "table": "CODBEX_PURCHASEINVOICESTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-invoices-data/purchase-invoice-statuses.csv",
+      "file": "/codbex-invoices/data/purchase-invoice-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
