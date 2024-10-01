@@ -26,6 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsSalesInvoiceType = params.optionsSalesInvoiceType;
 			$scope.optionsCustomer = params.optionsCustomer;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
@@ -33,6 +34,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsSalesInvoiceStatus = params.optionsSalesInvoiceStatus;
 			$scope.optionsOperator = params.optionsOperator;
 			$scope.optionsCompany = params.optionsCompany;
+			$scope.optionsStore = params.optionsStore;
 		}
 
 		$scope.filter = function () {
@@ -60,6 +62,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Number) {
 				filter.$filter.contains.Number = entity.Number;
+			}
+			if (entity.SalesInvoiceType !== undefined) {
+				filter.$filter.equals.SalesInvoiceType = entity.SalesInvoiceType;
 			}
 			if (entity.Customer !== undefined) {
 				filter.$filter.equals.Customer = entity.Customer;

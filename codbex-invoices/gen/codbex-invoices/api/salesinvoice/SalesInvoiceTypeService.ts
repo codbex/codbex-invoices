@@ -1,31 +1,31 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PurchaseInvoiceItemRepository, PurchaseInvoiceItemEntityOptions } from "../../dao/purchaseinvoice/PurchaseInvoiceItemRepository";
+import { SalesInvoiceTypeRepository, SalesInvoiceTypeEntityOptions } from "../../dao/salesinvoice/SalesInvoiceTypeRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoiceItem", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoiceType", ["validate"]);
 
 @Controller
-class PurchaseInvoiceItemService {
+class SalesInvoiceTypeService {
 
-    private readonly repository = new PurchaseInvoiceItemRepository();
+    private readonly repository = new SalesInvoiceTypeRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: PurchaseInvoiceItemEntityOptions = {
+            const options: SalesInvoiceTypeEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
-            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
+            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
+            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
 
-            if (PurchaseInvoice !== undefined) {
+            if (${masterEntityId} !== undefined) {
                 options.$filter = {
                     equals: {
-                        PurchaseInvoice: PurchaseInvoice
+                        ${masterEntityId}: ${masterEntityId}
                     }
                 };
             }
@@ -41,7 +41,7 @@ class PurchaseInvoiceItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class PurchaseInvoiceItemService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("SalesInvoiceType not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class PurchaseInvoiceItemService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoiceItem not found");
+                HttpUtils.sendResponseNotFound("SalesInvoiceType not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -133,17 +133,8 @@ class PurchaseInvoiceItemService {
         if (entity.Name === null || entity.Name === undefined) {
             throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 300) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [300] characters`);
-        }
-        if (entity.Quantity === null || entity.Quantity === undefined) {
-            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
-        }
-        if (entity.UoM === null || entity.UoM === undefined) {
-            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
-        }
-        if (entity.Price === null || entity.Price === undefined) {
-            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

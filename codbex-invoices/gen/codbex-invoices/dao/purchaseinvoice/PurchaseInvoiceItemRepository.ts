@@ -6,7 +6,7 @@ import { dao as daoApi } from "sdk/db";
 export interface PurchaseInvoiceItemEntity {
     readonly Id: number;
     PurchaseInvoice: number;
-    Product: number;
+    Name: string;
     Quantity: number;
     UoM: number;
     Price: number;
@@ -17,7 +17,7 @@ export interface PurchaseInvoiceItemEntity {
 
 export interface PurchaseInvoiceItemCreateEntity {
     readonly PurchaseInvoice: number;
-    readonly Product: number;
+    readonly Name: string;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
@@ -32,7 +32,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         equals?: {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
-            Product?: number | number[];
+            Name?: string | string[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -43,7 +43,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         notEquals?: {
             Id?: number | number[];
             PurchaseInvoice?: number | number[];
-            Product?: number | number[];
+            Name?: string | string[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -54,7 +54,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         contains?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -65,7 +65,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         greaterThan?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -76,7 +76,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -87,7 +87,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         lessThan?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -98,7 +98,7 @@ export interface PurchaseInvoiceItemEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             PurchaseInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -148,9 +148,9 @@ export class PurchaseInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Product",
-                column: "PURCHASEINVOICEITEM_PRODUCT",
-                type: "INTEGER",
+                name: "Name",
+                column: "PURCHASEINVOICEITEM_NAME",
+                type: "VARCHAR",
                 required: true
             },
             {

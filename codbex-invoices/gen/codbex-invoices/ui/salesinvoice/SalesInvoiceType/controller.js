@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.purchaseinvoice.PurchaseInvoiceItem';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceType';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "purchaseinvoice" && e.view === "PurchaseInvoiceItem" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "purchaseinvoice" && e.view === "PurchaseInvoiceItem" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceType" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceType" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-invoices.purchaseinvoice.PurchaseInvoice.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.${masterEntity}.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-invoices.purchaseinvoice.PurchaseInvoice.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.${masterEntity}.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let PurchaseInvoice = $scope.selectedMainEntityId;
+			let ${masterEntityId} = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,10 +95,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.PurchaseInvoice = PurchaseInvoice;
+			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("PurchaseInvoiceItem", `Unable to count PurchaseInvoiceItem: '${response.message}'`);
+					messageHub.showAlertError("SalesInvoiceType", `Unable to count SalesInvoiceType: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("PurchaseInvoiceItem", `Unable to list/filter PurchaseInvoiceItem: '${response.message}'`);
+						messageHub.showAlertError("SalesInvoiceType", `Unable to list/filter SalesInvoiceType: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -122,50 +122,42 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("PurchaseInvoiceItem-details", {
+			messageHub.showDialogWindow("SalesInvoiceType-details", {
 				action: "select",
 				entity: entity,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("PurchaseInvoiceItem-filter", {
+			messageHub.showDialogWindow("SalesInvoiceType-filter", {
 				entity: $scope.filterEntity,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("PurchaseInvoiceItem-details", {
+			messageHub.showDialogWindow("SalesInvoiceType-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "PurchaseInvoice",
+				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("PurchaseInvoiceItem-details", {
+			messageHub.showDialogWindow("SalesInvoiceType-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "PurchaseInvoice",
+				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete PurchaseInvoiceItem?',
-				`Are you sure you want to delete PurchaseInvoiceItem? This action cannot be undone.`,
+				'Delete SalesInvoiceType?',
+				`Are you sure you want to delete SalesInvoiceType? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -180,7 +172,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("PurchaseInvoiceItem", `Unable to delete PurchaseInvoiceItem: '${response.message}'`);
+							messageHub.showAlertError("SalesInvoiceType", `Unable to delete SalesInvoiceType: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -189,46 +181,5 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsPurchaseInvoice = [];
-		$scope.optionsUoM = [];
-
-
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts").then(function (response) {
-			$scope.optionsPurchaseInvoice = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Number
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-			$scope.optionsUoM = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsPurchaseInvoiceValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsPurchaseInvoice.length; i++) {
-				if ($scope.optionsPurchaseInvoice[i].value === optionKey) {
-					return $scope.optionsPurchaseInvoice[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsUoMValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsUoM.length; i++) {
-				if ($scope.optionsUoM[i].value === optionKey) {
-					return $scope.optionsUoM[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);
