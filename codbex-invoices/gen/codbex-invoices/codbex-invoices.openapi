@@ -4453,7 +4453,7 @@ components:
         Name:
           type: string
           minLength: 0
-          maxLength: 100
+          maxLength: 300
         Quantity:
           type: number
           format: double
@@ -4504,13 +4504,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 100
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 100
+                        maxLength: 300
                 Quantity:
                   oneOf:
                     - type: number
@@ -4582,13 +4582,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 100
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 100
+                        maxLength: 300
                 Quantity:
                   oneOf:
                     - type: number
@@ -4645,7 +4645,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                 UoM:
                 Price:
@@ -4664,7 +4664,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -4695,7 +4695,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -4726,7 +4726,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -4757,7 +4757,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -6592,7 +6592,7 @@ components:
         Name:
           type: string
           minLength: 0
-          maxLength: 100
+          maxLength: 300
         Quantity:
           type: number
           format: double
@@ -6643,13 +6643,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 100
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 100
+                        maxLength: 300
                 Quantity:
                   oneOf:
                     - type: number
@@ -6721,13 +6721,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 100
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 100
+                        maxLength: 300
                 Quantity:
                   oneOf:
                     - type: number
@@ -6784,7 +6784,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                 UoM:
                 Price:
@@ -6803,7 +6803,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -6834,7 +6834,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -6865,7 +6865,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
@@ -6896,7 +6896,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 100
+                  maxLength: 300
                 Quantity:
                   type: number
                   format: double
