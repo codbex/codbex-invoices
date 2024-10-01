@@ -6,7 +6,7 @@ import { dao as daoApi } from "sdk/db";
 export interface SalesInvoiceItemEntity {
     readonly Id: number;
     SalesInvoice: number;
-    Product: number;
+    Name: string;
     Quantity: number;
     UoM: number;
     Price: number;
@@ -17,7 +17,7 @@ export interface SalesInvoiceItemEntity {
 
 export interface SalesInvoiceItemCreateEntity {
     readonly SalesInvoice: number;
-    readonly Product: number;
+    readonly Name: string;
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
@@ -32,7 +32,7 @@ export interface SalesInvoiceItemEntityOptions {
         equals?: {
             Id?: number | number[];
             SalesInvoice?: number | number[];
-            Product?: number | number[];
+            Name?: string | string[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -43,7 +43,7 @@ export interface SalesInvoiceItemEntityOptions {
         notEquals?: {
             Id?: number | number[];
             SalesInvoice?: number | number[];
-            Product?: number | number[];
+            Name?: string | string[];
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
@@ -54,7 +54,7 @@ export interface SalesInvoiceItemEntityOptions {
         contains?: {
             Id?: number;
             SalesInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -65,7 +65,7 @@ export interface SalesInvoiceItemEntityOptions {
         greaterThan?: {
             Id?: number;
             SalesInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -76,7 +76,7 @@ export interface SalesInvoiceItemEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -87,7 +87,7 @@ export interface SalesInvoiceItemEntityOptions {
         lessThan?: {
             Id?: number;
             SalesInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -98,7 +98,7 @@ export interface SalesInvoiceItemEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             SalesInvoice?: number;
-            Product?: number;
+            Name?: string;
             Quantity?: number;
             UoM?: number;
             Price?: number;
@@ -149,9 +149,9 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
-                name: "Product",
-                column: "SALESINVOICEITEM_PRODUCT",
-                type: "INTEGER",
+                name: "Name",
+                column: "SALESINVOICEITEM_NAME",
+                type: "VARCHAR",
                 required: true
             },
             {

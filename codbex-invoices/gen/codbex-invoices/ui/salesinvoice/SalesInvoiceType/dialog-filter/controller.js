@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceItem';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceType';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,8 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsSalesInvoice = params.optionsSalesInvoice;
-			$scope.optionsUoM = params.optionsUoM;
 		}
 
 		$scope.filter = function () {
@@ -41,29 +39,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.SalesInvoice !== undefined) {
-				filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
-			}
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
-			}
-			if (entity.Quantity !== undefined) {
-				filter.$filter.equals.Quantity = entity.Quantity;
-			}
-			if (entity.UoM !== undefined) {
-				filter.$filter.equals.UoM = entity.UoM;
-			}
-			if (entity.Price !== undefined) {
-				filter.$filter.equals.Price = entity.Price;
-			}
-			if (entity.Net !== undefined) {
-				filter.$filter.equals.Net = entity.Net;
-			}
-			if (entity.VAT !== undefined) {
-				filter.$filter.equals.VAT = entity.VAT;
-			}
-			if (entity.Gross !== undefined) {
-				filter.$filter.equals.Gross = entity.Gross;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -78,7 +55,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("SalesInvoiceItem-filter");
+			messageHub.closeDialogWindow("SalesInvoiceType-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

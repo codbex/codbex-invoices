@@ -35,21 +35,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "SALESINVOICEITEM_PRODUCT",
+                        "dataLength": "300",
+                        "dataName": "SALESINVOICEITEM_NAME",
                         "dataNullable": "false",
-                        "dataType": "INTEGER",
+                        "dataType": "VARCHAR",
                         "isRequiredProperty": "true",
-                        "name": "Product",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
+                        "name": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "SalesInvoiceItem_Product",
-                        "relationshipEntityName": "Product",
-                        "relationshipEntityPerspectiveName": "Products",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "widgetType": "TEXTBOX"
                     },
                     {
                         "dataName": "SALESINVOICEITEM_QUANTITY",
@@ -80,6 +75,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -95,6 +91,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_NET",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -110,6 +107,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -125,6 +123,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_GROSS",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -188,6 +187,22 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "SALESINVOICE_SALESINVOICETYPE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "SalesInvoiceType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "SalesInvoice_SalesInvoiceType",
+                        "relationshipEntityName": "SalesInvoiceType",
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataName": "SALESINVOICE_CUSTOMER",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -227,6 +242,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -256,6 +272,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -269,6 +286,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -282,6 +300,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -294,6 +313,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -307,6 +327,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -320,6 +341,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -344,9 +366,8 @@
                     },
                     {
                         "dataName": "SALESINVOICE_PAYMENTMETHOD",
-                        "dataNullable": "false",
+                        "dataNullable": "true",
                         "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
                         "name": "PaymentMethod",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
@@ -593,6 +614,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -622,6 +644,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -635,6 +658,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -648,6 +672,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -660,6 +685,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -673,6 +699,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -686,6 +713,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -840,22 +868,6 @@
                         "widgetLength": "36",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "PURCHASEINVOICE_STORE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Store",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "PurchaseInvoice_Store",
-                        "relationshipEntityName": "Store",
-                        "relationshipEntityPerspectiveName": "Stores",
-                        "relationshipEntityPerspectiveLabel": "Stores"
                     }
                 ],
                 "caption": "Manage entity PurchaseInvoice",
@@ -913,21 +925,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "PURCHASEINVOICEITEM_PRODUCT",
+                        "dataLength": "300",
+                        "dataName": "PURCHASEINVOICEITEM_NAME",
                         "dataNullable": "false",
-                        "dataType": "INTEGER",
+                        "dataType": "VARCHAR",
                         "isRequiredProperty": "true",
-                        "name": "Product",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
+                        "name": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "PurchaseInvoiceItem_Product",
-                        "relationshipEntityName": "Product",
-                        "relationshipEntityPerspectiveName": "Products",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "widgetType": "TEXTBOX"
                     },
                     {
                         "dataName": "PURCHASEINVOICEITEM_QUANTITY",
@@ -958,6 +965,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -973,6 +981,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -988,6 +997,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1003,6 +1013,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1130,280 +1141,6 @@
                 "title": "PurchaseInvoiceStatus",
                 "tooltip": "PurchaseInvoiceStatus",
                 "type": "SETTING"
-            },
-            {
-                "properties": [
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataAutoIncrement": "true",
-                        "dataName": "PRODUCT_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "name": "Id",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "500",
-                        "dataName": "PRODUCT_NAME",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "500",
-                        "widgetSize": "",
-                        "widgetType": "TEXTAREA"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_TYPE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Type",
-                        "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipName": "Product_ProductType",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_CATEGORY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Category",
-                        "relationshipEntityPerspectiveName": "Categories",
-                        "relationshipName": "Product_ProductCategory",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_BASEUNIT",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "BaseUnit",
-                        "relationshipEntityPerspectiveName": "entities",
-                        "relationshipName": "Product_UoM",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "200",
-                        "dataName": "PRODUCT_MODEL",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "Model",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_COMPANY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Company",
-                        "relationshipEntityPerspectiveName": "Companies",
-                        "relationshipName": "Product_Company",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "64",
-                        "dataName": "PRODUCT_SKU",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "SKU",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "64",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_UPC",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "UPC",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_EAN",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "EAN",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_JAN",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "JAN",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_ISBN",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "ISBN",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "40",
-                        "dataName": "PRODUCT_MPN",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "MPN",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "40",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_MANUFACTURER",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Manufacturer",
-                        "relationshipEntityPerspectiveName": "Manufacturers",
-                        "relationshipName": "Product_Manufacturer",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_WEIGHT",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Weight",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_HEIGHT",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Height",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_LENGTH",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Length",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "",
-                        "calculatedPropertyExpressionUpdate": "",
-                        "dataName": "PRODUCT_VAT",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "name": "VAT",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    }
-                ],
-                "caption": "Manage entity Product",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PRODUCT\"",
-                "dataName": "PRODUCT",
-                "dataQuery": "",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
-                "menuIndex": "100",
-                "menuKey": "product",
-                "menuLabel": "Product",
-                "name": "Product",
-                "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "Products",
-                "perspectiveOrder": "100",
-                "perspectiveRole": "",
-                "projectionReferencedEntity": "Product",
-                "projectionReferencedModel": "/workspace/codbex-products/codbex-products.model",
-                "title": "Product",
-                "tooltip": "Product",
-                "type": "PROJECTION"
             },
             {
                 "properties": [
@@ -2352,6 +2089,7 @@
                     },
                     {
                         "dataDefaultValue": "",
+                        "dataLength": "18",
                         "dataName": "SALESINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -2472,6 +2210,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
+                        "dataLength": "18",
                         "dataName": "CUSTOMERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2694,6 +2433,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
+                        "dataLength": "18",
                         "dataName": "SUPPLIERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2883,6 +2623,7 @@
                     },
                     {
                         "dataDefaultValue": "",
+                        "dataLength": "18",
                         "dataName": "PURCHASEINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -3127,6 +2868,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_NEWNET",
                         "dataNullable": "false",
                         "dataPrecision": "NaN",
@@ -3154,6 +2896,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3169,6 +2912,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3182,6 +2926,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3196,6 +2941,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3321,6 +3067,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_NEWNET",
                         "dataNullable": "false",
                         "dataPrecision": "NaN",
@@ -3348,6 +3095,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * 0.2",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * 0.2",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3363,6 +3111,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3376,6 +3125,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3390,6 +3140,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"] + entity[\"Taxes\"]",
+                        "dataLength": "NaN",
                         "dataName": "DEBITNOTE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -3636,6 +3387,54 @@
                 "title": "Store",
                 "tooltip": "Store",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "SALESINVOICETYPE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "SALESINVOICETYPE_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity SalesInvoiceType",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESINVOICETYPE\"",
+                "dataName": "SALESINVOICETYPE",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "salesinvoicetype",
+                "menuLabel": "SalesInvoiceType",
+                "name": "SalesInvoiceType",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
+                "perspectiveName": "salesinvoice",
+                "perspectiveOrder": "600",
+                "perspectiveRole": "",
+                "title": "SalesInvoiceType",
+                "tooltip": "SalesInvoiceType",
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [
