@@ -35,7 +35,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "100",
                         "dataName": "SALESINVOICEITEM_NAME",
                         "dataNullable": "false",
                         "dataType": "VARCHAR",
@@ -925,7 +925,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "100",
                         "dataName": "PURCHASEINVOICEITEM_NAME",
                         "dataNullable": "false",
                         "dataType": "VARCHAR",

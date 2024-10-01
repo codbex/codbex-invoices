@@ -17,7 +17,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 100,
                         "name": "SALESINVOICEITEM_NAME"
                     },
                     {
@@ -381,7 +381,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 100,
                         "name": "PURCHASEINVOICEITEM_NAME"
                     },
                     {

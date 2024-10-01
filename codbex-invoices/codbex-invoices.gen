@@ -300,7 +300,7 @@
           "inputRule": ""
         },
         {
-          "dataLength": "20",
+          "dataLength": "100",
           "dataName": "SALESINVOICEITEM_NAME",
           "dataNullable": false,
           "dataType": "VARCHAR",
@@ -3114,7 +3114,7 @@
           "inputRule": ""
         },
         {
-          "dataLength": "20",
+          "dataLength": "100",
           "dataName": "PURCHASEINVOICEITEM_NAME",
           "dataNullable": false,
           "dataType": "VARCHAR",
