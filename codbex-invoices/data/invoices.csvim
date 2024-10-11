@@ -25,7 +25,7 @@
     {
       "table": "CODBEX_SALESINVOICETYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-invoices-data/sales-invoice-types.csv",
+      "file": "/codbex-invoices/data/sales-invoice-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
