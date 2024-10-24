@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceType';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.SalesInvoiceType';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -31,7 +31,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					messageHub.showAlertError("SalesInvoiceType", `Unable to create SalesInvoiceType: '${response.message}'`);
+					$scope.errorMessage = `Unable to create SalesInvoiceType: '${response.message}'`;
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
@@ -46,7 +46,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("SalesInvoiceType", `Unable to update SalesInvoiceType: '${response.message}'`);
+					$scope.errorMessage = `Unable to update SalesInvoiceType: '${response.message}'`;
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
@@ -59,6 +59,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = {};
 			$scope.action = 'select';
 			messageHub.closeDialogWindow("SalesInvoiceType-details");
+		};
+
+		$scope.clearErrorMessage = function () {
+			$scope.errorMessage = null;
 		};
 
 	}]);

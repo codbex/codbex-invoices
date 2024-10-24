@@ -7,9 +7,9 @@ const viewData = {
     id: "SalesInvoiceType",
     label: "SalesInvoiceType",
     factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/${masterEntity}/SalesInvoiceType/index.html",
-    perspectiveName: "salesinvoice",
+    region: "center",
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceType/index.html",
+    perspectiveName: "settings",
 };
 
 if (typeof exports !== 'undefined') {

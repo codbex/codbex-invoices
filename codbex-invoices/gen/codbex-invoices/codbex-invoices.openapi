@@ -19,7 +19,7 @@ tags:
   - name: purchaseinvoice
   - name: DebitNote
   - name: CreditNote
-  - name: salesinvoice
+  - name: settings
 paths:
   /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
     get:
@@ -4033,7 +4033,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts:
     get:
       summary: List SalesInvoiceType
       parameters:
@@ -4054,7 +4054,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -4085,7 +4085,7 @@ paths:
     post:
       summary: Create SalesInvoiceType
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -4117,7 +4117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/{id}:
     get:
       summary: Get SalesInvoiceType by Id
       parameters:
@@ -4128,7 +4128,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -4166,7 +4166,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -4214,7 +4214,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       responses:
         204:
           description: Successful Request
@@ -4236,11 +4236,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/count:
     get:
       summary: Count the number of SalesInvoiceType
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -4264,7 +4264,7 @@ paths:
     post:
       summary: Count the number of SalesInvoiceType by SalesInvoiceTypeFilterOptions
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -4346,11 +4346,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/search:
     post:
       summary: Search SalesInvoiceType by SalesInvoiceTypeFilterOptions
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:

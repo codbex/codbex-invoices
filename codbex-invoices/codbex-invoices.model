@@ -210,8 +210,9 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataDefaultValue": "1",
                         "dataName": "SALESINVOICE_SALESINVOICETYPE",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
                         "name": "SalesInvoiceType",
@@ -224,7 +225,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SalesInvoice_SalesInvoiceType",
                         "relationshipEntityName": "SalesInvoiceType",
-                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveName": "settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -3879,20 +3880,20 @@
                 "description": "Manage entity SalesInvoiceType",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "salesinvoicetype",
                 "menuLabel": "SalesInvoiceType",
                 "name": "SalesInvoiceType",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveLabel": "Sales Invoice",
-                "perspectiveName": "salesinvoice",
-                "perspectiveOrder": "600",
+                "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
+                "perspectiveName": "settings",
+                "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "title": "SalesInvoiceType",
                 "tooltip": "SalesInvoiceType",
-                "type": "DEPENDENT"
+                "type": "SETTING"
             },
             {
                 "properties": [

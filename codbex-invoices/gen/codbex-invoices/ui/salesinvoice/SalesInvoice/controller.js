@@ -230,7 +230,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSalesOrder = [];
 
 
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts").then(function (response) {
 			$scope.optionsSalesInvoiceType = response.data.map(e => {
 				return {
 					value: e.Id,
