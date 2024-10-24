@@ -4885,6 +4885,9 @@ components:
         Store:
           type: integer
           format: int32
+        SalesOrder:
+          type: integer
+          format: int32
     SalesInvoiceFilterOptions:
       type: object
       properties:
@@ -5093,6 +5096,14 @@ components:
                         minLength: 0
                         maxLength: 36
                 Store:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                SalesOrder:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5309,6 +5320,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                SalesOrder:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -5355,6 +5374,7 @@ components:
                   minLength: 0
                   maxLength: 36
                 Store:
+                SalesOrder:
             greaterThan:
               type: object
               properties:
@@ -5433,6 +5453,9 @@ components:
                   minLength: 0
                   maxLength: 36
                 Store:
+                  type: integer
+                  format: int32
+                SalesOrder:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -5515,6 +5538,9 @@ components:
                 Store:
                   type: integer
                   format: int32
+                SalesOrder:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -5593,6 +5619,9 @@ components:
                   minLength: 0
                   maxLength: 36
                 Store:
+                  type: integer
+                  format: int32
+                SalesOrder:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -5675,14 +5704,17 @@ components:
                 Store:
                   type: integer
                   format: int32
+                SalesOrder:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Number", "SalesInvoiceType", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store"]
+          example: ["Id", "Number", "SalesInvoiceType", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "Store", "SalesOrder"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,SalesInvoiceType,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store"
+            example: "Id,Number,SalesInvoiceType,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,Store,SalesOrder"
         $order:
           type: string
           enum: ["asc", "desc"]

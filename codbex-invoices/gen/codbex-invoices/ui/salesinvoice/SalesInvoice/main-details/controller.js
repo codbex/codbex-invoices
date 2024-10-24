@@ -49,6 +49,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
 				$scope.optionsStore = [];
+				$scope.optionsSalesOrder = [];
 				$scope.action = 'select';
 			});
 		});
@@ -71,6 +72,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'select';
 			});
 		});
@@ -87,6 +89,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'create';
 			});
 		});
@@ -109,6 +112,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'update';
 			});
 		});
