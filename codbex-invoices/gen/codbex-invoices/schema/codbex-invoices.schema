@@ -76,7 +76,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
+                        "defaultValue": "1",
                         "name": "SALESINVOICE_SALESINVOICETYPE"
                     },
                     {
@@ -205,11 +205,6 @@
                         "length": 36,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SALESINVOICE_STORE"
                     },
                     {
                         "type": "INTEGER",
@@ -778,15 +773,6 @@
                 "columns": "SALESINVOICE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "SalesInvoice_Store",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_Store",
-                "columns": "SALESINVOICE_STORE",
-                "referencedTable": "CODBEX_STORE",
-                "referencedColumns": "STORE_ID"
             },
             {
                 "name": "SalesInvoice_SalesOrder",

@@ -130,7 +130,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
 				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
@@ -149,7 +148,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
 				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
@@ -166,7 +164,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
 				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
@@ -212,7 +209,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
 				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
@@ -226,7 +222,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSalesInvoiceStatus = [];
 		$scope.optionsOperator = [];
 		$scope.optionsCompany = [];
-		$scope.optionsStore = [];
 		$scope.optionsSalesOrder = [];
 
 
@@ -295,15 +290,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
 			$scope.optionsCompany = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts").then(function (response) {
-			$scope.optionsStore = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -380,14 +366,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCompany.length; i++) {
 				if ($scope.optionsCompany[i].value === optionKey) {
 					return $scope.optionsCompany[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsStoreValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStore.length; i++) {
-				if ($scope.optionsStore[i].value === optionKey) {
-					return $scope.optionsStore[i].text;
 				}
 			}
 			return null;

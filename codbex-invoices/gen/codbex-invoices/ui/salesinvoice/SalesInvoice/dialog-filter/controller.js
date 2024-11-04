@@ -34,7 +34,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsSalesInvoiceStatus = params.optionsSalesInvoiceStatus;
 			$scope.optionsOperator = params.optionsOperator;
 			$scope.optionsCompany = params.optionsCompany;
-			$scope.optionsStore = params.optionsStore;
 			$scope.optionsSalesOrder = params.optionsSalesOrder;
 		}
 
@@ -135,9 +134,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Reference) {
 				filter.$filter.contains.Reference = entity.Reference;
-			}
-			if (entity.Store !== undefined) {
-				filter.$filter.equals.Store = entity.Store;
 			}
 			if (entity.SalesOrder !== undefined) {
 				filter.$filter.equals.SalesOrder = entity.SalesOrder;

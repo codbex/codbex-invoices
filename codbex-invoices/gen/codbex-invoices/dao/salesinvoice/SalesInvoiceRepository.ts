@@ -9,7 +9,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 export interface SalesInvoiceEntity {
     readonly Id: number;
     Number?: string;
-    SalesInvoiceType?: number;
+    SalesInvoiceType: number;
     Customer: number;
     Date: Date;
     Due: Date;
@@ -31,12 +31,11 @@ export interface SalesInvoiceEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
-    Store?: number;
     SalesOrder?: number;
 }
 
 export interface SalesInvoiceCreateEntity {
-    readonly SalesInvoiceType?: number;
+    readonly SalesInvoiceType: number;
     readonly Customer: number;
     readonly Date: Date;
     readonly Due: Date;
@@ -56,7 +55,6 @@ export interface SalesInvoiceCreateEntity {
     readonly Document?: string;
     readonly Company?: number;
     readonly Reference?: string;
-    readonly Store?: number;
     readonly SalesOrder?: number;
 }
 
@@ -91,7 +89,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
-            Store?: number | number[];
             SalesOrder?: number | number[];
         };
         notEquals?: {
@@ -119,7 +116,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
-            Store?: number | number[];
             SalesOrder?: number | number[];
         };
         contains?: {
@@ -147,7 +143,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
             SalesOrder?: number;
         };
         greaterThan?: {
@@ -175,7 +170,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
             SalesOrder?: number;
         };
         greaterThanOrEqual?: {
@@ -203,7 +197,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
             SalesOrder?: number;
         };
         lessThan?: {
@@ -231,7 +224,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
             SalesOrder?: number;
         };
         lessThanOrEqual?: {
@@ -259,7 +251,6 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
             SalesOrder?: number;
         };
     },
@@ -307,6 +298,7 @@ export class SalesInvoiceRepository {
                 name: "SalesInvoiceType",
                 column: "SALESINVOICE_SALESINVOICETYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Customer",
@@ -422,11 +414,6 @@ export class SalesInvoiceRepository {
                 type: "VARCHAR",
             },
             {
-                name: "Store",
-                column: "SALESINVOICE_STORE",
-                type: "INTEGER",
-            },
-            {
                 name: "SalesOrder",
                 column: "SALESINVOICE_SALESORDER",
                 type: "INTEGER",
@@ -473,6 +460,9 @@ export class SalesInvoiceRepository {
         (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore
         (entity as SalesInvoiceEntity).UUID = require("sdk/utils/uuid").random();
+        if (entity.SalesInvoiceType === undefined || entity.SalesInvoiceType === null) {
+            (entity as SalesInvoiceEntity).SalesInvoiceType = 1;
+        }
         if (entity.Discount === undefined || entity.Discount === null) {
             (entity as SalesInvoiceEntity).Discount = 0;
         }
