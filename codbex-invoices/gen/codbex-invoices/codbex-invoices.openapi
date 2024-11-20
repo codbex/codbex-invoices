@@ -6638,6 +6638,9 @@ components:
           type: number
           format: double
           readOnly: true
+        VATRate:
+          type: number
+          format: double
         VAT:
           type: number
           format: double
@@ -6707,6 +6710,14 @@ components:
                         type: number
                         format: double
                 Net:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                VATRate:
                   oneOf:
                     - type: number
                       format: double
@@ -6792,6 +6803,14 @@ components:
                       items:
                         type: number
                         format: double
+                VATRate:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 VAT:
                   oneOf:
                     - type: number
@@ -6821,6 +6840,7 @@ components:
                 UoM:
                 Price:
                 Net:
+                VATRate:
                 VAT:
                 Gross:
             greaterThan:
@@ -6846,6 +6866,9 @@ components:
                   type: number
                   format: double
                 Net:
+                  type: number
+                  format: double
+                VATRate:
                   type: number
                   format: double
                 VAT:
@@ -6879,6 +6902,9 @@ components:
                 Net:
                   type: number
                   format: double
+                VATRate:
+                  type: number
+                  format: double
                 VAT:
                   type: number
                   format: double
@@ -6908,6 +6934,9 @@ components:
                   type: number
                   format: double
                 Net:
+                  type: number
+                  format: double
+                VATRate:
                   type: number
                   format: double
                 VAT:
@@ -6941,6 +6970,9 @@ components:
                 Net:
                   type: number
                   format: double
+                VATRate:
+                  type: number
+                  format: double
                 VAT:
                   type: number
                   format: double
@@ -6949,12 +6981,12 @@ components:
                   format: double
         $select:
           type: array
-          example: ["Id", "PurchaseInvoice", "Name", "Quantity", "UoM", "Price", "Net", "VAT", "Gross"]
+          example: ["Id", "PurchaseInvoice", "Name", "Quantity", "UoM", "Price", "Net", "VATRate", "VAT", "Gross"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,PurchaseInvoice,Name,Quantity,UoM,Price,Net,VAT,Gross"
+            example: "Id,PurchaseInvoice,Name,Quantity,UoM,Price,Net,VATRate,VAT,Gross"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -11,6 +11,7 @@ export interface PurchaseInvoiceItemEntity {
     UoM: number;
     Price: number;
     Net?: number;
+    VATRate?: number;
     VAT?: number;
     Gross?: number;
 }
@@ -21,6 +22,7 @@ export interface PurchaseInvoiceItemCreateEntity {
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
+    readonly VATRate?: number;
 }
 
 export interface PurchaseInvoiceItemUpdateEntity extends PurchaseInvoiceItemCreateEntity {
@@ -37,6 +39,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
+            VATRate?: number | number[];
             VAT?: number | number[];
             Gross?: number | number[];
         };
@@ -48,6 +51,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
+            VATRate?: number | number[];
             VAT?: number | number[];
             Gross?: number | number[];
         };
@@ -59,6 +63,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -70,6 +75,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -81,6 +87,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -92,6 +99,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -103,6 +111,7 @@ export interface PurchaseInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -177,6 +186,11 @@ export class PurchaseInvoiceItemRepository {
                 type: "DECIMAL",
             },
             {
+                name: "VATRate",
+                column: "PURCHASEINVOICEITEM_VATRATE",
+                type: "DECIMAL",
+            },
+            {
                 name: "VAT",
                 column: "PURCHASEINVOICEITEM_VAT",
                 type: "DECIMAL",
@@ -208,7 +222,7 @@ export class PurchaseInvoiceItemRepository {
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
@@ -229,7 +243,7 @@ export class PurchaseInvoiceItemRepository {
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const previousEntity = this.findById(entity.Id);

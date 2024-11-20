@@ -421,6 +421,14 @@
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_VATRATE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_VAT"
                     },
                     {

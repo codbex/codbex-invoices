@@ -104,6 +104,25 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idVATRate" dg-colon="true">VATRate</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['VATRate'].$valid }}">
+	                            <fd-input id="idVATRate"
+	                                name="VATRate"
+	                                state="{{ forms.details['VATRate'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.VATRate"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                type="text"
+	                                placeholder="Enter VATRate">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idVAT" dg-colon="true">VAT</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
