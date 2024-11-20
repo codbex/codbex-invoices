@@ -11,6 +11,7 @@ export interface SalesInvoiceItemEntity {
     UoM: number;
     Price: number;
     Net: number;
+    VATRate?: number;
     VAT: number;
     Gross: number;
 }
@@ -21,6 +22,7 @@ export interface SalesInvoiceItemCreateEntity {
     readonly Quantity: number;
     readonly UoM: number;
     readonly Price: number;
+    readonly VATRate?: number;
 }
 
 export interface SalesInvoiceItemUpdateEntity extends SalesInvoiceItemCreateEntity {
@@ -37,6 +39,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
+            VATRate?: number | number[];
             VAT?: number | number[];
             Gross?: number | number[];
         };
@@ -48,6 +51,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number | number[];
             Price?: number | number[];
             Net?: number | number[];
+            VATRate?: number | number[];
             VAT?: number | number[];
             Gross?: number | number[];
         };
@@ -59,6 +63,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -70,6 +75,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -81,6 +87,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -92,6 +99,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -103,6 +111,7 @@ export interface SalesInvoiceItemEntityOptions {
             UoM?: number;
             Price?: number;
             Net?: number;
+            VATRate?: number;
             VAT?: number;
             Gross?: number;
         };
@@ -179,6 +188,11 @@ export class SalesInvoiceItemRepository {
                 required: true
             },
             {
+                name: "VATRate",
+                column: "SALESINVOICEITEM_VATRATE",
+                type: "DECIMAL",
+            },
+            {
                 name: "VAT",
                 column: "SALESINVOICEITEM_VAT",
                 type: "DECIMAL",
@@ -212,7 +226,7 @@ export class SalesInvoiceItemRepository {
         // @ts-ignore
         (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
         // @ts-ignore
         (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const id = this.dao.insert(entity);
@@ -233,7 +247,7 @@ export class SalesInvoiceItemRepository {
         // @ts-ignore
         (entity as SalesInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * 0.2;
+        (entity as SalesInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
         // @ts-ignore
         (entity as SalesInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const previousEntity = this.findById(entity.Id);
