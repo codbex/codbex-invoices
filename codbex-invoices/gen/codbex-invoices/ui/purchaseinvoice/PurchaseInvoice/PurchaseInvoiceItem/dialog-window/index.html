@@ -112,6 +112,29 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idVATRate" dg-required="false" dg-colon="true">VATRate</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['VATRate'].$valid }}">
+	                            <fd-input id="idVATRate"
+	                                name="VATRate"
+	                                state="{{ forms.details['VATRate'].$valid ? '' : 'error' }}"
+									ng-required="false"
+	                                ng-model="entity.VATRate"
+	                                ng-readonly="action === 'select'"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                dg-input-rules="{ patterns: [''] }"
+	                                type="text"
+	                                placeholder="Enter VATRate">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
+	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
@@ -154,7 +177,7 @@
 					<fd-button dg-label="{{action === 'create' ? 'Create' : 'Update'}}" dg-type="emphasized" ng-click="action === 'create' ? create() : update()" state="{{ forms.details.$valid ? '' : 'disabled' }}"></fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
-					<fd-button dg-label="Cancel" dg-type="transparent" ng-click="cancel()"></fd-button>
+					<fd-button dg-label="Cancel" ng-click="cancel()"></fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
 		</fd-bar>

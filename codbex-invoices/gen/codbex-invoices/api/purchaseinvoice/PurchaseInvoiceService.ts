@@ -157,6 +157,9 @@ class PurchaseInvoiceService {
         if (entity.Document?.length > 200) {
             throw new ValidationError(`The 'Document' exceeds the maximum length of [200] characters`);
         }
+        if (entity.Company === null || entity.Company === undefined) {
+            throw new ValidationError(`The 'Company' property is required, provide a valid value`);
+        }
         if (entity.Name?.length > 200) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
         }

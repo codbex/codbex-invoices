@@ -48,7 +48,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSalesInvoiceStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
-				$scope.optionsStore = [];
+				$scope.optionsSalesOrder = [];
 				$scope.action = 'select';
 			});
 		});
@@ -70,7 +70,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'select';
 			});
 		});
@@ -86,7 +86,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'create';
 			});
 		});
@@ -108,10 +108,21 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsStore = msg.data.optionsStore;
+				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'update';
 			});
 		});
+
+		$scope.serviceSalesInvoiceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
+		$scope.serviceCustomer = "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts";
+		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts";
+		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts";
+		$scope.serviceSalesInvoiceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts";
+		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		$scope.serviceSalesOrder = "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts";
+
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

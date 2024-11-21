@@ -31,7 +31,7 @@ export interface SalesInvoiceEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
-    Store?: number;
+    SalesOrder?: number;
 }
 
 export interface SalesInvoiceCreateEntity {
@@ -55,7 +55,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Document?: string;
     readonly Company?: number;
     readonly Reference?: string;
-    readonly Store?: number;
+    readonly SalesOrder?: number;
 }
 
 export interface SalesInvoiceUpdateEntity extends SalesInvoiceCreateEntity {
@@ -89,7 +89,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
-            Store?: number | number[];
+            SalesOrder?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -116,7 +116,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
-            Store?: number | number[];
+            SalesOrder?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -143,7 +143,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
+            SalesOrder?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -170,7 +170,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
+            SalesOrder?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -197,7 +197,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
+            SalesOrder?: number;
         };
         lessThan?: {
             Id?: number;
@@ -224,7 +224,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
+            SalesOrder?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -251,7 +251,7 @@ export interface SalesInvoiceEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
-            Store?: number;
+            SalesOrder?: number;
         };
     },
     $select?: (keyof SalesInvoiceEntity)[],
@@ -413,8 +413,8 @@ export class SalesInvoiceRepository {
                 type: "VARCHAR",
             },
             {
-                name: "Store",
-                column: "SALESINVOICE_STORE",
+                name: "SalesOrder",
+                column: "SALESINVOICE_SALESORDER",
                 type: "INTEGER",
             }
         ]

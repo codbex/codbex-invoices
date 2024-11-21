@@ -130,7 +130,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
+				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
 
@@ -148,7 +148,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
+				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
 
@@ -164,7 +164,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
+				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
 
@@ -209,7 +209,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsSalesInvoiceStatus: $scope.optionsSalesInvoiceStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
-				optionsStore: $scope.optionsStore,
+				optionsSalesOrder: $scope.optionsSalesOrder,
 			});
 		};
 
@@ -222,10 +222,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSalesInvoiceStatus = [];
 		$scope.optionsOperator = [];
 		$scope.optionsCompany = [];
-		$scope.optionsStore = [];
+		$scope.optionsSalesOrder = [];
 
 
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts").then(function (response) {
 			$scope.optionsSalesInvoiceType = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -297,11 +297,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts").then(function (response) {
-			$scope.optionsStore = response.data.map(e => {
+		$http.get("/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts").then(function (response) {
+			$scope.optionsSalesOrder = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Name
+					text: e.Number
 				}
 			});
 		});
@@ -370,10 +370,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsStoreValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStore.length; i++) {
-				if ($scope.optionsStore[i].value === optionKey) {
-					return $scope.optionsStore[i].text;
+		$scope.optionsSalesOrderValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSalesOrder.length; i++) {
+				if ($scope.optionsSalesOrder[i].value === optionKey) {
+					return $scope.optionsSalesOrder[i].text;
 				}
 			}
 			return null;
