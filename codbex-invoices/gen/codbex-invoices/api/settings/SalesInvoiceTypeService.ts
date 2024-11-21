@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { SalesInvoiceTypeRepository, SalesInvoiceTypeEntityOptions } from "../../dao/salesinvoice/SalesInvoiceTypeRepository";
+import { SalesInvoiceTypeRepository, SalesInvoiceTypeEntityOptions } from "../../dao/settings/SalesInvoiceTypeRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoiceType", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceType", ["validate"]);
 
 @Controller
 class SalesInvoiceTypeService {
@@ -41,7 +41,7 @@ class SalesInvoiceTypeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

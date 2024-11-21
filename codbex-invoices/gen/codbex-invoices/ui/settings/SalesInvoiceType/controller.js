@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceType';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.SalesInvoiceType';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceType" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "SalesInvoiceType" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "settings" && e.view === "SalesInvoiceType" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "settings" && e.view === "SalesInvoiceType" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.settings.${masterEntity}.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-invoices.settings.${masterEntity}.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;

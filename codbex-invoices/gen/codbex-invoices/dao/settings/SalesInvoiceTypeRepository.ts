@@ -182,7 +182,7 @@ export class SalesInvoiceTypeRepository {
     }
 
     private async triggerEvent(data: SalesInvoiceTypeEntityEvent | SalesInvoiceTypeUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-salesinvoice-SalesInvoiceType", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceType", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -190,6 +190,6 @@ export class SalesInvoiceTypeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices-salesinvoice-SalesInvoiceType").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-settings-SalesInvoiceType").send(JSON.stringify(data));
     }
 }

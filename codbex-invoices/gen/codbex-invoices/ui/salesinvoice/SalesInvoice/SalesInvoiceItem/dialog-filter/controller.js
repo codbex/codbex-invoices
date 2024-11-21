@@ -59,6 +59,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Net !== undefined) {
 				filter.$filter.equals.Net = entity.Net;
 			}
+			if (entity.VATRate !== undefined) {
+				filter.$filter.equals.VATRate = entity.VATRate;
+			}
 			if (entity.VAT !== undefined) {
 				filter.$filter.equals.VAT = entity.VAT;
 			}

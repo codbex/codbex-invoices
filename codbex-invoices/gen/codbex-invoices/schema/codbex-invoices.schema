@@ -47,6 +47,14 @@
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_VATRATE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "name": "SALESINVOICEITEM_VAT"
                     },
                     {
@@ -209,7 +217,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "SALESINVOICE_STORE"
+                        "name": "SALESINVOICE_SALESORDER"
                     }
                 ]
             },
@@ -406,6 +414,14 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_NET"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_VATRATE"
                     },
                     {
                         "type": "DECIMAL",
@@ -775,13 +791,13 @@
                 "referencedColumns": "COMPANY_ID"
             },
             {
-                "name": "SalesInvoice_Store",
+                "name": "SalesInvoice_SalesOrder",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_Store",
-                "columns": "SALESINVOICE_STORE",
-                "referencedTable": "CODBEX_STORE",
-                "referencedColumns": "STORE_ID"
+                "constraintName": "SalesInvoice_SalesOrder",
+                "columns": "SALESINVOICE_SALESORDER",
+                "referencedTable": "CODBEX_SALESORDER",
+                "referencedColumns": "SALESORDER_ID"
             },
             {
                 "name": "PurchaseInvoice_Supplier",

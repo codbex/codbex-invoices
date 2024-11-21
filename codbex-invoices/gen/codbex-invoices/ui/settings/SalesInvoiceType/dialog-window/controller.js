@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoiceType';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.SalesInvoiceType';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceTypeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -54,6 +54,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				messageHub.showAlertSuccess("SalesInvoiceType", "SalesInvoiceType successfully updated");
 			});
 		};
+
 
 		$scope.cancel = function () {
 			$scope.entity = {};
