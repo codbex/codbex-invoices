@@ -7,8 +7,8 @@ const viewData = {
     id: "SalesInvoiceType",
     label: "SalesInvoiceType",
     factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/${masterEntity}/SalesInvoiceType/index.html",
+    region: "center",
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceType/index.html",
     perspectiveName: "settings",
 };
 

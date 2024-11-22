@@ -8247,7 +8247,7 @@
       "description": "Manage entity SalesInvoiceType",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "layoutType": "MANAGE_DETAILS",
+      "layoutType": "MANAGE",
       "menuIndex": "100",
       "menuKey": "salesinvoicetype",
       "menuLabel": "SalesInvoiceType",
@@ -8260,7 +8260,7 @@
       "perspectiveRole": "",
       "title": "SalesInvoiceType",
       "tooltip": "SalesInvoiceType",
-      "type": "DEPENDENT",
+      "type": "SETTING",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [

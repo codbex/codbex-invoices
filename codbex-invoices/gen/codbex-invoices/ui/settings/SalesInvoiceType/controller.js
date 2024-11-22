@@ -6,6 +6,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+
+		$scope.dataPage = 1;
+		$scope.dataCount = 0;
+		$scope.dataLimit = 20;
+
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "settings" && e.view === "SalesInvoiceType" && (e.type === "page" || e.type === undefined));
@@ -38,32 +43,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		function resetPagination() {
 			$scope.dataPage = 1;
 			$scope.dataCount = 0;
-			$scope.dataLimit = 10;
+			$scope.dataLimit = 20;
 		}
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-invoices.settings.${masterEntity}.entitySelected", function (msg) {
-			resetPagination();
-			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
-			$scope.loadPage($scope.dataPage);
-		}, true);
-
-		messageHub.onDidReceiveMessage("codbex-invoices.settings.${masterEntity}.clearDetails", function (msg) {
-			$scope.$apply(function () {
-				resetPagination();
-				$scope.selectedMainEntityId = null;
-				$scope.data = null;
-			});
-		}, true);
-
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = {};
-				$scope.action = 'select';
-			});
-		});
-
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
@@ -81,21 +65,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
-			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
-			if (!filter) {
-				filter = {};
-			}
-			if (!filter.$filter) {
-				filter.$filter = {};
-			}
-			if (!filter.$filter.equals) {
-				filter.$filter.equals = {};
-			}
-			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
+			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("SalesInvoiceType", `Unable to count SalesInvoiceType: '${response.message}'`);
@@ -104,9 +77,17 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (response.data) {
 					$scope.dataCount = response.data;
 				}
-				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
-				filter.$limit = $scope.dataLimit;
-				entityApi.search(filter).then(function (response) {
+				let offset = (pageNumber - 1) * $scope.dataLimit;
+				let limit = $scope.dataLimit;
+				let request;
+				if (filter) {
+					filter.$offset = offset;
+					filter.$limit = limit;
+					request = entityApi.search(filter);
+				} else {
+					request = entityApi.list(offset, limit);
+				}
+				request.then(function (response) {
 					if (response.status != 200) {
 						messageHub.showAlertError("SalesInvoiceType", `Unable to list/filter SalesInvoiceType: '${response.message}'`);
 						return;
@@ -115,6 +96,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				});
 			});
 		};
+		$scope.loadPage($scope.dataPage, $scope.filter);
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
@@ -139,8 +121,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceType-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
-				selectedMainEntityId: $scope.selectedMainEntityId,
 			}, null, false);
 		};
 
@@ -148,8 +128,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceType-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
-				selectedMainEntityId: $scope.selectedMainEntityId,
 			}, null, false);
 		};
 
