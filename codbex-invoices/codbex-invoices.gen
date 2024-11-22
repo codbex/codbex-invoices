@@ -462,8 +462,8 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-          "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+          "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+          "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
           "dataLength": "18",
           "dataName": "SALESINVOICEITEM_VAT",
           "dataNullable": false,
@@ -3515,8 +3515,8 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-          "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+          "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+          "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
           "dataLength": "18",
           "dataName": "PURCHASEINVOICEITEM_VAT",
           "dataNullable": true,

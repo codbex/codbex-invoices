@@ -134,8 +134,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
@@ -1159,8 +1159,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
@@ -3679,7 +3679,7 @@
                 "description": "Manage entity SalesInvoiceType",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "salesinvoicetype",
                 "menuLabel": "SalesInvoiceType",
@@ -3692,7 +3692,7 @@
                 "perspectiveRole": "",
                 "title": "SalesInvoiceType",
                 "tooltip": "SalesInvoiceType",
-                "type": "DEPENDENT"
+                "type": "SETTING"
             },
             {
                 "properties": [
