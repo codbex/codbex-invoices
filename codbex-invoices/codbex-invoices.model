@@ -134,8 +134,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "dataLength": "18",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
@@ -1159,8 +1159,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"]",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"]",
+                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "dataLength": "18",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
@@ -3679,7 +3679,7 @@
                 "description": "Manage entity SalesInvoiceType",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "salesinvoicetype",
                 "menuLabel": "SalesInvoiceType",
@@ -3692,7 +3692,7 @@
                 "perspectiveRole": "",
                 "title": "SalesInvoiceType",
                 "tooltip": "SalesInvoiceType",
-                "type": "DEPENDENT"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -4065,6 +4065,81 @@
                 "title": "SalesOrder",
                 "tooltip": "SalesOrder",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "DEDUCTION_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Id",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "DEDUCTION_DEDUCTIONINVOICE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "DeductionInvoice",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Number",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Deduction_SalesInvoice",
+                        "relationshipEntityName": "SalesInvoice",
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "DEDUCTION_ADVANCEINVOICE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "AdvanceInvoice",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Number",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Deduction_SalesInvoice",
+                        "relationshipEntityName": "SalesInvoice",
+                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    }
+                ],
+                "caption": "Manage entity Deduction",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}DEDUCTION\"",
+                "dataName": "DEDUCTION",
+                "dataQuery": "",
+                "description": "Manage entity Deduction",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "deduction",
+                "menuLabel": "Deduction",
+                "name": "Deduction",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
+                "perspectiveLabel": "Sales Invoice",
+                "perspectiveName": "salesinvoice",
+                "perspectiveOrder": "600",
+                "perspectiveRole": "",
+                "title": "Deduction",
+                "tooltip": "Deduction",
+                "type": "PRIMARY"
             }
         ],
         "perspectives": [

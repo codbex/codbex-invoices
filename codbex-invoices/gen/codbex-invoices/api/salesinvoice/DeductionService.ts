@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { SalesInvoiceTypeRepository, SalesInvoiceTypeEntityOptions } from "../../dao/settings/SalesInvoiceTypeRepository";
+import { DeductionRepository, DeductionEntityOptions } from "../../dao/salesinvoice/DeductionRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceType", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["validate"]);
 
 @Controller
-class SalesInvoiceTypeService {
+class DeductionService {
 
-    private readonly repository = new SalesInvoiceTypeRepository();
+    private readonly repository = new DeductionRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: SalesInvoiceTypeEntityOptions = {
+            const options: DeductionEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class SalesInvoiceTypeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class SalesInvoiceTypeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("SalesInvoiceType not found");
+                HttpUtils.sendResponseNotFound("Deduction not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class SalesInvoiceTypeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("SalesInvoiceType not found");
+                HttpUtils.sendResponseNotFound("Deduction not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,12 +119,6 @@ class SalesInvoiceTypeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 20) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }

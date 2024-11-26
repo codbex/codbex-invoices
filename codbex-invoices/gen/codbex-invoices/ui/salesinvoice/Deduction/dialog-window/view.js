@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "SalesInvoiceType-filter",
-    label: "SalesInvoiceType Filter",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceType/dialog-filter/index.html",
-    perspectiveName: "settings",
+    id: "Deduction-details",
+    label: "Deduction",
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/Deduction/dialog-window/index.html",
+    perspectiveName: "salesinvoice",
 };
 
 if (typeof exports !== 'undefined') {

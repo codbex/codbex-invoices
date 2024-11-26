@@ -701,6 +701,29 @@
                 ]
             },
             {
+                "name": "CODBEX_DEDUCTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "DEDUCTION_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "DEDUCTION_DEDUCTIONINVOICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "DEDUCTION_ADVANCEINVOICE"
+                    }
+                ]
+            },
+            {
                 "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -931,6 +954,24 @@
                 "table": "CODBEX_CREDITNOTE",
                 "constraintName": "CreditNote_SalesInvoice",
                 "columns": "DEBITNOTE_SALESINVOICE",
+                "referencedTable": "CODBEX_SALESINVOICE",
+                "referencedColumns": "SALESINVOICE_ID"
+            },
+            {
+                "name": "Deduction_SalesInvoice",
+                "type": "foreignKey",
+                "table": "CODBEX_DEDUCTION",
+                "constraintName": "Deduction_SalesInvoice",
+                "columns": "DEDUCTION_DEDUCTIONINVOICE",
+                "referencedTable": "CODBEX_SALESINVOICE",
+                "referencedColumns": "SALESINVOICE_ID"
+            },
+            {
+                "name": "Deduction_SalesInvoice",
+                "type": "foreignKey",
+                "table": "CODBEX_DEDUCTION",
+                "constraintName": "Deduction_SalesInvoice",
+                "columns": "DEDUCTION_ADVANCEINVOICE",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             }

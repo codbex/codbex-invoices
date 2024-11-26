@@ -1,11 +1,11 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.SalesInvoiceType';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Deduction';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "settings" && e.view === "SalesInvoiceType" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "settings" && e.view === "SalesInvoiceType" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "Deduction" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "Deduction" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("SalesInvoiceType", `Unable to count SalesInvoiceType: '${response.message}'`);
+					messageHub.showAlertError("Deduction", `Unable to count Deduction: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,7 +89,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("SalesInvoiceType", `Unable to list/filter SalesInvoiceType: '${response.message}'`);
+						messageHub.showAlertError("Deduction", `Unable to list/filter Deduction: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -104,38 +104,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("SalesInvoiceType-details", {
+			messageHub.showDialogWindow("Deduction-details", {
 				action: "select",
 				entity: entity,
+				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
+				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("SalesInvoiceType-filter", {
+			messageHub.showDialogWindow("Deduction-filter", {
 				entity: $scope.filterEntity,
+				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
+				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("SalesInvoiceType-details", {
+			messageHub.showDialogWindow("Deduction-details", {
 				action: "create",
 				entity: {},
+				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
+				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("SalesInvoiceType-details", {
+			messageHub.showDialogWindow("Deduction-details", {
 				action: "update",
 				entity: entity,
+				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
+				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete SalesInvoiceType?',
-				`Are you sure you want to delete SalesInvoiceType? This action cannot be undone.`,
+				'Delete Deduction?',
+				`Are you sure you want to delete Deduction? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -150,7 +158,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("SalesInvoiceType", `Unable to delete SalesInvoiceType: '${response.message}'`);
+							messageHub.showAlertError("Deduction", `Unable to delete Deduction: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -159,5 +167,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsDeductionInvoice = [];
+		$scope.optionsAdvanceInvoice = [];
+
+
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts").then(function (response) {
+			$scope.optionsDeductionInvoice = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Number
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts").then(function (response) {
+			$scope.optionsAdvanceInvoice = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Number
+				}
+			});
+		});
+
+		$scope.optionsDeductionInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsDeductionInvoice.length; i++) {
+				if ($scope.optionsDeductionInvoice[i].value === optionKey) {
+					return $scope.optionsDeductionInvoice[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsAdvanceInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsAdvanceInvoice.length; i++) {
+				if ($scope.optionsAdvanceInvoice[i].value === optionKey) {
+					return $scope.optionsAdvanceInvoice[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);
