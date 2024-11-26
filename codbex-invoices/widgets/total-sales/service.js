@@ -1,9 +1,8 @@
 const widgetData = {
-    id: 'total-payables-widget',
-    label: 'Total Payables Widget',
-    link: '/services/web/codbex-invoices/widgets/subviews/total-payables.html',
-    lazyLoad: true,
-    size: "medium"
+    id: 'total-sales-widget',
+    label: 'Total Sales Widget',
+    link: '/services/web/codbex-invoices/widgets/total-sales/index.html',
+    size: "small"
 };
 
 export function getWidget() {
