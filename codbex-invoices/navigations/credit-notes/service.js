@@ -1,10 +1,8 @@
 const navigationData = {
     id: 'credit-notes-navigation',
     label: "Credit Notes",
-    view: "credit-notes",
     group: "sales",
-    orderNumber: 1000,
-    lazyLoad: true,
+    order: 1000,
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/CreditNote/index.html?embedded"
 };
 

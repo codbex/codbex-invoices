@@ -1,10 +1,8 @@
 const navigationData = {
     id: 'purchase-invoices-navigation',
     label: "Purchase Invoices",
-    view: "purchase-invoice",
     group: "purchasing",
-    orderNumber: 1000,
-    lazyLoad: true,
+    order: 1000,
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/index.html?embedded"
 };
 
