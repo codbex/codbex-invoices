@@ -16,61 +16,71 @@
         <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
         <script type="text/javascript" src="./controller.js"></script>
 
-    <style>
-        .tile-auto-layout {
-            min-height: auto;
-            height: auto;
-            width: auto;
-            max-width: 99%;
-            margin: 1px;
-        }
+        <style>
+            .tile-auto-layout {
+                min-height: auto;
+                height: auto;
+                width: auto;
+                max-width: 99%;
+                margin: 1px;
+            }
 
-        .overflow-h {
-            overflow: hidden;
-        }
-    </style>
-</head>
+            .overflow-h {
+                overflow: hidden;
+            }
 
-<body class="overflow-h">
-    <fd-card class="tile-auto-layout"">
+            .fd-numeric-content__kpi {
+                font-size: 1.5rem;
+                word-wrap: break-word;
+                text-overflow: ellipsis;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+        </style>
+    </head>
+
+    <body class="overflow-h">
+        <fd-card class="tile-auto-layout"">
             <fd-card-header interactive=" false">
-        <fd-card-title>Total Payables</fd-card-title>
-        <fd-card-subtitle>Total Unpaid Purchase Invoices:
-            {{InvoiceData.UnpaidPurchaseInvoiceTotal}}
-        </fd-card-subtitle>
-        </fd-card-header>
-        <fd-card-content>
-            <svg height="20" width="100%" style="margin-top:.25rem">
-                <rect
-                    ng-if="InvoiceData.PayablesOverdue != null && InvoiceData.PayablesCurrent != null && InvoiceData.UnpaidPurchaseInvoiceTotal > 0"
-                    ng-attr-width="{{ (InvoiceData.PayablesCurrent / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
-                    height="20" style="fill: #2c8ff6;"></rect>
-                <rect
-                    ng-if="InvoiceData.PayablesOverdue != null && InvoiceData.PayablesCurrent != null && InvoiceData.UnpaidPurchaseInvoiceTotal > 0"
-                    ng-attr-x="{{ (InvoiceData.PayablesCurrent / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
-                    ng-attr-width="{{ (InvoiceData.PayablesOverdue / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
-                    height="20" style="fill: #ff6347;"></rect>
-            </svg>
-            <div class="dg-hbox dg-stretch dg-box--stretch-items dg-border-top">
-                <div class="dg-vbox dg-center__vertical dg-border-right fd-padding">
-                    <h6 fd-title header-size="6" style="color: #2c8ff6;">
-                        CURRENT
-                    </h6>
-                    <h4 fd-title header-size="6">
-                        {{ InvoiceData.PayablesCurrent | number:2 }}
-                    </h4>
+            <fd-card-title>Total Payables</fd-card-title>
+            <fd-card-subtitle>Total Unpaid Purchase Invoices:
+                {{InvoiceData.UnpaidPurchaseInvoiceTotal}}
+            </fd-card-subtitle>
+            </fd-card-header>
+            <fd-card-content>
+                <svg height="20" width="100%" style="margin-top:.25rem">
+                    <rect
+                        ng-if="InvoiceData.PayablesOverdue != null && InvoiceData.PayablesCurrent != null && InvoiceData.UnpaidPurchaseInvoiceTotal > 0"
+                        ng-attr-width="{{ (InvoiceData.PayablesCurrent / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
+                        height="20" style="fill: #2c8ff6;"></rect>
+                    <rect
+                        ng-if="InvoiceData.PayablesOverdue != null && InvoiceData.PayablesCurrent != null && InvoiceData.UnpaidPurchaseInvoiceTotal > 0"
+                        ng-attr-x="{{ (InvoiceData.PayablesCurrent / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
+                        ng-attr-width="{{ (InvoiceData.PayablesOverdue / InvoiceData.UnpaidPurchaseInvoiceTotal) * 100 + '%' }}"
+                        height="20" style="fill: #ff6347;"></rect>
+                </svg>
+                <div class="dg-hbox dg-stretch dg-box--stretch-items dg-border-top">
+                    <div class="dg-vbox dg-center__vertical dg-border-right fd-padding">
+                        <h6 fd-title header-size="6" style="color: #2c8ff6;">
+                            CURRENT
+                        </h6>
+                        <h4 fd-title header-size="6">
+                            {{ InvoiceData.PayablesCurrent | number:2 }}
+                        </h4>
+                    </div>
+                    <div class="dg-vbox dg-center__vertical fd-padding">
+                        <h6 fd-title header-size="6" style="color: #ff6347;">
+                            OVERDUE
+                        </h6>
+                        <h4 fd-title header-size="6">
+                            {{ InvoiceData.PayablesOverdue | number:2 }}
+                        </h4>
+                    </div>
                 </div>
-                <div class="dg-vbox dg-center__vertical fd-padding">
-                    <h6 fd-title header-size="6" style="color: #ff6347;">
-                        OVERDUE
-                    </h6>
-                    <h4 fd-title header-size="6">
-                        {{ InvoiceData.PayablesOverdue | number:2 }}
-                    </h4>
-                </div>
-            </div>
-        </fd-card-content>
-    </fd-card>
-</body>
+            </fd-card-content>
+        </fd-card>
+    </body>
 
 </html>

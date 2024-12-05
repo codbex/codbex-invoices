@@ -2,7 +2,7 @@ const navigationData = {
     id: 'purchase-invoices-navigation',
     label: "Purchase Invoices",
     group: "purchasing",
-    order: 1000,
+    order: 200,
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/index.html?embedded"
 };
 
