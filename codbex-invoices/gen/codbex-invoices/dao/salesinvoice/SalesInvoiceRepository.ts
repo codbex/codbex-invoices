@@ -24,7 +24,7 @@ export interface SalesInvoiceEntity {
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod: number;
-    SalesInvoiceStatus: number;
+    Status: number;
     Operator: number;
     Document?: string;
     Company?: number;
@@ -50,7 +50,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod: number;
-    readonly SalesInvoiceStatus: number;
+    readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
@@ -82,7 +82,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            SalesInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -109,7 +109,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            SalesInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -136,7 +136,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -163,7 +163,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -190,7 +190,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -217,7 +217,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -244,7 +244,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -375,8 +375,8 @@ export class SalesInvoiceRepository {
                 required: true
             },
             {
-                name: "SalesInvoiceStatus",
-                column: "SALESINVOICE_SALESINVOICESTATUS",
+                name: "Status",
+                column: "SALESINVOICE_STATUS",
                 type: "INTEGER",
                 required: true
             },

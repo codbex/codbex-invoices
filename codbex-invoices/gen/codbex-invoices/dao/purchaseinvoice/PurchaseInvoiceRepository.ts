@@ -24,7 +24,7 @@ export interface PurchaseInvoiceEntity {
     Conditions?: string;
     PaymentMethod: number;
     SentMethod: number;
-    PurchaseInvoiceStatus: number;
+    Status: number;
     Operator: number;
     Document?: string;
     Company?: number;
@@ -49,7 +49,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Conditions?: string;
     readonly PaymentMethod: number;
     readonly SentMethod: number;
-    readonly PurchaseInvoiceStatus: number;
+    readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
@@ -80,7 +80,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            PurchaseInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -106,7 +106,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            PurchaseInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -132,7 +132,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -158,7 +158,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -184,7 +184,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -210,7 +210,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -236,7 +236,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -367,8 +367,8 @@ export class PurchaseInvoiceRepository {
                 required: true
             },
             {
-                name: "PurchaseInvoiceStatus",
-                column: "PURCHASEINVOICE_PURCHASEINVOICESTATUS",
+                name: "Status",
+                column: "PURCHASEINVOICE_STATUS",
                 type: "INTEGER",
                 required: true
             },

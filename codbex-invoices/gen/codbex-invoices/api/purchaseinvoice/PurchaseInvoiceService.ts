@@ -148,8 +148,8 @@ class PurchaseInvoiceService {
         if (entity.SentMethod === null || entity.SentMethod === undefined) {
             throw new ValidationError(`The 'SentMethod' property is required, provide a valid value`);
         }
-        if (entity.PurchaseInvoiceStatus === null || entity.PurchaseInvoiceStatus === undefined) {
-            throw new ValidationError(`The 'PurchaseInvoiceStatus' property is required, provide a valid value`);
+        if (entity.Status === null || entity.Status === undefined) {
+            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }
         if (entity.Operator === null || entity.Operator === undefined) {
             throw new ValidationError(`The 'Operator' property is required, provide a valid value`);

@@ -44,7 +44,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = [];
 				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
-				$scope.optionsPurchaseInvoiceStatus = [];
+				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
 				$scope.action = 'select';
@@ -64,7 +64,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'select';
@@ -78,7 +78,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
@@ -98,7 +98,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsPurchaseInvoiceStatus = msg.data.optionsPurchaseInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'update';
@@ -109,7 +109,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts";
 		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts";
-		$scope.servicePurchaseInvoiceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts";
 		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
 

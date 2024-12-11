@@ -6,10 +6,12 @@ import { dao as daoApi } from "sdk/db";
 export interface SalesInvoiceTypeEntity {
     readonly Id: number;
     Name?: string;
+    Direction: number;
 }
 
 export interface SalesInvoiceTypeCreateEntity {
     readonly Name?: string;
+    readonly Direction: number;
 }
 
 export interface SalesInvoiceTypeUpdateEntity extends SalesInvoiceTypeCreateEntity {
@@ -21,30 +23,37 @@ export interface SalesInvoiceTypeEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Direction?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Direction?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Direction?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Direction?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Direction?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Direction?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Direction?: number;
         };
     },
     $select?: (keyof SalesInvoiceTypeEntity)[],
@@ -85,6 +94,12 @@ export class SalesInvoiceTypeRepository {
                 name: "Name",
                 column: "SALESINVOICETYPE_NAME",
                 type: "VARCHAR",
+            },
+            {
+                name: "Direction",
+                column: "SALESINVOICETYPE_DIRECTION",
+                type: "INTEGER",
+                required: true
             }
         ]
     };

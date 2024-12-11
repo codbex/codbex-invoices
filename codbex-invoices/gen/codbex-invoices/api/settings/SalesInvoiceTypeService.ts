@@ -125,6 +125,9 @@ class SalesInvoiceTypeService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
+        if (entity.Direction === null || entity.Direction === undefined) {
+            throw new ValidationError(`The 'Direction' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

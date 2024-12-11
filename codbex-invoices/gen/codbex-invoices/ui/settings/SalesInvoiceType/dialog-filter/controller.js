@@ -42,6 +42,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Direction !== undefined) {
+				filter.$filter.equals.Direction = entity.Direction;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
