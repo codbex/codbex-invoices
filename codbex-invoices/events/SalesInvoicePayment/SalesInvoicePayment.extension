@@ -1,5 +1,0 @@
-{
-    "module": "codbex-invoices/events/SalesInvoicePayment/SalesInvoicePaymentHandler.ts",
-    "extensionPoint": "codbex-invoices-salesinvoice-SalesInvoicePayment",
-    "description": "SalesInvoicePayment extension"
-}

@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-invoices/navigations/sales-invoices/service.js",
-    "description": "Sales Invoices Navigation"
-}

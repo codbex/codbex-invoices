@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-widgets",
-    "module": "codbex-invoices/widgets/total-receivables/service.js",
-    "description": "Total Receivables Widget"
-}
