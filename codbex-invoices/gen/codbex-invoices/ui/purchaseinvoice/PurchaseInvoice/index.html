@@ -51,6 +51,7 @@
 							item-title="{{next.Number}}">
 							<fd-list-byline dg-align="left">
 								{{next.OriginalNumber}} |
+								{{optionsPurchaseInvoiceTypeValue(next.PurchaseInvoiceType)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
 								{{optionsSupplierValue(next.Supplier)}} |
@@ -65,7 +66,7 @@
 								{{next.Conditions}} |
 								{{optionsPaymentMethodValue(next.PaymentMethod)}} |
 								{{optionsSentMethodValue(next.SentMethod)}} |
-								{{optionsPurchaseInvoiceStatusValue(next.PurchaseInvoiceStatus)}} |
+								{{optionsStatusValue(next.Status)}} |
 								{{optionsOperatorValue(next.Operator)}} |
 								{{next.Document}} |
 								{{optionsCompanyValue(next.Company)}} |

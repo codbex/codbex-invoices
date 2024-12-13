@@ -10,6 +10,7 @@ export interface PurchaseInvoiceEntity {
     readonly Id: number;
     Number?: string;
     OriginalNumber?: string;
+    PurchaseInvoiceType?: number;
     Date: Date;
     Due: Date;
     Supplier: number;
@@ -24,7 +25,7 @@ export interface PurchaseInvoiceEntity {
     Conditions?: string;
     PaymentMethod: number;
     SentMethod: number;
-    PurchaseInvoiceStatus: number;
+    Status: number;
     Operator: number;
     Document?: string;
     Company?: number;
@@ -35,6 +36,7 @@ export interface PurchaseInvoiceEntity {
 
 export interface PurchaseInvoiceCreateEntity {
     readonly OriginalNumber?: string;
+    readonly PurchaseInvoiceType?: number;
     readonly Date: Date;
     readonly Due: Date;
     readonly Supplier: number;
@@ -49,7 +51,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Conditions?: string;
     readonly PaymentMethod: number;
     readonly SentMethod: number;
-    readonly PurchaseInvoiceStatus: number;
+    readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
@@ -66,6 +68,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number | number[];
             Number?: string | string[];
             OriginalNumber?: string | string[];
+            PurchaseInvoiceType?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Supplier?: number | number[];
@@ -80,7 +83,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            PurchaseInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -92,6 +95,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number | number[];
             Number?: string | string[];
             OriginalNumber?: string | string[];
+            PurchaseInvoiceType?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
             Supplier?: number | number[];
@@ -106,7 +110,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            PurchaseInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -118,6 +122,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number;
             Number?: string;
             OriginalNumber?: string;
+            PurchaseInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -132,7 +137,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -144,6 +149,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number;
             Number?: string;
             OriginalNumber?: string;
+            PurchaseInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -158,7 +164,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -170,6 +176,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number;
             Number?: string;
             OriginalNumber?: string;
+            PurchaseInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -184,7 +191,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -196,6 +203,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number;
             Number?: string;
             OriginalNumber?: string;
+            PurchaseInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -210,7 +218,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -222,6 +230,7 @@ export interface PurchaseInvoiceEntityOptions {
             Id?: number;
             Number?: string;
             OriginalNumber?: string;
+            PurchaseInvoiceType?: number;
             Date?: Date;
             Due?: Date;
             Supplier?: number;
@@ -236,7 +245,7 @@ export interface PurchaseInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            PurchaseInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -289,6 +298,11 @@ export class PurchaseInvoiceRepository {
                 name: "OriginalNumber",
                 column: "PURCHASEINVOICE_ORIGINALNUMBER",
                 type: "VARCHAR",
+            },
+            {
+                name: "PurchaseInvoiceType",
+                column: "PURCHASEINVOICE_PURCHASEINVOICETYPE",
+                type: "INTEGER",
             },
             {
                 name: "Date",
@@ -367,8 +381,8 @@ export class PurchaseInvoiceRepository {
                 required: true
             },
             {
-                name: "PurchaseInvoiceStatus",
-                column: "PURCHASEINVOICE_PURCHASEINVOICESTATUS",
+                name: "Status",
+                column: "PURCHASEINVOICE_STATUS",
                 type: "INTEGER",
                 required: true
             },

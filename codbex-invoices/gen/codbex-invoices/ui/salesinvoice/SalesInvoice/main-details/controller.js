@@ -40,12 +40,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsSalesInvoiceType = [];
+				$scope.optionsType = [];
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
-				$scope.optionsSalesInvoiceStatus = [];
+				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
 				$scope.optionsSalesOrder = [];
@@ -62,12 +62,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
@@ -78,12 +78,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
@@ -100,12 +100,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsSalesInvoiceType = msg.data.optionsSalesInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
 				$scope.optionsSentMethod = msg.data.optionsSentMethod;
-				$scope.optionsSalesInvoiceStatus = msg.data.optionsSalesInvoiceStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
@@ -113,12 +113,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.serviceSalesInvoiceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
+		$scope.serviceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts";
 		$scope.serviceCustomer = "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts";
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts";
 		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts";
-		$scope.serviceSalesInvoiceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts";
 		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
 		$scope.serviceSalesOrder = "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts";

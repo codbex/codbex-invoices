@@ -1,0 +1,4 @@
+{
+    "name": "codbex-invoices-settings-PurchaseInvoiceType",
+    "description": "Extension Point for the codbex-invoices-settings-PurchaseInvoiceType entity"
+}

@@ -44,17 +44,17 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSalesInvoiceType" dg-required="false" dg-colon="true">SalesInvoiceType</fd-form-label>
+                        	<fd-form-label for="idType" dg-required="false" dg-colon="true">Type</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idSalesInvoiceType"
-	                            name="SalesInvoiceType"
-	                            state="{{ forms.details['SalesInvoiceType'].$valid ? '' : 'error' }}"
+	                        <fd-combobox-input id="idType"
+	                            name="Type"
+	                            state="{{ forms.details['Type'].$valid ? '' : 'error' }}"
 	                            ng-required="false"
-	                            ng-model="entity.SalesInvoiceType"
+	                            ng-model="entity.Type"
 	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsSalesInvoiceType"
-	                            dg-placeholder="Search SalesInvoiceType ...">
+	                            dropdown-items="optionsType"
+	                            dg-placeholder="Search Type ...">
 	                        </fd-combobox-input>
 	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
@@ -309,17 +309,17 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSalesInvoiceStatus" dg-required="true" dg-colon="true">SalesInvoiceStatus</fd-form-label>
+                        	<fd-form-label for="idStatus" dg-required="true" dg-colon="true">Status</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idSalesInvoiceStatus"
-	                            name="SalesInvoiceStatus"
-	                            state="{{ forms.details['SalesInvoiceStatus'].$valid ? '' : 'error' }}"
+	                        <fd-combobox-input id="idStatus"
+	                            name="Status"
+	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
 	                            ng-required="true"
-	                            ng-model="entity.SalesInvoiceStatus"
+	                            ng-model="entity.Status"
 	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsSalesInvoiceStatus"
-	                            dg-placeholder="Search SalesInvoiceStatus ...">
+	                            dropdown-items="optionsStatus"
+	                            dg-placeholder="Search Status ...">
 	                        </fd-combobox-input>
 	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>

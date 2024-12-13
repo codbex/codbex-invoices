@@ -9,7 +9,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 export interface SalesInvoiceEntity {
     readonly Id: number;
     Number?: string;
-    SalesInvoiceType?: number;
+    Type?: number;
     Customer: number;
     Date: Date;
     Due: Date;
@@ -24,7 +24,7 @@ export interface SalesInvoiceEntity {
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod: number;
-    SalesInvoiceStatus: number;
+    Status: number;
     Operator: number;
     Document?: string;
     Company?: number;
@@ -35,7 +35,7 @@ export interface SalesInvoiceEntity {
 }
 
 export interface SalesInvoiceCreateEntity {
-    readonly SalesInvoiceType?: number;
+    readonly Type?: number;
     readonly Customer: number;
     readonly Date: Date;
     readonly Due: Date;
@@ -50,7 +50,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod: number;
-    readonly SalesInvoiceStatus: number;
+    readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
@@ -67,7 +67,7 @@ export interface SalesInvoiceEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
-            SalesInvoiceType?: number | number[];
+            Type?: number | number[];
             Customer?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
@@ -82,7 +82,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            SalesInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -94,7 +94,7 @@ export interface SalesInvoiceEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
-            SalesInvoiceType?: number | number[];
+            Type?: number | number[];
             Customer?: number | number[];
             Date?: Date | Date[];
             Due?: Date | Date[];
@@ -109,7 +109,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string | string[];
             PaymentMethod?: number | number[];
             SentMethod?: number | number[];
-            SalesInvoiceStatus?: number | number[];
+            Status?: number | number[];
             Operator?: number | number[];
             Document?: string | string[];
             Company?: number | number[];
@@ -121,7 +121,7 @@ export interface SalesInvoiceEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
-            SalesInvoiceType?: number;
+            Type?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -136,7 +136,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -148,7 +148,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
-            SalesInvoiceType?: number;
+            Type?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -163,7 +163,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -175,7 +175,7 @@ export interface SalesInvoiceEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
-            SalesInvoiceType?: number;
+            Type?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -190,7 +190,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -202,7 +202,7 @@ export interface SalesInvoiceEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
-            SalesInvoiceType?: number;
+            Type?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -217,7 +217,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -229,7 +229,7 @@ export interface SalesInvoiceEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
-            SalesInvoiceType?: number;
+            Type?: number;
             Customer?: number;
             Date?: Date;
             Due?: Date;
@@ -244,7 +244,7 @@ export interface SalesInvoiceEntityOptions {
             Conditions?: string;
             PaymentMethod?: number;
             SentMethod?: number;
-            SalesInvoiceStatus?: number;
+            Status?: number;
             Operator?: number;
             Document?: string;
             Company?: number;
@@ -295,8 +295,8 @@ export class SalesInvoiceRepository {
                 type: "VARCHAR",
             },
             {
-                name: "SalesInvoiceType",
-                column: "SALESINVOICE_SALESINVOICETYPE",
+                name: "Type",
+                column: "SALESINVOICE_TYPE",
                 type: "INTEGER",
             },
             {
@@ -375,8 +375,8 @@ export class SalesInvoiceRepository {
                 required: true
             },
             {
-                name: "SalesInvoiceStatus",
-                column: "SALESINVOICE_SALESINVOICESTATUS",
+                name: "Status",
+                column: "SALESINVOICE_STATUS",
                 type: "INTEGER",
                 required: true
             },

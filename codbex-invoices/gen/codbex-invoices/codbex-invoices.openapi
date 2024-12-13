@@ -17,10 +17,9 @@ tags:
   - name: settings
   - name: salesinvoice
   - name: purchaseinvoice
-  - name: DebitNote
-  - name: CreditNote
   - name: settings
   - name: salesinvoice
+  - name: settings
 paths:
   /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
     get:
@@ -3234,806 +3233,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts:
-    get:
-      summary: List DebitNote
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - DebitNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/DebitNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create DebitNote
-      tags:
-        - DebitNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DebitNote'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DebitNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/{id}:
-    get:
-      summary: Get DebitNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - DebitNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/DebitNote'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update DebitNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - DebitNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DebitNote'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DebitNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete DebitNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - DebitNote
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/count:
-    get:
-      summary: Count the number of DebitNote
-      tags:
-        - DebitNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of DebitNote by DebitNoteFilterOptions
-      tags:
-        - DebitNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DebitNoteFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Number: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Number: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/search:
-    post:
-      summary: Search DebitNote by DebitNoteFilterOptions
-      tags:
-        - DebitNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DebitNoteFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Number: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Number: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/DebitNote'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts:
-    get:
-      summary: List CreditNote
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - CreditNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CreditNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create CreditNote
-      tags:
-        - CreditNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreditNote'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreditNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/{id}:
-    get:
-      summary: Get CreditNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - CreditNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CreditNote'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update CreditNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - CreditNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreditNote'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreditNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete CreditNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - CreditNote
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/count:
-    get:
-      summary: Count the number of CreditNote
-      tags:
-        - CreditNote
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of CreditNote by CreditNoteFilterOptions
-      tags:
-        - CreditNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreditNoteFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Number: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Number: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/search:
-    post:
-      summary: Search CreditNote by CreditNoteFilterOptions
-      tags:
-        - CreditNote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreditNoteFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Number: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Number: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CreditNote'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts:
     get:
       summary: List SalesInvoiceType
@@ -4818,6 +4017,406 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts:
+    get:
+      summary: List PurchaseInvoiceType
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - settings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/PurchaseInvoiceType'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create PurchaseInvoiceType
+      tags:
+        - settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseInvoiceType'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseInvoiceType'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/{id}:
+    get:
+      summary: Get PurchaseInvoiceType by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - settings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/PurchaseInvoiceType'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update PurchaseInvoiceType by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseInvoiceType'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseInvoiceType'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete PurchaseInvoiceType by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - settings
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/count:
+    get:
+      summary: Count the number of PurchaseInvoiceType
+      tags:
+        - settings
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of PurchaseInvoiceType by PurchaseInvoiceTypeFilterOptions
+      tags:
+        - settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseInvoiceTypeFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/search:
+    post:
+      summary: Search PurchaseInvoiceType by PurchaseInvoiceTypeFilterOptions
+      tags:
+        - settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseInvoiceTypeFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/PurchaseInvoiceType'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     SalesInvoiceItem:
@@ -5219,7 +4818,7 @@ components:
         - Due
         - Currency
         - SentMethod
-        - SalesInvoiceStatus
+        - Status
         - Operator
       properties:
         Id:
@@ -5230,7 +4829,7 @@ components:
           minLength: 0
           maxLength: 20
           readOnly: true
-        SalesInvoiceType:
+        Type:
           type: integer
           format: int32
         Customer:
@@ -5272,7 +4871,7 @@ components:
         SentMethod:
           type: integer
           format: int32
-        SalesInvoiceStatus:
+        Status:
           type: integer
           format: int32
         Operator:
@@ -5330,7 +4929,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                SalesInvoiceType:
+                Type:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5441,7 +5040,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                SalesInvoiceStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5539,7 +5138,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                SalesInvoiceType:
+                Type:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5650,7 +5249,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                SalesInvoiceStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5734,7 +5333,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                SalesInvoiceType:
+                Type:
                 Customer:
                 Date:
                 Due:
@@ -5752,7 +5351,7 @@ components:
                   maxLength: 200
                 PaymentMethod:
                 SentMethod:
-                SalesInvoiceStatus:
+                Status:
                 Operator:
                 Document:
                   type: string
@@ -5782,7 +5381,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                SalesInvoiceType:
+                Type:
                   type: integer
                   format: int32
                 Customer:
@@ -5824,7 +5423,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                SalesInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -5862,7 +5461,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                SalesInvoiceType:
+                Type:
                   type: integer
                   format: int32
                 Customer:
@@ -5904,7 +5503,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                SalesInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -5942,7 +5541,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                SalesInvoiceType:
+                Type:
                   type: integer
                   format: int32
                 Customer:
@@ -5984,7 +5583,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                SalesInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6022,7 +5621,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                SalesInvoiceType:
+                Type:
                   type: integer
                   format: int32
                 Customer:
@@ -6064,7 +5663,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                SalesInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6094,12 +5693,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Number", "SalesInvoiceType", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "SalesInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference", "SalesOrder"]
+          example: ["Id", "Number", "Type", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "Status", "Operator", "Document", "Company", "Name", "UUID", "Reference", "SalesOrder"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,SalesInvoiceType,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,SalesInvoiceStatus,Operator,Document,Company,Name,UUID,Reference,SalesOrder"
+            example: "Id,Number,Type,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,Status,Operator,Document,Company,Name,UUID,Reference,SalesOrder"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -6119,7 +5718,7 @@ components:
         - Currency
         - PaymentMethod
         - SentMethod
-        - PurchaseInvoiceStatus
+        - Status
         - Operator
         - Company
       properties:
@@ -6135,6 +5734,9 @@ components:
           type: string
           minLength: 0
           maxLength: 20
+        PurchaseInvoiceType:
+          type: integer
+          format: int32
         Date:
         Due:
         Supplier:
@@ -6174,7 +5776,7 @@ components:
         SentMethod:
           type: integer
           format: int32
-        PurchaseInvoiceStatus:
+        Status:
           type: integer
           format: int32
         Operator:
@@ -6240,6 +5842,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                PurchaseInvoiceType:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Due:
@@ -6343,7 +5953,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -6444,6 +6054,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                PurchaseInvoiceType:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Due:
@@ -6547,7 +6165,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -6627,6 +6245,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                PurchaseInvoiceType:
                 Date:
                 Due:
                 Supplier:
@@ -6644,7 +6263,7 @@ components:
                   maxLength: 200
                 PaymentMethod:
                 SentMethod:
-                PurchaseInvoiceStatus:
+                Status:
                 Operator:
                 Document:
                   type: string
@@ -6677,6 +6296,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                PurchaseInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Supplier:
@@ -6716,7 +6338,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6755,6 +6377,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                PurchaseInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Supplier:
@@ -6794,7 +6419,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6833,6 +6458,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                PurchaseInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Supplier:
@@ -6872,7 +6500,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6911,6 +6539,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                PurchaseInvoiceType:
+                  type: integer
+                  format: int32
                 Date:
                 Due:
                 Supplier:
@@ -6950,7 +6581,7 @@ components:
                 SentMethod:
                   type: integer
                   format: int32
-                PurchaseInvoiceStatus:
+                Status:
                   type: integer
                   format: int32
                 Operator:
@@ -6977,12 +6608,12 @@ components:
                   maxLength: 36
         $select:
           type: array
-          example: ["Id", "Number", "OriginalNumber", "Date", "Due", "Supplier", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "PurchaseInvoiceStatus", "Operator", "Document", "Company", "Name", "UUID", "Reference"]
+          example: ["Id", "Number", "OriginalNumber", "PurchaseInvoiceType", "Date", "Due", "Supplier", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "Status", "Operator", "Document", "Company", "Name", "UUID", "Reference"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,OriginalNumber,Date,Due,Supplier,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,PurchaseInvoiceStatus,Operator,Document,Company,Name,UUID,Reference"
+            example: "Id,Number,OriginalNumber,PurchaseInvoiceType,Date,Due,Supplier,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,Status,Operator,Document,Company,Name,UUID,Reference"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -7995,934 +7626,11 @@ components:
         $limit:
           type: integer
           example: 10
-    DebitNote:
-      type: object
-      required:
-        - Net
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Number:
-          type: string
-          minLength: 0
-          maxLength: 30
-          readOnly: true
-        Customer:
-          type: integer
-          format: int32
-        Date:
-        SalesInvoice:
-          type: integer
-          format: int32
-        Net:
-          type: number
-          format: double
-        Currency:
-          type: integer
-          format: int32
-        VAT:
-          type: number
-          format: double
-          readOnly: true
-        Gross:
-          type: number
-          format: double
-          readOnly: true
-        Taxes:
-          type: number
-          format: double
-        Total:
-          type: number
-          format: double
-          readOnly: true
-        PaymentMethod:
-          type: integer
-          format: int32
-        Company:
-          type: integer
-          format: int32
-    DebitNoteFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Number:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 30
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 30
-                Customer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Date:
-                  oneOf:
-                SalesInvoice:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Net:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Currency:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Gross:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Taxes:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Total:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PaymentMethod:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Number:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 30
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 30
-                Customer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Date:
-                  oneOf:
-                SalesInvoice:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Net:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Currency:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Gross:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Taxes:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Total:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PaymentMethod:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            contains:
-              type: object
-              properties:
-                Id:
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                Date:
-                SalesInvoice:
-                Net:
-                Currency:
-                VAT:
-                Gross:
-                Taxes:
-                Total:
-                PaymentMethod:
-                Company:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-        $select:
-          type: array
-          example: ["Id", "Number", "Customer", "Date", "SalesInvoice", "Net", "Currency", "VAT", "Gross", "Taxes", "Total", "PaymentMethod", "Company"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Number,Customer,Date,SalesInvoice,Net,Currency,VAT,Gross,Taxes,Total,PaymentMethod,Company"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    CreditNote:
-      type: object
-      required:
-        - Net
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Number:
-          type: string
-          minLength: 0
-          maxLength: 30
-          readOnly: true
-        Customer:
-          type: integer
-          format: int32
-        Date:
-        SalesInvoice:
-          type: integer
-          format: int32
-        Net:
-          type: number
-          format: double
-        Currency:
-          type: integer
-          format: int32
-        VAT:
-          type: number
-          format: double
-          readOnly: true
-        Gross:
-          type: number
-          format: double
-          readOnly: true
-        Taxes:
-          type: number
-          format: double
-        Total:
-          type: number
-          format: double
-          readOnly: true
-        PaymentMethod:
-          type: integer
-          format: int32
-        Company:
-          type: integer
-          format: int32
-    CreditNoteFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Number:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 30
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 30
-                Customer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Date:
-                  oneOf:
-                SalesInvoice:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Net:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Currency:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Gross:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Taxes:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Total:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PaymentMethod:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Number:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 30
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 30
-                Customer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Date:
-                  oneOf:
-                SalesInvoice:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Net:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Currency:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Gross:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Taxes:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Total:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PaymentMethod:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            contains:
-              type: object
-              properties:
-                Id:
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                Date:
-                SalesInvoice:
-                Net:
-                Currency:
-                VAT:
-                Gross:
-                Taxes:
-                Total:
-                PaymentMethod:
-                Company:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Number:
-                  type: string
-                  minLength: 0
-                  maxLength: 30
-                Customer:
-                  type: integer
-                  format: int32
-                Date:
-                SalesInvoice:
-                  type: integer
-                  format: int32
-                Net:
-                  type: number
-                  format: double
-                Currency:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Gross:
-                  type: number
-                  format: double
-                Taxes:
-                  type: number
-                  format: double
-                Total:
-                  type: number
-                  format: double
-                PaymentMethod:
-                  type: integer
-                  format: int32
-                Company:
-                  type: integer
-                  format: int32
-        $select:
-          type: array
-          example: ["Id", "Number", "Customer", "Date", "SalesInvoice", "Net", "Currency", "VAT", "Gross", "Taxes", "Total", "PaymentMethod", "Company"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Number,Customer,Date,SalesInvoice,Net,Currency,VAT,Gross,Taxes,Total,PaymentMethod,Company"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
     SalesInvoiceType:
       type: object
       required:
         - Name
+        - Direction
       properties:
         Id:
           type: integer
@@ -8931,6 +7639,9 @@ components:
           type: string
           minLength: 0
           maxLength: 20
+        Direction:
+          type: integer
+          format: int32
     SalesInvoiceTypeFilterOptions:
       type: object
       properties:
@@ -8959,6 +7670,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                Direction:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -8981,6 +7700,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                Direction:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -8989,6 +7716,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Direction:
             greaterThan:
               type: object
               properties:
@@ -8999,6 +7727,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -9009,6 +7740,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -9019,6 +7753,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -9029,14 +7766,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name"]
+          example: ["Id", "Name", "Direction"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name"
+            example: "Id,Name,Direction"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -9182,6 +7922,167 @@ components:
         $sort:
           - type: string
             example: "Id,DeductionInvoice,AdvanceInvoice"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    PurchaseInvoiceType:
+      type: object
+      required:
+        - Name
+        - Direction
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Direction:
+          type: integer
+          format: int32
+    PurchaseInvoiceTypeFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Direction:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Direction:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Direction:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Direction:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Name", "Direction"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,Direction"
         $order:
           type: string
           enum: ["asc", "desc"]

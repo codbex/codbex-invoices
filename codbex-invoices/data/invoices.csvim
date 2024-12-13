@@ -32,6 +32,17 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": ""
+    },
+    {
+      "table": "CODBEX_PURCHASEINVOICETYPE",
+      "schema": "PUBLIC",
+      "file": "/codbex-invoices/data/purchase-invoice-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
     }
   ]
 }

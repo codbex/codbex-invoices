@@ -3,22 +3,22 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface SalesInvoiceTypeEntity {
+export interface PurchaseInvoiceTypeEntity {
     readonly Id: number;
     Name?: string;
     Direction: number;
 }
 
-export interface SalesInvoiceTypeCreateEntity {
+export interface PurchaseInvoiceTypeCreateEntity {
     readonly Name?: string;
     readonly Direction: number;
 }
 
-export interface SalesInvoiceTypeUpdateEntity extends SalesInvoiceTypeCreateEntity {
+export interface PurchaseInvoiceTypeUpdateEntity extends PurchaseInvoiceTypeCreateEntity {
     readonly Id: number;
 }
 
-export interface SalesInvoiceTypeEntityOptions {
+export interface PurchaseInvoiceTypeEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -56,17 +56,17 @@ export interface SalesInvoiceTypeEntityOptions {
             Direction?: number;
         };
     },
-    $select?: (keyof SalesInvoiceTypeEntity)[],
-    $sort?: string | (keyof SalesInvoiceTypeEntity)[],
+    $select?: (keyof PurchaseInvoiceTypeEntity)[],
+    $sort?: string | (keyof PurchaseInvoiceTypeEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface SalesInvoiceTypeEntityEvent {
+interface PurchaseInvoiceTypeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<SalesInvoiceTypeEntity>;
+    readonly entity: Partial<PurchaseInvoiceTypeEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -74,30 +74,30 @@ interface SalesInvoiceTypeEntityEvent {
     }
 }
 
-interface SalesInvoiceTypeUpdateEntityEvent extends SalesInvoiceTypeEntityEvent {
-    readonly previousEntity: SalesInvoiceTypeEntity;
+interface PurchaseInvoiceTypeUpdateEntityEvent extends PurchaseInvoiceTypeEntityEvent {
+    readonly previousEntity: PurchaseInvoiceTypeEntity;
 }
 
-export class SalesInvoiceTypeRepository {
+export class PurchaseInvoiceTypeRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_SALESINVOICETYPE",
+        table: "CODBEX_PURCHASEINVOICETYPE",
         properties: [
             {
                 name: "Id",
-                column: "SALESINVOICETYPE_ID",
+                column: "PURCHASEINVOICETYPE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "SALESINVOICETYPE_NAME",
+                column: "PURCHASEINVOICETYPE_NAME",
                 type: "VARCHAR",
             },
             {
                 name: "Direction",
-                column: "SALESINVOICETYPE_DIRECTION",
+                column: "PURCHASEINVOICETYPE_DIRECTION",
                 type: "INTEGER",
                 required: true
             }
@@ -107,58 +107,58 @@ export class SalesInvoiceTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(SalesInvoiceTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PurchaseInvoiceTypeRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: SalesInvoiceTypeEntityOptions): SalesInvoiceTypeEntity[] {
+    public findAll(options?: PurchaseInvoiceTypeEntityOptions): PurchaseInvoiceTypeEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): SalesInvoiceTypeEntity | undefined {
+    public findById(id: number): PurchaseInvoiceTypeEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: SalesInvoiceTypeCreateEntity): number {
+    public create(entity: PurchaseInvoiceTypeCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_SALESINVOICETYPE",
+            table: "CODBEX_PURCHASEINVOICETYPE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SALESINVOICETYPE_ID",
+                column: "PURCHASEINVOICETYPE_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: SalesInvoiceTypeUpdateEntity): void {
+    public update(entity: PurchaseInvoiceTypeUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_SALESINVOICETYPE",
+            table: "CODBEX_PURCHASEINVOICETYPE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "SALESINVOICETYPE_ID",
+                column: "PURCHASEINVOICETYPE_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: SalesInvoiceTypeCreateEntity | SalesInvoiceTypeUpdateEntity): number {
-        const id = (entity as SalesInvoiceTypeUpdateEntity).Id;
+    public upsert(entity: PurchaseInvoiceTypeCreateEntity | PurchaseInvoiceTypeUpdateEntity): number {
+        const id = (entity as PurchaseInvoiceTypeUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as SalesInvoiceTypeUpdateEntity);
+            this.update(entity as PurchaseInvoiceTypeUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -170,22 +170,22 @@ export class SalesInvoiceTypeRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_SALESINVOICETYPE",
+            table: "CODBEX_PURCHASEINVOICETYPE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SALESINVOICETYPE_ID",
+                column: "PURCHASEINVOICETYPE_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: SalesInvoiceTypeEntityOptions): number {
+    public count(options?: PurchaseInvoiceTypeEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESINVOICETYPE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEINVOICETYPE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -196,8 +196,8 @@ export class SalesInvoiceTypeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: SalesInvoiceTypeEntityEvent | SalesInvoiceTypeUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-SalesInvoiceType", ["trigger"]);
+    private async triggerEvent(data: PurchaseInvoiceTypeEntityEvent | PurchaseInvoiceTypeUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-PurchaseInvoiceType", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -205,6 +205,6 @@ export class SalesInvoiceTypeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices-settings-SalesInvoiceType").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-settings-PurchaseInvoiceType").send(JSON.stringify(data));
     }
 }

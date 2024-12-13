@@ -26,12 +26,12 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsSalesInvoiceType = params.optionsSalesInvoiceType;
+			$scope.optionsType = params.optionsType;
 			$scope.optionsCustomer = params.optionsCustomer;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
 			$scope.optionsSentMethod = params.optionsSentMethod;
-			$scope.optionsSalesInvoiceStatus = params.optionsSalesInvoiceStatus;
+			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOperator = params.optionsOperator;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsSalesOrder = params.optionsSalesOrder;
@@ -63,8 +63,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Number) {
 				filter.$filter.contains.Number = entity.Number;
 			}
-			if (entity.SalesInvoiceType !== undefined) {
-				filter.$filter.equals.SalesInvoiceType = entity.SalesInvoiceType;
+			if (entity.Type !== undefined) {
+				filter.$filter.equals.Type = entity.Type;
 			}
 			if (entity.Customer !== undefined) {
 				filter.$filter.equals.Customer = entity.Customer;
@@ -114,8 +114,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.SentMethod !== undefined) {
 				filter.$filter.equals.SentMethod = entity.SentMethod;
 			}
-			if (entity.SalesInvoiceStatus !== undefined) {
-				filter.$filter.equals.SalesInvoiceStatus = entity.SalesInvoiceStatus;
+			if (entity.Status !== undefined) {
+				filter.$filter.equals.Status = entity.Status;
 			}
 			if (entity.Operator !== undefined) {
 				filter.$filter.equals.Operator = entity.Operator;

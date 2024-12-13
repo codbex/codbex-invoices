@@ -85,7 +85,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "SALESINVOICE_SALESINVOICETYPE"
+                        "name": "SALESINVOICE_TYPE"
                     },
                     {
                         "type": "INTEGER",
@@ -180,7 +180,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "SALESINVOICE_SALESINVOICESTATUS"
+                        "name": "SALESINVOICE_STATUS"
                     },
                     {
                         "type": "INTEGER",
@@ -242,6 +242,11 @@
                         "length": 20,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_ORIGINALNUMBER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_PURCHASEINVOICETYPE"
                     },
                     {
                         "type": "DATE",
@@ -335,7 +340,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "PURCHASEINVOICE_PURCHASEINVOICESTATUS"
+                        "name": "PURCHASEINVOICE_STATUS"
                     },
                     {
                         "type": "INTEGER",
@@ -538,150 +543,6 @@
                 ]
             },
             {
-                "name": "CODBEX_DEBITNOTE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "DEBITNOTE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "nullable": true,
-                        "name": "DEBITNOTE_NUMBER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_CUSTOMER"
-                    },
-                    {
-                        "type": "DATE",
-                        "name": "DEBITNOTE_DATE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_SALESINVOICE"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "name": "DEBITNOTE_NEWNET"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_CURRENCY"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_VAT"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_GROSS"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_TAXES"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_TOTAL"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_PAYMENTMETHOD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_COMPANY"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_CREDITNOTE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "DEBITNOTE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "nullable": true,
-                        "name": "DEBITNOTE_NUMBER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_CUSTOMER"
-                    },
-                    {
-                        "type": "DATE",
-                        "name": "DEBITNOTE_DATE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_SALESINVOICE"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "name": "DEBITNOTE_NEWNET"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_CURRENCY"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_VAT"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_GROSS"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_TAXES"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "nullable": true,
-                        "name": "DEBITNOTE_TOTAL"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_PAYMENTMETHOD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEBITNOTE_COMPANY"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_SALESINVOICETYPE",
                 "type": "TABLE",
                 "columns": [
@@ -697,6 +558,10 @@
                         "length": 20,
                         "nullable": true,
                         "name": "SALESINVOICETYPE_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "SALESINVOICETYPE_DIRECTION"
                     }
                 ]
             },
@@ -724,6 +589,29 @@
                 ]
             },
             {
+                "name": "CODBEX_PURCHASEINVOICETYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICETYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICETYPE_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "PURCHASEINVOICETYPE_DIRECTION"
+                    }
+                ]
+            },
+            {
                 "name": "SalesInvoiceItem_SalesInvoice",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICEITEM",
@@ -746,7 +634,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
                 "constraintName": "SalesInvoice_SalesInvoiceType",
-                "columns": "SALESINVOICE_SALESINVOICETYPE",
+                "columns": "SALESINVOICE_TYPE",
                 "referencedTable": "CODBEX_SALESINVOICETYPE",
                 "referencedColumns": "SALESINVOICETYPE_ID"
             },
@@ -791,7 +679,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
                 "constraintName": "SalesInvoice_SalesInvoiceStatus",
-                "columns": "SALESINVOICE_SALESINVOICESTATUS",
+                "columns": "SALESINVOICE_STATUS",
                 "referencedTable": "CODBEX_SALESINVOICESTATUS",
                 "referencedColumns": "SALESINVOICESTATUS_ID"
             },
@@ -821,6 +709,15 @@
                 "columns": "SALESINVOICE_SALESORDER",
                 "referencedTable": "CODBEX_SALESORDER",
                 "referencedColumns": "SALESORDER_ID"
+            },
+            {
+                "name": "PurchaseInvoice_PurchaseInvoiceType",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_PurchaseInvoiceType",
+                "columns": "PURCHASEINVOICE_PURCHASEINVOICETYPE",
+                "referencedTable": "CODBEX_PURCHASEINVOICETYPE",
+                "referencedColumns": "PURCHASEINVOICETYPE_ID"
             },
             {
                 "name": "PurchaseInvoice_Supplier",
@@ -863,7 +760,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
                 "constraintName": "PurchaseInvoice_PurchaseInvoiceStatus",
-                "columns": "PURCHASEINVOICE_PURCHASEINVOICESTATUS",
+                "columns": "PURCHASEINVOICE_STATUS",
                 "referencedTable": "CODBEX_PURCHASEINVOICESTATUS",
                 "referencedColumns": "PURCHASEINVOICESTATUS_ID"
             },
@@ -938,24 +835,6 @@
                 "columns": "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT",
                 "referencedTable": "CODBEX_SUPPLIERPAYMENT",
                 "referencedColumns": "SUPPLIERPAYMENT_ID"
-            },
-            {
-                "name": "DebitNote_SalesInvoice",
-                "type": "foreignKey",
-                "table": "CODBEX_DEBITNOTE",
-                "constraintName": "DebitNote_SalesInvoice",
-                "columns": "DEBITNOTE_SALESINVOICE",
-                "referencedTable": "CODBEX_SALESINVOICE",
-                "referencedColumns": "SALESINVOICE_ID"
-            },
-            {
-                "name": "CreditNote_SalesInvoice",
-                "type": "foreignKey",
-                "table": "CODBEX_CREDITNOTE",
-                "constraintName": "CreditNote_SalesInvoice",
-                "columns": "DEBITNOTE_SALESINVOICE",
-                "referencedTable": "CODBEX_SALESINVOICE",
-                "referencedColumns": "SALESINVOICE_ID"
             },
             {
                 "name": "Deduction_SalesInvoice",

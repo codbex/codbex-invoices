@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.SalesInvoiceType';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.PurchaseInvoiceType';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -58,7 +58,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("SalesInvoiceType-filter");
+			messageHub.closeDialogWindow("PurchaseInvoiceType-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

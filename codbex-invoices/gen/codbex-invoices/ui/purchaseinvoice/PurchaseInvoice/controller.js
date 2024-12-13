@@ -122,11 +122,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsPurchaseInvoiceType: $scope.optionsPurchaseInvoiceType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsPurchaseInvoiceStatus: $scope.optionsPurchaseInvoiceStatus,
+				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -138,11 +139,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsPurchaseInvoiceType: $scope.optionsPurchaseInvoiceType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsPurchaseInvoiceStatus: $scope.optionsPurchaseInvoiceStatus,
+				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -152,11 +154,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsPurchaseInvoiceType: $scope.optionsPurchaseInvoiceType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsPurchaseInvoiceStatus: $scope.optionsPurchaseInvoiceStatus,
+				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -195,25 +198,36 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("PurchaseInvoice-filter", {
 				entity: $scope.filterEntity,
+				optionsPurchaseInvoiceType: $scope.optionsPurchaseInvoiceType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
-				optionsPurchaseInvoiceStatus: $scope.optionsPurchaseInvoiceStatus,
+				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
 				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsPurchaseInvoiceType = [];
 		$scope.optionsSupplier = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsPaymentMethod = [];
 		$scope.optionsSentMethod = [];
-		$scope.optionsPurchaseInvoiceStatus = [];
+		$scope.optionsStatus = [];
 		$scope.optionsOperator = [];
 		$scope.optionsCompany = [];
 
+
+		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts").then(function (response) {
+			$scope.optionsPurchaseInvoiceType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts").then(function (response) {
 			$scope.optionsSupplier = response.data.map(e => {
@@ -252,7 +266,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts").then(function (response) {
-			$scope.optionsPurchaseInvoiceStatus = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -278,6 +292,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsPurchaseInvoiceTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPurchaseInvoiceType.length; i++) {
+				if ($scope.optionsPurchaseInvoiceType[i].value === optionKey) {
+					return $scope.optionsPurchaseInvoiceType[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsSupplierValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsSupplier.length; i++) {
 				if ($scope.optionsSupplier[i].value === optionKey) {
@@ -310,10 +332,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsPurchaseInvoiceStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsPurchaseInvoiceStatus.length; i++) {
-				if ($scope.optionsPurchaseInvoiceStatus[i].value === optionKey) {
-					return $scope.optionsPurchaseInvoiceStatus[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;
