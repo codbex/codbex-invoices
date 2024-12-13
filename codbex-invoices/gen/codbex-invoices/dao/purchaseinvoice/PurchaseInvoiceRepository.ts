@@ -454,7 +454,7 @@ export class PurchaseInvoiceRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
         // @ts-ignore
-        (entity as PurchaseInvoiceEntity).Number = new NumberGeneratorService().generate(14);
+        (entity as PurchaseInvoiceEntity).Number = new NumberGeneratorService().generate(12);
         // @ts-ignore
         (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         // @ts-ignore

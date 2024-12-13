@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-invoices/navigations/debit-notes/service.js",
-    "description": "Debit Notes Navigation"
-}

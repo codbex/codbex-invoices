@@ -1932,7 +1932,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(14)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(12)",
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
@@ -2645,7 +2645,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(14)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(12)",
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
@@ -5902,7 +5902,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
@@ -6324,7 +6324,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
