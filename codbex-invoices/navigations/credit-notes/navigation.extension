@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-invoices/navigations/credit-notes/service.js",
-    "description": "Credit Notes Navigation"
-}
