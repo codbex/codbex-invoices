@@ -25,7 +25,7 @@ angular.module('gross-profit', ['ideUI', 'ideView'])
             });
 
         function calculateGrossProfit() {
-            if ($scope.InvoiceData && $scope.OrderData) {
+            if ($scope.InvoiceData) {
                 $scope.GrossProfit = (($scope.InvoiceData.SalesInvoiceTotal) - ($scope.InvoiceData.PurchaseInvoiceTotal)).toFixed(2);
             }
         }
