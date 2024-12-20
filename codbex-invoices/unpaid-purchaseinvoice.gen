@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Unpaid Purchase Invoices",
+  "fileName": "unpaid-purchaseinvoice",
+  "genFolderName": "unpaid-purchaseinvoice",
+  "extensionPoint": "codbex-invoices",
+  "name": "UNPAID_PURCHASEINVOICE",
+  "perspectiveName": "UNPAID_PURCHASEINVOICE",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "unpaid-purchaseinvoice.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
+}

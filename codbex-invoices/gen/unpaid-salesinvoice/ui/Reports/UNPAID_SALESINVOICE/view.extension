@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/unpaid-salesinvoice/ui/Reports/UNPAID_SALESINVOICE/view.js",
+    "extensionPoint": "codbex-invoices-view",
+    "description": "codbex-invoices - Application View"
+}

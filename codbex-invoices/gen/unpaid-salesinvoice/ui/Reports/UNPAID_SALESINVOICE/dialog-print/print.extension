@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-invoices-custom-action",
+    "module": "codbex-invoices/gen/unpaid-salesinvoice/ui/Reports/UNPAID_SALESINVOICE/dialog-print/print.js",
+    "description": "Print UNPAID_SALESINVOICE Report"
+}
