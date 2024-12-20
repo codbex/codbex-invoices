@@ -1,7 +1,7 @@
 import { Query, NamedQueryParameter } from "sdk/db";
 
 export interface MonthlyVAT {
-    readonly 'DueDate': Date;
+    readonly 'Date': Date;
     readonly 'SalesVAT': number;
     readonly 'PurchaseVAT': number;
     readonly 'PayableVAT': number;
@@ -25,7 +25,7 @@ export class MonthlyVATRepository {
 
     public findAll(filter: MonthlyVATPaginatedFilter): MonthlyVAT[] {
         const sql = `
-            SELECT MonthlyVAT.DUE_DATE as "DueDate", MonthlyVAT.SALES_VAT as "SalesVAT", MonthlyVAT.PURCHASE_VAT as "PurchaseVAT", MonthlyVAT.PAYABLE_VAT as "PayableVAT"
+            SELECT MonthlyVAT.DATE as "Date", MonthlyVAT.SALES_VAT as "SalesVAT", MonthlyVAT.PURCHASE_VAT as "PurchaseVAT", MonthlyVAT.PAYABLE_VAT as "PayableVAT"
             FROM MONTHLY_VAT as MonthlyVAT
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
@@ -39,7 +39,7 @@ export class MonthlyVATRepository {
     public count(filter: MonthlyVATFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT MonthlyVAT.DUE_DATE as "DueDate", MonthlyVAT.SALES_VAT as "SalesVAT", MonthlyVAT.PURCHASE_VAT as "PurchaseVAT", MonthlyVAT.PAYABLE_VAT as "PayableVAT"
+                SELECT MonthlyVAT.DATE as "Date", MonthlyVAT.SALES_VAT as "SalesVAT", MonthlyVAT.PURCHASE_VAT as "PurchaseVAT", MonthlyVAT.PAYABLE_VAT as "PayableVAT"
                 FROM MONTHLY_VAT as MonthlyVAT
             )
         `;
