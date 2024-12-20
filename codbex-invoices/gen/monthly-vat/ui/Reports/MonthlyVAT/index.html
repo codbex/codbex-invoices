@@ -27,6 +27,8 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>DueDate</th>
+						<th fd-table-header-cell>SalesVAT</th>
+						<th fd-table-header-cell>PurchaseVAT</th>
 						<th fd-table-header-cell>PayableVAT</th>
 						<th fd-table-header-cell></th>
 					</tr>
@@ -38,6 +40,8 @@
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next === selectedEntity" ng-click="selectEntity(next)">
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['DueDate']}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['SalesVAT']}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['PurchaseVAT']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['PayableVAT']}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
