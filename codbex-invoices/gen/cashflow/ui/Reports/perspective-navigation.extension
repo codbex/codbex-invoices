@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/cashflow/ui/Reports/perspective-navigation.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Cashflow Report - Navigation"
+}
