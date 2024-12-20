@@ -23,8 +23,8 @@
             <table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead fd-table-header sticky="true">
                     <tr fd-table-row>
-						<th fd-table-header-cell>PayableVAT</th>
 						<th fd-table-header-cell>DueDate</th>
+						<th fd-table-header-cell>PayableVAT</th>
                     </tr>
                 </thead>
                 <tbody fd-table-body>
@@ -32,10 +32,10 @@
                         <td fd-table-cell no-data="true">No data available.</td>
                     </tr>
                     <tr fd-table-row hoverable="true" ng-repeat="next in data">
-						<td fd-table-cell hoverable="true" activable="true">{{next['PayableVAT']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next['DueDate']" ng-readonly="true"></fd-input>
 						</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['PayableVAT']}}</td>
                     </tr>
                 </tbody>
             </table>
