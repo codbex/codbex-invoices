@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-filter/view.js",
+    "extensionPoint": "codbex-invoices-dialog-window",
+    "description": "codbex-invoices - Application Dialog Window"
+}

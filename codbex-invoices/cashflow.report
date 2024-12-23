@@ -1,0 +1,26 @@
+{
+    "query": "SELECT Cashflow.CASHFLOW_DATE as \"CashflowDate\", Cashflow.CASHFLOW_NET as \"CashflowNet\"\nFROM CASHFLOW as Cashflow",
+    "name": "CASHFLOW",
+    "table": "CASHFLOW",
+    "alias": "Cashflow",
+    "columns": [
+        {
+            "table": "Cashflow",
+            "alias": "CashflowDate",
+            "name": "CASHFLOW_DATE",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Cashflow",
+            "alias": "CashflowNet",
+            "name": "CASHFLOW_NET",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ]
+}

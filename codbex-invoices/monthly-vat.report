@@ -1,0 +1,44 @@
+{
+    "query": "SELECT MonthlyVAT.DATE as \"Date\", MonthlyVAT.SALES_VAT as \"SalesVAT\", MonthlyVAT.PURCHASE_VAT as \"PurchaseVAT\", MonthlyVAT.PAYABLE_VAT as \"PayableVAT\"\nFROM MONTHLY_VAT as MonthlyVAT",
+    "alias": "MonthlyVAT",
+    "table": "MONTHLY_VAT",
+    "columns": [
+        {
+            "table": "MonthlyVAT",
+            "alias": "Date",
+            "name": "DATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "MonthlyVAT",
+            "alias": "SalesVAT",
+            "name": "SALES_VAT",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "MonthlyVAT",
+            "alias": "PurchaseVAT",
+            "name": "PURCHASE_VAT",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "MonthlyVAT",
+            "alias": "PayableVAT",
+            "name": "PAYABLE_VAT",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "name": "MonthlyVAT"
+}
