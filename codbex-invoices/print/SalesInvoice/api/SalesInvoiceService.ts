@@ -1,7 +1,6 @@
 import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository";
 import { SalesInvoiceItemRepository as SalesInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceItemRepository";
 import { CustomerRepository as CustomerDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Customers/CustomerRepository";
-import { ProductRepository as ProductDao } from "../../../../codbex-products/gen/codbex-products/dao/Products/ProductRepository";
 import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
 import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Cities/CityRepository";
 import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Countries/CountryRepository";
@@ -16,7 +15,7 @@ class SalesInvoiceService {
     private readonly salesInvoiceDao;
     private readonly salesInvoiceItemDao;
     private readonly customerDao;
-    private readonly productDao;
+    // private readonly productDao;
     private readonly companyDao;
     private readonly cityDao;
     private readonly countryDao;
@@ -27,7 +26,6 @@ class SalesInvoiceService {
         this.salesInvoiceDao = new SalesInvoiceDao();
         this.salesInvoiceItemDao = new SalesInvoiceItemDao();
         this.customerDao = new CustomerDao();
-        this.productDao = new ProductDao();
         this.companyDao = new CompanyDao();
         this.cityDao = new CityDao();
         this.countryDao = new CountryDao();
@@ -39,7 +37,9 @@ class SalesInvoiceService {
     public salesInvoiceData(_: any, ctx: any) {
         const salesInvoiceId = ctx.pathParameters.salesInvoiceId;
 
+
         let salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
+
         let paymentMethod = this.paymentMethodDao.findById(salesInvoice.PaymentMethod);
         let sentMethod = this.sentMethodDao.findById(salesInvoice.SentMethod);
 
@@ -54,10 +54,10 @@ class SalesInvoiceService {
             }
         });
 
-        salesInvoiceItems.forEach((item: any) => {
-            let product = this.productDao.findById(item.Product);
-            item.Product = product.Name;
-        });
+        // salesInvoiceItems.forEach((item: any) => {
+        //     let product = this.productDao.findById(item.Product);
+        //     item.Product = product.Name;
+        // });
 
         let company;
 
