@@ -141,14 +141,11 @@
 
                 $http.get(printSalesInvoiceUrl)
                     .then(function (response) {
-                        // $scope.$apply(() => {
                             $scope.Invoice = response.data.salesInvoice;
                             $scope.InvoiceItems = response.data.salesInvoiceItems;
                             $scope.Customer = response.data.customer;
                             $scope.Company = response.data.company;
-                        // })
-                        // console.log($scope.Invoice, $scope.InvoiceItems, $scope.Customer, $scope.Company);
-                    });
+                   });
             }]);
 
         </script>
@@ -162,8 +159,6 @@
                         <table>
                             <tr>
                                 <td class="title">
-                                    <!-- <img src="https://www.codbex.com/favicon.png"
-                                        style="width: 100%; max-width: 50px" /> -->
                                 </td>
 
                                 <td>
