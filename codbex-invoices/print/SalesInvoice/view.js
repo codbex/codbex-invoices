@@ -1,7 +1,7 @@
 const viewData = {
     id: 'sales-invoice-print',
     label: 'Print',
-    link: '/services/ts/codbex-invoices/print/SalesInvoice/api/SalesInvoiceTemplateService.ts/5',
+    link: '/services/ts/codbex-templates/print/sales-invoice-print-template.ts',
     perspective: 'salesinvoice',
     view: 'SalesInvoice',
     type: 'entity',
