@@ -1,5 +1,5 @@
 {
     "extensionPoint": "codbex-invoices-custom-action",
-    "module": "codbex-invoices/print/SalesInvoice/sales-invoice-print.js",
+    "module": "codbex-invoices/print/SalesInvoice/view.js",
     "description": "Print Sales Invoice Custom Action"
 }
