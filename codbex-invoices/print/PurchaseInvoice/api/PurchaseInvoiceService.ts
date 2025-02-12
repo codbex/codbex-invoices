@@ -54,11 +54,6 @@ class PurchaseInvoiceService {
             }
         });
 
-        purchaseInvoiceItems.forEach((item: any) => {
-            let product = this.productDao.findById(item.Product);
-            item.Product = product.Name;
-        });
-
         let company;
 
         if (purchaseInvoice.Company) {
