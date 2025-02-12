@@ -1,7 +1,6 @@
 import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceRepository";
 import { PurchaseInvoiceItemRepository as PurchaseInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceItemRepository";
 import { SupplierRepository as SupplierDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Suppliers/SupplierRepository";
-import { ProductRepository as ProductDao } from "../../../../codbex-products/gen/codbex-products/dao/Products/ProductRepository";
 import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
 import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Cities/CityRepository";
 import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Countries/CountryRepository";
@@ -16,7 +15,6 @@ class PurchaseInvoiceService {
     private readonly purchaseInvoiceDao;
     private readonly purchaseInvoiceItemDao;
     private readonly supplierDao;
-    private readonly productDao;
     private readonly companyDao;
     private readonly cityDao;
     private readonly countryDao;
@@ -27,7 +25,6 @@ class PurchaseInvoiceService {
         this.purchaseInvoiceDao = new PurchaseInvoiceDao();
         this.purchaseInvoiceItemDao = new PurchaseInvoiceItemDao();
         this.supplierDao = new SupplierDao();
-        this.productDao = new ProductDao();
         this.companyDao = new CompanyDao();
         this.cityDao = new CityDao();
         this.countryDao = new CountryDao();
@@ -40,13 +37,13 @@ class PurchaseInvoiceService {
         const purchaseInvoiceId = ctx.pathParameters.purchaseInvoiceId;
 
         let purchaseInvoice = this.purchaseInvoiceDao.findById(purchaseInvoiceId);
-        let paymentMethod = this.paymentMethodDao.findById(purchaseInvoice.PaymentMethod);
-        let sentMethod = this.sentMethodDao.findById(purchaseInvoice.SentMethod);
+        const paymentMethod = this.paymentMethodDao.findById(purchaseInvoice.PaymentMethod);
+        const sentMethod = this.sentMethodDao.findById(purchaseInvoice.SentMethod);
 
         purchaseInvoice.PaymentMethod = paymentMethod.Name;
         purchaseInvoice.SentMethod = sentMethod.Name;
 
-        let purchaseInvoiceItems = this.purchaseInvoiceItemDao.findAll({
+        const purchaseInvoiceItems = this.purchaseInvoiceItemDao.findAll({
             $filter: {
                 equals: {
                     PurchaseInvoice: purchaseInvoice.Id
@@ -58,14 +55,14 @@ class PurchaseInvoiceService {
 
         if (purchaseInvoice.Company) {
             company = this.companyDao.findById(purchaseInvoice.Company);
-            let city = this.cityDao.findById(company.City);
-            let country = this.countryDao.findById(company.Country);
+            const city = this.cityDao.findById(company.City);
+            const country = this.countryDao.findById(company.Country);
 
             company.CityName = city.Name;
             company.Country = country.Name;
         }
 
-        let supplier = this.supplierDao.findById(purchaseInvoice.Supplier);
+        const supplier = this.supplierDao.findById(purchaseInvoice.Supplier);
 
         return {
             purchaseInvoice: purchaseInvoice,
