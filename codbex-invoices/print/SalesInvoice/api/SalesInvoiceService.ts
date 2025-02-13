@@ -59,7 +59,7 @@ class SalesInvoiceService {
             const city = this.cityDao.findById(company.City);
             const country = this.countryDao.findById(company.Country);
 
-            company.CityName = city.Name;
+            company.City = city.Name;
             company.Country = country.Name;
         }
 
