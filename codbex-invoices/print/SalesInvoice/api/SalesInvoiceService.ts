@@ -15,7 +15,6 @@ class SalesInvoiceService {
     private readonly salesInvoiceDao;
     private readonly salesInvoiceItemDao;
     private readonly customerDao;
-    // private readonly productDao;
     private readonly companyDao;
     private readonly cityDao;
     private readonly countryDao;
@@ -37,16 +36,15 @@ class SalesInvoiceService {
     public salesInvoiceData(_: any, ctx: any) {
         const salesInvoiceId = ctx.pathParameters.salesInvoiceId;
 
-
         let salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
 
-        let paymentMethod = this.paymentMethodDao.findById(salesInvoice.PaymentMethod);
-        let sentMethod = this.sentMethodDao.findById(salesInvoice.SentMethod);
+        const paymentMethod = this.paymentMethodDao.findById(salesInvoice.PaymentMethod);
+        const sentMethod = this.sentMethodDao.findById(salesInvoice.SentMethod);
 
         salesInvoice.PaymentMethod = paymentMethod.Name;
         salesInvoice.SentMethod = sentMethod.Name;
 
-        let salesInvoiceItems = this.salesInvoiceItemDao.findAll({
+        const salesInvoiceItems = this.salesInvoiceItemDao.findAll({
             $filter: {
                 equals: {
                     SalesInvoice: salesInvoice.Id
@@ -54,23 +52,18 @@ class SalesInvoiceService {
             }
         });
 
-        // salesInvoiceItems.forEach((item: any) => {
-        //     let product = this.productDao.findById(item.Product);
-        //     item.Product = product.Name;
-        // });
-
         let company;
 
         if (salesInvoice.Company) {
             company = this.companyDao.findById(salesInvoice.Company);
-            let city = this.cityDao.findById(company.City);
-            let country = this.countryDao.findById(company.Country);
+            const city = this.cityDao.findById(company.City);
+            const country = this.countryDao.findById(company.Country);
 
-            company.CityName = city.Name;
+            company.City = city.Name;
             company.Country = country.Name;
         }
 
-        let customer = this.customerDao.findById(salesInvoice.Customer);
+        const customer = this.customerDao.findById(salesInvoice.Customer);
 
         return {
             salesInvoice: salesInvoice,
