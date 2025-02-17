@@ -2,7 +2,7 @@ import { Query, NamedQueryParameter } from "sdk/db";
 
 export interface UNPAID_PURCHASEINVOICE {
     readonly 'Number': string;
-    readonly 'OriginalNumber': string;
+    readonly 'Original Number': string;
     readonly 'Type': number;
     readonly 'Date': Date;
     readonly 'Due': Date;
@@ -30,7 +30,7 @@ export class UNPAID_PURCHASEINVOICERepository {
 
     public findAll(filter: UNPAID_PURCHASEINVOICEPaginatedFilter): UNPAID_PURCHASEINVOICE[] {
         const sql = `
-            SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as "Number", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as "OriginalNumber", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as "Type", PurchaseInvoice.PURCHASEINVOICE_DATE as "Date", PurchaseInvoice.PURCHASEINVOICE_DUE as "Due", PurchaseInvoice.PURCHASEINVOICE_TOTAL as "Total", PurchaseInvoice.PURCHASEINVOICE_PAID as "Paid", PurchaseInvoice.PURCHASEINVOICE_STATUS as "Status", PurchaseInvoice.PURCHASEINVOICE_NAME as "Name"
+            SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as "Number", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as "Original Number", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as "Type", PurchaseInvoice.PURCHASEINVOICE_DATE as "Date", PurchaseInvoice.PURCHASEINVOICE_DUE as "Due", PurchaseInvoice.PURCHASEINVOICE_TOTAL as "Total", PurchaseInvoice.PURCHASEINVOICE_PAID as "Paid", PurchaseInvoice.PURCHASEINVOICE_STATUS as "Status", PurchaseInvoice.PURCHASEINVOICE_NAME as "Name"
             FROM CODBEX_PURCHASEINVOICE as PurchaseInvoice
             WHERE PurchaseInvoice.PURCHASEINVOICE_TOTAL > PurchaseInvoice.PURCHASEINVOICE_PAID
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
@@ -45,7 +45,7 @@ export class UNPAID_PURCHASEINVOICERepository {
     public count(filter: UNPAID_PURCHASEINVOICEFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as "Number", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as "OriginalNumber", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as "Type", PurchaseInvoice.PURCHASEINVOICE_DATE as "Date", PurchaseInvoice.PURCHASEINVOICE_DUE as "Due", PurchaseInvoice.PURCHASEINVOICE_TOTAL as "Total", PurchaseInvoice.PURCHASEINVOICE_PAID as "Paid", PurchaseInvoice.PURCHASEINVOICE_STATUS as "Status", PurchaseInvoice.PURCHASEINVOICE_NAME as "Name"
+                SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as "Number", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as "Original Number", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as "Type", PurchaseInvoice.PURCHASEINVOICE_DATE as "Date", PurchaseInvoice.PURCHASEINVOICE_DUE as "Due", PurchaseInvoice.PURCHASEINVOICE_TOTAL as "Total", PurchaseInvoice.PURCHASEINVOICE_PAID as "Paid", PurchaseInvoice.PURCHASEINVOICE_STATUS as "Status", PurchaseInvoice.PURCHASEINVOICE_NAME as "Name"
                 FROM CODBEX_PURCHASEINVOICE as PurchaseInvoice
                 WHERE PurchaseInvoice.PURCHASEINVOICE_TOTAL > PurchaseInvoice.PURCHASEINVOICE_PAID
             )

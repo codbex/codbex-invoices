@@ -27,7 +27,7 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>Number</th>
-						<th fd-table-header-cell>OriginalNumber</th>
+						<th fd-table-header-cell>Original Number</th>
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Date</th>
 						<th fd-table-header-cell>Due</th>
@@ -45,7 +45,7 @@
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next === selectedEntity" ng-click="selectEntity(next)">
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Number']}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['OriginalNumber']}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Original Number']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Type']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Date']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Due']}}</td>

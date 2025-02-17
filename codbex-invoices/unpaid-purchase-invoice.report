@@ -14,7 +14,7 @@
         },
         {
             "table": "PurchaseInvoice",
-            "alias": "OriginalNumber",
+            "alias": "Original Number",
             "name": "PURCHASEINVOICE_ORIGINALNUMBER",
             "type": "CHARACTER VARYING",
             "aggregate": "NONE",
@@ -85,7 +85,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as \"Number\", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as \"OriginalNumber\", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as \"Type\", PurchaseInvoice.PURCHASEINVOICE_DATE as \"Date\", PurchaseInvoice.PURCHASEINVOICE_DUE as \"Due\", PurchaseInvoice.PURCHASEINVOICE_TOTAL as \"Total\", PurchaseInvoice.PURCHASEINVOICE_PAID as \"Paid\", PurchaseInvoice.PURCHASEINVOICE_STATUS as \"Status\", PurchaseInvoice.PURCHASEINVOICE_NAME as \"Name\"\nFROM CODBEX_PURCHASEINVOICE as PurchaseInvoice\nWHERE PurchaseInvoice.PURCHASEINVOICE_TOTAL > PurchaseInvoice.PURCHASEINVOICE_PAID",
+    "query": "SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as \"Number\", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as \"Original Number\", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as \"Type\", PurchaseInvoice.PURCHASEINVOICE_DATE as \"Date\", PurchaseInvoice.PURCHASEINVOICE_DUE as \"Due\", PurchaseInvoice.PURCHASEINVOICE_TOTAL as \"Total\", PurchaseInvoice.PURCHASEINVOICE_PAID as \"Paid\", PurchaseInvoice.PURCHASEINVOICE_STATUS as \"Status\", PurchaseInvoice.PURCHASEINVOICE_NAME as \"Name\"\nFROM CODBEX_PURCHASEINVOICE as PurchaseInvoice\nWHERE PurchaseInvoice.PURCHASEINVOICE_TOTAL > PurchaseInvoice.PURCHASEINVOICE_PAID",
     "conditions": [
         {
             "left": "PurchaseInvoice.PURCHASEINVOICE_TOTAL",
