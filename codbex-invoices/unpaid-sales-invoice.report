@@ -1,0 +1,87 @@
+{
+    "name": "UNPAID_SALESINVOICE",
+    "alias": "SalesInvoice",
+    "table": "CODBEX_SALESINVOICE",
+    "columns": [
+        {
+            "table": "SalesInvoice",
+            "alias": "Number",
+            "name": "SALESINVOICE_NUMBER",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Type",
+            "name": "SALESINVOICE_TYPE",
+            "type": "INTEGER",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Date",
+            "name": "SALESINVOICE_DATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Due",
+            "name": "SALESINVOICE_DUE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Total",
+            "name": "SALESINVOICE_TOTAL",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Paid",
+            "name": "SALESINVOICE_PAID",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Status",
+            "name": "SALESINVOICE_STATUS",
+            "type": "INTEGER",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "SalesInvoice",
+            "alias": "Name",
+            "name": "SALESINVOICE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT SalesInvoice.SALESINVOICE_NUMBER as \"Number\", SalesInvoice.SALESINVOICE_TYPE as \"Type\", SalesInvoice.SALESINVOICE_DATE as \"Date\", SalesInvoice.SALESINVOICE_DUE as \"Due\", SalesInvoice.SALESINVOICE_TOTAL as \"Total\", SalesInvoice.SALESINVOICE_PAID as \"Paid\", SalesInvoice.SALESINVOICE_STATUS as \"Status\", SalesInvoice.SALESINVOICE_NAME as \"Name\"\nFROM CODBEX_SALESINVOICE as SalesInvoice\nWHERE SalesInvoice.SALESINVOICE_TOTAL > SalesInvoice.SALESINVOICE_PAID",
+    "conditions": [
+        {
+            "left": "SalesInvoice.SALESINVOICE_TOTAL",
+            "operation": ">",
+            "right": "SalesInvoice.SALESINVOICE_PAID"
+        }
+    ]
+}

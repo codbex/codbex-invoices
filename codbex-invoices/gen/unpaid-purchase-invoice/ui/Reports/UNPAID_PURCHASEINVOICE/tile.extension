@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/tile.js",
+    "extensionPoint": "codbex-invoices-tile",
+    "description": "codbex-invoices - Application Tile"
+}
