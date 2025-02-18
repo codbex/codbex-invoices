@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -147,5 +147,154 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createPurchaseInvoiceType = function () {
+			messageHub.showDialogWindow("PurchaseInvoiceType-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createSupplier = function () {
+			messageHub.showDialogWindow("Supplier-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCurrency = function () {
+			messageHub.showDialogWindow("Currency-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createPaymentMethod = function () {
+			messageHub.showDialogWindow("PaymentMethod-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createSentMethod = function () {
+			messageHub.showDialogWindow("SentMethod-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createStatus = function () {
+			messageHub.showDialogWindow("PurchaseInvoiceStatus-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createOperator = function () {
+			messageHub.showDialogWindow("Employee-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCompany = function () {
+			messageHub.showDialogWindow("Company-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshPurchaseInvoiceType = function () {
+			$scope.optionsPurchaseInvoiceType = [];
+			$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts").then(function (response) {
+				$scope.optionsPurchaseInvoiceType = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshSupplier = function () {
+			$scope.optionsSupplier = [];
+			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts").then(function (response) {
+				$scope.optionsSupplier = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCurrency = function () {
+			$scope.optionsCurrency = [];
+			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+				$scope.optionsCurrency = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Code
+					}
+				});
+			});
+		};
+		$scope.refreshPaymentMethod = function () {
+			$scope.optionsPaymentMethod = [];
+			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts").then(function (response) {
+				$scope.optionsPaymentMethod = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshSentMethod = function () {
+			$scope.optionsSentMethod = [];
+			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts").then(function (response) {
+				$scope.optionsSentMethod = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshStatus = function () {
+			$scope.optionsStatus = [];
+			$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts").then(function (response) {
+				$scope.optionsStatus = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshOperator = function () {
+			$scope.optionsOperator = [];
+			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
+				$scope.optionsOperator = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.FirstName
+					}
+				});
+			});
+		};
+		$scope.refreshCompany = function () {
+			$scope.optionsCompany = [];
+			$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
+				$scope.optionsCompany = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);
