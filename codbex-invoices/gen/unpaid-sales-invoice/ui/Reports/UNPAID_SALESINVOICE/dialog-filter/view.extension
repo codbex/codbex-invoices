@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-filter/view.js",
+    "extensionPoint": "codbex-invoices-dialog-window",
+    "description": "codbex-invoices - Application Dialog Window"
+}

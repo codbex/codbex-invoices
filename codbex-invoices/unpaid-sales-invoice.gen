@@ -1,0 +1,15 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Unpaid Sales Invoices",
+  "navigationOrder": "1200",
+  "fileName": "unpaid-sales-invoice",
+  "genFolderName": "unpaid-sales-invoice",
+  "extensionPoint": "codbex-invoices",
+  "name": "UNPAID_SALESINVOICE",
+  "perspectiveName": "UNPAID_SALESINVOICE",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "unpaid-sales-invoice.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
+}

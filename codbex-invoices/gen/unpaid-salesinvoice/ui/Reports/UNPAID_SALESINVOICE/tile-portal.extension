@@ -1,5 +1,0 @@
-{
-    "module": "codbex-invoices/gen/unpaid-salesinvoice/ui/Reports/UNPAID_SALESINVOICE/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-invoices - Application Tile"
-}

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/perspective.js",
+    "extensionPoint": "codbex-invoices",
+    "description": "codbex-invoices - Perspective - Reports"
+}
