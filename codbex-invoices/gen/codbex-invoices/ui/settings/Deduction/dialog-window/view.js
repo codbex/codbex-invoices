@@ -6,8 +6,8 @@
 const viewData = {
     id: "Deduction-details",
     label: "Deduction",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/Deduction/dialog-window/index.html",
-    perspectiveName: "salesinvoice"
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/Deduction/dialog-window/index.html",
+    perspectiveName: "settings"
 };
 
 if (typeof exports !== 'undefined') {

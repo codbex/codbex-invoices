@@ -8,8 +8,8 @@ const viewData = {
     label: "Deduction",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/Deduction/index.html",
-    perspectiveName: "salesinvoice"
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/Deduction/index.html",
+    perspectiveName: "settings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -12,8 +12,8 @@ exports.getTile = function () {
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
-        location: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/index.html",
+        location: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/index.html",
         order: "100",
-        groupOrder: "600"
+        groupOrder: "999"
     };
 }

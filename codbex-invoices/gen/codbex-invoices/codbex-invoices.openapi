@@ -18,7 +18,7 @@ tags:
   - name: salesinvoice
   - name: purchaseinvoice
   - name: settings
-  - name: salesinvoice
+  - name: settings
   - name: settings
   - name: PaymentMethod
   - name: SentMethod
@@ -3635,7 +3635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts:
     get:
       summary: List Deduction
       parameters:
@@ -3656,7 +3656,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -3687,7 +3687,7 @@ paths:
     post:
       summary: Create Deduction
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -3719,7 +3719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts/{id}:
     get:
       summary: Get Deduction by Id
       parameters:
@@ -3730,7 +3730,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -3768,7 +3768,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -3816,7 +3816,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - settings
       responses:
         204:
           description: Successful Request
@@ -3838,11 +3838,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts/count:
     get:
       summary: Count the number of Deduction
       tags:
-        - salesinvoice
+        - settings
       responses:
         200:
           description: Successful Request
@@ -3866,7 +3866,7 @@ paths:
     post:
       summary: Count the number of Deduction by DeductionFilterOptions
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:
@@ -3940,11 +3940,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts/search:
     post:
       summary: Search Deduction by DeductionFilterOptions
       tags:
-        - salesinvoice
+        - settings
       requestBody:
         content:
           application/json:

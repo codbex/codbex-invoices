@@ -196,7 +196,7 @@ export class DeductionRepository {
     }
 
     private async triggerEvent(data: DeductionEntityEvent | DeductionUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-settings-Deduction", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -204,6 +204,6 @@ export class DeductionRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices-salesinvoice-Deduction").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-settings-Deduction").send(JSON.stringify(data));
     }
 }

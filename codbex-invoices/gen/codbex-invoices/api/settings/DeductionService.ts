@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { DeductionRepository, DeductionEntityOptions } from "../../dao/salesinvoice/DeductionRepository";
+import { DeductionRepository, DeductionEntityOptions } from "../../dao/settings/DeductionRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-settings-Deduction", ["validate"]);
 
 @Controller
 class DeductionService {
@@ -30,7 +30,7 @@ class DeductionService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
