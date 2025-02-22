@@ -7,7 +7,7 @@ const viewData = {
     id: "SalesInvoicePayment-filter",
     label: "SalesInvoicePayment Filter",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoicePayment/dialog-filter/index.html",
-    perspectiveName: "salesinvoice",
+    perspectiveName: "salesinvoice"
 };
 
 if (typeof exports !== 'undefined') {

@@ -7,7 +7,7 @@ const viewData = {
     id: "Deduction-filter",
     label: "Deduction Filter",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/Deduction/dialog-filter/index.html",
-    perspectiveName: "salesinvoice",
+    perspectiveName: "salesinvoice"
 };
 
 if (typeof exports !== 'undefined') {

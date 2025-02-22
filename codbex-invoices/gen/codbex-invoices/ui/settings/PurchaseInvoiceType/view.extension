@@ -1,1 +1,5 @@
-{"module":"codbex-invoices/gen/codbex-invoices/ui/settings/PurchaseInvoiceType/view.js","extensionPoint":"codbex-invoices-view","description":"codbex-invoices - Application View"}
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/settings/PurchaseInvoiceType/view.js",
+    "extensionPoint": "codbex-invoices-view",
+    "description": "codbex-invoices - Application View"
+}

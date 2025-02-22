@@ -1,5 +1,5 @@
 {
     "module": "codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoiceItem/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "codbex-invoices-dialog-window",
     "description": "codbex-invoices - Application Dialog Window"
 }
