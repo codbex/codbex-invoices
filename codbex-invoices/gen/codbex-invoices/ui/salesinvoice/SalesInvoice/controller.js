@@ -252,7 +252,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts").then(function (response) {
 			$scope.optionsPaymentMethod = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -261,7 +261,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/SentMethod/SentMethodService.ts").then(function (response) {
 			$scope.optionsSentMethod = response.data.map(e => {
 				return {
 					value: e.Id,

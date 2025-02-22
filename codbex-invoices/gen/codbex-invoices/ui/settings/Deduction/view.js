@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Deduction-details",
+    id: "Deduction",
     label: "Deduction",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/Deduction/dialog-window/index.html",
-    perspectiveName: "salesinvoice",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/Deduction/index.html",
+    perspectiveName: "settings"
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

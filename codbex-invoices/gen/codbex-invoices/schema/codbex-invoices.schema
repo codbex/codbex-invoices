@@ -176,6 +176,7 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
                         "name": "SALESINVOICE_SENTMETHOD"
                     },
                     {
@@ -332,10 +333,12 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
                         "name": "PURCHASEINVOICE_PAYMENTMETHOD"
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
                         "name": "PURCHASEINVOICE_SENTMETHOD"
                     },
                     {
@@ -608,6 +611,44 @@
                     {
                         "type": "INTEGER",
                         "name": "PURCHASEINVOICETYPE_DIRECTION"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTMETHOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTMETHOD_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SENTMETHOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SENTMETHOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SENTMETHOD_NAME"
                     }
                 ]
             },

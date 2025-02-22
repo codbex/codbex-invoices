@@ -1,1 +1,5 @@
-{"module":"codbex-invoices/gen/codbex-invoices/ui/salesinvoice/perspective.js","extensionPoint":"portal","description":"codbex-invoices - Perspective - salesinvoice"}
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/salesinvoice/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-invoices - Perspective - salesinvoice"
+}

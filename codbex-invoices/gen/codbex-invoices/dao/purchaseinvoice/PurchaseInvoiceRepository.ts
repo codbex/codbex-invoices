@@ -23,8 +23,8 @@ export interface PurchaseInvoiceEntity {
     Total?: number;
     Paid?: number;
     Conditions?: string;
-    PaymentMethod: number;
-    SentMethod: number;
+    PaymentMethod?: number;
+    SentMethod?: number;
     Status: number;
     Operator: number;
     Document?: string;
@@ -49,8 +49,8 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Total?: number;
     readonly Paid?: number;
     readonly Conditions?: string;
-    readonly PaymentMethod: number;
-    readonly SentMethod: number;
+    readonly PaymentMethod?: number;
+    readonly SentMethod?: number;
     readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
@@ -372,13 +372,11 @@ export class PurchaseInvoiceRepository {
                 name: "PaymentMethod",
                 column: "PURCHASEINVOICE_PAYMENTMETHOD",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "SentMethod",
                 column: "PURCHASEINVOICE_SENTMETHOD",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "Status",

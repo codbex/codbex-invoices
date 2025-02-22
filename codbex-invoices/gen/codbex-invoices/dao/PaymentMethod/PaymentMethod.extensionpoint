@@ -1,0 +1,4 @@
+{
+    "name": "codbex-invoices-PaymentMethod-PaymentMethod",
+    "description": "Extension Point for the codbex-invoices-PaymentMethod-PaymentMethod entity"
+}

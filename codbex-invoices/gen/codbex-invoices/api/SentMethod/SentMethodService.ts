@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { DeductionRepository, DeductionEntityOptions } from "../../dao/salesinvoice/DeductionRepository";
+import { SentMethodRepository, SentMethodEntityOptions } from "../../dao/SentMethod/SentMethodRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-SentMethod-SentMethod", ["validate"]);
 
 @Controller
-class DeductionService {
+class SentMethodService {
 
-    private readonly repository = new DeductionRepository();
+    private readonly repository = new SentMethodRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: DeductionEntityOptions = {
+            const options: SentMethodEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class DeductionService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/SentMethod/SentMethodService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class DeductionService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Deduction not found");
+                HttpUtils.sendResponseNotFound("SentMethod not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class DeductionService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Deduction not found");
+                HttpUtils.sendResponseNotFound("SentMethod not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,6 +119,9 @@ class DeductionService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

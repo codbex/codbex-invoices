@@ -1,1 +1,5 @@
-{"module":"codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceStatus/dialog-window/view.js","extensionPoint":"dialog-window","description":"codbex-invoices - Application Dialog Window"}
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceStatus/dialog-window/view.js",
+    "extensionPoint": "codbex-invoices-dialog-window",
+    "description": "codbex-invoices - Application Dialog Window"
+}

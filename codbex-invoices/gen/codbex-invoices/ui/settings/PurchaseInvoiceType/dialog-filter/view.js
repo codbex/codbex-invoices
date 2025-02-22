@@ -7,7 +7,7 @@ const viewData = {
     id: "PurchaseInvoiceType-filter",
     label: "PurchaseInvoiceType Filter",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/PurchaseInvoiceType/dialog-filter/index.html",
-    perspectiveName: "settings",
+    perspectiveName: "settings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -7,7 +7,7 @@ const viewData = {
     id: "SalesInvoicePayment-details",
     label: "SalesInvoicePayment",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoicePayment/dialog-window/index.html",
-    perspectiveName: "salesinvoice",
+    perspectiveName: "salesinvoice"
 };
 
 if (typeof exports !== 'undefined') {

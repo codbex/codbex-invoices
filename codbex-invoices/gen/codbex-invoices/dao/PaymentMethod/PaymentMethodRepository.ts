@@ -3,70 +3,61 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface DeductionEntity {
+export interface PaymentMethodEntity {
     readonly Id: number;
-    DeductionInvoice?: number;
-    AdvanceInvoice?: number;
+    Name?: string;
 }
 
-export interface DeductionCreateEntity {
-    readonly DeductionInvoice?: number;
-    readonly AdvanceInvoice?: number;
+export interface PaymentMethodCreateEntity {
+    readonly Name?: string;
 }
 
-export interface DeductionUpdateEntity extends DeductionCreateEntity {
+export interface PaymentMethodUpdateEntity extends PaymentMethodCreateEntity {
     readonly Id: number;
 }
 
-export interface DeductionEntityOptions {
+export interface PaymentMethodEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            DeductionInvoice?: number | number[];
-            AdvanceInvoice?: number | number[];
+            Name?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
-            DeductionInvoice?: number | number[];
-            AdvanceInvoice?: number | number[];
+            Name?: string | string[];
         };
         contains?: {
             Id?: number;
-            DeductionInvoice?: number;
-            AdvanceInvoice?: number;
+            Name?: string;
         };
         greaterThan?: {
             Id?: number;
-            DeductionInvoice?: number;
-            AdvanceInvoice?: number;
+            Name?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            DeductionInvoice?: number;
-            AdvanceInvoice?: number;
+            Name?: string;
         };
         lessThan?: {
             Id?: number;
-            DeductionInvoice?: number;
-            AdvanceInvoice?: number;
+            Name?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
-            DeductionInvoice?: number;
-            AdvanceInvoice?: number;
+            Name?: string;
         };
     },
-    $select?: (keyof DeductionEntity)[],
-    $sort?: string | (keyof DeductionEntity)[],
+    $select?: (keyof PaymentMethodEntity)[],
+    $sort?: string | (keyof PaymentMethodEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface DeductionEntityEvent {
+interface PaymentMethodEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<DeductionEntity>;
+    readonly entity: Partial<PaymentMethodEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -74,31 +65,26 @@ interface DeductionEntityEvent {
     }
 }
 
-interface DeductionUpdateEntityEvent extends DeductionEntityEvent {
-    readonly previousEntity: DeductionEntity;
+interface PaymentMethodUpdateEntityEvent extends PaymentMethodEntityEvent {
+    readonly previousEntity: PaymentMethodEntity;
 }
 
-export class DeductionRepository {
+export class PaymentMethodRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_DEDUCTION",
+        table: "CODBEX_PAYMENTMETHOD",
         properties: [
             {
                 name: "Id",
-                column: "DEDUCTION_ID",
+                column: "PAYMENTMETHOD_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "DeductionInvoice",
-                column: "DEDUCTION_DEDUCTIONINVOICE",
-                type: "INTEGER",
-            },
-            {
-                name: "AdvanceInvoice",
-                column: "DEDUCTION_ADVANCEINVOICE",
-                type: "INTEGER",
+                name: "Name",
+                column: "PAYMENTMETHOD_NAME",
+                type: "VARCHAR",
             }
         ]
     };
@@ -106,58 +92,58 @@ export class DeductionRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(DeductionRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PaymentMethodRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: DeductionEntityOptions): DeductionEntity[] {
+    public findAll(options?: PaymentMethodEntityOptions): PaymentMethodEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): DeductionEntity | undefined {
+    public findById(id: number): PaymentMethodEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: DeductionCreateEntity): number {
+    public create(entity: PaymentMethodCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_DEDUCTION",
+            table: "CODBEX_PAYMENTMETHOD",
             entity: entity,
             key: {
                 name: "Id",
-                column: "DEDUCTION_ID",
+                column: "PAYMENTMETHOD_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: DeductionUpdateEntity): void {
+    public update(entity: PaymentMethodUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_DEDUCTION",
+            table: "CODBEX_PAYMENTMETHOD",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "DEDUCTION_ID",
+                column: "PAYMENTMETHOD_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: DeductionCreateEntity | DeductionUpdateEntity): number {
-        const id = (entity as DeductionUpdateEntity).Id;
+    public upsert(entity: PaymentMethodCreateEntity | PaymentMethodUpdateEntity): number {
+        const id = (entity as PaymentMethodUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as DeductionUpdateEntity);
+            this.update(entity as PaymentMethodUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -169,22 +155,22 @@ export class DeductionRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_DEDUCTION",
+            table: "CODBEX_PAYMENTMETHOD",
             entity: entity,
             key: {
                 name: "Id",
-                column: "DEDUCTION_ID",
+                column: "PAYMENTMETHOD_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: DeductionEntityOptions): number {
+    public count(options?: PaymentMethodEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_DEDUCTION"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PAYMENTMETHOD"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -195,8 +181,8 @@ export class DeductionRepository {
         return 0;
     }
 
-    private async triggerEvent(data: DeductionEntityEvent | DeductionUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["trigger"]);
+    private async triggerEvent(data: PaymentMethodEntityEvent | PaymentMethodUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-invoices-PaymentMethod-PaymentMethod", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -204,6 +190,6 @@ export class DeductionRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-invoices-salesinvoice-Deduction").send(JSON.stringify(data));
+        producer.topic("codbex-invoices-PaymentMethod-PaymentMethod").send(JSON.stringify(data));
     }
 }

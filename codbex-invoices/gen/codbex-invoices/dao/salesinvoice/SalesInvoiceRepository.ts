@@ -23,7 +23,7 @@ export interface SalesInvoiceEntity {
     Paid?: number;
     Conditions?: string;
     PaymentMethod?: number;
-    SentMethod: number;
+    SentMethod?: number;
     Status: number;
     Operator: number;
     Document?: string;
@@ -49,7 +49,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Paid?: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
-    readonly SentMethod: number;
+    readonly SentMethod?: number;
     readonly Status: number;
     readonly Operator: number;
     readonly Document?: string;
@@ -372,7 +372,6 @@ export class SalesInvoiceRepository {
                 name: "SentMethod",
                 column: "SALESINVOICE_SENTMETHOD",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "Status",

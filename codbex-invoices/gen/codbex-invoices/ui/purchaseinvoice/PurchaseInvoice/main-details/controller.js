@@ -112,8 +112,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.servicePurchaseInvoiceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
 		$scope.serviceSupplier = "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts";
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
-		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts";
-		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts";
+		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts";
+		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/SentMethod/SentMethodService.ts";
 		$scope.serviceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts";
 		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
@@ -240,7 +240,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 		$scope.refreshPaymentMethod = function () {
 			$scope.optionsPaymentMethod = [];
-			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts").then(function (response) {
+			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts").then(function (response) {
 				$scope.optionsPaymentMethod = response.data.map(e => {
 					return {
 						value: e.Id,
@@ -251,7 +251,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 		$scope.refreshSentMethod = function () {
 			$scope.optionsSentMethod = [];
-			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/SentMethodService.ts").then(function (response) {
+			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/SentMethod/SentMethodService.ts").then(function (response) {
 				$scope.optionsSentMethod = response.data.map(e => {
 					return {
 						value: e.Id,
