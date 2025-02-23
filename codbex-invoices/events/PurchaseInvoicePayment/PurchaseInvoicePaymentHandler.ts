@@ -33,6 +33,8 @@ export const trigger = (event) => {
 
     const purchaseInvoice = PurchaseInvoiceDao.findById(item.PurchaseInvoice);
     purchaseInvoice.Paid = amount;
+    purchaseInvoice.Status = purchaseInvoice.Paid >= purchaseInvoice.Total ? 6 : 5;
+
 
     PurchaseInvoiceDao.update(purchaseInvoice);
 }
