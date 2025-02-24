@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PurchaseInvoicePaymentRepository, PurchaseInvoicePaymentEntityOptions } from "../../dao/purchaseinvoice/PurchaseInvoicePaymentRepository";
+import { CustomerPaymentRepository, CustomerPaymentEntityOptions } from "../../dao/CustomerPayment/CustomerPaymentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-purchaseinvoice-PurchaseInvoicePayment", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-CustomerPayment-CustomerPayment", ["validate"]);
 
 @Controller
-class PurchaseInvoicePaymentService {
+class CustomerPaymentService {
 
-    private readonly repository = new PurchaseInvoicePaymentRepository();
+    private readonly repository = new CustomerPaymentRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: PurchaseInvoicePaymentEntityOptions = {
+            const options: CustomerPaymentEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
-            PurchaseInvoice = isNaN(PurchaseInvoice) ? ctx.queryParameters.PurchaseInvoice : PurchaseInvoice;
-
-            if (PurchaseInvoice !== undefined) {
-                options.$filter = {
-                    equals: {
-                        PurchaseInvoice: PurchaseInvoice
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class PurchaseInvoicePaymentService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/CustomerPayment/CustomerPaymentService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class PurchaseInvoicePaymentService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoicePayment not found");
+                HttpUtils.sendResponseNotFound("CustomerPayment not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class PurchaseInvoicePaymentService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("PurchaseInvoicePayment not found");
+                HttpUtils.sendResponseNotFound("CustomerPayment not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -130,8 +119,47 @@ class PurchaseInvoicePaymentService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Customer === null || entity.Customer === undefined) {
+            throw new ValidationError(`The 'Customer' property is required, provide a valid value`);
+        }
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
+        }
+        if (entity.Valor === null || entity.Valor === undefined) {
+            throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
+        }
+        if (entity.CompanyIBAN?.length > 34) {
+            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (entity.CounterpartyIBAN?.length > 34) {
+            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (entity.CounterpartyName?.length > 100) {
+            throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
+        }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
+        }
+        if (entity.Currency === null || entity.Currency === undefined) {
+            throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
+        if (entity.Reason === null || entity.Reason === undefined) {
+            throw new ValidationError(`The 'Reason' property is required, provide a valid value`);
+        }
+        if (entity.Reason?.length > 100) {
+            throw new ValidationError(`The 'Reason' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Description?.length > 100) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.UUID?.length > 36) {
+            throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);
+        }
+        if (entity.Reference?.length > 36) {
+            throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

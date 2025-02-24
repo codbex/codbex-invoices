@@ -22,6 +22,8 @@ tags:
   - name: settings
   - name: PaymentMethod
   - name: SentMethod
+  - name: CustomerPayment
+  - name: SupplierPayment
 paths:
   /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
     get:
@@ -5219,6 +5221,862 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/CustomerPayment/CustomerPaymentService.ts:
+    get:
+      summary: List CustomerPayment
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - CustomerPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CustomerPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create CustomerPayment
+      tags:
+        - CustomerPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPayment'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/CustomerPayment/CustomerPaymentService.ts/{id}:
+    get:
+      summary: Get CustomerPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - CustomerPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CustomerPayment'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update CustomerPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - CustomerPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPayment'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete CustomerPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - CustomerPayment
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/CustomerPayment/CustomerPaymentService.ts/count:
+    get:
+      summary: Count the number of CustomerPayment
+      tags:
+        - CustomerPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of CustomerPayment by CustomerPaymentFilterOptions
+      tags:
+        - CustomerPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPaymentFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/CustomerPayment/CustomerPaymentService.ts/search:
+    post:
+      summary: Search CustomerPayment by CustomerPaymentFilterOptions
+      tags:
+        - CustomerPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPaymentFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CustomerPayment'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/SupplierPayment/SupplierPaymentService.ts:
+    get:
+      summary: List SupplierPayment
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - SupplierPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/SupplierPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create SupplierPayment
+      tags:
+        - SupplierPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierPayment'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplierPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/SupplierPayment/SupplierPaymentService.ts/{id}:
+    get:
+      summary: Get SupplierPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - SupplierPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/SupplierPayment'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update SupplierPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - SupplierPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierPayment'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplierPayment'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete SupplierPayment by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - SupplierPayment
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/SupplierPayment/SupplierPaymentService.ts/count:
+    get:
+      summary: Count the number of SupplierPayment
+      tags:
+        - SupplierPayment
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of SupplierPayment by SupplierPaymentFilterOptions
+      tags:
+        - SupplierPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierPaymentFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-invoices/gen/codbex-invoices/api/SupplierPayment/SupplierPaymentService.ts/search:
+    post:
+      summary: Search SupplierPayment by SupplierPaymentFilterOptions
+      tags:
+        - SupplierPayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierPaymentFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      CompanyIBAN: "abcd"
+                      CounterpartyIBAN: "abcd"
+                      CounterpartyName: "abcd"
+                      Reason: "abcd"
+                      Description: "abcd"
+                      Name: "abcd"
+                      UUID: "abcd"
+                      Reference: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/SupplierPayment'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     SalesInvoiceItem:
@@ -8070,7 +8928,6 @@ components:
     SalesInvoicePayment:
       type: object
       required:
-        - CustomerPayment
         - Amount
       properties:
         Id:
@@ -8249,7 +9106,6 @@ components:
     PurchaseInvoicePayment:
       type: object
       required:
-        - SupplierPayment
         - Amount
       properties:
         Id:
@@ -9136,6 +9992,1247 @@ components:
         $sort:
           - type: string
             example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    CustomerPayment:
+      type: object
+      required:
+        - Customer
+        - Date
+        - Valor
+        - Amount
+        - Currency
+        - Reason
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Customer:
+          type: integer
+          format: int32
+        Date:
+        Valor:
+        CompanyIBAN:
+          type: string
+          minLength: 0
+          maxLength: 34
+        CounterpartyIBAN:
+          type: string
+          minLength: 0
+          maxLength: 34
+        CounterpartyName:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Amount:
+          type: number
+          format: double
+        Currency:
+          type: integer
+          format: int32
+        Reason:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Company:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+          readOnly: true
+        UUID:
+          type: string
+          minLength: 0
+          maxLength: 36
+          readOnly: true
+        Reference:
+          type: string
+          minLength: 0
+          maxLength: 36
+        PaymentMethod:
+          type: integer
+          format: int32
+    CustomerPaymentFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Date:
+                  oneOf:
+                Valor:
+                  oneOf:
+                CompanyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyName:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Amount:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Reason:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                Reference:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Date:
+                  oneOf:
+                Valor:
+                  oneOf:
+                CompanyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyName:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Amount:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Reason:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                Reference:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Customer:
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                Currency:
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                PaymentMethod:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Customer:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Customer", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Customer,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    SupplierPayment:
+      type: object
+      required:
+        - Date
+        - Valor
+        - Amount
+        - Currency
+        - Reason
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Supplier:
+          type: integer
+          format: int32
+        Date:
+        Valor:
+        CompanyIBAN:
+          type: string
+          minLength: 0
+          maxLength: 34
+        CounterpartyIBAN:
+          type: string
+          minLength: 0
+          maxLength: 34
+        CounterpartyName:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Amount:
+          type: number
+          format: double
+        Currency:
+          type: integer
+          format: int32
+        Reason:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Company:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+          readOnly: true
+        UUID:
+          type: string
+          minLength: 0
+          maxLength: 36
+          readOnly: true
+        Reference:
+          type: string
+          minLength: 0
+          maxLength: 36
+    SupplierPaymentFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Supplier:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Date:
+                  oneOf:
+                Valor:
+                  oneOf:
+                CompanyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyName:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Amount:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Reason:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                Reference:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Supplier:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Date:
+                  oneOf:
+                Valor:
+                  oneOf:
+                CompanyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyIBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 34
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 34
+                CounterpartyName:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Amount:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Reason:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Company:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+                Reference:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+            contains:
+              type: object
+              properties:
+                Id:
+                Supplier:
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                Currency:
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Date:
+                Valor:
+                CompanyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyIBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 34
+                CounterpartyName:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Amount:
+                  type: number
+                  format: double
+                Currency:
+                  type: integer
+                  format: int32
+                Reason:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Company:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+                Reference:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+        $select:
+          type: array
+          example: ["Id", "Supplier", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Supplier,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference"
         $order:
           type: string
           enum: ["asc", "desc"]
