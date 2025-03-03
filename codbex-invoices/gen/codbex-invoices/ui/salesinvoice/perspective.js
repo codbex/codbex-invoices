@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'salesinvoice',
 	name: 'Sales Invoice',
 	link: '/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/index.html',
-	order: 600,
-	icon: '/services/web/resources/unicons/invoice.svg',
+	order: '600',
+	icon: '/services/web/resources/unicons/invoice.svg'
 };
 
 if (typeof exports !== 'undefined') {

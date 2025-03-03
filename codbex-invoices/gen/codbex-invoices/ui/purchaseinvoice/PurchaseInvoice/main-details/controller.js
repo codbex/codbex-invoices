@@ -40,7 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsPurchaseInvoiceType = [];
+				$scope.optionsType = [];
 				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsPaymentMethod = [];
@@ -61,7 +61,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsPurchaseInvoiceType = msg.data.optionsPurchaseInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
@@ -76,7 +76,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsPurchaseInvoiceType = msg.data.optionsPurchaseInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
@@ -97,7 +97,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Due = new Date(msg.data.entity.Due);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsPurchaseInvoiceType = msg.data.optionsPurchaseInvoiceType;
+				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
@@ -109,7 +109,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.servicePurchaseInvoiceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
+		$scope.serviceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
 		$scope.serviceSupplier = "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts";
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts";
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		
 		//-----------------Dialogs-------------------//
 		
-		$scope.createPurchaseInvoiceType = function () {
+		$scope.createType = function () {
 			messageHub.showDialogWindow("PurchaseInvoiceType-details", {
 				action: "create",
 				entity: {},
@@ -205,10 +205,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshPurchaseInvoiceType = function () {
-			$scope.optionsPurchaseInvoiceType = [];
+		$scope.refreshType = function () {
+			$scope.optionsType = [];
 			$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts").then(function (response) {
-				$scope.optionsPurchaseInvoiceType = response.data.map(e => {
+				$scope.optionsType = response.data.map(e => {
 					return {
 						value: e.Id,
 						text: e.Name

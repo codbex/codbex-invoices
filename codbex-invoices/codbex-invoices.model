@@ -48,7 +48,7 @@
                         "name": "Name",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "300",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
@@ -671,7 +671,7 @@
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
-                        "name": "PurchaseInvoiceType",
+                        "name": "Type",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",

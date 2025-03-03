@@ -30,7 +30,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsPurchaseInvoiceType = params.optionsPurchaseInvoiceType;
+			$scope.optionsType = params.optionsType;
 			$scope.optionsSupplier = params.optionsSupplier;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
@@ -69,12 +69,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.servicePurchaseInvoiceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
+		$scope.serviceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
 		
-		$scope.optionsPurchaseInvoiceType = [];
+		$scope.optionsType = [];
 		
 		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts").then(function (response) {
-			$scope.optionsPurchaseInvoiceType = response.data.map(e => {
+			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
