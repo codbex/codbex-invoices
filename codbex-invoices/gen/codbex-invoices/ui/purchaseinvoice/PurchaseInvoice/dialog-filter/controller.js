@@ -26,7 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsPurchaseInvoiceType = params.optionsPurchaseInvoiceType;
+			$scope.optionsType = params.optionsType;
 			$scope.optionsSupplier = params.optionsSupplier;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
@@ -65,8 +65,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.OriginalNumber) {
 				filter.$filter.contains.OriginalNumber = entity.OriginalNumber;
 			}
-			if (entity.PurchaseInvoiceType !== undefined) {
-				filter.$filter.equals.PurchaseInvoiceType = entity.PurchaseInvoiceType;
+			if (entity.Type !== undefined) {
+				filter.$filter.equals.Type = entity.Type;
 			}
 			if (entity.DateFrom) {
 				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;

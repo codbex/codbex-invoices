@@ -6,13 +6,13 @@ import { dao as daoApi } from "sdk/db";
 export interface SalesInvoicePaymentEntity {
     readonly Id: number;
     SalesInvoice?: number;
-    CustomerPayment: number;
+    CustomerPayment?: number;
     Amount: number;
 }
 
 export interface SalesInvoicePaymentCreateEntity {
     readonly SalesInvoice?: number;
-    readonly CustomerPayment: number;
+    readonly CustomerPayment?: number;
     readonly Amount: number;
 }
 
@@ -108,7 +108,6 @@ export class SalesInvoicePaymentRepository {
                 name: "CustomerPayment",
                 column: "SALESINVOICEPAYMENT_CUSTOMERPAYMENT",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "Amount",

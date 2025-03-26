@@ -505,6 +505,7 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
                         "name": "SALESINVOICEPAYMENT_CUSTOMERPAYMENT"
                     },
                     {
@@ -534,6 +535,7 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
                         "name": "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT"
                     },
                     {
@@ -649,6 +651,199 @@
                         "length": 20,
                         "nullable": true,
                         "name": "SENTMETHOD_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_CUSTOMERPAYMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CUSTOMER"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SUPPLIERPAYMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_SUPPLIER"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_REFERENCE"
                     }
                 ]
             },

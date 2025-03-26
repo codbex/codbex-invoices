@@ -130,9 +130,6 @@ class SalesInvoicePaymentService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.CustomerPayment === null || entity.CustomerPayment === undefined) {
-            throw new ValidationError(`The 'CustomerPayment' property is required, provide a valid value`);
-        }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
