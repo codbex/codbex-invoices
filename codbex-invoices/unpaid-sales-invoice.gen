@@ -11,5 +11,11 @@
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "unpaid-sales-invoice.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js"
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "roles": [
+    {
+      "entityName": "UNPAID_SALESINVOICE",
+      "roleRead": "codbex-invoices.Report.UNPAID_SALESINVOICEReadOnly"
+    }
+  ]
 }

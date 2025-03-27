@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-invoices-custom-action",
     "module": "codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-print/print.js",
-    "description": "Print CASHFLOW Report"
+    "description": "Print CASHFLOW Report",
+    "role": "codbex-invoices.Report.CASHFLOWReadOnly"
 }

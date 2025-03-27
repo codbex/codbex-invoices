@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-invoices-custom-action",
     "module": "codbex-invoices/print/PurchaseInvoice/view.js",
-    "description": "Print Purchase Invoice Custom Action"
+    "description": "Print Purchase Invoice Custom Action",
+    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess,codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess"
 }

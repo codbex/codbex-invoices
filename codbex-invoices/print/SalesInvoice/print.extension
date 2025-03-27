@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-invoices-custom-action",
     "module": "codbex-invoices/print/SalesInvoice/view.js",
-    "description": "Print Sales Invoice Custom Action"
+    "description": "Print Sales Invoice Custom Action",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceItemReadOnly,codbex-invoices.salesinvoice.SalesInvoiceItemFullAccess,codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
 }

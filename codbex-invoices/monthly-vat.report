@@ -40,5 +40,9 @@
             "grouping": false
         }
     ],
-    "name": "MonthlyVAT"
+    "name": "MonthlyVAT",
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-invoices.Report.MonthlyVATReadOnly"
+    }
 }

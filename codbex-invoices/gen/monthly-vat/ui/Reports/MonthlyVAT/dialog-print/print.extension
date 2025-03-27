@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-invoices-custom-action",
     "module": "codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-print/print.js",
-    "description": "Print MonthlyVAT Report"
+    "description": "Print MonthlyVAT Report",
+    "role": "codbex-invoices.Report.MonthlyVATReadOnly"
 }

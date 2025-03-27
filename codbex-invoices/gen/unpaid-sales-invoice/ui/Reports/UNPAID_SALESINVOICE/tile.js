@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/index.html",
         order: "${menuIndex}",
-        groupOrder: "999",
+        groupOrder: "999"
     };
 };

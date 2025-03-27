@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-invoices/widgets/total-receivables/service.js",
-    "description": "Total Receivables Widget"
+    "description": "Total Receivables Widget",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
 }
