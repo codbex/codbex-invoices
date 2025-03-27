@@ -7,7 +7,7 @@ const viewData = {
     id: "CASHFLOW-Report-details",
     label: "CASHFLOW Report",
     link: "/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

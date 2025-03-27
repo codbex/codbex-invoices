@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-invoices.Report.MonthlyVATReadOnly",
+        "description": "A role that grants read only permission for MonthlyVAT."
+    }
+]

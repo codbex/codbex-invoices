@@ -8,6 +8,9 @@ const viewData = {
     label: "PurchaseInvoice",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/dialog-window/index.html",
     perspectiveName: "purchaseinvoice",
+    roles: [
+        "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

@@ -7,7 +7,7 @@ const viewData = {
     id: "UNPAID_PURCHASEINVOICE-Report-details",
     label: "UNPAID_PURCHASEINVOICE Report",
     link: "/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

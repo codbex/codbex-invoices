@@ -1,5 +1,6 @@
 {
     "module": "codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-invoices - Application Tile"
+    "description": "codbex-invoices - Application Tile",
+    "role": "codbex-invoices.Report.MonthlyVATReadOnly"
 }

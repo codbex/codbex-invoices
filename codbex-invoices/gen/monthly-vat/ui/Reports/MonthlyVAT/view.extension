@@ -1,5 +1,6 @@
 {
     "module": "codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/view.js",
     "extensionPoint": "codbex-invoices-view",
-    "description": "codbex-invoices - Application View"
+    "description": "codbex-invoices - Application View",
+    "role": "codbex-invoices.Report.MonthlyVATReadOnly"
 }

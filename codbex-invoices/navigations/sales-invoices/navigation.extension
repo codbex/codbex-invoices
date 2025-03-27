@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-invoices/navigations/sales-invoices/service.js",
-    "description": "Sales Invoices Navigation"
+    "description": "Sales Invoices Navigation",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceItemReadOnly,codbex-invoices.salesinvoice.SalesInvoiceItemFullAccess,codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
 }

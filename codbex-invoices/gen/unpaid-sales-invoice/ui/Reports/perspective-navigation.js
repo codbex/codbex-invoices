@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Unpaid Sales Invoices',
 	group: 'reports',
 	link: '/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/index.html',
-	order: 1200,
+	order: 1200
 };
 
 function getNavigation() {

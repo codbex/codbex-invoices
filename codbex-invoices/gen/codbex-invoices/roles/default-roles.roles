@@ -1,2 +1,90 @@
 [
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoiceItemReadOnly",
+        "description": "A role that grants read only permission for SalesInvoiceItem."
+    },
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoiceItemFullAccess",
+        "description": "A role that grants full access for SalesInvoiceItem."
+    },
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly",
+        "description": "A role that grants read only permission for SalesInvoice."
+    },
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoiceFullAccess",
+        "description": "A role that grants full access for SalesInvoice."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly",
+        "description": "A role that grants read only permission for PurchaseInvoice."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess",
+        "description": "A role that grants full access for PurchaseInvoice."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly",
+        "description": "A role that grants read only permission for PurchaseInvoiceItem."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess",
+        "description": "A role that grants full access for PurchaseInvoiceItem."
+    },
+    {
+        "name": "codbex-invoices.settings.SalesInvoiceStatusReadOnly",
+        "description": "A role that grants read only permission for SalesInvoiceStatus."
+    },
+    {
+        "name": "codbex-invoices.settings.SalesInvoiceStatusFullAccess",
+        "description": "A role that grants full access for SalesInvoiceStatus."
+    },
+    {
+        "name": "codbex-invoices.settings.PurchaseInvoiceStatusReadOnly",
+        "description": "A role that grants read only permission for PurchaseInvoiceStatus."
+    },
+    {
+        "name": "codbex-invoices.settings.PurchaseInvoiceStatusFullAccess",
+        "description": "A role that grants full access for PurchaseInvoiceStatus."
+    },
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoicePaymentReadOnly",
+        "description": "A role that grants read only permission for SalesInvoicePayment."
+    },
+    {
+        "name": "codbex-invoices.salesinvoice.SalesInvoicePaymentFullAccess",
+        "description": "A role that grants full access for SalesInvoicePayment."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentReadOnly",
+        "description": "A role that grants read only permission for PurchaseInvoicePayment."
+    },
+    {
+        "name": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentFullAccess",
+        "description": "A role that grants full access for PurchaseInvoicePayment."
+    },
+    {
+        "name": "codbex-invoices.settings.SalesInvoiceTypeReadOnly",
+        "description": "A role that grants read only permission for SalesInvoiceType."
+    },
+    {
+        "name": "codbex-invoices.settings.SalesInvoiceTypeFullAccess",
+        "description": "A role that grants full access for SalesInvoiceType."
+    },
+    {
+        "name": "codbex-invoices.settings.DeductionReadOnly",
+        "description": "A role that grants read only permission for Deduction."
+    },
+    {
+        "name": "codbex-invoices.settings.DeductionFullAccess",
+        "description": "A role that grants full access for Deduction."
+    },
+    {
+        "name": "codbex-invoices.settings.PurchaseInvoiceTypeReadOnly",
+        "description": "A role that grants read only permission for PurchaseInvoiceType."
+    },
+    {
+        "name": "codbex-invoices.settings.PurchaseInvoiceTypeFullAccess",
+        "description": "A role that grants full access for PurchaseInvoiceType."
+    }
 ]

@@ -7,7 +7,7 @@ const viewData = {
     id: "Deduction",
     label: "Deduction",
     factory: "frame",
-    region: "center",
+    region: "left",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/Deduction/index.html",
     perspectiveName: "settings"
 };

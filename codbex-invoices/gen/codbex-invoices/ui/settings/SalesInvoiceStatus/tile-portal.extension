@@ -1,5 +1,6 @@
 {
     "module": "codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceStatus/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-invoices - Application Tile"
+    "description": "codbex-invoices - Application Tile",
+    "role": "codbex-invoices.settings.SalesInvoiceStatusReadOnly,codbex-invoices.settings.SalesInvoiceStatusFullAccess"
 }

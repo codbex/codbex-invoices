@@ -22,5 +22,9 @@
             "select": true,
             "grouping": false
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-invoices.Report.CASHFLOWReadOnly"
+    }
 }

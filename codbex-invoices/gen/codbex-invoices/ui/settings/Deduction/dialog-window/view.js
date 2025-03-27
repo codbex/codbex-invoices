@@ -7,7 +7,10 @@ const viewData = {
     id: "Deduction-details",
     label: "Deduction",
     link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/settings/Deduction/dialog-window/index.html",
-    perspectiveName: "settings"
+    perspectiveName: "settings",
+    roles: [
+        "codbex-invoices.settings.DeductionReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

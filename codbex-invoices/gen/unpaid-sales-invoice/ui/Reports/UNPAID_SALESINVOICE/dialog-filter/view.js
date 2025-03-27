@@ -7,7 +7,7 @@ const viewData = {
     id: "UNPAID_SALESINVOICE-Report-filter",
     label: "UNPAID_SALESINVOICE Rerport Filter",
     link: "/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-filter/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

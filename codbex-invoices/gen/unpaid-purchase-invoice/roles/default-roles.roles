@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly",
+        "description": "A role that grants read only permission for UNPAID_PURCHASEINVOICE."
+    }
+]

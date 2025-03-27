@@ -1,5 +1,6 @@
 {
     "module": "codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-filter/view.js",
-    "extensionPoint": "codbex-invoices-dialog-window",
-    "description": "codbex-invoices - Application Dialog Window"
+    "extensionPoint": "dialog-window",
+    "description": "codbex-invoices - Application Dialog Window",
+    "role": "codbex-invoices.Report.CASHFLOWReadOnly"
 }

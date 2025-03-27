@@ -83,5 +83,9 @@
             "operation": ">",
             "right": "SalesInvoice.SALESINVOICE_PAID"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-invoices.Report.UNPAID_SALESINVOICEReadOnly"
+    }
 }
