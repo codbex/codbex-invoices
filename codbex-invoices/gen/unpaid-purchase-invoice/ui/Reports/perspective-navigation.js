@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-invoices-unpaid-purchase-invoice',
-	label: 'Unpaid Purchase Invoices',
+	label: 'Unpaid Purchase Invoice',
 	group: 'reports',
 	link: '/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/index.html',
-	order: 1200
+	order: 1300
 };
 
 function getNavigation() {
