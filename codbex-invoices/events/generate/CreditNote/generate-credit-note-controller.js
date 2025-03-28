@@ -4,17 +4,18 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
     const params = ViewParameters.get();
     $scope.showDialog = true;
 
-    const salesInvoiceDataUrl = `/services/ts/codbex-invoices/events/generate/Note/api/GenerateNoteService.ts/salesInvoiceData/${params.id}`;
+    const salesInvoiceDataUrl = `/services/ts/codbex-invoices/events/generate/CreditNote/api/GenerateCreditNoteService.ts/salesInvoiceData/${params.id}`;
     $http.get(salesInvoiceDataUrl)
         .then(response => {
             $scope.SalesInvoiceData = response.data;
+            $scope.IsCreditOrDebit = $scope.SalesInvoiceData.Type == 1 || $scope.SalesInvoiceData.Type == 2;
         })
         .catch(error => {
             alert("Error fetching sales invoice data: " + error.data.message);
             $scope.closeDialog();
         });
 
-    const salesInvoiceNetUrl = `/services/ts/codbex-invoices/events/generate/Note/api/GenerateNoteService.ts/salesInvoiceNet/${params.id}`;
+    const salesInvoiceNetUrl = `/services/ts/codbex-invoices/events/generate/CreditNote/api/GenerateCreditNoteService.ts/salesInvoiceNet/${params.id}`;
     $http.get(salesInvoiceNetUrl)
         .then(response => {
             $scope.SalesInvoiceNet = response.data;
@@ -65,6 +66,6 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
 
     $scope.closeDialog = function () {
         $scope.showDialog = false;
-        messageHub.closeDialogWindow("note-generate");
+        messageHub.closeDialogWindow("credit-note-generate");
     };
 }]);

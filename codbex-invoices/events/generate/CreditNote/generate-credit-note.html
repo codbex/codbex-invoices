@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
         <title dg-view-title></title>
-        <script type="text/javascript" src="note-generate.js"></script>
+        <script type="text/javascript" src="credit-note-generate.js"></script>
         <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
         <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
         <theme></theme>
         <!-- <link rel="stylesheet" href="generate-note.css"> -->
-        <script type="text/javascript" src="generate-note-controller.js">
+        <script type="text/javascript" src="generate-credit-note-controller.js">
         </script>
     </head>
 
@@ -21,10 +21,10 @@
                 <fd-fieldset>
                     <fd-form-group style="display: flex; justify-content: center;">
                         <fd-form-item horizontal="false">
-                            <fd-form-label for="net" dg-colon="true" dg-required="true">New Net</fd-form-label>
-                            <fd-input id="net" type="text" placeholder="Here goes the new net." ng-model="net">
+                            <fd-form-label for="amount" dg-colon="true" dg-required="true">Credit Note Amount:</fd-form-label>
+                            <fd-input id="amount" type="text" placeholder="Amount." ng-model="net">
                             </fd-input>
-                            <fd-button ng-click="submitCopy(net)" dg-label="Submit" dg-type="default">Submit
+                            <fd-button ng-click="submitCopy(amount)" dg-label="Submit" dg-type="default" state="{{!IsCreditOrDebit ? '' : 'disabled' }}">Submit
                             </fd-button>
                         </fd-form-item>
                     </fd-form-group>
