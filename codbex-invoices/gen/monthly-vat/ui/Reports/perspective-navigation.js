@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Monthly VAT Report',
 	group: 'reports',
 	link: '/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/index.html',
-	order: 11
+	order: 1400
 };
 
 function getNavigation() {

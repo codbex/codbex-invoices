@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Cashflow Report',
 	group: 'reports',
 	link: '/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/index.html',
-	order: 11
+	order: 1500
 };
 
 function getNavigation() {

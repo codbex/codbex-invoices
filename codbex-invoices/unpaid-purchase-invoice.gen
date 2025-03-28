@@ -1,17 +1,17 @@
 {
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com",
-  "title": "Unpaid Purchase Invoices",
-  "navigationOrder": "1200",
+  "title": "Unpaid Purchase Invoice",
+  "navigationOrder": "1300",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "unpaid-purchase-invoice.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "unpaid-purchase-invoice",
   "genFolderName": "unpaid-purchase-invoice",
   "extensionPoint": "codbex-invoices",
   "name": "UNPAID_PURCHASEINVOICE",
   "perspectiveName": "UNPAID_PURCHASEINVOICE",
-  "projectName": "codbex-invoices",
-  "workspaceName": "workspace",
-  "filePath": "unpaid-purchase-invoice.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "UNPAID_PURCHASEINVOICE",

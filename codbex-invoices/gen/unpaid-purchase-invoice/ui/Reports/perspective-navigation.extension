@@ -1,6 +1,6 @@
 {
     "module": "codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/perspective-navigation.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Unpaid Purchase Invoices - Navigation",
+    "description": "Unpaid Purchase Invoice - Navigation",
     "role": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly"
 }
