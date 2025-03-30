@@ -1225,7 +1225,7 @@
           "inputRule": ""
         },
         {
-          "dataLength": "36",
+          "dataLength": "100",
           "dataName": "SALESINVOICE_REFERENCE",
           "dataNullable": true,
           "dataType": "VARCHAR",
@@ -1233,7 +1233,7 @@
           "name": "Reference",
           "tooltip": "",
           "widgetIsMajor": true,
-          "widgetLength": "36",
+          "widgetLength": "100",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
           "dataNotNull": false,
@@ -1247,36 +1247,7 @@
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
           "minLength": 0,
-          "maxLength": 36,
-          "inputRule": ""
-        },
-        {
-          "dataName": "SALESINVOICE_SALESORDER",
-          "dataNullable": true,
-          "dataType": "INTEGER",
-          "description": "",
-          "name": "SalesOrder",
-          "tooltip": "",
-          "widgetDropDownKey": "Id",
-          "widgetDropDownValue": "Number",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "DROPDOWN",
-          "relationshipName": "SalesInvoice_SalesOrder",
-          "relationshipEntityName": "SalesOrder",
-          "relationshipEntityPerspectiveName": "SalesOrder",
-          "relationshipEntityPerspectiveLabel": "Sales Order",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "SalesOrder",
-          "widgetDropdownUrl": "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
+          "maxLength": 100,
           "inputRule": ""
         }
       ],
@@ -1336,11 +1307,6 @@
           "name": "Company",
           "project": "codbex-companies",
           "genFolderName": "codbex-companies"
-        },
-        {
-          "name": "SalesOrder",
-          "project": "codbex-orders",
-          "genFolderName": "codbex-orders"
         }
       ],
       "primaryKeys": [
@@ -1950,7 +1916,7 @@
             "inputRule": ""
           },
           {
-            "dataLength": "36",
+            "dataLength": "100",
             "dataName": "SALESINVOICE_REFERENCE",
             "dataNullable": true,
             "dataType": "VARCHAR",
@@ -1958,7 +1924,7 @@
             "name": "Reference",
             "tooltip": "",
             "widgetIsMajor": true,
-            "widgetLength": "36",
+            "widgetLength": "100",
             "widgetSize": "",
             "widgetType": "TEXTBOX",
             "dataNotNull": false,
@@ -1972,36 +1938,7 @@
             "dataTypeJava": "string",
             "dataTypeTypescript": "string",
             "minLength": 0,
-            "maxLength": 36,
-            "inputRule": ""
-          },
-          {
-            "dataName": "SALESINVOICE_SALESORDER",
-            "dataNullable": true,
-            "dataType": "INTEGER",
-            "description": "",
-            "name": "SalesOrder",
-            "tooltip": "",
-            "widgetDropDownKey": "Id",
-            "widgetDropDownValue": "Number",
-            "widgetIsMajor": true,
-            "widgetLength": "20",
-            "widgetSize": "",
-            "widgetType": "DROPDOWN",
-            "relationshipName": "SalesInvoice_SalesOrder",
-            "relationshipEntityName": "SalesOrder",
-            "relationshipEntityPerspectiveName": "SalesOrder",
-            "relationshipEntityPerspectiveLabel": "Sales Order",
-            "dataNotNull": false,
-            "dataAutoIncrement": false,
-            "dataPrimaryKey": false,
-            "dataUnique": false,
-            "isRequiredProperty": false,
-            "isCalculatedProperty": false,
-            "widgetLabel": "SalesOrder",
-            "widgetDropdownUrl": "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts",
-            "dataTypeJava": "int",
-            "dataTypeTypescript": "number",
+            "maxLength": 100,
             "inputRule": ""
           }
         ]

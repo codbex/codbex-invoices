@@ -38,7 +38,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOperator = params.optionsOperator;
 			$scope.optionsCompany = params.optionsCompany;
-			$scope.optionsSalesOrder = params.optionsSalesOrder;
 		}
 
 		$scope.create = function () {
@@ -163,18 +162,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
-				}
-			});
-		});
-		$scope.serviceSalesOrder = "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts";
-		
-		$scope.optionsSalesOrder = [];
-		
-		$http.get("/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts").then(function (response) {
-			$scope.optionsSalesOrder = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Number
 				}
 			});
 		});

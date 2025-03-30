@@ -5,9 +5,11 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
     $scope.showDialog = true;
 
     const salesInvoiceDataUrl = `/services/ts/codbex-invoices/events/generate/DebitNote/api/GenerateDebitNoteService.ts/salesInvoiceData/${params.id}`;
+    const salesInvoiceSubmitUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository.ts/";
+
     $http.get(salesInvoiceDataUrl)
         .then(response => {
-            $scope.SalesInvoiceData = response.data;
+            $scope.SalesInvoiceData = response.data.SalesInvoice;
             $scope.IsCreditOrDebit = $scope.SalesInvoiceData.Type == 1 || $scope.SalesInvoiceData.Type == 2;
         })
         .catch(error => {
@@ -15,53 +17,42 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
             $scope.closeDialog();
         });
 
-    const salesInvoiceNetUrl = `/services/ts/codbex-invoices/events/generate/DebitNote/api/GenerateDebitNoteService.ts/salesInvoiceNet/${params.id}`;
-    $http.get(salesInvoiceNetUrl)
-        .then(response => {
-            $scope.SalesInvoiceNet = response.data;
-        })
-        .catch(error => {
-            alert("Error fetching sales invoice Net: " + error.data.message);
-            $scope.closeDialog();
-        });
-
     $scope.submitCopy = function (net) {
+
         if (!net || isNaN(net)) {
             alert("Please enter a valid Net value.");
             return;
         }
 
-        const creditNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/CreditNote/CreditNoteService.ts/";
-        const debitNoteUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/DebitNote/DebitNoteService.ts/";
-
-        const noteData = {
-            ...$scope.SalesInvoiceData,
-            SalesInvoice: params.id,
-            Date: new Date().toISOString(),
-            Net: parseFloat(net)
-        };
-
-        if ($scope.SalesInvoiceNet > net) {
-            $http.post(debitNoteUrl, noteData)
-                .then(response => {
-                    console.log("Debit note created successfully:", response.data);
-                    $scope.closeDialog();
-                })
-                .catch(error => {
-                    alert("Error creating debit note: " + error.data.message);
-                    $scope.closeDialog();
-                });
-        } else {
-            $http.post(creditNoteUrl, noteData)
-                .then(response => {
-                    console.log("Credit note created successfully:", response.data);
-                    $scope.closeDialog();
-                })
-                .catch(error => {
-                    alert("Error creating credit note: " + error.data.message);
-                    $scope.closeDialog();
-                });
+        const creditSalesInvoice =
+        {
+            "Type": 1,
+            "Customer": $scope.SalesInvoiceData.Customer,
+            "Date": $scope.SalesInvoiceData.Date,
+            "Due": $scope.SalesInvoiceData.Due,
+            "Net": net,
+            "Currency": $scope.SalesInvoiceData.Currency,
+            "VAT": net * 0.2,
+            "Total": net * 1.20,
+            "Paid": 0,
+            "Conditions": $scope.SalesInvoiceData.Conditions,
+            "PaymentMethod": $scope.SalesInvoiceData.PaymentMethod,
+            "SentMethod": $scope.SalesInvoiceData.SentMethod,
+            "Status": 1,
+            "Operator": $scope.SalesInvoiceData.Operator,
+            "Company": $scope.SalesInvoiceData.Company,
+            "Reference": "Invoice " + $scope.SalesInvoiceData.Number + " / " + $scope.SalesInvoiceData.Date
         }
+
+        $http.post(salesInvoiceSubmitUrl, creditSalesInvoice)
+            .then(response => {
+                console.log("Debit note created successfully:", response.data);
+                $scope.closeDialog();
+            })
+            .catch(error => {
+                alert("Error creating debit note: " + error.data.message);
+                $scope.closeDialog();
+            });
     };
 
     $scope.closeDialog = function () {

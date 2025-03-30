@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="NoteApp" ng-controller="DebitNoteController">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="NoteApp" ng-controller="NoteController">
 
     <head>
         <meta charset="utf-8" />
@@ -20,8 +20,8 @@
                 <fd-fieldset>
                     <fd-form-group style="display: flex; justify-content: center;">
                         <fd-form-item horizontal="false">
-                            <fd-form-label for="amount" dg-colon="true" dg-required="true">Debit note amount:</fd-form-label>
-                            <fd-input id="amount" type="text" placeholder="Amount" ng-model="net">
+                            <fd-form-label for="amount" dg-colon="true" dg-required="true">Debit note amount</fd-form-label>
+                            <fd-input id="amount" type="text" placeholder="Amount" ng-model="amount">
                             </fd-input>
                             <fd-button ng-click="submitCopy(amount)" dg-label="Submit" dg-type="default" state="{{!IsCreditOrDebit ? '' : 'disabled' }}">Submit
                             </fd-button>

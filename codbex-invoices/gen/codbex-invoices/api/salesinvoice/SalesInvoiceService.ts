@@ -173,8 +173,8 @@ class SalesInvoiceService {
         if (entity.UUID?.length > 36) {
             throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);
         }
-        if (entity.Reference?.length > 36) {
-            throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
+        if (entity.Reference?.length > 100) {
+            throw new ValidationError(`The 'Reference' exceeds the maximum length of [100] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

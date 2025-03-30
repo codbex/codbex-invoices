@@ -6556,10 +6556,7 @@ components:
         Reference:
           type: string
           minLength: 0
-          maxLength: 36
-        SalesOrder:
-          type: integer
-          format: int32
+          maxLength: 100
     SalesInvoiceFilterOptions:
       type: object
       properties:
@@ -6760,21 +6757,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 36
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 36
-                SalesOrder:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
+                        maxLength: 100
             notEquals:
               type: object
               properties:
@@ -6969,21 +6958,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 36
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 36
-                SalesOrder:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
+                        maxLength: 100
             contains:
               type: object
               properties:
@@ -7028,8 +7009,7 @@ components:
                 Reference:
                   type: string
                   minLength: 0
-                  maxLength: 36
-                SalesOrder:
+                  maxLength: 100
             greaterThan:
               type: object
               properties:
@@ -7106,10 +7086,7 @@ components:
                 Reference:
                   type: string
                   minLength: 0
-                  maxLength: 36
-                SalesOrder:
-                  type: integer
-                  format: int32
+                  maxLength: 100
             greaterThanOrEqual:
               type: object
               properties:
@@ -7186,10 +7163,7 @@ components:
                 Reference:
                   type: string
                   minLength: 0
-                  maxLength: 36
-                SalesOrder:
-                  type: integer
-                  format: int32
+                  maxLength: 100
             lessThan:
               type: object
               properties:
@@ -7266,10 +7240,7 @@ components:
                 Reference:
                   type: string
                   minLength: 0
-                  maxLength: 36
-                SalesOrder:
-                  type: integer
-                  format: int32
+                  maxLength: 100
             lessThanOrEqual:
               type: object
               properties:
@@ -7346,18 +7317,15 @@ components:
                 Reference:
                   type: string
                   minLength: 0
-                  maxLength: 36
-                SalesOrder:
-                  type: integer
-                  format: int32
+                  maxLength: 100
         $select:
           type: array
-          example: ["Id", "Number", "Type", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "Status", "Operator", "Document", "Company", "Name", "UUID", "Reference", "SalesOrder"]
+          example: ["Id", "Number", "Type", "Customer", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "Status", "Operator", "Document", "Company", "Name", "UUID", "Reference"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Type,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,Status,Operator,Document,Company,Name,UUID,Reference,SalesOrder"
+            example: "Id,Number,Type,Customer,Date,Due,Net,Currency,Gross,Discount,Taxes,VAT,Total,Paid,Conditions,PaymentMethod,SentMethod,Status,Operator,Document,Company,Name,UUID,Reference"
         $order:
           type: string
           enum: ["asc", "desc"]

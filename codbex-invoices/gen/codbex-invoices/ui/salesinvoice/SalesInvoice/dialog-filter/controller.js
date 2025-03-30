@@ -34,7 +34,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOperator = params.optionsOperator;
 			$scope.optionsCompany = params.optionsCompany;
-			$scope.optionsSalesOrder = params.optionsSalesOrder;
 		}
 
 		$scope.filter = function () {
@@ -134,9 +133,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Reference) {
 				filter.$filter.contains.Reference = entity.Reference;
-			}
-			if (entity.SalesOrder !== undefined) {
-				filter.$filter.equals.SalesOrder = entity.SalesOrder;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
