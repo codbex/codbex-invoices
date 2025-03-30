@@ -6,7 +6,7 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
 
 
     const salesInvoiceDataUrl = `/services/ts/codbex-invoices/events/generate/CreditNote/api/GenerateCreditNoteService.ts/salesInvoiceData/${params.id}`;
-    const salesInvoiceSubmitUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository.ts/";
+    const salesInvoiceSubmitUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts/";
 
     $http.get(salesInvoiceDataUrl)
         .then(response => {
@@ -42,7 +42,7 @@ NoteApp.controller('NoteController', ['$scope', '$http', 'ViewParameters', 'mess
             "Status": 1,
             "Operator": $scope.SalesInvoiceData.Operator,
             "Company": $scope.SalesInvoiceData.Company,
-            "Reference": "Invoice " + $scope.SalesInvoiceData.Number + " / " + $scope.SalesInvoiceData.Date
+            "Reference": "Invoice " + $scope.SalesInvoiceData.Number + " / " + new Date($scope.SalesInvoiceData.Date).toISOString().slice(0, 10)
         }
 
         $http.post(salesInvoiceSubmitUrl, creditSalesInvoice)
