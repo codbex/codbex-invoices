@@ -211,14 +211,9 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 36,
+                        "length": 100,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SALESINVOICE_SALESORDER"
                     }
                 ]
             },
@@ -936,15 +931,6 @@
                 "columns": "SALESINVOICE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "SalesInvoice_SalesOrder",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_SalesOrder",
-                "columns": "SALESINVOICE_SALESORDER",
-                "referencedTable": "CODBEX_SALESORDER",
-                "referencedColumns": "SALESORDER_ID"
             },
             {
                 "name": "PurchaseInvoice_PurchaseInvoiceType",

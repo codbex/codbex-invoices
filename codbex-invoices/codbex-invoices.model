@@ -568,7 +568,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "36",
+                        "dataLength": "100",
                         "dataName": "SALESINVOICE_REFERENCE",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -576,27 +576,9 @@
                         "name": "Reference",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "36",
+                        "widgetLength": "100",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "SALESINVOICE_SALESORDER",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "SalesOrder",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Number",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "SalesInvoice_SalesOrder",
-                        "relationshipEntityName": "SalesOrder",
-                        "relationshipEntityPerspectiveName": "SalesOrder",
-                        "relationshipEntityPerspectiveLabel": "Sales Order"
                     }
                 ],
                 "caption": "Manage entity SalesInvoice",

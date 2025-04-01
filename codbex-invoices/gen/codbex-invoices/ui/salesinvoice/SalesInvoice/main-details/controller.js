@@ -48,7 +48,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
 				$scope.optionsCompany = [];
-				$scope.optionsSalesOrder = [];
 				$scope.action = 'select';
 			});
 		});
@@ -70,7 +69,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'select';
 			});
 		});
@@ -86,7 +84,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'create';
 			});
 		});
@@ -108,7 +105,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.optionsCompany = msg.data.optionsCompany;
-				$scope.optionsSalesOrder = msg.data.optionsSalesOrder;
 				$scope.action = 'update';
 			});
 		});
@@ -121,7 +117,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.serviceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts";
 		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
-		$scope.serviceSalesOrder = "/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts";
 
 		//-----------------Events-------------------//
 
@@ -199,12 +194,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 		$scope.createCompany = function () {
 			messageHub.showDialogWindow("Company-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
-		};
-		$scope.createSalesOrder = function () {
-			messageHub.showDialogWindow("SalesOrder-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
@@ -300,17 +289,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					return {
 						value: e.Id,
 						text: e.Name
-					}
-				});
-			});
-		};
-		$scope.refreshSalesOrder = function () {
-			$scope.optionsSalesOrder = [];
-			$http.get("/services/ts/codbex-orders/gen/codbex-orders/api/SalesOrder/SalesOrderService.ts").then(function (response) {
-				$scope.optionsSalesOrder = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Number
 					}
 				});
 			});
