@@ -22,13 +22,13 @@ class DeductionService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let AdvanceInvoice = parseInt(ctx.queryParameters.AdvanceInvoice);
-            AdvanceInvoice = isNaN(AdvanceInvoice) ? ctx.queryParameters.AdvanceInvoice : AdvanceInvoice;
+            let SalesInvoice = parseInt(ctx.queryParameters.SalesInvoice);
+            SalesInvoice = isNaN(SalesInvoice) ? ctx.queryParameters.SalesInvoice : SalesInvoice;
 
-            if (AdvanceInvoice !== undefined) {
+            if (SalesInvoice !== undefined) {
                 options.$filter = {
                     equals: {
-                        AdvanceInvoice: AdvanceInvoice
+                        SalesInvoice: SalesInvoice
                     }
                 };
             }

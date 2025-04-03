@@ -7,11 +7,13 @@ export interface DeductionEntity {
     readonly Id: number;
     DeductionInvoice?: number;
     AdvanceInvoice?: number;
+    SalesInvoice?: number;
 }
 
 export interface DeductionCreateEntity {
     readonly DeductionInvoice?: number;
     readonly AdvanceInvoice?: number;
+    readonly SalesInvoice?: number;
 }
 
 export interface DeductionUpdateEntity extends DeductionCreateEntity {
@@ -24,36 +26,43 @@ export interface DeductionEntityOptions {
             Id?: number | number[];
             DeductionInvoice?: number | number[];
             AdvanceInvoice?: number | number[];
+            SalesInvoice?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             DeductionInvoice?: number | number[];
             AdvanceInvoice?: number | number[];
+            SalesInvoice?: number | number[];
         };
         contains?: {
             Id?: number;
             DeductionInvoice?: number;
             AdvanceInvoice?: number;
+            SalesInvoice?: number;
         };
         greaterThan?: {
             Id?: number;
             DeductionInvoice?: number;
             AdvanceInvoice?: number;
+            SalesInvoice?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             DeductionInvoice?: number;
             AdvanceInvoice?: number;
+            SalesInvoice?: number;
         };
         lessThan?: {
             Id?: number;
             DeductionInvoice?: number;
             AdvanceInvoice?: number;
+            SalesInvoice?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             DeductionInvoice?: number;
             AdvanceInvoice?: number;
+            SalesInvoice?: number;
         };
     },
     $select?: (keyof DeductionEntity)[],
@@ -98,6 +107,11 @@ export class DeductionRepository {
             {
                 name: "AdvanceInvoice",
                 column: "DEDUCTION_ADVANCEINVOICE",
+                type: "INTEGER",
+            },
+            {
+                name: "SalesInvoice",
+                column: "DEDUCTION_SALESINVOICE",
                 type: "INTEGER",
             }
         ]

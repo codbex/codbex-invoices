@@ -47,6 +47,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.AdvanceInvoice !== undefined) {
 				filter.$filter.equals.AdvanceInvoice = entity.AdvanceInvoice;
 			}
+			if (entity.SalesInvoice !== undefined) {
+				filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

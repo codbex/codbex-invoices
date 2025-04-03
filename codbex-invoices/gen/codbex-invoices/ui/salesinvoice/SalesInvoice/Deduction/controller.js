@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let AdvanceInvoice = $scope.selectedMainEntityId;
+			let SalesInvoice = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,7 +95,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.AdvanceInvoice = AdvanceInvoice;
+			filter.$filter.equals.SalesInvoice = SalesInvoice;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Deduction", `Unable to count Deduction: '${response.message}'`);
@@ -143,7 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Deduction-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "AdvanceInvoice",
+				selectedMainEntityKey: "SalesInvoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
 				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
@@ -154,7 +154,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Deduction-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "AdvanceInvoice",
+				selectedMainEntityKey: "SalesInvoice",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
 				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,

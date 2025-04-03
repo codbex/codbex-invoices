@@ -585,6 +585,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "DEDUCTION_ADVANCEINVOICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "DEDUCTION_SALESINVOICE"
                     }
                 ]
             },
@@ -1073,6 +1078,15 @@
                 "table": "CODBEX_DEDUCTION",
                 "constraintName": "Deduction_SalesInvoice",
                 "columns": "DEDUCTION_ADVANCEINVOICE",
+                "referencedTable": "CODBEX_SALESINVOICE",
+                "referencedColumns": "SALESINVOICE_ID"
+            },
+            {
+                "name": "Deduction_SalesInvoice",
+                "type": "foreignKey",
+                "table": "CODBEX_DEDUCTION",
+                "constraintName": "Deduction_SalesInvoice",
+                "columns": "DEDUCTION_SALESINVOICE",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             }
