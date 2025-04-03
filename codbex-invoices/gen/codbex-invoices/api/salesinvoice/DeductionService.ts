@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { DeductionRepository, DeductionEntityOptions } from "../../dao/settings/DeductionRepository";
+import { DeductionRepository, DeductionEntityOptions } from "../../dao/salesinvoice/DeductionRepository";
 import { user } from "sdk/security"
 import { ForbiddenError } from "../utils/ForbiddenError";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-invoices-settings-Deduction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-invoices-salesinvoice-Deduction", ["validate"]);
 
 @Controller
 class DeductionService {
@@ -22,6 +22,17 @@ class DeductionService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let DeductionInvoice = parseInt(ctx.queryParameters.DeductionInvoice);
+            DeductionInvoice = isNaN(DeductionInvoice) ? ctx.queryParameters.DeductionInvoice : DeductionInvoice;
+
+            if (DeductionInvoice !== undefined) {
+                options.$filter = {
+                    equals: {
+                        DeductionInvoice: DeductionInvoice
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -34,7 +45,7 @@ class DeductionService {
             this.checkPermissions("write");
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
