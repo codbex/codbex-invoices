@@ -1,21 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.Deduction';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Deduction';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/DeductionService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
-
-		$scope.dataPage = 1;
-		$scope.dataCount = 0;
-		$scope.dataOffset = 0;
-		$scope.dataLimit = 10;
-		$scope.action = "select";
-
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "settings" && e.view === "Deduction" && (e.type === "page" || e.type === undefined));
+			$scope.pageActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "Deduction" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "salesinvoice" && e.view === "Deduction" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -27,35 +21,54 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action
 			);
 		};
+
+		$scope.triggerEntityAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{
+					id: $scope.entity.Id
+				},
+				null,
+				true,
+				action
+			);
+		};
 		//-----------------Custom Actions-------------------//
 
-		function refreshData() {
-			$scope.dataReset = true;
-			$scope.dataPage--;
-		}
-
 		function resetPagination() {
-			$scope.dataReset = true;
 			$scope.dataPage = 1;
 			$scope.dataCount = 0;
 			$scope.dataLimit = 10;
 		}
+		resetPagination();
 
 		//-----------------Events-------------------//
+		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.SalesInvoice.entitySelected", function (msg) {
+			resetPagination();
+			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
+			$scope.loadPage($scope.dataPage);
+		}, true);
+
+		messageHub.onDidReceiveMessage("codbex-invoices.salesinvoice.SalesInvoice.clearDetails", function (msg) {
+			$scope.$apply(function () {
+				resetPagination();
+				$scope.selectedMainEntityId = null;
+				$scope.data = null;
+			});
+		}, true);
+
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
-				$scope.selectedEntity = null;
-				$scope.action = "select";
+				$scope.entity = {};
+				$scope.action = 'select';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
-			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
-			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
@@ -68,13 +81,21 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
+			let AdvanceInvoice = $scope.selectedMainEntityId;
+			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
 			if (!filter) {
 				filter = {};
 			}
-			$scope.selectedEntity = null;
+			if (!filter.$filter) {
+				filter.$filter = {};
+			}
+			if (!filter.$filter.equals) {
+				filter.$filter.equals = {};
+			}
+			filter.$filter.equals.AdvanceInvoice = AdvanceInvoice;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Deduction", `Unable to count Deduction: '${response.message}'`);
@@ -83,35 +104,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (response.data) {
 					$scope.dataCount = response.data;
 				}
-				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$limit = $scope.dataLimit;
-				if ($scope.dataReset) {
-					filter.$offset = 0;
-					filter.$limit = $scope.dataPage * $scope.dataLimit;
-				}
-
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
 						messageHub.showAlertError("Deduction", `Unable to list/filter Deduction: '${response.message}'`);
 						return;
 					}
-					if ($scope.data == null || $scope.dataReset) {
-						$scope.data = [];
-						$scope.dataReset = false;
-					}
-					$scope.data = $scope.data.concat(response.data);
-					$scope.dataPage++;
+					$scope.data = response.data;
 				});
 			});
 		};
-		$scope.loadPage($scope.dataPage, $scope.filter);
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.postMessage("entitySelected", {
+		};
+
+		$scope.openDetails = function (entity) {
+			$scope.selectedEntity = entity;
+			messageHub.showDialogWindow("Deduction-details", {
+				action: "select",
 				entity: entity,
-				selectedMainEntityId: entity.Id,
+				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
+				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("Deduction-filter", {
+				entity: $scope.filterEntity,
 				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
 				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			});
@@ -119,26 +140,29 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			$scope.action = "create";
-
-			messageHub.postMessage("createEntity", {
+			messageHub.showDialogWindow("Deduction-details", {
+				action: "create",
 				entity: {},
+				selectedMainEntityKey: "AdvanceInvoice",
+				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
 				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
-			});
+			}, null, false);
 		};
 
-		$scope.updateEntity = function () {
-			$scope.action = "update";
-			messageHub.postMessage("updateEntity", {
-				entity: $scope.selectedEntity,
+		$scope.updateEntity = function (entity) {
+			messageHub.showDialogWindow("Deduction-details", {
+				action: "update",
+				entity: entity,
+				selectedMainEntityKey: "AdvanceInvoice",
+				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
 				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
-			});
+			}, null, false);
 		};
 
-		$scope.deleteEntity = function () {
-			let id = $scope.selectedEntity.Id;
+		$scope.deleteEntity = function (entity) {
+			let id = entity.Id;
 			messageHub.showDialogAsync(
 				'Delete Deduction?',
 				`Are you sure you want to delete Deduction? This action cannot be undone.`,
@@ -159,19 +183,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							messageHub.showAlertError("Deduction", `Unable to delete Deduction: '${response.message}'`);
 							return;
 						}
-						refreshData();
 						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Deduction-filter", {
-				entity: $scope.filterEntity,
-				optionsDeductionInvoice: $scope.optionsDeductionInvoice,
-				optionsAdvanceInvoice: $scope.optionsAdvanceInvoice,
 			});
 		};
 

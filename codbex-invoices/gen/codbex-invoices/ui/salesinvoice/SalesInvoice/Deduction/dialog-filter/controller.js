@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.settings.Deduction';
+		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Deduction';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -51,7 +51,6 @@ angular.module('page', ["ideUI", "ideView"])
 				entity: entity,
 				filter: filter
 			});
-			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 
