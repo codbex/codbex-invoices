@@ -24,7 +24,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsDeductionInvoice = params.optionsDeductionInvoice;
 			$scope.optionsAdvanceInvoice = params.optionsAdvanceInvoice;
 		}
 
@@ -57,7 +56,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceDeductionInvoice = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts";
 		$scope.serviceAdvanceInvoice = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts";
 
 		$scope.cancel = function () {
