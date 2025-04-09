@@ -1,5 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/settings/perspective.js",
-    "extensionPoint": "portal",
-    "description": "codbex-invoices - Perspective - settings"
-}

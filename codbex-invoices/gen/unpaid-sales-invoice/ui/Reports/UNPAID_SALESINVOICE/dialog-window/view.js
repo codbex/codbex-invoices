@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "UNPAID_SALESINVOICE-Report-details",
-    label: "UNPAID_SALESINVOICE Report",
-    link: "/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-window/index.html",
-    perspectiveName: "Reports"
+    id: 'UNPAID_SALESINVOICE-Report-details',
+    label: 'UNPAID_SALESINVOICE Report',
+    path: '/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-window/index.html',
+    perspectiveName: 'Reports'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

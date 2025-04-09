@@ -6,15 +6,12 @@
 const viewData = {
     id: "PurchaseInvoice-details",
     label: "PurchaseInvoice",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/dialog-window/index.html",
+    path: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/dialog-window/index.html",
     perspectiveName: "purchaseinvoice",
     roles: [
         "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

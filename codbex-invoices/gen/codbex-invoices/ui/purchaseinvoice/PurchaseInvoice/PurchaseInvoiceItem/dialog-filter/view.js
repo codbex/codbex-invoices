@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PurchaseInvoiceItem-filter",
-    label: "PurchaseInvoiceItem Filter",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/PurchaseInvoiceItem/dialog-filter/index.html",
-    perspectiveName: "purchaseinvoice"
+    id: 'PurchaseInvoiceItem-filter',
+    label: 'PurchaseInvoiceItem Filter',
+    path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/PurchaseInvoiceItem/dialog-filter/index.html',
+    perspectiveName: 'purchaseinvoice'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -13,15 +13,15 @@ tags:
   - name: salesinvoice
   - name: purchaseinvoice
   - name: purchaseinvoice
-  - name: settings
-  - name: settings
+  - name: Settings
+  - name: Settings
   - name: salesinvoice
   - name: purchaseinvoice
-  - name: settings
+  - name: Settings
   - name: salesinvoice
-  - name: settings
-  - name: PaymentMethod
-  - name: SentMethod
+  - name: Settings
+  - name: Settings
+  - name: Settings
   - name: CustomerPayment
   - name: SupplierPayment
 paths:
@@ -1669,7 +1669,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts:
     get:
       summary: List SalesInvoiceStatus
       parameters:
@@ -1690,7 +1690,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1721,7 +1721,7 @@ paths:
     post:
       summary: Create SalesInvoiceStatus
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1753,7 +1753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts/{id}:
     get:
       summary: Get SalesInvoiceStatus by Id
       parameters:
@@ -1764,7 +1764,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1802,7 +1802,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1850,7 +1850,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -1872,11 +1872,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts/count:
     get:
       summary: Count the number of SalesInvoiceStatus
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1900,7 +1900,7 @@ paths:
     post:
       summary: Count the number of SalesInvoiceStatus by SalesInvoiceStatusFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1982,11 +1982,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceStatusService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts/search:
     post:
       summary: Search SalesInvoiceStatus by SalesInvoiceStatusFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2069,7 +2069,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts:
     get:
       summary: List PurchaseInvoiceStatus
       parameters:
@@ -2090,7 +2090,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2121,7 +2121,7 @@ paths:
     post:
       summary: Create PurchaseInvoiceStatus
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2153,7 +2153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts/{id}:
     get:
       summary: Get PurchaseInvoiceStatus by Id
       parameters:
@@ -2164,7 +2164,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2202,7 +2202,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2250,7 +2250,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -2272,11 +2272,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts/count:
     get:
       summary: Count the number of PurchaseInvoiceStatus
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2300,7 +2300,7 @@ paths:
     post:
       summary: Count the number of PurchaseInvoiceStatus by PurchaseInvoiceStatusFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2382,11 +2382,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts/search:
     post:
       summary: Search PurchaseInvoiceStatus by PurchaseInvoiceStatusFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3237,7 +3237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts:
     get:
       summary: List SalesInvoiceType
       parameters:
@@ -3258,7 +3258,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3289,7 +3289,7 @@ paths:
     post:
       summary: Create SalesInvoiceType
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3321,7 +3321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts/{id}:
     get:
       summary: Get SalesInvoiceType by Id
       parameters:
@@ -3332,7 +3332,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3370,7 +3370,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3418,7 +3418,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -3440,11 +3440,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts/count:
     get:
       summary: Count the number of SalesInvoiceType
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3468,7 +3468,7 @@ paths:
     post:
       summary: Count the number of SalesInvoiceType by SalesInvoiceTypeFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3550,11 +3550,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/SalesInvoiceTypeService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts/search:
     post:
       summary: Search SalesInvoiceType by SalesInvoiceTypeFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4021,7 +4021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts:
     get:
       summary: List PurchaseInvoiceType
       parameters:
@@ -4042,7 +4042,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4073,7 +4073,7 @@ paths:
     post:
       summary: Create PurchaseInvoiceType
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4105,7 +4105,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts/{id}:
     get:
       summary: Get PurchaseInvoiceType by Id
       parameters:
@@ -4116,7 +4116,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4154,7 +4154,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4202,7 +4202,7 @@ paths:
           schema:
             type: string
       tags:
-        - settings
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -4224,11 +4224,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts/count:
     get:
       summary: Count the number of PurchaseInvoiceType
       tags:
-        - settings
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4252,7 +4252,7 @@ paths:
     post:
       summary: Count the number of PurchaseInvoiceType by PurchaseInvoiceTypeFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4334,11 +4334,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts/search:
     post:
       summary: Search PurchaseInvoiceType by PurchaseInvoiceTypeFilterOptions
       tags:
-        - settings
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4421,7 +4421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/PaymentMethod/PaymentMethodService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PaymentMethodService.ts:
     get:
       summary: List PaymentMethod
       parameters:
@@ -4442,7 +4442,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - PaymentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4473,7 +4473,7 @@ paths:
     post:
       summary: Create PaymentMethod
       tags:
-        - PaymentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4505,7 +4505,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/PaymentMethod/PaymentMethodService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PaymentMethodService.ts/{id}:
     get:
       summary: Get PaymentMethod by Id
       parameters:
@@ -4516,7 +4516,7 @@ paths:
           schema:
             type: string
       tags:
-        - PaymentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4554,7 +4554,7 @@ paths:
           schema:
             type: string
       tags:
-        - PaymentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4602,7 +4602,7 @@ paths:
           schema:
             type: string
       tags:
-        - PaymentMethod
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -4624,11 +4624,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/PaymentMethod/PaymentMethodService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PaymentMethodService.ts/count:
     get:
       summary: Count the number of PaymentMethod
       tags:
-        - PaymentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4652,7 +4652,7 @@ paths:
     post:
       summary: Count the number of PaymentMethod by PaymentMethodFilterOptions
       tags:
-        - PaymentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4734,11 +4734,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/PaymentMethod/PaymentMethodService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/PaymentMethodService.ts/search:
     post:
       summary: Search PaymentMethod by PaymentMethodFilterOptions
       tags:
-        - PaymentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4821,7 +4821,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/SentMethod/SentMethodService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SentMethodService.ts:
     get:
       summary: List SentMethod
       parameters:
@@ -4842,7 +4842,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - SentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4873,7 +4873,7 @@ paths:
     post:
       summary: Create SentMethod
       tags:
-        - SentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4905,7 +4905,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/SentMethod/SentMethodService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SentMethodService.ts/{id}:
     get:
       summary: Get SentMethod by Id
       parameters:
@@ -4916,7 +4916,7 @@ paths:
           schema:
             type: string
       tags:
-        - SentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4954,7 +4954,7 @@ paths:
           schema:
             type: string
       tags:
-        - SentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5002,7 +5002,7 @@ paths:
           schema:
             type: string
       tags:
-        - SentMethod
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -5024,11 +5024,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/SentMethod/SentMethodService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SentMethodService.ts/count:
     get:
       summary: Count the number of SentMethod
       tags:
-        - SentMethod
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5052,7 +5052,7 @@ paths:
     post:
       summary: Count the number of SentMethod by SentMethodFilterOptions
       tags:
-        - SentMethod
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5134,11 +5134,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/SentMethod/SentMethodService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/Settings/SentMethodService.ts/search:
     post:
       summary: Search SentMethod by SentMethodFilterOptions
       tags:
-        - SentMethod
+        - Settings
       requestBody:
         content:
           application/json:

@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PurchaseInvoice-details",
-    label: "PurchaseInvoice",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/main-details/index.html",
-    perspectiveName: "purchaseinvoice"
+    id: 'PurchaseInvoice-details',
+    label: 'PurchaseInvoice',
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/main-details/index.html',
+    perspectiveName: 'purchaseinvoice'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

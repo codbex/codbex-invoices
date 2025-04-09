@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/Settings/SalesInvoiceStatus/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-invoices - Application View",
+    "role": "codbex-invoices.settings.SalesInvoiceStatusReadOnly,codbex-invoices.settings.SalesInvoiceStatusFullAccess"
+}

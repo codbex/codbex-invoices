@@ -5,13 +5,10 @@
  */
 const viewData = {
     id: "CASHFLOW-Report-filter",
-    label: "CASHFLOW Rerport Filter",
-    link: "/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-filter/index.html",
+    label: "CASHFLOW Report Filter",
+    path: "/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-filter/index.html",
     perspectiveName: "Reports"
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

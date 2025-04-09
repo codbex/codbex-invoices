@@ -1,32 +1,29 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.Reports.UNPAID_SALESINVOICE';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/unpaid-sales-invoice/api/Reports/UNPAID_SALESINVOICEService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/unpaid-sales-invoice/api/UNPAID_SALESINVOICE/UNPAID_SALESINVOICEService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
-
+	.controller('PageController', ($scope, EntityService, Extensions) => {
+		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataLimit = 20;
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Reports" && e.view === "UNPAID_SALESINVOICE" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Reports" && e.view === "UNPAID_SALESINVOICE" && e.type === "entity");
+		Extensions.getWindows(['codbex-invoices-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Reports' && e.view === 'UNPAID_SALESINVOICE' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Reports' && e.view === 'UNPAID_SALESINVOICE' && e.type === 'entity');
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					filterEntity: $scope.filterEntity,
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -38,26 +35,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.Reports.UNPAID_SALESINVOICE.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
 			$scope.dataPage = pageNumber;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("UNPAID_SALESINVOICE", `Unable to count UNPAID_SALESINVOICE: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
@@ -65,40 +58,57 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (filter) {
 					filter.$offset = offset;
 					filter.$limit = limit;
-					request = entityApi.search(filter);
+					request = EntityService.search(filter);
 				} else {
-					request = entityApi.list(offset, limit);
+					request = EntityService.list(offset, limit);
 				}
-				request.then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("UNPAID_SALESINVOICE", `Unable to list/filter UNPAID_SALESINVOICE: '${response.message}'`);
-						return;
-					}
-
+				request.then((response) => {
 					response.data.forEach(e => {
 					});
 
 					$scope.data = response.data;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: 'UNPAID_SALESINVOICE',
+						message: `Unable to list/filter UNPAID_SALESINVOICE: '${message}'`,
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'UNPAID_SALESINVOICE',
+					message: `Unable to count UNPAID_SALESINVOICE: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 		$scope.loadPage($scope.dataPage, $scope.filter);
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
 		};
 
-		$scope.openDetails = function (entity) {
+		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("UNPAID_SALESINVOICE-Report-details", {
-				action: "select",
-				entity: entity,
+			Dialogs.showWindow({
+				id: 'UNPAID_SALESINVOICE-Report-details',
+				params: {
+					action: 'select',
+					entity: entity,
+				},
 			});
 		};
 
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("UNPAID_SALESINVOICE-Report-filter", {
-				entity: $scope.filterEntity,
+		$scope.openFilter = (entity) => {
+			Dialogs.showWindow({
+				id: 'UNPAID_SALESINVOICE-Report-filter',
+				params: {
+					entity: $scope.filterEntity,
+				},
 			});
 		};
-	}]);
+	});

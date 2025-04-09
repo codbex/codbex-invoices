@@ -1,37 +1,34 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts";
-	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+		const Dialogs = new DialogHub();
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-invoices-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "purchaseinvoice" && e.view === "PurchaseInvoicePayment" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "purchaseinvoice" && e.view === "PurchaseInvoicePayment" && e.type === "entity");
+		Extensions.getWindows(['codbex-invoices-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'purchaseinvoice' && e.view === 'PurchaseInvoicePayment' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'purchaseinvoice' && e.view === 'PurchaseInvoicePayment' && e.type === 'entity');
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				closeButton: true
+			});
 		};
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -43,44 +40,39 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-invoices.purchaseinvoice.PurchaseInvoice.entitySelected", function (msg) {
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoice.entitySelected', handler: (data) => {
 			resetPagination();
-			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
+			$scope.selectedMainEntityId = data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
-		}, true);
-
-		messageHub.onDidReceiveMessage("codbex-invoices.purchaseinvoice.PurchaseInvoice.clearDetails", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoice.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
 				$scope.data = null;
 			});
-		}, true);
-
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoicePayment.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			let PurchaseInvoice = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
@@ -96,95 +88,120 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$filter.equals = {};
 			}
 			filter.$filter.equals.PurchaseInvoice = PurchaseInvoice;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("PurchaseInvoicePayment", `Unable to count PurchaseInvoicePayment: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$limit = $scope.dataLimit;
-				entityApi.search(filter).then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("PurchaseInvoicePayment", `Unable to list/filter PurchaseInvoicePayment: '${response.message}'`);
-						return;
-					}
+				EntityService.search(filter).then((response) => {
 					$scope.data = response.data;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: 'PurchaseInvoicePayment',
+						message: `Unable to list/filter PurchaseInvoicePayment: '${message}'`,
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PurchaseInvoicePayment',
+					message: `Unable to count PurchaseInvoicePayment: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
 		};
 
-		$scope.openDetails = function (entity) {
+		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("PurchaseInvoicePayment-details", {
-				action: "select",
-				entity: entity,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsSupplierPayment: $scope.optionsSupplierPayment,
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("PurchaseInvoicePayment-filter", {
-				entity: $scope.filterEntity,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsSupplierPayment: $scope.optionsSupplierPayment,
-			});
-		};
-
-		$scope.createEntity = function () {
-			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("PurchaseInvoicePayment-details", {
-				action: "create",
-				entity: {},
-				selectedMainEntityKey: "PurchaseInvoice",
-				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsSupplierPayment: $scope.optionsSupplierPayment,
-			}, null, false);
-		};
-
-		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("PurchaseInvoicePayment-details", {
-				action: "update",
-				entity: entity,
-				selectedMainEntityKey: "PurchaseInvoice",
-				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
-				optionsSupplierPayment: $scope.optionsSupplierPayment,
-			}, null, false);
-		};
-
-		$scope.deleteEntity = function (entity) {
-			let id = entity.Id;
-			messageHub.showDialogAsync(
-				'Delete PurchaseInvoicePayment?',
-				`Are you sure you want to delete PurchaseInvoicePayment? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
+			Dialogs.showWindow({
+				id: 'PurchaseInvoicePayment-details',
+				params: {
+					action: 'select',
+					entity: entity,
+					optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
+					optionsSupplierPayment: $scope.optionsSupplierPayment,
 				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
+			});
+		};
+
+		$scope.openFilter = (entity) => {
+			Dialogs.showWindow({
+				id: 'PurchaseInvoicePayment-filter',
+				params: {
+					entity: $scope.filterEntity,
+					optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
+					optionsSupplierPayment: $scope.optionsSupplierPayment,
+				},
+			});
+		};
+
+		$scope.createEntity = () => {
+			$scope.selectedEntity = null;
+			Dialogs.showWindow({
+				id: 'PurchaseInvoicePayment-details',
+				params: {
+					action: 'create',
+					entity: {},
+					selectedMainEntityKey: 'PurchaseInvoice',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
+					optionsSupplierPayment: $scope.optionsSupplierPayment,
+				},
+				closeButton: false
+			});
+		};
+
+		$scope.updateEntity = (entity) => {
+			Dialogs.showWindow({
+				id: 'PurchaseInvoicePayment-details',
+				params: {
+					action: 'update',
+					entity: entity,
+					selectedMainEntityKey: 'PurchaseInvoice',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
+					optionsSupplierPayment: $scope.optionsSupplierPayment,
+			},
+				closeButton: false
+			});
+		};
+
+		$scope.deleteEntity = (entity) => {
+			let id = entity.Id;
+			Dialogs.showDialog({
+				title: 'Delete PurchaseInvoicePayment?',
+				message: `Are you sure you want to delete PurchaseInvoicePayment? This action cannot be undone.`,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: 'Yes',
+				}, {
+					id: 'delete-btn-no',
+					label: 'No',
 				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("PurchaseInvoicePayment", `Unable to delete PurchaseInvoicePayment: '${response.message}'`);
-							return;
-						}
+				closeButton: false
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then(() => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-invoices.purchaseinvoice.PurchaseInvoicePayment.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'PurchaseInvoicePayment',
+							message: `Unable to delete PurchaseInvoicePayment: '${message}'`,
+							type: AlertTypes.Error,
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
@@ -195,21 +212,33 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsSupplierPayment = [];
 
 
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts").then(function (response) {
-			$scope.optionsPurchaseInvoice = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts').then((response) => {
+			$scope.optionsPurchaseInvoice = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'PurchaseInvoice',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentService.ts").then(function (response) {
-			$scope.optionsSupplierPayment = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentService.ts').then((response) => {
+			$scope.optionsSupplierPayment = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'SupplierPayment',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
@@ -230,5 +259,4 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			return null;
 		};
 		//----------------Dropdowns-----------------//
-
-	}]);
+	});

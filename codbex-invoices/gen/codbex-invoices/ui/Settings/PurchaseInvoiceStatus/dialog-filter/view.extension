@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/Settings/PurchaseInvoiceStatus/dialog-filter/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-invoices - Application Dialog Window",
+    "role": "codbex-invoices.settings.PurchaseInvoiceStatusReadOnly,codbex-invoices.settings.PurchaseInvoiceStatusFullAccess"
+}

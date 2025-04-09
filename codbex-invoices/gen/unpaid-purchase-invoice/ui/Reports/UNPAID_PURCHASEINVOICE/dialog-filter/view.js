@@ -5,13 +5,10 @@
  */
 const viewData = {
     id: "UNPAID_PURCHASEINVOICE-Report-filter",
-    label: "UNPAID_PURCHASEINVOICE Rerport Filter",
-    link: "/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-filter/index.html",
+    label: "UNPAID_PURCHASEINVOICE Report Filter",
+    path: "/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-filter/index.html",
     perspectiveName: "Reports"
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }
