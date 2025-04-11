@@ -1,8 +1,8 @@
 const viewData = {
     id: 'codbex-invoices-Reports-CASHFLOW-print',
     label: 'Print',
-    path: '/services/web/codbex-invoices/gen/cashflow/ui/${perspectiveName}/CASHFLOW/dialog-print/index.html',
-    perspective: '${perspectiveName}',
+    path: '/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-print/index.html',
+    perspective: 'Reports',
     view: 'CASHFLOW',
     type: 'page',
     order: 10

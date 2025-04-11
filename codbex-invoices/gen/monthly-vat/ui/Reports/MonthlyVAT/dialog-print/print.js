@@ -1,8 +1,8 @@
 const viewData = {
     id: 'codbex-invoices-Reports-MonthlyVAT-print',
     label: 'Print',
-    path: '/services/web/codbex-invoices/gen/monthly-vat/ui/${perspectiveName}/MonthlyVAT/dialog-print/index.html',
-    perspective: '${perspectiveName}',
+    path: '/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-print/index.html',
+    perspective: 'Reports',
     view: 'MonthlyVAT',
     type: 'page',
     order: 10
