@@ -1,16 +1,13 @@
-angular.module('page', ["ideUI", "ideView"])
-	.controller('PageController', ['$scope', 'ViewParameters', function ($scope, ViewParameters) {
+angular.module('page', ['blimpKit', 'platformView']).controller('PageController', ($scope, ViewParameters) => {
+	$scope.entity = {};
 
-		$scope.entity = {};
+	let params = ViewParameters.get();
+	if (Object.keys(params).length) {
+		$scope.action = 'select';
 
-		let params = ViewParameters.get();
-		if (Object.keys(params).length) {
-			$scope.action = "select";;
-
-			if (params.entity['Date']) {
-				params.entity['Date'] = new Date(params.entity['Date']);
-			}
-			$scope.entity = params.entity;
+		if (params.entity['Date']) {
+			params.entity['Date'] = new Date(params.entity['Date']);
 		}
-
-	}]);
+		$scope.entity = params.entity;
+	}
+});

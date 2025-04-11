@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'purchaseinvoice',
-	name: 'Purchase Invoice',
-	link: '/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/index.html',
-	order: '610',
+	label: 'Purchase Invoice',
+	path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/index.html',
+	groupId: 'purchasing-navigation-group',
+	order: 200,
 	icon: '/services/web/resources/unicons/receipt.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

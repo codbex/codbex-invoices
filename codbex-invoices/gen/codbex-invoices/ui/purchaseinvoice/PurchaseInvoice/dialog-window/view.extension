@@ -1,6 +1,6 @@
 {
-    "module": "{{projectName}}/gen/{{genFolderName}}/ui/{{perspectiveName}}/{{name}}/dialog-window/view.js",
-    "extensionPoint": "dialog-window",
-    "description": "{{projectName}} - Application Dialog Window",
+    "module": "codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/dialog-window/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-invoices - Application Dialog Window",
     "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
 }

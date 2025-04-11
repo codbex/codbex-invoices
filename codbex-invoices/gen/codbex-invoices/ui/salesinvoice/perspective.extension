@@ -1,5 +1,5 @@
 {
     "module": "codbex-invoices/gen/codbex-invoices/ui/salesinvoice/perspective.js",
-    "extensionPoint": "codbex-invoices",
+    "extensionPoint": "application-perspectives",
     "description": "codbex-invoices - Perspective - salesinvoice"
 }

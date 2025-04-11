@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-invoices - Application Tile",
-    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
-}

@@ -1,5 +1,0 @@
-{
-    "module": "codbex-invoices/gen/cashflow/ui/Reports/perspective.js",
-    "extensionPoint": "codbex-invoices",
-    "description": "codbex-invoices - Perspective - Reports"
-}

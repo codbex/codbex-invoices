@@ -2,48 +2,47 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="page" ng-controller="PageController">
 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
-        <title dg-brand-title></title>
-        <theme></theme>
-        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
-        </script>
-        <link type="text/css" rel="stylesheet"
-            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title config-title></title>
+        <script type="text/javascript" src="print.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+        <script type="text/javascript" src="/services/web/dashboard/services/entity.js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
     <body>
-		<fd-toolbar has-title="true">
-			<fd-toolbar-title>MonthlyVAT Report</fd-toolbar-title>
-		</fd-toolbar>
-        <fd-scrollbar ng-hide="data == null">
-            <table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
-                <thead fd-table-header sticky="true">
-                    <tr fd-table-row>
-						<th fd-table-header-cell>Date</th>
-						<th fd-table-header-cell>SalesVAT</th>
-						<th fd-table-header-cell>PurchaseVAT</th>
-						<th fd-table-header-cell>PayableVAT</th>
+		<bk-toolbar has-title="true">
+			<bk-toolbar-title>MonthlyVAT Report</bk-toolbar-title>
+		</bk-toolbar>
+        <bk-scrollbar ng-hide="data == null">
+            <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
+                <thead bk-table-header sticky="true">
+                    <tr bk-table-row>
+						<th bk-table-header-cell>Date</th>
+						<th bk-table-header-cell>SalesVAT</th>
+						<th bk-table-header-cell>PurchaseVAT</th>
+						<th bk-table-header-cell>PayableVAT</th>
                     </tr>
                 </thead>
-                <tbody fd-table-body>
-                    <tr fd-table-row hoverable="true" ng-show="data.length == 0">
-                        <td fd-table-cell no-data="true">No data available.</td>
+                <tbody bk-table-body>
+                    <tr bk-table-row hoverable="true" ng-show="data.length == 0">
+                        <td bk-table-cell no-data="true">No data available.</td>
                     </tr>
-                    <tr fd-table-row hoverable="true" ng-repeat="next in data">
-						<td fd-table-cell hoverable="true" activable="true">
-							<fd-input type="date" ng-model="next['Date']" ng-readonly="true"></fd-input>
+                    <tr bk-table-row hoverable="true" ng-repeat="next in data">
+						<td bk-table-cell hoverable="true" activable="true">
+							<bk-input type="date" ng-model="next['Date']" ng-readonly="true"></bk-input>
 						</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['SalesVAT']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['PurchaseVAT']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['PayableVAT']}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next['SalesVAT']}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next['PurchaseVAT']}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next['PayableVAT']}}</td>
                     </tr>
                 </tbody>
             </table>
-        </fd-scrollbar>
+        </bk-scrollbar>
+        <theme></theme>
     </body>
 
 </html>

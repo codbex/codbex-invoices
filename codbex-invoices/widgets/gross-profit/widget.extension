@@ -1,6 +1,5 @@
 {
     "extensionPoint": "dashboard-widgets",
-    "module": "codbex-invoices/widgets/gross-profit/service.js",
-    "description": "Gross Profit Widget",
-    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+    "module": "codbex-invoices/widgets/gross-profit/config.js",
+    "description": "Gross Profit Widget"
 }

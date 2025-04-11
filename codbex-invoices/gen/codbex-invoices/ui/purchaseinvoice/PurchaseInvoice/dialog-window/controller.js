@@ -1,20 +1,17 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.purchaseinvoice.PurchaseInvoice';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'messageHub', 'ViewParameters', 'entityApi', function ($scope,  $http, messageHub, ViewParameters, entityApi) {
-
+	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "PurchaseInvoice Details",
-			create: "Create PurchaseInvoice",
-			update: "Update PurchaseInvoice"
+			select: 'PurchaseInvoice Details',
+			create: 'Create PurchaseInvoice',
+			update: 'Update PurchaseInvoice'
 		};
 		$scope.action = 'select';
 
@@ -40,140 +37,208 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsCompany = params.optionsCompany;
 		}
 
-		$scope.create = function () {
+		$scope.create = () => {
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.create(entity).then(function (response) {
-				if (response.status != 201) {
-					$scope.errorMessage = `Unable to create PurchaseInvoice: '${response.message}'`;
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
+			EntityService.create(entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoice.entityCreated', data: response.data });
+				Dialogs.showAlert({
+					title: 'PurchaseInvoice',
+					message: 'PurchaseInvoice successfully created',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("PurchaseInvoice", "PurchaseInvoice successfully created");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				$scope.$evalAsync(() => {
+					$scope.errorMessage = `Unable to create PurchaseInvoice: '${message}'`;
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
+		$scope.update = () => {
 			let id = $scope.entity.Id;
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.update(id, entity).then(function (response) {
-				if (response.status != 200) {
-					$scope.errorMessage = `Unable to update PurchaseInvoice: '${response.message}'`;
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
+			EntityService.update(id, entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.purchaseinvoice.PurchaseInvoice.entityUpdated', data: response.data });
 				$scope.cancel();
-				messageHub.showAlertSuccess("PurchaseInvoice", "PurchaseInvoice successfully updated");
+				Dialogs.showAlert({
+					title: 'PurchaseInvoice',
+					message: 'PurchaseInvoice successfully updated',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				$scope.$evalAsync(() => {
+					$scope.errorMessage = `Unable to update PurchaseInvoice: '${message}'`;
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.serviceType = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts";
+		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts';
 		
 		$scope.optionsType = [];
 		
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceTypeService.ts").then(function (response) {
-			$scope.optionsType = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts').then((response) => {
+			$scope.optionsType = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Type',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceSupplier = "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts";
+		$scope.serviceSupplier = '/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts';
 		
 		$scope.optionsSupplier = [];
 		
-		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts").then(function (response) {
-			$scope.optionsSupplier = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts').then((response) => {
+			$scope.optionsSupplier = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Supplier',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts';
 		
 		$scope.optionsCurrency = [];
 		
-		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
-			$scope.optionsCurrency = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Code
-				}
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+			$scope.optionsCurrency = response.data.map(e => ({
+				value: e.Id,
+				text: e.Code
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Currency',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.servicePaymentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts";
+		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts';
 		
 		$scope.optionsPaymentMethod = [];
 		
-		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/PaymentMethod/PaymentMethodService.ts").then(function (response) {
-			$scope.optionsPaymentMethod = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts').then((response) => {
+			$scope.optionsPaymentMethod = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'PaymentMethod',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceSentMethod = "/services/ts/codbex-methods/gen/codbex-methods/api/SentMethod/SentMethodService.ts";
+		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts';
 		
 		$scope.optionsSentMethod = [];
 		
-		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/SentMethod/SentMethodService.ts").then(function (response) {
-			$scope.optionsSentMethod = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts').then((response) => {
+			$scope.optionsSentMethod = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'SentMethod',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceStatus = "/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts";
+		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts';
 		
 		$scope.optionsStatus = [];
 		
-		$http.get("/services/ts/codbex-invoices/gen/codbex-invoices/api/settings/PurchaseInvoiceStatusService.ts").then(function (response) {
-			$scope.optionsStatus = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts').then((response) => {
+			$scope.optionsStatus = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Status',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceOperator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
 		
 		$scope.optionsOperator = [];
 		
-		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
-			$scope.optionsOperator = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.FirstName
-				}
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+			$scope.optionsOperator = response.data.map(e => ({
+				value: e.Id,
+				text: e.FirstName
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Operator',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
 		
 		$scope.optionsCompany = [];
 		
-		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
-			$scope.optionsCompany = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+			$scope.optionsCompany = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Company',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$scope.cancel = function () {
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
+
+		$scope.cancel = () => {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("PurchaseInvoice-details");
+			Dialogs.closeWindow({ id: 'PurchaseInvoice-details' });
 		};
 
-		$scope.clearErrorMessage = function () {
+		$scope.clearErrorMessage = () => {
 			$scope.errorMessage = null;
 		};
-
-	}]);
+	});

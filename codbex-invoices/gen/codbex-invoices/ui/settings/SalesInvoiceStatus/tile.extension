@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceStatus/tile.js",
-    "extensionPoint": "codbex-invoices-tile",
-    "description": "codbex-invoices - Application Tile",
-    "role": "codbex-invoices.settings.SalesInvoiceStatusReadOnly,codbex-invoices.settings.SalesInvoiceStatusFullAccess"
-}

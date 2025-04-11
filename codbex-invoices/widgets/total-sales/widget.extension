@@ -1,6 +1,5 @@
 {
     "extensionPoint": "dashboard-widgets",
-    "module": "codbex-invoices/widgets/total-sales/service.js",
-    "description": "Total Sales Profit  Widget",
-    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+    "module": "codbex-invoices/widgets/total-sales/config.js",
+    "description": "Total Sales Profit Widget"
 }

@@ -1,29 +1,28 @@
-angular.module('total-receivables', ['ideUI', 'ideView'])
-    .controller('totalReceivablesController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
-        $scope.state = {
-            isBusy: true,
-            error: false,
-            busyText: "Loading...",
-        };
+angular.module('total-receivables', ['blimpKit', 'platformView']).controller('totalReceivablesController', ($scope, $http) => {
+    const Shell = new ShellHub();
 
-        $scope.openPerspective = function (perspective) {
-            if (perspective === 'sales-orders') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'sales-orders' }, true);
-            } else if (perspective === 'products') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'products' }, true);
-            } else if (perspective === 'sales-invoices') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'sales-invoices' }, true);
-            }
-            ;
-        }
+    $scope.openPerspective = () => {
+        if (viewData && viewData.perspectiveId) Shell.showPerspective({ id: viewData.perspectiveId });
+    };
 
-        $scope.today = new Date();
+    $scope.getCurrentBar = () => {
+        if ($scope.invoiceData.ReceivableCurrent != null && $scope.invoiceData.ReceivableOverdue != null && $scope.invoiceData.UnpaidSalesInvoiceTotal > 0) {
+            return `${($scope.invoiceData.ReceivableCurrent / $scope.invoiceData.UnpaidSalesInvoiceTotal) * 100}%`;
+        } else return 0;
+    };
 
+    $scope.getOverdueBar = () => {
+        if ($scope.invoiceData.ReceivableCurrent != null && $scope.invoiceData.ReceivableOverdue != null && $scope.invoiceData.UnpaidSalesInvoiceTotal > 0) {
+            return `${($scope.invoiceData.ReceivableOverdue / $scope.invoiceData.UnpaidSalesInvoiceTotal) * 100}%`;
+        } else return 0;
+    };
 
-        const invoiceServiceUrl = "/services/ts/codbex-invoices/widgets/api/InvoiceService.ts/invoiceData";
-        $http.get(invoiceServiceUrl)
-            .then(function (response) {
-                $scope.InvoiceData = response.data;
-            });
+    $http.get('/services/ts/codbex-invoices/widgets/api/InvoiceService.ts/invoiceData').then((response) => {
+        $scope.$evalAsync(() => {
+            $scope.invoiceData = response.data;
+        });
+    }, (error) => {
+        console.error(error);
+    });
 
-    }]);
+});

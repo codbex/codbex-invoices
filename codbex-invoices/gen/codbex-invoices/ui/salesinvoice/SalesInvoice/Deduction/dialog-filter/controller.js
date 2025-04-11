@@ -1,69 +1,64 @@
-angular.module('page', ["ideUI", "ideView"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Deduction';
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
+angular.module('page', ['blimpKit', 'platformView']).controller('PageController', ($scope, ViewParameters) => {
+	const Dialogs = new DialogHub();
+	$scope.entity = {};
+	$scope.forms = {
+		details: {},
+	};
 
-		$scope.entity = {};
-		$scope.forms = {
-			details: {},
-		};
+	let params = ViewParameters.get();
+	if (Object.keys(params).length) {
+		$scope.entity = params.entity ?? {};
+		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+		$scope.selectedMainEntityId = params.selectedMainEntityId;
+		$scope.optionsAdvanceInvoice = params.optionsAdvanceInvoice;
+	}
 
-		let params = ViewParameters.get();
-		if (Object.keys(params).length) {
-			$scope.entity = params.entity ?? {};
-			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
-			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsAdvanceInvoice = params.optionsAdvanceInvoice;
-		}
-
-		$scope.filter = function () {
-			let entity = $scope.entity;
-			const filter = {
-				$filter: {
-					equals: {
-					},
-					notEquals: {
-					},
-					contains: {
-					},
-					greaterThan: {
-					},
-					greaterThanOrEqual: {
-					},
-					lessThan: {
-					},
-					lessThanOrEqual: {
-					}
+	$scope.filter = () => {
+		let entity = $scope.entity;
+		const filter = {
+			$filter: {
+				equals: {
 				},
-			};
-			if (entity.Id !== undefined) {
-				filter.$filter.equals.Id = entity.Id;
-			}
-			if (entity.DeductionInvoice !== undefined) {
-				filter.$filter.equals.DeductionInvoice = entity.DeductionInvoice;
-			}
-			if (entity.AdvanceInvoice !== undefined) {
-				filter.$filter.equals.AdvanceInvoice = entity.AdvanceInvoice;
-			}
-			messageHub.postMessage("entitySearch", {
-				entity: entity,
-				filter: filter
-			});
-			$scope.cancel();
+				notEquals: {
+				},
+				contains: {
+				},
+				greaterThan: {
+				},
+				greaterThanOrEqual: {
+				},
+				lessThan: {
+				},
+				lessThanOrEqual: {
+				}
+			},
 		};
+		if (entity.Id !== undefined) {
+			filter.$filter.equals.Id = entity.Id;
+		}
+		if (entity.DeductionInvoice !== undefined) {
+			filter.$filter.equals.DeductionInvoice = entity.DeductionInvoice;
+		}
+		if (entity.AdvanceInvoice !== undefined) {
+			filter.$filter.equals.AdvanceInvoice = entity.AdvanceInvoice;
+		}
+		Dialogs.postMessage({ topic: 'codbex-invoices.salesinvoice.Deduction.entitySearch', data: {
+			entity: entity,
+			filter: filter
+		}});
+		$scope.cancel();
+	};
 
-		$scope.resetFilter = function () {
-			$scope.entity = {};
-			$scope.filter();
-		};
+	$scope.resetFilter = () => {
+		$scope.entity = {};
+		$scope.filter();
+	};
 
-		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Deduction-filter");
-		};
+	$scope.cancel = () => {
+		Dialogs.closeWindow({ id: 'Deduction-filter' });
+	};
 
-		$scope.clearErrorMessage = function () {
-			$scope.errorMessage = null;
-		};
-
-	}]);
+	$scope.clearErrorMessage = () => {
+		$scope.errorMessage = null;
+	};
+});

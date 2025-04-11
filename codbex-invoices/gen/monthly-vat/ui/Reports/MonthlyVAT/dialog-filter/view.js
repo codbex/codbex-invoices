@@ -5,13 +5,10 @@
  */
 const viewData = {
     id: "MonthlyVAT-Report-filter",
-    label: "MonthlyVAT Rerport Filter",
-    link: "/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-filter/index.html",
+    label: "MonthlyVAT Report Filter",
+    path: "/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-filter/index.html",
     perspectiveName: "Reports"
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -1,20 +1,17 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.SalesInvoicePayment';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
-
+	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "SalesInvoicePayment Details",
-			create: "Create SalesInvoicePayment",
-			update: "Update SalesInvoicePayment"
+			select: 'SalesInvoicePayment Details',
+			create: 'Create SalesInvoicePayment',
+			update: 'Update SalesInvoicePayment'
 		};
 		$scope.action = 'select';
 
@@ -28,42 +25,66 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsCustomerPayment = params.optionsCustomerPayment;
 		}
 
-		$scope.create = function () {
+		$scope.create = () => {
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.create(entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("SalesInvoicePayment", `Unable to create SalesInvoicePayment: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
+			EntityService.create(entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.salesinvoice.SalesInvoicePayment.entityCreated', data: response.data });
+				Dialogs.showAlert({
+					title: 'SalesInvoicePayment',
+					message: 'SalesInvoicePayment successfully created',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("SalesInvoicePayment", "SalesInvoicePayment successfully created");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'SalesInvoicePayment',
+					message: `Unable to create SalesInvoicePayment: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
+		$scope.update = () => {
 			let id = $scope.entity.Id;
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.update(id, entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("SalesInvoicePayment", `Unable to update SalesInvoicePayment: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
+			EntityService.update(id, entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.salesinvoice.SalesInvoicePayment.entityUpdated', data: response.data });
+				Dialogs.showAlert({
+					title: 'SalesInvoicePayment',
+					message: 'SalesInvoicePayment successfully updated',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("SalesInvoicePayment", "SalesInvoicePayment successfully updated");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'SalesInvoicePayment',
+					message: `Unable to update SalesInvoicePayment: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.serviceSalesInvoice = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts";
-		$scope.serviceCustomerPayment = "/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts";
+		$scope.serviceSalesInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts';
+		$scope.serviceCustomerPayment = '/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts';
 
-		$scope.cancel = function () {
-			$scope.entity = {};
-			$scope.action = 'select';
-			messageHub.closeDialogWindow("SalesInvoicePayment-details");
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
 		};
 
-	}]);
+		$scope.cancel = () => {
+			$scope.entity = {};
+			$scope.action = 'select';
+			Dialogs.closeWindow({ id: 'SalesInvoicePayment-details' });
+		};
+	});

@@ -1,6 +1,6 @@
 {
     "module": "codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/PurchaseInvoice/PurchaseInvoiceItem/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-invoices - Application Dialog Window",
     "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess"
 }

@@ -1,20 +1,17 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-invoices.salesinvoice.Deduction';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
-
+	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Deduction Details",
-			create: "Create Deduction",
-			update: "Update Deduction"
+			select: 'Deduction Details',
+			create: 'Create Deduction',
+			update: 'Update Deduction'
 		};
 		$scope.action = 'select';
 
@@ -27,41 +24,65 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsAdvanceInvoice = params.optionsAdvanceInvoice;
 		}
 
-		$scope.create = function () {
+		$scope.create = () => {
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.create(entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Deduction", `Unable to create Deduction: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
+			EntityService.create(entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.salesinvoice.Deduction.entityCreated', data: response.data });
+				Dialogs.showAlert({
+					title: 'Deduction',
+					message: 'Deduction successfully created',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("Deduction", "Deduction successfully created");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Deduction',
+					message: `Unable to create Deduction: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
+		$scope.update = () => {
 			let id = $scope.entity.Id;
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.update(id, entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Deduction", `Unable to update Deduction: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
+			EntityService.update(id, entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.salesinvoice.Deduction.entityUpdated', data: response.data });
+				Dialogs.showAlert({
+					title: 'Deduction',
+					message: 'Deduction successfully updated',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("Deduction", "Deduction successfully updated");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Deduction',
+					message: `Unable to update Deduction: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.serviceAdvanceInvoice = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts";
+		$scope.serviceAdvanceInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts';
 
-		$scope.cancel = function () {
-			$scope.entity = {};
-			$scope.action = 'select';
-			messageHub.closeDialogWindow("Deduction-details");
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
 		};
 
-	}]);
+		$scope.cancel = () => {
+			$scope.entity = {};
+			$scope.action = 'select';
+			Dialogs.closeWindow({ id: 'Deduction-details' });
+		};
+	});
