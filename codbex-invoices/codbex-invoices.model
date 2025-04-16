@@ -244,7 +244,7 @@
                         "relationshipName": "SalesInvoice_SalesInvoiceType",
                         "relationshipEntityName": "SalesInvoiceType",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "SALESINVOICE_CUSTOMER",
@@ -448,7 +448,7 @@
                         "relationshipName": "SalesInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
+                        "relationshipEntityPerspectiveLabel": "PaymentMethod"
                     },
                     {
                         "dataName": "SALESINVOICE_SENTMETHOD",
@@ -466,7 +466,7 @@
                         "relationshipName": "SalesInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
+                        "relationshipEntityPerspectiveLabel": "SentMethod"
                     },
                     {
                         "dataName": "SALESINVOICE_STATUS",
@@ -485,7 +485,7 @@
                         "relationshipName": "SalesInvoice_SalesInvoiceStatus",
                         "relationshipEntityName": "SalesInvoiceStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "SALESINVOICE_OPERATOR",
@@ -670,7 +670,7 @@
                         "relationshipName": "PurchaseInvoice_PurchaseInvoiceType",
                         "relationshipEntityName": "PurchaseInvoiceType",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "PURCHASEINVOICE_DATE",
@@ -874,7 +874,7 @@
                         "relationshipName": "PurchaseInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
+                        "relationshipEntityPerspectiveLabel": "PaymentMethod"
                     },
                     {
                         "dataName": "PURCHASEINVOICE_SENTMETHOD",
@@ -892,7 +892,7 @@
                         "relationshipName": "PurchaseInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "Settings"
+                        "relationshipEntityPerspectiveLabel": "SentMethod"
                     },
                     {
                         "dataName": "PURCHASEINVOICE_STATUS",
@@ -911,7 +911,7 @@
                         "relationshipName": "PurchaseInvoice_PurchaseInvoiceStatus",
                         "relationshipEntityName": "PurchaseInvoiceStatus",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "PURCHASEINVOICE_OPERATOR",
@@ -1270,14 +1270,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "salesinvoicestatus",
                 "menuLabel": "SalesInvoiceStatus",
                 "name": "SalesInvoiceStatus",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -1328,14 +1328,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "purchaseinvoicestatus",
                 "menuLabel": "PurchaseInvoiceStatus",
                 "name": "PurchaseInvoiceStatus",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -2664,14 +2664,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "salesinvoicetype",
                 "menuLabel": "SalesInvoiceType",
                 "name": "SalesInvoiceType",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -3191,14 +3191,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "purchaseinvoicetype",
                 "menuLabel": "PurchaseInvoiceType",
                 "name": "PurchaseInvoiceType",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -3254,7 +3254,7 @@
                 "name": "PaymentMethod",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
-                "perspectiveLabel": "Settings",
+                "perspectiveLabel": "PaymentMethod",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
