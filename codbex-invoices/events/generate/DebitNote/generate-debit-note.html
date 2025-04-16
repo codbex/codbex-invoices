@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="NoteApp" ng-controller="NoteController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="debit-note-generate.js"></script>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <theme></theme>
+        <script type="text/javascript" src="generate-debit-note-controller.js">
+        </script>
+    </head>
+
+    <body class="fd-padding">
+        <bk-fieldset>
+            <bk-form-group class="bk-vbox bk-center--horizontal">
+                <bk-form-item horizontal="false">
+                    <bk-form-label for="net" colon="true" ng-required="true">New Net</bk-form-label>
+                    <bk-step-input input-id="net" name="net" placeholder="Here goes the new net" ng-required="true" ng-model="models.net"></bk-step-input>
+                </bk-form-item>
+                <bk-form-item>
+                    <bk-button ng-click="submitCopy()" label="Submit">Submit</bk-button>
+                </bk-form-item>
+            </bk-form-group>
+        </bk-fieldset>
+        <theme></theme>
+    </body>
+
+</html>

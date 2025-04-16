@@ -1,7 +1,7 @@
 const viewData = {
-    id: 'note-generate',
-    label: 'Generate Note',
-    path: '/services/web/codbex-invoices/events/generate/Note/generate-note.html',
+    id: 'credit-note-generate',
+    label: 'Generate Credit Note',
+    link: '/services/web/codbex-invoices/events/generate/CreditNote/generate-credit-note.html',
     lazyLoad: false,
     autoFocusTab: false,
     maxWidth: '320px',
@@ -11,6 +11,9 @@ const viewData = {
     type: 'entity',
     order: 9
 };
+
 if (typeof exports !== 'undefined') {
-    exports.getView = () => viewData;
+    exports.getDialogWindow = function () {
+        return viewData;
+    }
 }
