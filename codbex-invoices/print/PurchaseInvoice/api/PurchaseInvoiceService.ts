@@ -2,10 +2,10 @@ import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../../cod
 import { PurchaseInvoiceItemRepository as PurchaseInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceItemRepository";
 import { SupplierRepository as SupplierDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Suppliers/SupplierRepository";
 import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
-import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Cities/CityRepository";
-import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Countries/CountryRepository";
-import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/PaymentMethod/PaymentMethodRepository";
-import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/SentMethod/SentMethodRepository";
+import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Settings/CityRepository";
+import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Settings/CountryRepository";
+import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Settings/PaymentMethodRepository";
+import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Settings/SentMethodRepository";
 
 import { Controller, Get } from "sdk/http";
 
@@ -37,6 +37,9 @@ class PurchaseInvoiceService {
         const purchaseInvoiceId = ctx.pathParameters.purchaseInvoiceId;
 
         let purchaseInvoice = this.purchaseInvoiceDao.findById(purchaseInvoiceId);
+
+        console.log(JSON.stringify(purchaseInvoice));
+
         const paymentMethod = this.paymentMethodDao.findById(purchaseInvoice.PaymentMethod);
         const sentMethod = this.sentMethodDao.findById(purchaseInvoice.SentMethod);
 
