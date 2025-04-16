@@ -1,7 +1,7 @@
 const viewData = {
     id: 'credit-note-generate',
     label: 'Generate Credit Note',
-    link: '/services/web/codbex-invoices/events/generate/CreditNote/generate-credit-note.html',
+    path: '/services/web/codbex-invoices/events/generate/CreditNote/generate-credit-note.html',
     lazyLoad: false,
     autoFocusTab: false,
     maxWidth: '320px',

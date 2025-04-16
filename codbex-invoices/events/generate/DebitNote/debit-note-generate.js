@@ -1,7 +1,7 @@
 const viewData = {
     id: 'debit-note-generate',
     label: 'Generate Debit Note',
-    link: '/services/web/codbex-invoices/events/generate/DebitNote/generate-debit-note.html',
+    path: '/services/web/codbex-invoices/events/generate/DebitNote/generate-debit-note.html',
     lazyLoad: false,
     autoFocusTab: false,
     maxWidth: '320px',
@@ -9,8 +9,9 @@ const viewData = {
     perspective: 'salesinvoice',
     view: 'SalesInvoice',
     type: 'entity',
-    order: 10
+    order: 9
 };
+
 
 if (typeof exports !== 'undefined') {
     exports.getDialogWindow = function () {
