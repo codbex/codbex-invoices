@@ -1,6 +1,5 @@
 {
     "extensionPoint": "dashboard-widgets",
-    "module": "codbex-invoices/widgets/total-payables/service.js",
-    "description": "Total Payables Widget",
-    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
+    "module": "codbex-invoices/widgets/total-payables/config.js",
+    "description": "Total Payables Widget"
 }

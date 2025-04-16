@@ -1,27 +1,16 @@
-angular.module('total-sales', ['ideUI', 'ideView'])
-    .controller('totalSalesController', ['$scope', '$http', 'messageHub', function ($scope, $http, messageHub) {
-        $scope.state = {
-            isBusy: true,
-            error: false,
-            busyText: "Loading...",
-        };
+angular.module('total-sales', ['blimpKit', 'platformView']).controller('totalSalesController', ($scope, $http) => {
+    const Shell = new ShellHub();
 
-        $scope.openPerspective = function (perspective) {
-            if (perspective === 'sales-orders') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'sales-orders' }, true);
-            } else if (perspective === 'products') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'products' }, true);
-            } else if (perspective === 'sales-invoices') {
-                messageHub.postMessage('launchpad.switch.perspective', { perspectiveId: 'sales-invoices' }, true);
-            }
-            ;
-        }
+    $scope.openPerspective = () => {
+        if (viewData && viewData.perspectiveId) Shell.showPerspective({ id: viewData.perspectiveId });
+    };
 
+    $http.get('/services/ts/codbex-invoices/widgets/api/InvoiceService.ts/invoiceData').then((response) => {
+        $scope.$evalAsync(() => {
+            $scope.invoiceData = response.data;
+        });
+    }, (error) => {
+        console.error(error);
+    });
 
-        const invoiceServiceUrl = "/services/ts/codbex-invoices/widgets/api/InvoiceService.ts/invoiceData";
-        $http.get(invoiceServiceUrl)
-            .then(function (response) {
-                $scope.InvoiceData = response.data;
-            });
-
-    }]);
+});

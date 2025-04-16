@@ -1,0 +1,5 @@
+{
+    "module": "codbex-invoices/events/generate/Note/note-generate.js",
+    "extensionPoint": "codbex-invoices-custom-action",
+    "description": "Generate Note From Sales Invoice Custom Action"
+}

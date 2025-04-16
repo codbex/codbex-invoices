@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/settings/SalesInvoiceStatus/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
-    "description": "codbex-invoices - Application Dialog Window",
-    "role": "codbex-invoices.settings.SalesInvoiceStatusReadOnly,codbex-invoices.settings.SalesInvoiceStatusFullAccess"
-}

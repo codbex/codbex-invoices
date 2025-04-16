@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "SalesInvoicePayment-details",
-    label: "SalesInvoicePayment",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoicePayment/dialog-window/index.html",
-    perspectiveName: "salesinvoice"
+    id: 'SalesInvoicePayment-details',
+    label: 'SalesInvoicePayment',
+    path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoicePayment/dialog-window/index.html',
+    perspectiveName: 'salesinvoice'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

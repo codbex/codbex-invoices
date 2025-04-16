@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Deduction",
-    label: "Deduction",
-    factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/Deduction/index.html",
-    perspectiveName: "salesinvoice"
+    id: 'Deduction',
+    label: 'Deduction',
+    region: 'bottom',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/Deduction/index.html',
+    perspectiveName: 'salesinvoice'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

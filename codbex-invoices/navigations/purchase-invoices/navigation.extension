@@ -1,6 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-invoices/navigations/purchase-invoices/service.js",
-    "description": "Purchase Invoices Navigation",
-    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess,codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess"
-}
