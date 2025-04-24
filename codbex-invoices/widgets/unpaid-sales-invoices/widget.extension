@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-invoices/widgets/unpaid-sales-invoices/config.js",
-    "description": "Unpaid Sales Invoices Widget"
+    "description": "Unpaid Sales Invoices Widget",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
 }
