@@ -49,7 +49,7 @@ export interface SentMethodEntityOptions {
     },
     $select?: (keyof SentMethodEntity)[],
     $sort?: string | (keyof SentMethodEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class SentMethodRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(SentMethodRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(SentMethodRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: SentMethodEntityOptions): SentMethodEntity[] {
+    public findAll(options: SentMethodEntityOptions = {}): SentMethodEntity[] {
         return this.dao.list(options);
     }
 

@@ -114,9 +114,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			});
 		};
 
-		$scope.openFilter = (entity) => {
+		$scope.openFilter = () => {
 			Dialogs.showWindow({
-				id: 'SalesInvoiceStatus-details',
+				id: 'SalesInvoiceStatus-filter',
 				params: {
 					entity: $scope.filterEntity,
 				},

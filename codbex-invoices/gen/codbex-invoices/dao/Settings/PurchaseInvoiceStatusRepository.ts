@@ -49,7 +49,7 @@ export interface PurchaseInvoiceStatusEntityOptions {
     },
     $select?: (keyof PurchaseInvoiceStatusEntity)[],
     $sort?: string | (keyof PurchaseInvoiceStatusEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class PurchaseInvoiceStatusRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PurchaseInvoiceStatusRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PurchaseInvoiceStatusRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PurchaseInvoiceStatusEntityOptions): PurchaseInvoiceStatusEntity[] {
+    public findAll(options: PurchaseInvoiceStatusEntityOptions = {}): PurchaseInvoiceStatusEntity[] {
         return this.dao.list(options);
     }
 

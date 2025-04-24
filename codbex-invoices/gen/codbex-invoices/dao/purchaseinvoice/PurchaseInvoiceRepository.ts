@@ -256,7 +256,7 @@ export interface PurchaseInvoiceEntityOptions {
     },
     $select?: (keyof PurchaseInvoiceEntity)[],
     $sort?: string | (keyof PurchaseInvoiceEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -421,19 +421,14 @@ export class PurchaseInvoiceRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PurchaseInvoiceRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PurchaseInvoiceRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PurchaseInvoiceEntityOptions): PurchaseInvoiceEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
+    public findAll(options: PurchaseInvoiceEntityOptions = {}): PurchaseInvoiceEntity[] {
+        if (options.$sort === undefined && options.$order === undefined) {
+            options.$sort = "Number";
+            options.$order = "DESC";
         }
-        // @ts-ignore
-        options.$sort += "Number,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: PurchaseInvoiceEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Due");

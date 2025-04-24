@@ -67,7 +67,7 @@ export interface PurchaseInvoicePaymentEntityOptions {
     },
     $select?: (keyof PurchaseInvoicePaymentEntity)[],
     $sort?: string | (keyof PurchaseInvoicePaymentEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -121,10 +121,10 @@ export class PurchaseInvoicePaymentRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PurchaseInvoicePaymentRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PurchaseInvoicePaymentRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PurchaseInvoicePaymentEntityOptions): PurchaseInvoicePaymentEntity[] {
+    public findAll(options: PurchaseInvoicePaymentEntityOptions = {}): PurchaseInvoicePaymentEntity[] {
         return this.dao.list(options);
     }
 

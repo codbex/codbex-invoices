@@ -52,7 +52,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-invoices.salesinvoice.SalesInvoice.entitySearch', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-invoices.salesinvoice.SalesInvoice.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;

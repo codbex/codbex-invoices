@@ -118,7 +118,7 @@ export interface SalesInvoiceItemEntityOptions {
     },
     $select?: (keyof SalesInvoiceItemEntity)[],
     $sort?: string | (keyof SalesInvoiceItemEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -210,10 +210,10 @@ export class SalesInvoiceItemRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(SalesInvoiceItemRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(SalesInvoiceItemRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: SalesInvoiceItemEntityOptions): SalesInvoiceItemEntity[] {
+    public findAll(options: SalesInvoiceItemEntityOptions = {}): SalesInvoiceItemEntity[] {
         return this.dao.list(options);
     }
 
