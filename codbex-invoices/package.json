@@ -9,15 +9,15 @@
         "registry": "https://npm.pkg.github.com"
     },
     "dependencies": {
-        "@codbex/codbex-countries": "0.4.0",
-        "@codbex/codbex-companies": "0.5.0",
-        "@codbex/codbex-currencies": "0.4.0",
-        "@codbex/codbex-uoms": "0.5.0",
-        "@codbex/codbex-partners": "0.5.0",
-        "@codbex/codbex-methods": "0.4.0",
-        "@codbex/codbex-employees": "0.5.0",
-        "@codbex/codbex-payments": "0.6.0",
-        "@codbex/codbex-cities": "0.5.0",
-        "@codbex/codbex-number-generator": "0.3.0"
+        "@codbex/codbex-countries": "1.0.0",
+        "@codbex/codbex-companies": "0.6.0",
+        "@codbex/codbex-currencies": "0.6.0",
+        "@codbex/codbex-uoms": "0.6.0",
+        "@codbex/codbex-partners": "0.6.0",
+        "@codbex/codbex-methods": "0.5.0",
+        "@codbex/codbex-employees": "0.6.0",
+        "@codbex/codbex-payments": "0.7.0",
+        "@codbex/codbex-cities": "0.6.0",
+        "@codbex/codbex-number-generator": "0.4.0"
     }
 }
