@@ -85,7 +85,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -103,7 +103,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_NET",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -119,7 +119,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_VATRATE",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -136,7 +136,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -154,7 +154,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_GROSS",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -292,7 +292,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -326,7 +326,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -342,7 +342,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -358,7 +358,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -373,7 +373,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -389,7 +389,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -405,7 +405,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -718,7 +718,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -752,7 +752,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -768,7 +768,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -784,7 +784,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -799,7 +799,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -815,7 +815,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -831,7 +831,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1119,7 +1119,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_PRICE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -1137,7 +1137,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1153,7 +1153,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_VATRATE",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1170,7 +1170,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1188,7 +1188,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2303,7 +2303,7 @@
                     },
                     {
                         "dataDefaultValue": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -2403,7 +2403,7 @@
                     },
                     {
                         "dataDefaultValue": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PURCHASEINVOICEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -2759,7 +2759,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2792,7 +2792,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2807,7 +2807,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2823,7 +2823,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2838,7 +2838,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2853,7 +2853,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2869,7 +2869,7 @@
                     },
                     {
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -3422,7 +3422,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "CUSTOMERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -3687,7 +3687,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SUPPLIERPAYMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",

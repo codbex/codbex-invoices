@@ -174,7 +174,7 @@ export interface CustomerPaymentEntityOptions {
     },
     $select?: (keyof CustomerPaymentEntity)[],
     $sort?: string | (keyof CustomerPaymentEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -287,19 +287,14 @@ export class CustomerPaymentRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CustomerPaymentRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CustomerPaymentRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: CustomerPaymentEntityOptions): CustomerPaymentEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
+    public findAll(options: CustomerPaymentEntityOptions = {}): CustomerPaymentEntity[] {
+        if (options.$sort === undefined && options.$order === undefined) {
+            options.$sort = "Date";
+            options.$order = "DESC";
         }
-        // @ts-ignore
-        options.$sort += "Date,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: CustomerPaymentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");

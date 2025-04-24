@@ -58,7 +58,7 @@ export interface DeductionEntityOptions {
     },
     $select?: (keyof DeductionEntity)[],
     $sort?: string | (keyof DeductionEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -106,10 +106,10 @@ export class DeductionRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(DeductionRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(DeductionRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: DeductionEntityOptions): DeductionEntity[] {
+    public findAll(options: DeductionEntityOptions = {}): DeductionEntity[] {
         return this.dao.list(options);
     }
 

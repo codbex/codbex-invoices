@@ -247,7 +247,7 @@ export interface SalesInvoiceEntityOptions {
     },
     $select?: (keyof SalesInvoiceEntity)[],
     $sort?: string | (keyof SalesInvoiceEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -408,19 +408,14 @@ export class SalesInvoiceRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(SalesInvoiceRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(SalesInvoiceRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: SalesInvoiceEntityOptions): SalesInvoiceEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
+    public findAll(options: SalesInvoiceEntityOptions = {}): SalesInvoiceEntity[] {
+        if (options.$sort === undefined && options.$order === undefined) {
+            options.$sort = "Number";
+            options.$order = "DESC";
         }
-        // @ts-ignore
-        options.$sort += "Number,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: SalesInvoiceEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Due");

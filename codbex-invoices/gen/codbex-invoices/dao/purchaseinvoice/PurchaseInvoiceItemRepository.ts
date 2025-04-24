@@ -118,7 +118,7 @@ export interface PurchaseInvoiceItemEntityOptions {
     },
     $select?: (keyof PurchaseInvoiceItemEntity)[],
     $sort?: string | (keyof PurchaseInvoiceItemEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -206,10 +206,10 @@ export class PurchaseInvoiceItemRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PurchaseInvoiceItemRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PurchaseInvoiceItemRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PurchaseInvoiceItemEntityOptions): PurchaseInvoiceItemEntity[] {
+    public findAll(options: PurchaseInvoiceItemEntityOptions = {}): PurchaseInvoiceItemEntity[] {
         return this.dao.list(options);
     }
 
