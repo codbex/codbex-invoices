@@ -63,7 +63,7 @@ export interface DeductionEntityOptions {
     $limit?: number,
 }
 
-interface DeductionEntityEvent {
+export interface DeductionEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<DeductionEntity>;
@@ -74,7 +74,7 @@ interface DeductionEntityEvent {
     }
 }
 
-interface DeductionUpdateEntityEvent extends DeductionEntityEvent {
+export interface DeductionUpdateEntityEvent extends DeductionEntityEvent {
     readonly previousEntity: DeductionEntity;
 }
 

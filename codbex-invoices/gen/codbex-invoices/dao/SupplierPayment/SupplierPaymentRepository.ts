@@ -170,7 +170,7 @@ export interface SupplierPaymentEntityOptions {
     $limit?: number,
 }
 
-interface SupplierPaymentEntityEvent {
+export interface SupplierPaymentEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<SupplierPaymentEntity>;
@@ -181,7 +181,7 @@ interface SupplierPaymentEntityEvent {
     }
 }
 
-interface SupplierPaymentUpdateEntityEvent extends SupplierPaymentEntityEvent {
+export interface SupplierPaymentUpdateEntityEvent extends SupplierPaymentEntityEvent {
     readonly previousEntity: SupplierPaymentEntity;
 }
 

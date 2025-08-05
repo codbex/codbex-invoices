@@ -54,7 +54,7 @@ export interface SalesInvoiceStatusEntityOptions {
     $limit?: number,
 }
 
-interface SalesInvoiceStatusEntityEvent {
+export interface SalesInvoiceStatusEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<SalesInvoiceStatusEntity>;
@@ -65,7 +65,7 @@ interface SalesInvoiceStatusEntityEvent {
     }
 }
 
-interface SalesInvoiceStatusUpdateEntityEvent extends SalesInvoiceStatusEntityEvent {
+export interface SalesInvoiceStatusUpdateEntityEvent extends SalesInvoiceStatusEntityEvent {
     readonly previousEntity: SalesInvoiceStatusEntity;
 }
 

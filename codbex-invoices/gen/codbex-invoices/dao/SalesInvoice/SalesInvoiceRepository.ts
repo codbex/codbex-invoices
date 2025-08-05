@@ -252,7 +252,7 @@ export interface SalesInvoiceEntityOptions {
     $limit?: number,
 }
 
-interface SalesInvoiceEntityEvent {
+export interface SalesInvoiceEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<SalesInvoiceEntity>;
@@ -263,7 +263,7 @@ interface SalesInvoiceEntityEvent {
     }
 }
 
-interface SalesInvoiceUpdateEntityEvent extends SalesInvoiceEntityEvent {
+export interface SalesInvoiceUpdateEntityEvent extends SalesInvoiceEntityEvent {
     readonly previousEntity: SalesInvoiceEntity;
 }
 

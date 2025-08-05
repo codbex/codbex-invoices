@@ -179,7 +179,7 @@ export interface CustomerPaymentEntityOptions {
     $limit?: number,
 }
 
-interface CustomerPaymentEntityEvent {
+export interface CustomerPaymentEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<CustomerPaymentEntity>;
@@ -190,7 +190,7 @@ interface CustomerPaymentEntityEvent {
     }
 }
 
-interface CustomerPaymentUpdateEntityEvent extends CustomerPaymentEntityEvent {
+export interface CustomerPaymentUpdateEntityEvent extends CustomerPaymentEntityEvent {
     readonly previousEntity: CustomerPaymentEntity;
 }
 

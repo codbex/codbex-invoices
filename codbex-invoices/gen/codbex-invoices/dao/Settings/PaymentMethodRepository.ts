@@ -54,7 +54,7 @@ export interface PaymentMethodEntityOptions {
     $limit?: number,
 }
 
-interface PaymentMethodEntityEvent {
+export interface PaymentMethodEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PaymentMethodEntity>;
@@ -65,7 +65,7 @@ interface PaymentMethodEntityEvent {
     }
 }
 
-interface PaymentMethodUpdateEntityEvent extends PaymentMethodEntityEvent {
+export interface PaymentMethodUpdateEntityEvent extends PaymentMethodEntityEvent {
     readonly previousEntity: PaymentMethodEntity;
 }
 

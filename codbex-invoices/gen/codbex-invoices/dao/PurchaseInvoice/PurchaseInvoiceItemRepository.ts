@@ -123,7 +123,7 @@ export interface PurchaseInvoiceItemEntityOptions {
     $limit?: number,
 }
 
-interface PurchaseInvoiceItemEntityEvent {
+export interface PurchaseInvoiceItemEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PurchaseInvoiceItemEntity>;
@@ -134,7 +134,7 @@ interface PurchaseInvoiceItemEntityEvent {
     }
 }
 
-interface PurchaseInvoiceItemUpdateEntityEvent extends PurchaseInvoiceItemEntityEvent {
+export interface PurchaseInvoiceItemUpdateEntityEvent extends PurchaseInvoiceItemEntityEvent {
     readonly previousEntity: PurchaseInvoiceItemEntity;
 }
 
