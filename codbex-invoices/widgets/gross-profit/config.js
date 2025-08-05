@@ -4,7 +4,7 @@ const viewData = {
     path: '/services/web/codbex-invoices/widgets/gross-profit/index.html',
     lazyLoad: true,
     autoFocusTab: false,
-    perspectiveId: 'purchaseinvoice',
+    perspectiveId: 'PurchaseInvoice',
     size: 'small'
 };
 if (typeof exports !== 'undefined') {

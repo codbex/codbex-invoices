@@ -4,7 +4,7 @@ const viewData = {
     path: '/services/web/codbex-invoices/widgets/total-receivables/index.html',
     lazyLoad: true,
     autoFocusTab: false,
-    perspectiveId: 'salesinvoice',
+    perspectiveId: 'SalesInvoice',
     size: 'medium'
 };
 if (typeof exports !== 'undefined') {
