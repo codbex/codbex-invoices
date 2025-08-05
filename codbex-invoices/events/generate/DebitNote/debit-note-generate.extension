@@ -1,5 +1,5 @@
 {
-    "module": "codbex-invoices/events/generate/DebitNote/debit-note-generate.js",
+    "module": "codbex-invoices/events/generate/DebitNote/config.js",
     "extensionPoint": "codbex-invoices-custom-action",
     "description": "Generate Debit Note From Sales Invoice Custom Action",
     "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"

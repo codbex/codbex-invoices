@@ -7,7 +7,7 @@ angular.module('NoteApp', ['blimpKit', 'platformView']).controller('NoteControll
     };
 
     const salesInvoiceDataUrl = `/services/ts/codbex-invoices/events/generate/CreditNote/api/GenerateCreditNoteService.ts/salesInvoiceData/${params.id}`;
-    const salesInvoiceSubmitUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts/";
+    const salesInvoiceSubmitUrl = "/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts/";
 
     $http.get(salesInvoiceDataUrl)
         .then(response => {
