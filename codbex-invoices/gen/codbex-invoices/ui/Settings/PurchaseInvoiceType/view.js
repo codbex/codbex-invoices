@@ -6,6 +6,9 @@
 const viewData = {
     id: 'PurchaseInvoiceType',
     label: 'PurchaseInvoiceType',
+    translation: {
+        key: 'codbex-invoices:t.PURCHASEINVOICETYPE',
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

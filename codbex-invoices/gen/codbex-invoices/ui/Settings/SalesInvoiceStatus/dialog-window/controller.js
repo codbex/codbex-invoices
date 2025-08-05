@@ -1,9 +1,14 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts';
 	}])
-	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'SalesInvoiceStatus successfully created';
+		let propertySuccessfullyUpdated = 'SalesInvoiceStatus successfully updated';
+
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -14,6 +19,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			update: 'Update SalesInvoiceStatus'
 		};
 		$scope.action = 'select';
+
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-invoices:defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-invoices:defaults.formHeadSelect', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-invoices:defaults.formHeadCreate', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-invoices:defaults.formHeadUpdate', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-invoices:messages.propertySuccessfullyCreated', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-invoices:messages.propertySuccessfullyUpdated', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)' });
+		});
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
@@ -28,16 +42,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-invoices.Settings.SalesInvoiceStatus.entityCreated', data: response.data });
-				Dialogs.showAlert({
-					title: 'SalesInvoiceStatus',
-					message: 'SalesInvoiceStatus successfully created',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-invoices:t.SALESINVOICESTATUS'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to create SalesInvoiceStatus: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-invoices:messages.error.unableToCreate', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
@@ -49,16 +63,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-invoices.Settings.SalesInvoiceStatus.entityUpdated', data: response.data });
-				Dialogs.showAlert({
-					title: 'SalesInvoiceStatus',
-					message: 'SalesInvoiceStatus successfully updated',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-invoices:t.SALESINVOICESTATUS'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to update SalesInvoiceStatus: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-invoices:messages.error.unableToUpdate', { name: '$t(codbex-invoices:t.SALESINVOICESTATUS)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
@@ -67,7 +81,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({
-				title: 'Description',
+				title: description,
 				message: message,
 				type: AlertTypes.Information,
 				preformatted: true,

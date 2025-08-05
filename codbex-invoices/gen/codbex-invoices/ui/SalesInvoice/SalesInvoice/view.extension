@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/view.js",
+    "extensionPoint": "application-views",
+    "description": "codbex-invoices - Application View",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+}

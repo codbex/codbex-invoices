@@ -6,6 +6,9 @@
 const viewData = {
     id: 'PurchaseInvoiceType-details',
     label: 'PurchaseInvoiceType',
+    translation: {
+        key: 'codbex-invoices:t.PURCHASEINVOICETYPE',
+    },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/PurchaseInvoiceType/dialog-window/index.html',
     perspectiveName: 'Settings'
 };

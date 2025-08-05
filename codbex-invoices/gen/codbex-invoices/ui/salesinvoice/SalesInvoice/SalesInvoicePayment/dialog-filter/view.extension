@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/salesinvoice/SalesInvoice/SalesInvoicePayment/dialog-filter/view.js",
-    "extensionPoint": "application-windows",
-    "description": "codbex-invoices - Application Dialog Window",
-    "role": "codbex-invoices.salesinvoice.SalesInvoicePaymentReadOnly,codbex-invoices.salesinvoice.SalesInvoicePaymentFullAccess"
-}

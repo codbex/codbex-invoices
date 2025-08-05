@@ -1,6 +1,0 @@
-{
-    "extensionPoint": "codbex-invoices-custom-action",
-    "module": "codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-print/print.js",
-    "description": "Print UNPAID_PURCHASEINVOICE Report",
-    "role": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly"
-}

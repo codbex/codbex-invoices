@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-window/view.js",
-    "extensionPoint": "application-windows",
-    "description": "codbex-invoices - Application Dialog Window",
-    "role": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly"
-}
