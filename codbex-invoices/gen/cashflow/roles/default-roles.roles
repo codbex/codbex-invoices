@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-invoices.Report.CASHFLOWReadOnly",
+        "description": "A role that grants read only permission for CASHFLOW."
+    }
+]

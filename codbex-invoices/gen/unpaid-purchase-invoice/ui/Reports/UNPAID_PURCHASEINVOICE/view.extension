@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/view.js",
+    "extensionPoint": "application-reports",
+    "description": "codbex-invoices - Application View",
+    "role": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly"
+}

@@ -1,8 +1,12 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com",
-  "title": "Cashflow Report",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Cashflow",
   "navigationOrder": "1500",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "cashflow.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "cashflow",
   "genFolderName": "cashflow",
   "extensionPoint": "codbex-invoices",
@@ -13,9 +17,5 @@
       "entityName": "CASHFLOW",
       "roleRead": "codbex-invoices.Report.CASHFLOWReadOnly"
     }
-  ],
-  "projectName": "codbex-invoices",
-  "workspaceName": "workspace",
-  "filePath": "cashflow.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js"
+  ]
 }

@@ -1,8 +1,12 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com",
-  "title": "Unpaid Sales Invoices",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Unpaid Sales Invoice Report",
   "navigationOrder": "1200",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "unpaid-sales-invoice.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "unpaid-sales-invoice",
   "genFolderName": "unpaid-sales-invoice",
   "extensionPoint": "codbex-invoices",
@@ -13,9 +17,5 @@
       "entityName": "UNPAID_SALESINVOICE",
       "roleRead": "codbex-invoices.Report.UNPAID_SALESINVOICEReadOnly"
     }
-  ],
-  "projectName": "codbex-invoices",
-  "workspaceName": "workspace",
-  "filePath": "unpaid-sales-invoice.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js"
+  ]
 }
