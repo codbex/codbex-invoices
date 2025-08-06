@@ -6,6 +6,9 @@
 const viewData = {
     id: 'SalesInvoiceStatus-details',
     label: 'SalesInvoiceStatus',
+    translation: {
+        key: 'codbex-invoices:t.SALESINVOICESTATUS',
+    },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/SalesInvoiceStatus/dialog-window/index.html',
     perspectiveName: 'Settings'
 };

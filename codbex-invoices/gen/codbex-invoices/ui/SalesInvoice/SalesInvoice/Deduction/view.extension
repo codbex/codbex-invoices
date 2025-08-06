@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/Deduction/view.js",
+    "extensionPoint": "application-views",
+    "description": "codbex-invoices - Application View - Details",
+    "role": "codbex-invoices.settings.DeductionReadOnly,codbex-invoices.settings.DeductionFullAccess"
+}

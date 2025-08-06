@@ -6,6 +6,12 @@
 const viewData = {
     id: 'CASHFLOW-Report-details',
     label: 'CASHFLOW Report',
+    translation: {
+        key: 'codbex-invoices:reportTitle',
+        options: {
+            name: '$t(codbex-invoices:t.$dataName)',
+        }
+    },
     path: '/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-window/index.html',
     perspectiveName: 'Reports'
 };

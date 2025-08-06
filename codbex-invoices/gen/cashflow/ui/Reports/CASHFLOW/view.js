@@ -6,6 +6,12 @@
 const viewData = {
     id: 'CASHFLOWReport',
     label: 'CASHFLOW Report',
+    translation: {
+        key: 'codbex-invoices:reportTitle',
+        options: {
+            name: '$t(codbex-invoices:t.$dataName)',
+        }
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

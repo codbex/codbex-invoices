@@ -1,5 +1,5 @@
-import { SalesInvoiceRepository } from "../../gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository";
-import { SalesInvoicePaymentRepository } from "../../gen/codbex-invoices/dao/salesinvoice/SalesInvoicePaymentRepository";
+import { SalesInvoiceRepository } from "../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
+import { SalesInvoicePaymentRepository } from "../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoicePaymentRepository";
 import { CustomerPaymentRepository } from "codbex-payments/gen/codbex-payments/dao/CustomerPayment/CustomerPaymentRepository";
 
 export const trigger = (event) => {

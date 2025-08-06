@@ -207,6 +207,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 36,
+                        "unique": true,
                         "name": "SALESINVOICE_UUID"
                     },
                     {
@@ -365,6 +366,7 @@
                         "type": "VARCHAR",
                         "length": 36,
                         "nullable": true,
+                        "unique": true,
                         "name": "PURCHASEINVOICE_UUID"
                     },
                     {
@@ -733,6 +735,7 @@
                         "type": "VARCHAR",
                         "length": 36,
                         "nullable": true,
+                        "unique": true,
                         "name": "CUSTOMERPAYMENT_UUID"
                     },
                     {
@@ -832,6 +835,7 @@
                         "type": "VARCHAR",
                         "length": 36,
                         "nullable": true,
+                        "unique": true,
                         "name": "SUPPLIERPAYMENT_UUID"
                     },
                     {

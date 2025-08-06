@@ -6,6 +6,12 @@
 const viewData = {
     id: 'SalesInvoiceStatus-filter',
     label: 'SalesInvoiceStatus Filter',
+    translation: {
+        key: 'codbex-invoices:extName',
+        options: {
+            content: '$t(codbex-invoices:t.SALESINVOICESTATUS) $t(codbex-invoices:defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/SalesInvoiceStatus/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

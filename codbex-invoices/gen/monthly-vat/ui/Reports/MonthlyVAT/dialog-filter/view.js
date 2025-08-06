@@ -6,6 +6,12 @@
 const viewData = {
     id: "MonthlyVAT-Report-filter",
     label: "MonthlyVAT Report Filter",
+    translation: {
+        key: 'codbex-invoices:extName',
+        options: {
+            content: '$t(codbex-invoices:t.$dataName) $t(codbex-invoices:defaults.reportFilter)',
+        }
+    },
     path: "/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-filter/index.html",
     perspectiveName: "Reports"
 };

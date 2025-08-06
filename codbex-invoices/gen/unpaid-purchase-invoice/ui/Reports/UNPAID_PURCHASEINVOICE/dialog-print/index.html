@@ -15,7 +15,7 @@
 
     <body>
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>UNPAID_PURCHASEINVOICE Report</bk-toolbar-title>
+			<bk-toolbar-title>{{ 'codbex-invoices:defaults.reportTitle' | t:{'name':'UNPAID_PURCHASEINVOICE'} }}</bk-toolbar-title>
 		</bk-toolbar>
         <bk-scrollbar ng-hide="data == null">
             <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody bk-table-body>
                     <tr bk-table-row hoverable="true" ng-show="data.length == 0">
-                        <td bk-table-cell no-data="true">No data available.</td>
+                        <td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
                     </tr>
                     <tr bk-table-row hoverable="true" ng-repeat="next in data">
 						<td bk-table-cell hoverable="true" activable="true">{{next['Number']}}</td>

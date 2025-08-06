@@ -1,5 +1,5 @@
-import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceRepository";
-import { PurchaseInvoiceItemRepository as PurchaseInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/purchaseinvoice/PurchaseInvoiceItemRepository";
+import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceRepository";
+import { PurchaseInvoiceItemRepository as PurchaseInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceItemRepository";
 import { SupplierRepository as SupplierDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Suppliers/SupplierRepository";
 import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
 import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Settings/CityRepository";

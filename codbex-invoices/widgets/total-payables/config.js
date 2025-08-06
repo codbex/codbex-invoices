@@ -4,7 +4,7 @@ const viewData = {
     path: '/services/web/codbex-invoices/widgets/total-payables/index.html',
     lazyLoad: true,
     autoFocusTab: false,
-    perspectiveId: 'purchaseinvoice',
+    perspectiveId: 'PurchaseInvoice',
     size: 'medium'
 };
 if (typeof exports !== 'undefined') {

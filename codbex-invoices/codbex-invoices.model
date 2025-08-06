@@ -35,7 +35,7 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveName": "SalesInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -185,8 +185,8 @@
                 "name": "SalesInvoiceItem",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveLabel": "Sales Invoice",
-                "perspectiveName": "salesinvoice",
+                "perspectiveLabel": "SalesInvoice",
+                "perspectiveName": "SalesInvoice",
                 "perspectiveNavId": "sales-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -598,8 +598,8 @@
                 "name": "SalesInvoice",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveLabel": "Sales Invoice",
-                "perspectiveName": "salesinvoice",
+                "perspectiveLabel": "SalesInvoice",
+                "perspectiveName": "SalesInvoice",
                 "perspectiveNavId": "sales-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -1025,8 +1025,8 @@
                 "name": "PurchaseInvoice",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
-                "perspectiveLabel": "Purchase Invoice",
-                "perspectiveName": "purchaseinvoice",
+                "perspectiveLabel": "PurchaseInvoice",
+                "perspectiveName": "PurchaseInvoice",
                 "perspectiveNavId": "purchasing-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -1069,7 +1069,7 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "PurchaseInvoice",
-                        "relationshipEntityPerspectiveName": "purchaseinvoice",
+                        "relationshipEntityPerspectiveName": "PurchaseInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -1219,8 +1219,8 @@
                 "name": "PurchaseInvoiceItem",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
-                "perspectiveLabel": "Purchase Invoice",
-                "perspectiveName": "purchaseinvoice",
+                "perspectiveLabel": "PurchaseInvoice",
+                "perspectiveName": "PurchaseInvoice",
                 "perspectiveNavId": "purchasing-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -2280,7 +2280,7 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveName": "SalesInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -2336,8 +2336,8 @@
                 "name": "SalesInvoicePayment",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveLabel": "Sales Invoice",
-                "perspectiveName": "salesinvoice",
+                "perspectiveLabel": "SalesInvoice",
+                "perspectiveName": "SalesInvoice",
                 "perspectiveNavId": "sales-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -2380,7 +2380,7 @@
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "PurchaseInvoice",
-                        "relationshipEntityPerspectiveName": "purchaseinvoice",
+                        "relationshipEntityPerspectiveName": "PurchaseInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -2436,8 +2436,8 @@
                 "name": "PurchaseInvoicePayment",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
-                "perspectiveLabel": "Purchase Invoice",
-                "perspectiveName": "purchaseinvoice",
+                "perspectiveLabel": "PurchaseInvoice",
+                "perspectiveName": "PurchaseInvoice",
                 "perspectiveNavId": "purchasing-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -3089,7 +3089,7 @@
                         "widgetSize": "",
                         "widgetType": "TEXTBOX",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveName": "SalesInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -3107,7 +3107,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Deduction_SalesInvoice",
                         "relationshipEntityName": "SalesInvoice",
-                        "relationshipEntityPerspectiveName": "salesinvoice",
+                        "relationshipEntityPerspectiveName": "SalesInvoice",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
@@ -3126,8 +3126,8 @@
                 "name": "Deduction",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/invoice.svg",
-                "perspectiveLabel": "Sales Invoice",
-                "perspectiveName": "salesinvoice",
+                "perspectiveLabel": "SalesInvoice",
+                "perspectiveName": "SalesInvoice",
                 "perspectiveNavId": "sales-navigation-group",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
@@ -3838,15 +3838,15 @@
         ],
         "perspectives": [
             {
-                "name": "salesinvoice",
-                "label": "Sales Invoice",
+                "name": "SalesInvoice",
+                "label": "SalesInvoice",
                 "navId": "sales-navigation-group",
                 "icon": "/services/web/resources/unicons/invoice.svg",
                 "order": "200"
             },
             {
-                "name": "purchaseinvoice",
-                "label": "Purchase Invoice",
+                "name": "PurchaseInvoice",
+                "label": "PurchaseInvoice",
                 "navId": "purchasing-navigation-group",
                 "icon": "/services/web/resources/unicons/receipt.svg",
                 "order": "200"

@@ -1,8 +1,12 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com",
+  "brandUrl": "https://www.codbex.com/",
   "title": "Monthly VAT Report",
   "navigationOrder": "1400",
+  "projectName": "codbex-invoices",
+  "workspaceName": "workspace",
+  "filePath": "monthly-vat.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "monthly-vat",
   "genFolderName": "monthly-vat",
   "extensionPoint": "codbex-invoices",
@@ -13,9 +17,5 @@
       "entityName": "MonthlyVAT",
       "roleRead": "codbex-invoices.Report.MonthlyVATReadOnly"
     }
-  ],
-  "projectName": "codbex-invoices",
-  "workspaceName": "workspace",
-  "filePath": "monthly-vat.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js"
+  ]
 }

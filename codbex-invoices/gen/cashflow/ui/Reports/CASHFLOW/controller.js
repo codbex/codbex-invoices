@@ -1,8 +1,8 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/cashflow/api/Reports/CASHFLOWService.ts';
 	}])
-	.controller('PageController', ($scope, EntityService, Extensions) => {
+	.controller('PageController', ($scope, EntityService, LocaleService, Extensions) => {
 		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -17,11 +17,13 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
 				params: {
 					filterEntity: $scope.filterEntity,
 				},
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -67,8 +69,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'CASHFLOW',
-						message: `Unable to list/filter CASHFLOW: '${message}'`,
+						title: LocaleService.t('codbex-invoices:t.${dataName}'),
+						message: LocaleService.t('codbex-invoices:messages.error.unableToLF', { name: '$t(codbex-invoices:t.${dataName})', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -76,8 +78,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'CASHFLOW',
-					message: `Unable to count CASHFLOW: '${message}'`,
+					title: LocaleService.t('codbex-invoices:t.${dataName}'),
+					message: LocaleService.t('codbex-invoices:messages.error.unableToCount', { name: '$t(codbex-invoices:t.${dataName})', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);

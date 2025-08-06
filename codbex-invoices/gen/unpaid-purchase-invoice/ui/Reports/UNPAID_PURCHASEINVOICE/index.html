@@ -15,8 +15,8 @@
 
 	<body class="bk-vbox">
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>Items <span bk-object-status text="{{dataCount}}" inverted="true"></bk-toolbar-title>
-			<bk-button ng-repeat="action in pageActions track by $index" compact="true" state="transparent" label="{{action.label}}" ng-click="triggerPageAction(action)"></bk-button>
+			<bk-toolbar-title>{{'codbex-invoices:defaults.items' | t}} <span bk-object-status text="{{dataCount}}" inverted="true"></bk-toolbar-title>
+			<bk-button ng-repeat="action in pageActions track by $index" compact="true" state="transparent" label="{{action.translation.key | t:action.translation.options:action.label}}" ng-click="triggerPageAction(action)"></bk-button>
 			<bk-toolbar-spacer></bk-toolbar-spacer>
 		</bk-toolbar>
 
@@ -38,7 +38,7 @@
 				</thead>
 				<tbody bk-table-body>
 					<tr bk-table-row hoverable="true" ng-show="data.length == 0">
-						<td bk-table-cell no-data="true">No data available.</td>
+						<td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index"
 						selected="next === selectedEntity" ng-click="selectEntity(next)">
@@ -54,12 +54,12 @@
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>
-									<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="Table Row Menu Button" ng-click="setTristate()">
+									<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="{{'codbex-invoices:aria.tableRowMenuBtn' | t}}" ng-click="setTristate()">
 									</bk-button>
 								</bk-popover-control>
 								<bk-popover-body align="bottom-right">
-									<bk-menu aria-label="Table Row Menu" no-backdrop="true" no-shadow="true">
-										<bk-menu-item title="View Details" ng-click="openDetails(next)"></bk-menu-item>
+									<bk-menu aria-label="{{'codbex-invoices:aria.tableRowMenu' | t}}" no-backdrop="true" no-shadow="true">
+										<bk-menu-item title="{{ 'codbex-invoices:defaults.viewDetails' | t }}" ng-click="openDetails(next)"></bk-menu-item>
 									</bk-menu>
 								</bk-popover-body>
 							</bk-popover>

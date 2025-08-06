@@ -1,4 +1,4 @@
-import { SalesInvoiceRepository as SalesInvoiceDao } from "codbex-invoices/gen/codbex-invoices/dao/salesinvoice/SalesInvoiceRepository";
+import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
 import { Controller, Get } from "sdk/http";
 
 @Controller

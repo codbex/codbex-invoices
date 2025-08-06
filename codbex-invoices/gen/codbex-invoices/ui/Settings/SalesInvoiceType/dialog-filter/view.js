@@ -6,6 +6,12 @@
 const viewData = {
     id: 'SalesInvoiceType-filter',
     label: 'SalesInvoiceType Filter',
+    translation: {
+        key: 'codbex-invoices:extName',
+        options: {
+            content: '$t(codbex-invoices:t.SALESINVOICETYPE) $t(codbex-invoices:defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/SalesInvoiceType/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

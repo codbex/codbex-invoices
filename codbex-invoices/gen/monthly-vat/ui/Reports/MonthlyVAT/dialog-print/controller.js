@@ -1,8 +1,8 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
     .config(['EntityServiceProvider', (EntityServiceProvider) => {
         EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/monthly-vat/api/Reports/MonthlyVATService.ts';
     }])
-    .controller('PageController', ($scope, EntityService, ViewParameters) => {
+    .controller('PageController', ($scope, EntityService, LocaleService, ViewParameters) => {
         const Dialogs = new DialogHub();
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {         
@@ -35,8 +35,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
             }, (error) => {
                 const message = error.data ? error.data.message : '';
                 Dialogs.showAlert({
-                    title: 'MonthlyVAT',
-                    message: `Unable to list/filter MonthlyVAT: '${message}'`,
+                    title: LocaleService.t('codbex-invoices:t.${dataName}'),
+                    message: LocaleService.t('codbex-invoices:messages.error.unableToLF', { name: '$t(codbex-invoices:t.${dataName})', message: message }),
                     type: AlertTypes.Error
                 });
                 console.error('EntityService:', error);

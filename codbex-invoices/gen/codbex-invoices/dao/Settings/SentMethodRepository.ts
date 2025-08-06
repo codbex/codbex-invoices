@@ -54,7 +54,7 @@ export interface SentMethodEntityOptions {
     $limit?: number,
 }
 
-interface SentMethodEntityEvent {
+export interface SentMethodEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<SentMethodEntity>;
@@ -65,7 +65,7 @@ interface SentMethodEntityEvent {
     }
 }
 
-interface SentMethodUpdateEntityEvent extends SentMethodEntityEvent {
+export interface SentMethodUpdateEntityEvent extends SentMethodEntityEvent {
     readonly previousEntity: SentMethodEntity;
 }
 

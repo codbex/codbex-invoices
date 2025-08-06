@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/codbex-invoices/ui/purchaseinvoice/perspective.js",
-    "extensionPoint": "application-perspectives",
-    "description": "codbex-invoices - Perspective - purchaseinvoice",
-    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
-}

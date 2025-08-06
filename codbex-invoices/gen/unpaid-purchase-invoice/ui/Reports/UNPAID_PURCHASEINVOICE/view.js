@@ -6,6 +6,12 @@
 const viewData = {
     id: 'UNPAID_PURCHASEINVOICEReport',
     label: 'UNPAID_PURCHASEINVOICE Report',
+    translation: {
+        key: 'codbex-invoices:reportTitle',
+        options: {
+            name: '$t(codbex-invoices:t.$dataName)',
+        }
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

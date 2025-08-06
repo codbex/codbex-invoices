@@ -4,7 +4,7 @@ const viewData = {
     path: '/services/web/codbex-invoices/widgets/unpaid-sales-invoices/index.html',
     lazyLoad: true,
     autoFocusTab: false,
-    perspectiveId: 'salesinvoice',
+    perspectiveId: 'SalesInvoice',
     size: 'small'
 };
 if (typeof exports !== 'undefined') {

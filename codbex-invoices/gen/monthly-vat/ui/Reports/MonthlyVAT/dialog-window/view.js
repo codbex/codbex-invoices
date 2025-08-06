@@ -6,6 +6,12 @@
 const viewData = {
     id: 'MonthlyVAT-Report-details',
     label: 'MonthlyVAT Report',
+    translation: {
+        key: 'codbex-invoices:reportTitle',
+        options: {
+            name: '$t(codbex-invoices:t.$dataName)',
+        }
+    },
     path: '/services/web/codbex-invoices/gen/monthly-vat/ui/Reports/MonthlyVAT/dialog-window/index.html',
     perspectiveName: 'Reports'
 };

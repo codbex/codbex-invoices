@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/PurchaseInvoice/PurchaseInvoice/PurchaseInvoicePayment/view.js",
+    "extensionPoint": "application-views",
+    "description": "codbex-invoices - Application View - Details",
+    "role": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentReadOnly,codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentFullAccess"
+}

@@ -1,31 +1,31 @@
 openapi: 3.0.3
 info:
-  title: Invoice Management Module - OpenAPI 3.0
+  title: Invoices Management Module - OpenAPI 3.0
   version: 1.0.0
-  description: Managing invoice data
+  description: Managing Invoices Data
 externalDocs:
   description: Find out more about Eclipse Dirigible
   url: https://dirigible.io
 servers:
   - url: /services/ts
 tags:
-  - name: salesinvoice
-  - name: salesinvoice
-  - name: purchaseinvoice
-  - name: purchaseinvoice
+  - name: SalesInvoice
+  - name: SalesInvoice
+  - name: PurchaseInvoice
+  - name: PurchaseInvoice
   - name: Settings
   - name: Settings
-  - name: salesinvoice
-  - name: purchaseinvoice
+  - name: SalesInvoice
+  - name: PurchaseInvoice
   - name: Settings
-  - name: salesinvoice
+  - name: SalesInvoice
   - name: Settings
   - name: Settings
   - name: Settings
   - name: CustomerPayment
   - name: SupplierPayment
 paths:
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemService.ts:
     get:
       summary: List SalesInvoiceItem
       parameters:
@@ -46,7 +46,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -77,7 +77,7 @@ paths:
     post:
       summary: Create SalesInvoiceItem
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -109,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemService.ts/{id}:
     get:
       summary: Get SalesInvoiceItem by Id
       parameters:
@@ -120,7 +120,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -158,7 +158,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -206,7 +206,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         204:
           description: Successful Request
@@ -228,11 +228,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemService.ts/count:
     get:
       summary: Count the number of SalesInvoiceItem
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -256,7 +256,7 @@ paths:
     post:
       summary: Count the number of SalesInvoiceItem by SalesInvoiceItemFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -338,11 +338,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceItemService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemService.ts/search:
     post:
       summary: Search SalesInvoiceItem by SalesInvoiceItemFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -425,7 +425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts:
     get:
       summary: List SalesInvoice
       parameters:
@@ -446,7 +446,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -477,7 +477,7 @@ paths:
     post:
       summary: Create SalesInvoice
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -509,7 +509,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts/{id}:
     get:
       summary: Get SalesInvoice by Id
       parameters:
@@ -520,7 +520,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -558,7 +558,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -606,7 +606,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         204:
           description: Successful Request
@@ -628,11 +628,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts/count:
     get:
       summary: Count the number of SalesInvoice
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -656,7 +656,7 @@ paths:
     post:
       summary: Count the number of SalesInvoice by SalesInvoiceFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -748,11 +748,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoiceService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts/search:
     post:
       summary: Search SalesInvoice by SalesInvoiceFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -845,7 +845,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts:
     get:
       summary: List PurchaseInvoice
       parameters:
@@ -866,7 +866,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -897,7 +897,7 @@ paths:
     post:
       summary: Create PurchaseInvoice
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -929,7 +929,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts/{id}:
     get:
       summary: Get PurchaseInvoice by Id
       parameters:
@@ -940,7 +940,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -978,7 +978,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1026,7 +1026,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         204:
           description: Successful Request
@@ -1048,11 +1048,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts/count:
     get:
       summary: Count the number of PurchaseInvoice
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -1076,7 +1076,7 @@ paths:
     post:
       summary: Count the number of PurchaseInvoice by PurchaseInvoiceFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1170,11 +1170,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts/search:
     post:
       summary: Search PurchaseInvoice by PurchaseInvoiceFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1269,7 +1269,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceItemService.ts:
     get:
       summary: List PurchaseInvoiceItem
       parameters:
@@ -1290,7 +1290,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -1321,7 +1321,7 @@ paths:
     post:
       summary: Create PurchaseInvoiceItem
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1353,7 +1353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceItemService.ts/{id}:
     get:
       summary: Get PurchaseInvoiceItem by Id
       parameters:
@@ -1364,7 +1364,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -1402,7 +1402,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1450,7 +1450,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         204:
           description: Successful Request
@@ -1472,11 +1472,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceItemService.ts/count:
     get:
       summary: Count the number of PurchaseInvoiceItem
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -1500,7 +1500,7 @@ paths:
     post:
       summary: Count the number of PurchaseInvoiceItem by PurchaseInvoiceItemFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -1582,11 +1582,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoiceItemService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceItemService.ts/search:
     post:
       summary: Search PurchaseInvoiceItem by PurchaseInvoiceItemFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -2469,7 +2469,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentService.ts:
     get:
       summary: List SalesInvoicePayment
       parameters:
@@ -2490,7 +2490,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -2521,7 +2521,7 @@ paths:
     post:
       summary: Create SalesInvoicePayment
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -2553,7 +2553,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentService.ts/{id}:
     get:
       summary: Get SalesInvoicePayment by Id
       parameters:
@@ -2564,7 +2564,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -2602,7 +2602,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -2650,7 +2650,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         204:
           description: Successful Request
@@ -2672,11 +2672,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentService.ts/count:
     get:
       summary: Count the number of SalesInvoicePayment
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -2700,7 +2700,7 @@ paths:
     post:
       summary: Count the number of SalesInvoicePayment by SalesInvoicePaymentFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -2774,11 +2774,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/SalesInvoicePaymentService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentService.ts/search:
     post:
       summary: Search SalesInvoicePayment by SalesInvoicePaymentFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -2853,7 +2853,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoicePaymentService.ts:
     get:
       summary: List PurchaseInvoicePayment
       parameters:
@@ -2874,7 +2874,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -2905,7 +2905,7 @@ paths:
     post:
       summary: Create PurchaseInvoicePayment
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -2937,7 +2937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoicePaymentService.ts/{id}:
     get:
       summary: Get PurchaseInvoicePayment by Id
       parameters:
@@ -2948,7 +2948,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -2986,7 +2986,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -3034,7 +3034,7 @@ paths:
           schema:
             type: string
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         204:
           description: Successful Request
@@ -3056,11 +3056,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoicePaymentService.ts/count:
     get:
       summary: Count the number of PurchaseInvoicePayment
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       responses:
         200:
           description: Successful Request
@@ -3084,7 +3084,7 @@ paths:
     post:
       summary: Count the number of PurchaseInvoicePayment by PurchaseInvoicePaymentFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -3158,11 +3158,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/purchaseinvoice/PurchaseInvoicePaymentService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoicePaymentService.ts/search:
     post:
       summary: Search PurchaseInvoicePayment by PurchaseInvoicePaymentFilterOptions
       tags:
-        - purchaseinvoice
+        - PurchaseInvoice
       requestBody:
         content:
           application/json:
@@ -3637,7 +3637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionService.ts:
     get:
       summary: List Deduction
       parameters:
@@ -3658,7 +3658,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -3689,7 +3689,7 @@ paths:
     post:
       summary: Create Deduction
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -3721,7 +3721,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/{id}:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionService.ts/{id}:
     get:
       summary: Get Deduction by Id
       parameters:
@@ -3732,7 +3732,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -3770,7 +3770,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -3818,7 +3818,7 @@ paths:
           schema:
             type: string
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         204:
           description: Successful Request
@@ -3840,11 +3840,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/count:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionService.ts/count:
     get:
       summary: Count the number of Deduction
       tags:
-        - salesinvoice
+        - SalesInvoice
       responses:
         200:
           description: Successful Request
@@ -3868,7 +3868,7 @@ paths:
     post:
       summary: Count the number of Deduction by DeductionFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:
@@ -3942,11 +3942,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-invoices/gen/codbex-invoices/api/salesinvoice/DeductionService.ts/search:
+  /codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionService.ts/search:
     post:
       summary: Search Deduction by DeductionFilterOptions
       tags:
-        - salesinvoice
+        - SalesInvoice
       requestBody:
         content:
           application/json:

@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/dialog-window/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-invoices - Application Dialog Window",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+}

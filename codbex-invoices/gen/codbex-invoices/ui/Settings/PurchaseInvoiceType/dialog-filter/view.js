@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PurchaseInvoiceType-filter',
     label: 'PurchaseInvoiceType Filter',
+    translation: {
+        key: 'codbex-invoices:extName',
+        options: {
+            content: '$t(codbex-invoices:t.PURCHASEINVOICETYPE) $t(codbex-invoices:defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/PurchaseInvoiceType/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };
