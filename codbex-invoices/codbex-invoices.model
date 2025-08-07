@@ -569,6 +569,19 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "36",
+                        "dataName": "SALESINVOICE_PROCESS",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "Process",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "36",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataLength": "100",
                         "dataName": "SALESINVOICE_REFERENCE",
                         "dataNullable": "true",
@@ -989,6 +1002,19 @@
                         "description": "",
                         "isCalculatedProperty": "true",
                         "name": "UUID",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "36",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "36",
+                        "dataName": "PURCHASEINVOICE_PROCESS",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "Process",
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "36",

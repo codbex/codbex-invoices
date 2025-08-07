@@ -31,6 +31,7 @@ export interface PurchaseInvoiceEntity {
     Company?: number;
     Name?: string;
     UUID?: string;
+    Process?: string;
     Reference?: string;
 }
 
@@ -55,6 +56,7 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
+    readonly Process?: string;
     readonly Reference?: string;
 }
 
@@ -89,6 +91,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
+            Process?: string | string[];
             Reference?: string | string[];
         };
         notEquals?: {
@@ -116,6 +119,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
+            Process?: string | string[];
             Reference?: string | string[];
         };
         contains?: {
@@ -143,6 +147,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         greaterThan?: {
@@ -170,6 +175,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         greaterThanOrEqual?: {
@@ -197,6 +203,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         lessThan?: {
@@ -224,6 +231,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         lessThanOrEqual?: {
@@ -251,6 +259,7 @@ export interface PurchaseInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
     },
@@ -408,6 +417,11 @@ export class PurchaseInvoiceRepository {
             {
                 name: "UUID",
                 column: "PURCHASEINVOICE_UUID",
+                type: "VARCHAR",
+            },
+            {
+                name: "Process",
+                column: "PURCHASEINVOICE_PROCESS",
                 type: "VARCHAR",
             },
             {
