@@ -212,6 +212,12 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "SALESINVOICE_PROCESS"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
@@ -368,6 +374,12 @@
                         "nullable": true,
                         "unique": true,
                         "name": "PURCHASEINVOICE_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_PROCESS"
                     },
                     {
                         "type": "VARCHAR",

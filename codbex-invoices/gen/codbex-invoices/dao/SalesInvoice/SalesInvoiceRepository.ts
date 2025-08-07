@@ -30,6 +30,7 @@ export interface SalesInvoiceEntity {
     Company?: number;
     Name?: string;
     UUID: string;
+    Process?: string;
     Reference?: string;
 }
 
@@ -53,6 +54,7 @@ export interface SalesInvoiceCreateEntity {
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
+    readonly Process?: string;
     readonly Reference?: string;
 }
 
@@ -86,6 +88,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
+            Process?: string | string[];
             Reference?: string | string[];
         };
         notEquals?: {
@@ -112,6 +115,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
+            Process?: string | string[];
             Reference?: string | string[];
         };
         contains?: {
@@ -138,6 +142,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         greaterThan?: {
@@ -164,6 +169,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         greaterThanOrEqual?: {
@@ -190,6 +196,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         lessThan?: {
@@ -216,6 +223,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
         lessThanOrEqual?: {
@@ -242,6 +250,7 @@ export interface SalesInvoiceEntityOptions {
             Company?: number;
             Name?: string;
             UUID?: string;
+            Process?: string;
             Reference?: string;
         };
     },
@@ -396,6 +405,11 @@ export class SalesInvoiceRepository {
                 column: "SALESINVOICE_UUID",
                 type: "VARCHAR",
                 required: true
+            },
+            {
+                name: "Process",
+                column: "SALESINVOICE_PROCESS",
+                type: "VARCHAR",
             },
             {
                 name: "Reference",
