@@ -6565,6 +6565,7 @@ components:
           type: string
           minLength: 0
           maxLength: 36
+          readOnly: true
         Reference:
           type: string
           minLength: 0
@@ -7482,6 +7483,7 @@ components:
           type: string
           minLength: 0
           maxLength: 36
+          readOnly: true
         Reference:
           type: string
           minLength: 0
