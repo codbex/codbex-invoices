@@ -56,7 +56,6 @@ export interface PurchaseInvoiceCreateEntity {
     readonly Operator: number;
     readonly Document?: string;
     readonly Company?: number;
-    readonly Process?: string;
     readonly Reference?: string;
 }
 
