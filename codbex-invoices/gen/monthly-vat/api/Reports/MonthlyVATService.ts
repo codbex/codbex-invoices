@@ -1,6 +1,6 @@
-import { Controller, Get, Post } from "sdk/http"
+import { Controller, Get, Post } from "@aerokit/sdk/http"
 import { MonthlyVATRepository, MonthlyVATFilter, MonthlyVATPaginatedFilter } from "../../dao/Reports/MonthlyVATRepository";
-import { user } from "sdk/security"
+import { user } from "@aerokit/sdk/security"
 import { ForbiddenError } from "../utils/ForbiddenError";
 import { HttpUtils } from "../utils/HttpUtils";
 

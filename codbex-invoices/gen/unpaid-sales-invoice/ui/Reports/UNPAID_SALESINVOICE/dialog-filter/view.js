@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: "UNPAID_SALESINVOICE-Report-filter",
-    label: "UNPAID_SALESINVOICE Report Filter",
+    label: "SalesInvoice Report Filter",
     translation: {
-        key: 'codbex-invoices:extName',
+        key: 'codbex-invoices:unpaid-sales-invoice-report.extName',
         options: {
-            content: '$t(codbex-invoices:t.$dataName) $t(codbex-invoices:defaults.reportFilter)',
+            content: '$t(codbex-invoices:unpaid-sales-invoice-report.t.SalesInvoice) $t(codbex-invoices:unpaid-sales-invoice-report.defaults.reportFilter)',
         }
     },
     path: "/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-filter/index.html",

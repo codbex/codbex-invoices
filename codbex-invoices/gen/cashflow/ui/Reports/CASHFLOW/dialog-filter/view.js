@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: "CASHFLOW-Report-filter",
-    label: "CASHFLOW Report Filter",
+    label: "Cashflow Report Filter",
     translation: {
-        key: 'codbex-invoices:extName',
+        key: 'codbex-invoices:cashflow-report.extName',
         options: {
-            content: '$t(codbex-invoices:t.$dataName) $t(codbex-invoices:defaults.reportFilter)',
+            content: '$t(codbex-invoices:cashflow-report.t.Cashflow) $t(codbex-invoices:cashflow-report.defaults.reportFilter)',
         }
     },
     path: "/services/web/codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/dialog-filter/index.html",

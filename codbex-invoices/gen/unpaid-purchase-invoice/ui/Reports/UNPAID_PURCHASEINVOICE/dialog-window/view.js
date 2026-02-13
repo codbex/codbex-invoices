@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: 'UNPAID_PURCHASEINVOICE-Report-details',
-    label: 'UNPAID_PURCHASEINVOICE Report',
+    label: 'PurchaseInvoice Report',
     translation: {
-        key: 'codbex-invoices:reportTitle',
+        key: 'codbex-invoices:unpaid-purchase-invoice-report.defaults.reportTitle',
         options: {
-            name: '$t(codbex-invoices:t.$dataName)',
+            name: '$t(codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice)',
         }
     },
     path: '/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-window/index.html',

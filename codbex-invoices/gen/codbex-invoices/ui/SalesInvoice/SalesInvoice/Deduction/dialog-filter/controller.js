@@ -17,30 +17,23 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DeductionInvoice !== undefined) {
-			filter.$filter.equals.DeductionInvoice = entity.DeductionInvoice;
+			const condition = { propertyName: 'DeductionInvoice', operator: 'EQ', value: entity.DeductionInvoice };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.AdvanceInvoice !== undefined) {
-			filter.$filter.equals.AdvanceInvoice = entity.AdvanceInvoice;
+			const condition = { propertyName: 'AdvanceInvoice', operator: 'EQ', value: entity.AdvanceInvoice };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.Deduction.entitySearch', data: {
 			entity: entity,

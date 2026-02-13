@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: 'CASHFLOWReport',
-    label: 'CASHFLOW Report',
+    label: 'Cashflow Report',
     translation: {
-        key: 'codbex-invoices:reportTitle',
+        key: 'codbex-invoices:cashflow-report.defaults.reportTitle',
         options: {
-            name: '$t(codbex-invoices:t.$dataName)',
+            name: '$t(codbex-invoices:cashflow-report.t.Cashflow)',
         }
     },
     region: 'center',

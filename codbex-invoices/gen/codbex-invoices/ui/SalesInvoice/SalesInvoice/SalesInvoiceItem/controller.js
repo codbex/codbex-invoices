@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemController.ts';
 	}])
 	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -100,21 +100,19 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter = $scope.filter;
 			}
 			if (!filter) {
-				filter = {};
+				filter = {
+					$filter: {
+						conditions: []
+					}
+				};
 			}
-			if (!filter.$filter) {
-				filter.$filter = {};
-			}
-			if (!filter.$filter.equals) {
-				filter.$filter.equals = {};
-			}
-			filter.$filter.equals.SalesInvoice = SalesInvoice;
+			filter.$filter.conditions.push({ propertyName: 'SalesInvoice', operator: 'EQ', value: SalesInvoice });
 			EntityService.count(filter).then((resp) => {
 				if (resp.data) {
 					$scope.dataCount = resp.data.count;
 				}
-				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
-				filter.$limit = $scope.dataLimit;
+				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
+				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
 					$scope.data = response.data;
 				}, (error) => {
@@ -235,7 +233,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsUoM = [];
 
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts').then((response) => {
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
 			$scope.optionsSalesInvoice = response.data.map(e => ({
 				value: e.Id,
 				text: e.Number
@@ -250,7 +248,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
-		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
+		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts').then((response) => {
 			$scope.optionsUoM = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name

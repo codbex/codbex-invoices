@@ -72,8 +72,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-invoices:t.${dataName}'),
-						message: LocaleService.t('codbex-invoices:messages.error.unableToLF', { name: '$t(codbex-invoices:t.${dataName})', message: message }),
+						title: LocaleService.t('codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice'),
+						message: LocaleService.t('codbex-invoices:unpaid-purchase-invoice-report.messages.error.unableToLF', { name: '$t(codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -81,8 +81,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-invoices:t.${dataName}'),
-					message: LocaleService.t('codbex-invoices:messages.error.unableToCount', { name: '$t(codbex-invoices:t.${dataName})', message: message }),
+					title: LocaleService.t('codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice'),
+					message: LocaleService.t('codbex-invoices:unpaid-purchase-invoice-report.messages.error.unableToCount', { name: '$t(codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);

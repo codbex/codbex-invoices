@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: 'UNPAID_SALESINVOICE-Report-details',
-    label: 'UNPAID_SALESINVOICE Report',
+    label: 'SalesInvoice Report',
     translation: {
-        key: 'codbex-invoices:reportTitle',
+        key: 'codbex-invoices:unpaid-sales-invoice-report.defaults.reportTitle',
         options: {
-            name: '$t(codbex-invoices:t.$dataName)',
+            name: '$t(codbex-invoices:unpaid-sales-invoice-report.t.SalesInvoice)',
         }
     },
     path: '/services/web/codbex-invoices/gen/unpaid-sales-invoice/ui/Reports/UNPAID_SALESINVOICE/dialog-window/index.html',

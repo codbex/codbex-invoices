@@ -15,21 +15,21 @@
 
     <body>
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>{{ 'codbex-invoices:defaults.reportTitle' | t:{'name':'MonthlyVAT'} }}</bk-toolbar-title>
+			<bk-toolbar-title>{{ 'codbex-invoices:monthly-vat-report.defaults.reportTitle' | t:{'name':'$t(codbex-invoices:monthly-vat-report.t.MonthlyVAT)'}:'MonthlyVAT' }}</bk-toolbar-title>
 		</bk-toolbar>
         <bk-scrollbar ng-hide="data == null">
             <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead bk-table-header sticky="true">
                     <tr bk-table-row>
-						<th bk-table-header-cell>Date</th>
-						<th bk-table-header-cell>SalesVAT</th>
-						<th bk-table-header-cell>PurchaseVAT</th>
-						<th bk-table-header-cell>PayableVAT</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:monthly-vat-report.t.Date' | t:'Date' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:monthly-vat-report.t.SalesVAT' | t:'SalesVAT' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:monthly-vat-report.t.PurchaseVAT' | t:'PurchaseVAT' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:monthly-vat-report.t.PayableVAT' | t:'PayableVAT' }}</th>
                     </tr>
                 </thead>
                 <tbody bk-table-body>
                     <tr bk-table-row hoverable="true" ng-show="data.length == 0">
-                        <td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
+                        <td bk-table-cell no-data="true">{{'codbex-invoices:monthly-vat-report.messages.noData' | t}}</td>
                     </tr>
                     <tr bk-table-row hoverable="true" ng-repeat="next in data">
 						<td bk-table-cell hoverable="true" activable="true">

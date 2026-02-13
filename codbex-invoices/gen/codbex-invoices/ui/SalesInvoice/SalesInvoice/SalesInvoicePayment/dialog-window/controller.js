@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentController.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -83,8 +83,37 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceSalesInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts';
-		$scope.serviceCustomerPayment = '/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts';
+		$scope.serviceSalesInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts';
+		$scope.serviceCustomerPayment = '/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts';
+
+		$scope.$watch('entity.SalesInvoice', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				$http.get($scope.serviceSalesInvoice + '/' + newValue).then((response) => {
+					let valueFrom = response.data.Customer;
+					$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
+						conditions: [
+							{ propertyName: 'Customer', operator: 'EQ', value: valueFrom }
+						]
+					}).then((response) => {
+						$scope.optionsCustomerPayment = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						if ($scope.action !== 'select' && newValue !== oldValue) {
+							if ($scope.optionsCustomerPayment.length == 1) {
+								$scope.entity.CustomerPayment = $scope.optionsCustomerPayment[0].value;
+							} else {
+								$scope.entity.CustomerPayment = undefined;
+							}
+						}
+					}, (error) => {
+						console.error(error);
+					});
+				}, (error) => {
+					console.error(error);
+				});
+			}
+		});
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({

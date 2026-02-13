@@ -15,7 +15,7 @@
 
 	<body class="bk-vbox">
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>{{'codbex-invoices:defaults.items' | t}} <span bk-object-status text="{{dataCount}}" inverted="true"></bk-toolbar-title>
+			<bk-toolbar-title>{{'codbex-invoices:unpaid-sales-invoice-report.defaults.items' | t}} <span bk-object-status text="{{dataCount}}" inverted="true"></bk-toolbar-title>
 			<bk-button ng-repeat="action in pageActions track by $index" compact="true" state="transparent" label="{{action.translation.key | t:action.translation.options:action.label}}" ng-click="triggerPageAction(action)"></bk-button>
 			<bk-toolbar-spacer></bk-toolbar-spacer>
 		</bk-toolbar>
@@ -24,20 +24,20 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>Number</th>
-						<th bk-table-header-cell>Type</th>
-						<th bk-table-header-cell>Date</th>
-						<th bk-table-header-cell>Due</th>
-						<th bk-table-header-cell>Total</th>
-						<th bk-table-header-cell>Paid</th>
-						<th bk-table-header-cell>Status</th>
-						<th bk-table-header-cell>Name</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Number' | t:'Number' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Type' | t:'Type' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Date' | t:'Date' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Due' | t:'Due' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Total' | t:'Total' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Paid' | t:'Paid' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Status' | t:'Status' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-sales-invoice-report.t.Name' | t:'Name' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
 				<tbody bk-table-body>
 					<tr bk-table-row hoverable="true" ng-show="data.length == 0">
-						<td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
+						<td bk-table-cell no-data="true">{{'codbex-invoices:unpaid-sales-invoice-report.messages.noData' | t}}</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index"
 						selected="next === selectedEntity" ng-click="selectEntity(next)">
@@ -52,12 +52,12 @@
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>
-									<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="{{'codbex-invoices:aria.tableRowMenuBtn' | t}}" ng-click="setTristate()">
+									<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="{{'codbex-invoices:unpaid-sales-invoice-report.aria.tableRowMenuBtn' | t}}" ng-click="setTristate()">
 									</bk-button>
 								</bk-popover-control>
 								<bk-popover-body align="bottom-right">
-									<bk-menu aria-label="{{'codbex-invoices:aria.tableRowMenu' | t}}" no-backdrop="true" no-shadow="true">
-										<bk-menu-item title="{{ 'codbex-invoices:defaults.viewDetails' | t }}" ng-click="openDetails(next)"></bk-menu-item>
+									<bk-menu aria-label="{{'codbex-invoices:unpaid-sales-invoice-report.aria.tableRowMenu' | t}}" no-backdrop="true" no-shadow="true">
+										<bk-menu-item title="{{ 'codbex-invoices:unpaid-sales-invoice-report.defaults.viewDetails' | t }}" ng-click="openDetails(next)"></bk-menu-item>
 									</bk-menu>
 								</bk-popover-body>
 							</bk-popover>
