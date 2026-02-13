@@ -20,12 +20,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.action = 'select';
 
 		LocaleService.onInit(() => {
-			description = LocaleService.t('codbex-invoices:defaults.description');
-			$scope.formHeaders.select = LocaleService.t('codbex-invoices:defaults.formHeadSelect', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)' });
-			$scope.formHeaders.create = LocaleService.t('codbex-invoices:defaults.formHeadCreate', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)' });
-			$scope.formHeaders.update = LocaleService.t('codbex-invoices:defaults.formHeadUpdate', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)' });
-			propertySuccessfullyCreated = LocaleService.t('codbex-invoices:messages.propertySuccessfullyCreated', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)' });
-			propertySuccessfullyUpdated = LocaleService.t('codbex-invoices:messages.propertySuccessfullyUpdated', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)' });
+			description = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadSelect', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadCreate', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadUpdate', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)' });
 		});
 
 		let params = ViewParameters.get();
@@ -44,7 +44,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoicePayment.entityCreated', data: response.data });
 				Notifications.show({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEPAYMENT'),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT'),
 					description: propertySuccessfullyCreated,
 					type: 'positive'
 				});
@@ -52,8 +52,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEPAYMENT'),
-					message: LocaleService.t('codbex-invoices:messages.error.unableToCreate', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)', message: message }),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToCreate', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -67,7 +67,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoicePayment.entityUpdated', data: response.data });
 				Notifications.show({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEPAYMENT'),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT'),
 					description: propertySuccessfullyUpdated,
 					type: 'positive'
 				});
@@ -75,8 +75,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEPAYMENT'),
-					message: LocaleService.t('codbex-invoices:messages.error.unableToUpdate', { name: '$t(codbex-invoices:t.PURCHASEINVOICEPAYMENT)', message: message }),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToUpdate', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);

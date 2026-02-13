@@ -7,7 +7,7 @@ const viewData = {
     id: 'SalesInvoiceItem',
     label: 'SalesInvoiceItem',
     translation: {
-        key: 'codbex-invoices:t.SALESINVOICEITEM',
+        key: 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEITEM',
     },
     region: 'bottom',
     lazyLoad: false,

@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface SalesInvoiceItemEntity {
     readonly Id: number;
@@ -121,6 +121,7 @@ export interface SalesInvoiceItemEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface SalesInvoiceItemEntityEvent {
@@ -214,10 +215,11 @@ export class SalesInvoiceItemRepository {
     }
 
     public findAll(options: SalesInvoiceItemEntityOptions = {}): SalesInvoiceItemEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): SalesInvoiceItemEntity | undefined {
+    public findById(id: number, options: SalesInvoiceItemEntityOptions = {}): SalesInvoiceItemEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

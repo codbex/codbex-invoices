@@ -7,7 +7,7 @@ const viewData = {
     id: 'Deduction',
     label: 'Deduction',
     translation: {
-        key: 'codbex-invoices:t.DEDUCTION',
+        key: 'codbex-invoices:codbex-invoices-model.t.DEDUCTION',
     },
     region: 'bottom',
     lazyLoad: false,

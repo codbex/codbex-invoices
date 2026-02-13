@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
+import { Controller, Get, Post, Put, Delete, request, response } from "@aerokit/sdk/http"
+import { Extensions } from "@aerokit/sdk/extensions"
 import { CustomerPaymentRepository, CustomerPaymentEntityOptions } from "../../dao/CustomerPayment/CustomerPaymentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
@@ -16,7 +16,8 @@ class CustomerPaymentService {
         try {
             const options: CustomerPaymentEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().slice(0, 2)
             };
 
             return this.repository.findAll(options);
@@ -69,7 +70,10 @@ class CustomerPaymentService {
     public getById(_: any, ctx: any) {
         try {
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: CustomerPaymentEntityOptions = {
+                $language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

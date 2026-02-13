@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface SentMethodEntity {
     readonly Id: number;
@@ -52,6 +52,7 @@ export interface SentMethodEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface SentMethodEntityEvent {
@@ -96,10 +97,11 @@ export class SentMethodRepository {
     }
 
     public findAll(options: SentMethodEntityOptions = {}): SentMethodEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): SentMethodEntity | undefined {
+    public findById(id: number, options: SentMethodEntityOptions = {}): SentMethodEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

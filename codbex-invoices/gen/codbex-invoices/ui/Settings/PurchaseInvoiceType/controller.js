@@ -12,10 +12,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-invoices:defaults.yes');
-			translated.no = LocaleService.t('codbex-invoices:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-invoices:defaults.deleteTitle', { name: '$t(codbex-invoices:t.PURCHASEINVOICETYPE)' });
-			translated.deleteConfirm = LocaleService.t('codbex-invoices:messages.deleteConfirm', { name: '$t(codbex-invoices:t.PURCHASEINVOICETYPE)' });
+			translated.yes = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.deleteTitle', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE)' });
+			translated.deleteConfirm = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.deleteConfirm', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE)' });
 		});
 
 		$scope.dataPage = 1;
@@ -98,8 +98,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICETYPE'),
-						message: LocaleService.t('codbex-invoices:messages.error.unableToLF', { name: '$t(codbex-invoices:t.PURCHASEINVOICETYPE)', message: message }),
+						title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE'),
+						message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLF', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -107,8 +107,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICETYPE'),
-					message: LocaleService.t('codbex-invoices:messages.error.unableToCount', { name: '$t(codbex-invoices:t.PURCHASEINVOICETYPE)', message: message }),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToCount', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -186,8 +186,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICETYPE'),
-							message: LocaleService.t('codbex-invoices:messages.error.unableToDelete', { name: '$t(codbex-invoices:t.PURCHASEINVOICETYPE)', message: message }),
+							title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE'),
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToDelete', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);

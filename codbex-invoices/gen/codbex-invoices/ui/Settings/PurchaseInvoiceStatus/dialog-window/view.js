@@ -7,7 +7,7 @@ const viewData = {
     id: 'PurchaseInvoiceStatus-details',
     label: 'PurchaseInvoiceStatus',
     translation: {
-        key: 'codbex-invoices:t.PURCHASEINVOICESTATUS',
+        key: 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICESTATUS',
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/PurchaseInvoiceStatus/dialog-window/index.html',
     perspectiveName: 'Settings'

@@ -7,7 +7,7 @@ const perspectiveData = {
 	id: 'SalesInvoice',
 	label: 'SalesInvoice',
 	translation: {
-        key: 'codbex-invoices:t.SALESINVOICE',
+        key: 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE',
     },
 	path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/index.html',
 	groupId: 'sales-navigation-group',

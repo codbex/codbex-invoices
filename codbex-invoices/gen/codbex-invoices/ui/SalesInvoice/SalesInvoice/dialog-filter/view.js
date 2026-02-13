@@ -7,9 +7,9 @@ const viewData = {
     id: 'SalesInvoice-filter',
     label: 'SalesInvoice Filter',
     translation: {
-        key: 'codbex-invoices:extName',
+        key: 'codbex-invoices:codbex-invoices-model.extName',
         options: {
-            content: '$t(codbex-invoices:t.SALESINVOICE) $t(codbex-invoices:defaults.filter)',
+            content: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICE) $t(codbex-invoices:codbex-invoices-model.defaults.filter)',
         }
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/dialog-filter/index.html',

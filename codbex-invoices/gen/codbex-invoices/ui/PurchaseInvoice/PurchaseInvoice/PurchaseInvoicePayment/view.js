@@ -7,7 +7,7 @@ const viewData = {
     id: 'PurchaseInvoicePayment',
     label: 'PurchaseInvoicePayment',
     translation: {
-        key: 'codbex-invoices:t.PURCHASEINVOICEPAYMENT',
+        key: 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT',
     },
     region: 'bottom',
     lazyLoad: false,
