@@ -7,9 +7,9 @@ const viewData = {
     id: 'Deduction-filter',
     label: 'Deduction Filter',
     translation: {
-        key: 'codbex-invoices:extName',
+        key: 'codbex-invoices:codbex-invoices-model.extName',
         options: {
-            content: '$t(codbex-invoices:t.DEDUCTION) $t(codbex-invoices:defaults.filter)',
+            content: '$t(codbex-invoices:codbex-invoices-model.t.DEDUCTION) $t(codbex-invoices:codbex-invoices-model.defaults.filter)',
         }
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/Deduction/dialog-filter/index.html',

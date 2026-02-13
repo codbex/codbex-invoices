@@ -7,9 +7,9 @@ const viewData = {
     id: 'PurchaseInvoiceType-filter',
     label: 'PurchaseInvoiceType Filter',
     translation: {
-        key: 'codbex-invoices:extName',
+        key: 'codbex-invoices:codbex-invoices-model.extName',
         options: {
-            content: '$t(codbex-invoices:t.PURCHASEINVOICETYPE) $t(codbex-invoices:defaults.filter)',
+            content: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICETYPE) $t(codbex-invoices:codbex-invoices-model.defaults.filter)',
         }
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/Settings/PurchaseInvoiceType/dialog-filter/index.html',

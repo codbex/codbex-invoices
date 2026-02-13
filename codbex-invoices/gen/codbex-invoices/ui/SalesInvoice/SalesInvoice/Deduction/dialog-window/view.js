@@ -7,7 +7,7 @@ const viewData = {
     id: 'Deduction-details',
     label: 'Deduction',
     translation: {
-        key: 'codbex-invoices:t.DEDUCTION',
+        key: 'codbex-invoices:codbex-invoices-model.t.DEDUCTION',
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/Deduction/dialog-window/index.html',
     perspectiveName: 'SalesInvoice'

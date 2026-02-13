@@ -7,7 +7,7 @@ const viewData = {
     id: 'SalesInvoiceItem-details',
     label: 'SalesInvoiceItem',
     translation: {
-        key: 'codbex-invoices:t.SALESINVOICEITEM',
+        key: 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEITEM',
     },
     path: '/services/web/codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/SalesInvoice/SalesInvoiceItem/dialog-window/index.html',
     perspectiveName: 'SalesInvoice'

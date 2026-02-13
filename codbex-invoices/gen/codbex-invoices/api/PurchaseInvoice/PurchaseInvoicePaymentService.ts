@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
+import { Controller, Get, Post, Put, Delete, request, response } from "@aerokit/sdk/http"
+import { Extensions } from "@aerokit/sdk/extensions"
 import { PurchaseInvoicePaymentRepository, PurchaseInvoicePaymentEntityOptions } from "../../dao/PurchaseInvoice/PurchaseInvoicePaymentRepository";
-import { user } from "sdk/security"
+import { user } from "@aerokit/sdk/security"
 import { ForbiddenError } from "../utils/ForbiddenError";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
@@ -19,7 +19,8 @@ class PurchaseInvoicePaymentService {
             this.checkPermissions("read");
             const options: PurchaseInvoicePaymentEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().slice(0, 2)
             };
 
             let PurchaseInvoice = parseInt(ctx.queryParameters.PurchaseInvoice);
@@ -88,7 +89,10 @@ class PurchaseInvoicePaymentService {
         try {
             this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: PurchaseInvoicePaymentEntityOptions = {
+                $language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

@@ -12,10 +12,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-invoices:defaults.yes');
-			translated.no = LocaleService.t('codbex-invoices:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-invoices:defaults.deleteTitle', { name: '$t(codbex-invoices:t.PURCHASEINVOICEITEM)' });
-			translated.deleteConfirm = LocaleService.t('codbex-invoices:messages.deleteConfirm', { name: '$t(codbex-invoices:t.PURCHASEINVOICEITEM)' });
+			translated.yes = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.deleteTitle', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM)' });
+			translated.deleteConfirm = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.deleteConfirm', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM)' });
 		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-invoices-custom-action']).then((response) => {
@@ -120,8 +120,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEITEM'),
-						message: LocaleService.t('codbex-invoices:messages.error.unableToLF', { name: '$t(codbex-invoices:t.PURCHASEINVOICEITEM)', message: message }),
+						title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM'),
+						message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLF', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -129,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEITEM'),
-					message: LocaleService.t('codbex-invoices:messages.error.unableToCount', { name: '$t(codbex-invoices:t.PURCHASEINVOICEITEM)', message: message }),
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToCount', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -220,8 +220,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-invoices:t.PURCHASEINVOICEITEM'),
-							message: LocaleService.t('codbex-invoices:messages.error.unableToDelete', { name: '$t(codbex-invoices:t.PURCHASEINVOICEITEM)', message: message }),
+							title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM'),
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToDelete', { name: '$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM)', message: message }),
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);
@@ -245,7 +245,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PurchaseInvoice',
-				message: LocaleService.t('codbex-invoices:messages.error.unableToLoad', { message: message }),
+				message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
@@ -260,7 +260,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'UoM',
-				message: LocaleService.t('codbex-invoices:messages.error.unableToLoad', { message: message }),
+				message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
