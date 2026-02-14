@@ -18,51 +18,51 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.SalesInvoice !== undefined) {
-			filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
+			const condition = { propertyName: 'SalesInvoice', operator: 'EQ', value: entity.SalesInvoice };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Name) {
-			filter.$filter.contains.Name = entity.Name;
+			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Quantity !== undefined) {
-			filter.$filter.equals.Quantity = entity.Quantity;
+			const condition = { propertyName: 'Quantity', operator: 'EQ', value: entity.Quantity };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.UoM !== undefined) {
-			filter.$filter.equals.UoM = entity.UoM;
+			const condition = { propertyName: 'UoM', operator: 'EQ', value: entity.UoM };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Price !== undefined) {
-			filter.$filter.equals.Price = entity.Price;
+			const condition = { propertyName: 'Price', operator: 'EQ', value: entity.Price };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Net !== undefined) {
-			filter.$filter.equals.Net = entity.Net;
+			const condition = { propertyName: 'Net', operator: 'EQ', value: entity.Net };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.VATRate !== undefined) {
-			filter.$filter.equals.VATRate = entity.VATRate;
+			const condition = { propertyName: 'VATRate', operator: 'EQ', value: entity.VATRate };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.VAT !== undefined) {
-			filter.$filter.equals.VAT = entity.VAT;
+			const condition = { propertyName: 'VAT', operator: 'EQ', value: entity.VAT };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Gross !== undefined) {
-			filter.$filter.equals.Gross = entity.Gross;
+			const condition = { propertyName: 'Gross', operator: 'EQ', value: entity.Gross };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.SalesInvoiceItem.entitySearch', data: {
 			entity: entity,

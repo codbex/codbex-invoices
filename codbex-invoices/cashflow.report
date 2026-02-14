@@ -11,7 +11,9 @@
             "type": "VARCHAR",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "CashflowDate",
+            "label": "CashflowDate"
         },
         {
             "table": "Cashflow",
@@ -20,11 +22,15 @@
             "type": "DECIMAL",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "CashflowNet",
+            "label": "CashflowNet"
         }
     ],
     "security": {
         "generateDefaultRoles": "true",
         "roleRead": "codbex-invoices.Report.CASHFLOWReadOnly"
-    }
+    },
+    "tId": "Cashflow",
+    "label": "Cashflow"
 }

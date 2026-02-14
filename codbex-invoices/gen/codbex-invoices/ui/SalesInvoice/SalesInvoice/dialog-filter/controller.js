@@ -36,102 +36,119 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Number) {
-			filter.$filter.contains.Number = entity.Number;
+			const condition = { propertyName: 'Number', operator: 'LIKE', value: `%${entity.Number}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Type !== undefined) {
-			filter.$filter.equals.Type = entity.Type;
+			const condition = { propertyName: 'Type', operator: 'EQ', value: entity.Type };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Customer !== undefined) {
-			filter.$filter.equals.Customer = entity.Customer;
+			const condition = { propertyName: 'Customer', operator: 'EQ', value: entity.Customer };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DateFrom) {
-			filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
+			const condition = { propertyName: 'Date', operator: 'GE', value: entity.DateFrom };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DateTo) {
-			filter.$filter.lessThanOrEqual.Date = entity.DateTo;
+			const condition = { propertyName: 'Date', operator: 'LE', value: entity.DateTo };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DueFrom) {
-			filter.$filter.greaterThanOrEqual.Due = entity.DueFrom;
+			const condition = { propertyName: 'Due', operator: 'GE', value: entity.DueFrom };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DueTo) {
-			filter.$filter.lessThanOrEqual.Due = entity.DueTo;
+			const condition = { propertyName: 'Due', operator: 'LE', value: entity.DueTo };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Net !== undefined) {
-			filter.$filter.equals.Net = entity.Net;
+			const condition = { propertyName: 'Net', operator: 'EQ', value: entity.Net };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Currency !== undefined) {
-			filter.$filter.equals.Currency = entity.Currency;
+			const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Gross !== undefined) {
-			filter.$filter.equals.Gross = entity.Gross;
+			const condition = { propertyName: 'Gross', operator: 'EQ', value: entity.Gross };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Discount !== undefined) {
-			filter.$filter.equals.Discount = entity.Discount;
+			const condition = { propertyName: 'Discount', operator: 'EQ', value: entity.Discount };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Taxes !== undefined) {
-			filter.$filter.equals.Taxes = entity.Taxes;
+			const condition = { propertyName: 'Taxes', operator: 'EQ', value: entity.Taxes };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.VAT !== undefined) {
-			filter.$filter.equals.VAT = entity.VAT;
+			const condition = { propertyName: 'VAT', operator: 'EQ', value: entity.VAT };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Total !== undefined) {
-			filter.$filter.equals.Total = entity.Total;
+			const condition = { propertyName: 'Total', operator: 'EQ', value: entity.Total };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Paid !== undefined) {
-			filter.$filter.equals.Paid = entity.Paid;
+			const condition = { propertyName: 'Paid', operator: 'EQ', value: entity.Paid };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Conditions) {
-			filter.$filter.contains.Conditions = entity.Conditions;
+			const condition = { propertyName: 'Conditions', operator: 'LIKE', value: `%${entity.Conditions}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PaymentMethod !== undefined) {
-			filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
+			const condition = { propertyName: 'PaymentMethod', operator: 'EQ', value: entity.PaymentMethod };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.SentMethod !== undefined) {
-			filter.$filter.equals.SentMethod = entity.SentMethod;
+			const condition = { propertyName: 'SentMethod', operator: 'EQ', value: entity.SentMethod };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Status !== undefined) {
-			filter.$filter.equals.Status = entity.Status;
+			const condition = { propertyName: 'Status', operator: 'EQ', value: entity.Status };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Operator !== undefined) {
-			filter.$filter.equals.Operator = entity.Operator;
+			const condition = { propertyName: 'Operator', operator: 'EQ', value: entity.Operator };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Document) {
-			filter.$filter.contains.Document = entity.Document;
+			const condition = { propertyName: 'Document', operator: 'LIKE', value: `%${entity.Document}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Company !== undefined) {
-			filter.$filter.equals.Company = entity.Company;
+			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Name) {
-			filter.$filter.contains.Name = entity.Name;
+			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.UUID) {
-			filter.$filter.contains.UUID = entity.UUID;
+			const condition = { propertyName: 'UUID', operator: 'LIKE', value: `%${entity.UUID}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Process) {
-			filter.$filter.contains.Process = entity.Process;
+			const condition = { propertyName: 'Process', operator: 'LIKE', value: `%${entity.Process}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Reference) {
-			filter.$filter.contains.Reference = entity.Reference;
+			const condition = { propertyName: 'Reference', operator: 'LIKE', value: `%${entity.Reference}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.SalesInvoice.entitySearch', data: {
 			entity: entity,

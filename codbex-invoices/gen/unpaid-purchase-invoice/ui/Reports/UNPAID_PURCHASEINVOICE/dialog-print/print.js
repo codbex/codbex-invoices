@@ -2,7 +2,7 @@ const viewData = {
     id: 'codbex-invoices-Reports-UNPAID_PURCHASEINVOICE-print',
     label: 'Print',
     translation: {
-        key: '$projectName:defaults.print',
+        key: 'codbex-invoices:unpaid-purchase-invoice-report.defaults.print',
     },
     path: '/services/web/codbex-invoices/gen/unpaid-purchase-invoice/ui/Reports/UNPAID_PURCHASEINVOICE/dialog-print/index.html',
     perspective: 'Reports',

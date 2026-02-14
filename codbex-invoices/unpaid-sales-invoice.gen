@@ -1,8 +1,8 @@
 {
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
-  "title": "Unpaid Sales Invoice Report",
-  "navigationOrder": "1200",
+  "title": "Unpaid Sales Invoices",
+  "navigationOrder": "400",
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "unpaid-sales-invoice.report",

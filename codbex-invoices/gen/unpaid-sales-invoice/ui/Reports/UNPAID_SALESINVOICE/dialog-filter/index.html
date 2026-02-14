@@ -15,7 +15,7 @@
     <body class="bk-vbox">
         <bk-scrollbar class="bk-full-height">
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
-                <bk-form-group label="{{ 'codbex-invoices:defaults.formGrpFilter' | t:{'name':'$t(codbex-invoices:t.${dataName})'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                <bk-form-group label="{{ 'codbex-invoices:unpaid-sales-invoice-report.defaults.formGrpFilter' | t:{'name':'$t(codbex-invoices:unpaid-sales-invoice-report.t.SalesInvoice)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                 </bk-form-group>
             </bk-fieldset>
         </bk-scrollbar>
@@ -23,13 +23,13 @@
 		<bk-bar bar-design="footer" ng-show="action !== 'select'" compact="true">
 			<bk-bar-right>
 				<bk-bar-element>
-					<bk-button label="{{ 'codbex-invoices:defaults.filter' | t }}" state="emphasized" ng-click="filter()"></bk-button>
+					<bk-button label="{{ 'codbex-invoices:unpaid-sales-invoice-report.defaults.filter' | t }}" state="emphasized" ng-click="filter()"></bk-button>
 				</bk-bar-element>
 				<bk-bar-element>
-					<bk-button label="{{ 'codbex-invoices:defaults.reset' | t }}" ng-click="resetFilter()"></bk-button>
+					<bk-button label="{{ 'codbex-invoices:unpaid-sales-invoice-report.defaults.reset' | t }}" ng-click="resetFilter()"></bk-button>
 				</bk-bar-element>
 				<bk-bar-element>
-					<bk-button label="{{ 'codbex-invoices:defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
+					<bk-button label="{{ 'codbex-invoices:unpaid-sales-invoice-report.defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
 				</bk-bar-element>
 			</bk-bar-right>
 		</bk-bar>

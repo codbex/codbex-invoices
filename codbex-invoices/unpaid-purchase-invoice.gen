@@ -1,8 +1,8 @@
 {
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
-  "title": "Unpaid Purchase Invoice",
-  "navigationOrder": "1300",
+  "title": "Unpaid purchase invoices",
+  "navigationOrder": "300",
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "unpaid-purchase-invoice.report",

@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(["EntityServiceProvider", (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts';
 	}])
 	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -116,14 +116,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		}});
 
-		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts';
-		$scope.serviceCustomer = '/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts';
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts';
-		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts';
-		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts';
-		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts';
-		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
+		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeController.ts';
+		$scope.serviceCustomer = '/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts';
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
+		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts';
+		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts';
+		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusController.ts';
+		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
 
 		//-----------------Events-------------------//
 
@@ -270,7 +270,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshType = () => {
 			$scope.optionsType = [];
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeService.ts').then((response) => {
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceTypeController.ts').then((response) => {
 				$scope.optionsType = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -287,7 +287,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshCustomer = () => {
 			$scope.optionsCustomer = [];
-			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts').then((response) => {
+			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts').then((response) => {
 				$scope.optionsCustomer = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -304,7 +304,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshCurrency = () => {
 			$scope.optionsCurrency = [];
-			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 				$scope.optionsCurrency = response.data.map(e => ({
 					value: e.Id,
 					text: e.Code
@@ -321,7 +321,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshPaymentMethod = () => {
 			$scope.optionsPaymentMethod = [];
-			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts').then((response) => {
+			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts').then((response) => {
 				$scope.optionsPaymentMethod = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -338,7 +338,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshSentMethod = () => {
 			$scope.optionsSentMethod = [];
-			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts').then((response) => {
+			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts').then((response) => {
 				$scope.optionsSentMethod = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -355,7 +355,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshStatus = () => {
 			$scope.optionsStatus = [];
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusService.ts').then((response) => {
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/SalesInvoiceStatusController.ts').then((response) => {
 				$scope.optionsStatus = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -372,7 +372,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshOperator = () => {
 			$scope.optionsOperator = [];
-			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
 				$scope.optionsOperator = response.data.map(e => ({
 					value: e.Id,
 					text: e.FirstName
@@ -389,7 +389,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 		$scope.refreshCompany = () => {
 			$scope.optionsCompany = [];
-			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
 				$scope.optionsCompany = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name

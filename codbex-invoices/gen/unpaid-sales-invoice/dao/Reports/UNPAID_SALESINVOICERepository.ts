@@ -1,4 +1,4 @@
-import { Query, NamedQueryParameter } from "sdk/db";
+import { Query, NamedQueryParameter } from "@aerokit/sdk/db";
 
 export interface UNPAID_SALESINVOICE {
     readonly 'Number': string;

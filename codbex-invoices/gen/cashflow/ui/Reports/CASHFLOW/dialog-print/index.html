@@ -15,19 +15,19 @@
 
     <body>
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>{{ 'codbex-invoices:defaults.reportTitle' | t:{'name':'CASHFLOW'} }}</bk-toolbar-title>
+			<bk-toolbar-title>{{ 'codbex-invoices:cashflow-report.defaults.reportTitle' | t:{'name':'$t(codbex-invoices:cashflow-report.t.Cashflow)'}:'Cashflow' }}</bk-toolbar-title>
 		</bk-toolbar>
         <bk-scrollbar ng-hide="data == null">
             <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead bk-table-header sticky="true">
                     <tr bk-table-row>
-						<th bk-table-header-cell>CashflowDate</th>
-						<th bk-table-header-cell>CashflowNet</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.CashflowDate' | t:'CashflowDate' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.CashflowNet' | t:'CashflowNet' }}</th>
                     </tr>
                 </thead>
                 <tbody bk-table-body>
                     <tr bk-table-row hoverable="true" ng-show="data.length == 0">
-                        <td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
+                        <td bk-table-cell no-data="true">{{'codbex-invoices:cashflow-report.messages.noData' | t}}</td>
                     </tr>
                     <tr bk-table-row hoverable="true" ng-repeat="next in data">
 						<td bk-table-cell hoverable="true" activable="true">{{next['CashflowDate']}}</td>

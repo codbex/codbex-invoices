@@ -15,26 +15,26 @@
 
     <body>
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>{{ 'codbex-invoices:defaults.reportTitle' | t:{'name':'UNPAID_PURCHASEINVOICE'} }}</bk-toolbar-title>
+			<bk-toolbar-title>{{ 'codbex-invoices:unpaid-purchase-invoice-report.defaults.reportTitle' | t:{'name':'$t(codbex-invoices:unpaid-purchase-invoice-report.t.PurchaseInvoice)'}:'PurchaseInvoice' }}</bk-toolbar-title>
 		</bk-toolbar>
         <bk-scrollbar ng-hide="data == null">
             <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead bk-table-header sticky="true">
                     <tr bk-table-row>
-						<th bk-table-header-cell>Number</th>
-						<th bk-table-header-cell>Original Number</th>
-						<th bk-table-header-cell>Type</th>
-						<th bk-table-header-cell>Date</th>
-						<th bk-table-header-cell>Due</th>
-						<th bk-table-header-cell>Total</th>
-						<th bk-table-header-cell>Paid</th>
-						<th bk-table-header-cell>Status</th>
-						<th bk-table-header-cell>Name</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Number' | t:'Number' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.OriginalNumber' | t:'Original Number' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Type' | t:'Type' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Date' | t:'Date' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Due' | t:'Due' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Total' | t:'Total' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Paid' | t:'Paid' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Status' | t:'Status' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:unpaid-purchase-invoice-report.t.Name' | t:'Name' }}</th>
                     </tr>
                 </thead>
                 <tbody bk-table-body>
                     <tr bk-table-row hoverable="true" ng-show="data.length == 0">
-                        <td bk-table-cell no-data="true">{{'codbex-invoices:messages.noData' | t}}</td>
+                        <td bk-table-cell no-data="true">{{'codbex-invoices:unpaid-purchase-invoice-report.messages.noData' | t}}</td>
                     </tr>
                     <tr bk-table-row hoverable="true" ng-repeat="next in data">
 						<td bk-table-cell hoverable="true" activable="true">{{next['Number']}}</td>

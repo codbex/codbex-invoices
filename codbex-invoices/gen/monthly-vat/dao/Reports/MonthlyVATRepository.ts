@@ -1,4 +1,4 @@
-import { Query, NamedQueryParameter } from "sdk/db";
+import { Query, NamedQueryParameter } from "@aerokit/sdk/db";
 
 export interface MonthlyVAT {
     readonly 'Date': Date;

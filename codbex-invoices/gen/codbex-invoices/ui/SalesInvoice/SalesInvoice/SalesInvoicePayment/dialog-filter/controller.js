@@ -18,33 +18,27 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.SalesInvoice !== undefined) {
-			filter.$filter.equals.SalesInvoice = entity.SalesInvoice;
+			const condition = { propertyName: 'SalesInvoice', operator: 'EQ', value: entity.SalesInvoice };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CustomerPayment !== undefined) {
-			filter.$filter.equals.CustomerPayment = entity.CustomerPayment;
+			const condition = { propertyName: 'CustomerPayment', operator: 'EQ', value: entity.CustomerPayment };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Amount !== undefined) {
-			filter.$filter.equals.Amount = entity.Amount;
+			const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.SalesInvoicePayment.entitySearch', data: {
 			entity: entity,

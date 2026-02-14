@@ -1,8 +1,8 @@
 {
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
-  "title": "Monthly VAT Report",
-  "navigationOrder": "1400",
+  "title": "Monthly VAT",
+  "navigationOrder": "200",
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "monthly-vat.report",

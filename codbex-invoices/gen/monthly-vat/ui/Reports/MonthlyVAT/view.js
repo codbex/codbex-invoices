@@ -7,9 +7,9 @@ const viewData = {
     id: 'MonthlyVATReport',
     label: 'MonthlyVAT Report',
     translation: {
-        key: 'codbex-invoices:reportTitle',
+        key: 'codbex-invoices:monthly-vat-report.defaults.reportTitle',
         options: {
-            name: '$t(codbex-invoices:t.$dataName)',
+            name: '$t(codbex-invoices:monthly-vat-report.t.MonthlyVAT)',
         }
     },
     region: 'center',

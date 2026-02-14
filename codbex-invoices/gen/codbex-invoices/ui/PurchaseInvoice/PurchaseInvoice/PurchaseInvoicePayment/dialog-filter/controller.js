@@ -18,33 +18,27 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PurchaseInvoice !== undefined) {
-			filter.$filter.equals.PurchaseInvoice = entity.PurchaseInvoice;
+			const condition = { propertyName: 'PurchaseInvoice', operator: 'EQ', value: entity.PurchaseInvoice };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.SupplierPayment !== undefined) {
-			filter.$filter.equals.SupplierPayment = entity.SupplierPayment;
+			const condition = { propertyName: 'SupplierPayment', operator: 'EQ', value: entity.SupplierPayment };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Amount !== undefined) {
-			filter.$filter.equals.Amount = entity.Amount;
+			const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoicePayment.entitySearch', data: {
 			entity: entity,

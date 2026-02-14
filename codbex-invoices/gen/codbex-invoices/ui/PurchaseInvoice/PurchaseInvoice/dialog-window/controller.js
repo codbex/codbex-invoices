@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -91,11 +91,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts';
+		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts';
 		
 		$scope.optionsType = [];
 		
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeService.ts').then((response) => {
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts').then((response) => {
 			$scope.optionsType = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -109,11 +109,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceSupplier = '/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts';
+		$scope.serviceSupplier = '/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts';
 		
 		$scope.optionsSupplier = [];
 		
-		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts').then((response) => {
+		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts').then((response) => {
 			$scope.optionsSupplier = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -127,11 +127,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts';
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
 		
 		$scope.optionsCurrency = [];
 		
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
 				value: e.Id,
 				text: e.Code
@@ -145,11 +145,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts';
+		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts';
 		
 		$scope.optionsPaymentMethod = [];
 		
-		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts').then((response) => {
+		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts').then((response) => {
 			$scope.optionsPaymentMethod = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -163,11 +163,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts';
+		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts';
 		
 		$scope.optionsSentMethod = [];
 		
-		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodService.ts').then((response) => {
+		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts').then((response) => {
 			$scope.optionsSentMethod = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -181,11 +181,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts';
+		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts';
 		
 		$scope.optionsStatus = [];
 		
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusService.ts').then((response) => {
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts').then((response) => {
 			$scope.optionsStatus = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -199,11 +199,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
+		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
 		
 		$scope.optionsOperator = [];
 		
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
 			$scope.optionsOperator = response.data.map(e => ({
 				value: e.Id,
 				text: e.FirstName
@@ -217,11 +217,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
 		
 		$scope.optionsCompany = [];
 		
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
 			$scope.optionsCompany = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name

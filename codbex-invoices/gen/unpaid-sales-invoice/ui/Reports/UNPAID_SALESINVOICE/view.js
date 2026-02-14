@@ -5,11 +5,11 @@
  */
 const viewData = {
     id: 'UNPAID_SALESINVOICEReport',
-    label: 'UNPAID_SALESINVOICE Report',
+    label: 'SalesInvoice Report',
     translation: {
-        key: 'codbex-invoices:reportTitle',
+        key: 'codbex-invoices:unpaid-sales-invoice-report.defaults.reportTitle',
         options: {
-            name: '$t(codbex-invoices:t.$dataName)',
+            name: '$t(codbex-invoices:unpaid-sales-invoice-report.t.SalesInvoice)',
         }
     },
     region: 'center',
