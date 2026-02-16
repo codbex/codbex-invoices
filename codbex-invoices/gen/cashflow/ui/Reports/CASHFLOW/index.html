@@ -24,8 +24,8 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.CashflowDate' | t:'CashflowDate' }}</th>
-						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.CashflowNet' | t:'CashflowNet' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.NetCashflow' | t:'Net Cashflow' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:cashflow-report.t.Date' | t:'Date' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -35,8 +35,8 @@
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index"
 						selected="next === selectedEntity" ng-click="selectEntity(next)">
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['CashflowDate']}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['CashflowNet']}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Net Cashflow']}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Date']}}</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>

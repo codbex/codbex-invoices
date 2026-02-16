@@ -1,5 +1,5 @@
 {
-  "cashflow-report": {
+  "monthlyvat-report": {
     "aria": {
       "tableRowMenu": "Table Row Menu",
       "tableRowMenuBtn": "Table Row Menu Button"
@@ -27,9 +27,11 @@
     },
     "extName": "{{content}}",
     "t": {
-      "Cashflow": "Cashflow",
-      "NetCashflow": "Net Cashflow",
-      "Date": "Date"
+      "MonthlyVAT": "MonthlyVAT",
+      "Date": "Date",
+      "SalesVAT": "SalesVAT",
+      "PurchaseVAT": "PurchaseVAT",
+      "PayableVAT": "PayableVAT"
     }
   }
 }

@@ -5,6 +5,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	if (Object.keys(params).length) {
 		$scope.action = 'select';
 
+		if (params.entity['Date']) {
+			params.entity['Date'] = new Date(params.entity['Date']);
+		}
 		$scope.entity = params.entity;
 	}
 });

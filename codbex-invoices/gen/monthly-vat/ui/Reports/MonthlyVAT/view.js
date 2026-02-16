@@ -5,7 +5,7 @@
  */
 const viewData = {
     id: 'MonthlyVATReport',
-    label: 'MonthlyVAT Report',
+    label: 'Monthly VAT Report',
     translation: {
         key: 'codbex-invoices:monthly-vat-report.defaults.reportTitle',
         options: {

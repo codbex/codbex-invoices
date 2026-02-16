@@ -1,7 +1,7 @@
 {
-    "query": "SELECT MonthlyVAT.DATE as \"Date\", MonthlyVAT.SALES_VAT as \"SalesVAT\", MonthlyVAT.PURCHASE_VAT as \"PurchaseVAT\", MonthlyVAT.PAYABLE_VAT as \"PayableVAT\"\nFROM MONTHLY_VAT as MonthlyVAT",
+    "name": "MonthlyVAT",
     "alias": "MonthlyVAT",
-    "table": "MONTHLY_VAT",
+    "table": "CODBEX_SALESINVOICE",
     "columns": [
         {
             "table": "MonthlyVAT",
@@ -10,37 +10,48 @@
             "type": "DATE",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": true,
+            "tId": "Date",
+            "label": "Date"
         },
         {
             "table": "MonthlyVAT",
             "alias": "SalesVAT",
             "name": "SALES_VAT",
             "type": "DECIMAL",
-            "aggregate": "NONE",
+            "aggregate": "SUM",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "SalesVAT",
+            "label": "SalesVAT"
         },
         {
             "table": "MonthlyVAT",
             "alias": "PurchaseVAT",
             "name": "PURCHASE_VAT",
             "type": "DECIMAL",
-            "aggregate": "NONE",
+            "aggregate": "SUM",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "PurchaseVAT",
+            "label": "PurchaseVAT"
         },
         {
             "table": "MonthlyVAT",
             "alias": "PayableVAT",
             "name": "PAYABLE_VAT",
             "type": "DECIMAL",
-            "aggregate": "NONE",
+            "aggregate": "SUM",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "PayableVAT",
+            "label": "PayableVAT"
         }
     ],
-    "name": "MonthlyVAT",
+    "tId": "MonthlyVAT",
+    "label": "Monthly VAT",
+    "query": "SELECT\n  CAST(PARSEDATETIME(FORMATDATETIME(t.invoice_date, 'yyyy-MM-01'), 'yyyy-MM-dd') AS DATE) AS \"DATE\",\n  SUM(t.sales_vat) AS \"SALES_VAT\",\n  SUM(t.purchase_vat) AS \"PURCHASE_VAT\",\n  SUM(t.sales_vat) - SUM(t.purchase_vat) AS \"PAYABLE_VAT\"\nFROM (\n  SELECT\n    SALESINVOICE_DATE AS invoice_date,\n    COALESCE(SALESINVOICE_VAT, 0) AS sales_vat,\n    CAST(0 AS DECIMAL(18,2)) AS purchase_vat\n  FROM CODBEX_SALESINVOICE\n\n  UNION ALL\n\n  SELECT\n    PURCHASEINVOICE_DATE AS invoice_date,\n    CAST(0 AS DECIMAL(18,2)) AS sales_vat,\n    COALESCE(PURCHASEINVOICE_VAT, 0) AS purchase_vat\n  FROM CODBEX_PURCHASEINVOICE\n) t\nGROUP BY CAST(PARSEDATETIME(FORMATDATETIME(t.invoice_date, 'yyyy-MM-01'), 'yyyy-MM-dd') AS DATE)\nORDER BY \"DATE\" DESC",
+    "conditions": [],
     "security": {
         "generateDefaultRoles": "true",
         "roleRead": "codbex-invoices.Report.MonthlyVATReadOnly"

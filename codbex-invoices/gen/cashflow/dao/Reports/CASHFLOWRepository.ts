@@ -1,8 +1,8 @@
 import { Query, NamedQueryParameter } from "@aerokit/sdk/db";
 
 export interface CASHFLOW {
-    readonly 'CashflowDate': string;
-    readonly 'CashflowNet': number;
+    readonly 'Net Cashflow': number;
+    readonly 'Date': Date;
 }
 
 export interface CASHFLOWFilter {
@@ -23,8 +23,24 @@ export class CASHFLOWRepository {
 
     public findAll(filter: CASHFLOWPaginatedFilter): CASHFLOW[] {
         const sql = `
-            SELECT Cashflow.CASHFLOW_DATE as "CashflowDate", Cashflow.CASHFLOW_NET as "CashflowNet"
-            FROM CASHFLOW as Cashflow
+            SELECT
+              SUM(t.TRANSACTION_AMOUNT) AS "Net Cashflow",
+              DATE_TRUNC('day', t.TRANSACTION_DATE) AS "Date"
+            FROM (
+              SELECT
+                SALESINVOICE_DATE AS TRANSACTION_DATE,
+                SALESINVOICE_NET  AS TRANSACTION_AMOUNT
+              FROM CODBEX_SALESINVOICE
+            
+              UNION ALL
+            
+              SELECT
+                PURCHASEINVOICE_DATE AS TRANSACTION_DATE,
+                -PURCHASEINVOICE_NET AS TRANSACTION_AMOUNT
+              FROM CODBEX_PURCHASEINVOICE
+            ) t
+            GROUP BY DATE_TRUNC('day', t.TRANSACTION_DATE)
+            ORDER BY "Date" DESC
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
         `;
@@ -37,8 +53,24 @@ export class CASHFLOWRepository {
     public count(filter: CASHFLOWFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT Cashflow.CASHFLOW_DATE as "CashflowDate", Cashflow.CASHFLOW_NET as "CashflowNet"
-                FROM CASHFLOW as Cashflow
+                SELECT
+                  SUM(t.TRANSACTION_AMOUNT) AS "Net Cashflow",
+                  DATE_TRUNC('day', t.TRANSACTION_DATE) AS "Date"
+                FROM (
+                  SELECT
+                    SALESINVOICE_DATE AS TRANSACTION_DATE,
+                    SALESINVOICE_NET  AS TRANSACTION_AMOUNT
+                  FROM CODBEX_SALESINVOICE
+                
+                  UNION ALL
+                
+                  SELECT
+                    PURCHASEINVOICE_DATE AS TRANSACTION_DATE,
+                    -PURCHASEINVOICE_NET AS TRANSACTION_AMOUNT
+                  FROM CODBEX_PURCHASEINVOICE
+                ) t
+                GROUP BY DATE_TRUNC('day', t.TRANSACTION_DATE)
+                ORDER BY "Date" DESC
             )
         `;
 

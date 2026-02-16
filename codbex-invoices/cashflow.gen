@@ -1,6 +1,6 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
+  "brandUrl": "https://codbex.com",
   "title": "Cashflow Report",
   "navigationOrder": "100",
   "projectName": "codbex-invoices",

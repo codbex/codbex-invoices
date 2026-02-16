@@ -22,6 +22,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
                 request = EntityService.list();
             }
             request.then((response) => {
+                response.data.forEach(e => {
+                    if (e['Date']) {
+                        e['Date'] = new Date(e['Date']);
+                    }
+                });
+
                 $scope.data = response.data;
                 setTimeout(() => {
                     window.print();

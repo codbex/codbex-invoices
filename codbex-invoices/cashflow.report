@@ -1,32 +1,33 @@
 {
-    "query": "SELECT Cashflow.CASHFLOW_DATE as \"CashflowDate\", Cashflow.CASHFLOW_NET as \"CashflowNet\"\nFROM CASHFLOW as Cashflow",
     "name": "CASHFLOW",
-    "table": "CASHFLOW",
     "alias": "Cashflow",
+    "table": "CODBEX_SALESINVOICE",
     "columns": [
         {
             "table": "Cashflow",
-            "alias": "CashflowDate",
-            "name": "CASHFLOW_DATE",
-            "type": "VARCHAR",
-            "aggregate": "NONE",
+            "alias": "Net Cashflow",
+            "name": "CASHFLOW_NET",
+            "type": "DECIMAL",
+            "aggregate": "SUM",
             "select": true,
             "grouping": false,
-            "tId": "CashflowDate",
-            "label": "CashflowDate"
+            "tId": "NetCashflow",
+            "label": "Net Cashflow"
         },
         {
             "table": "Cashflow",
-            "alias": "CashflowNet",
-            "name": "CASHFLOW_NET",
-            "type": "DECIMAL",
+            "alias": "Date",
+            "name": "CASHFLOW_DATE",
+            "type": "DATE",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false,
-            "tId": "CashflowNet",
-            "label": "CashflowNet"
+            "grouping": true,
+            "tId": "Date",
+            "label": "Date"
         }
     ],
+    "query": "SELECT\n  SUM(t.TRANSACTION_AMOUNT) AS \"Net Cashflow\",\n  DATE_TRUNC('day', t.TRANSACTION_DATE) AS \"Date\"\nFROM (\n  SELECT\n    SALESINVOICE_DATE AS TRANSACTION_DATE,\n    SALESINVOICE_NET  AS TRANSACTION_AMOUNT\n  FROM CODBEX_SALESINVOICE\n\n  UNION ALL\n\n  SELECT\n    PURCHASEINVOICE_DATE AS TRANSACTION_DATE,\n    -PURCHASEINVOICE_NET AS TRANSACTION_AMOUNT\n  FROM CODBEX_PURCHASEINVOICE\n) t\nGROUP BY DATE_TRUNC('day', t.TRANSACTION_DATE)\nORDER BY \"Date\" DESC",
+    "conditions": [],
     "security": {
         "generateDefaultRoles": "true",
         "roleRead": "codbex-invoices.Report.CASHFLOWReadOnly"

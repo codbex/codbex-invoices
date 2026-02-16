@@ -65,6 +65,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					request = EntityService.list(offset, limit);
 				}
 				request.then((response) => {
+					response.data.forEach(e => {
+					});
+
 					$scope.data = response.data;
 				}, (error) => {
 					const message = error.data ? error.data.message : '';

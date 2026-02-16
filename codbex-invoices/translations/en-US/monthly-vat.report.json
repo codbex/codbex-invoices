@@ -27,7 +27,7 @@
     },
     "extName": "{{content}}",
     "t": {
-      "MonthlyVAT": "MonthlyVAT",
+      "MonthlyVAT": "Monthly VAT",
       "Date": "Date",
       "SalesVAT": "SalesVAT",
       "PurchaseVAT": "PurchaseVAT",
