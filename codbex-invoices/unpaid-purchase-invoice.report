@@ -10,7 +10,9 @@
             "type": "CHARACTER VARYING",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Number",
+            "label": "Number"
         },
         {
             "table": "PurchaseInvoice",
@@ -19,7 +21,9 @@
             "type": "CHARACTER VARYING",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "OriginalNumber",
+            "label": "Original Number"
         },
         {
             "table": "PurchaseInvoice",
@@ -28,7 +32,9 @@
             "type": "INTEGER",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Type",
+            "label": "Type"
         },
         {
             "table": "PurchaseInvoice",
@@ -37,7 +43,9 @@
             "type": "DATE",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Date",
+            "label": "Date"
         },
         {
             "table": "PurchaseInvoice",
@@ -46,7 +54,9 @@
             "type": "DATE",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Due",
+            "label": "Due"
         },
         {
             "table": "PurchaseInvoice",
@@ -55,7 +65,9 @@
             "type": "DECIMAL",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Total",
+            "label": "Total"
         },
         {
             "table": "PurchaseInvoice",
@@ -64,7 +76,9 @@
             "type": "DECIMAL",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Paid",
+            "label": "Paid"
         },
         {
             "table": "PurchaseInvoice",
@@ -73,7 +87,9 @@
             "type": "INTEGER",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Status",
+            "label": "Status"
         },
         {
             "table": "PurchaseInvoice",
@@ -82,7 +98,9 @@
             "type": "CHARACTER VARYING",
             "aggregate": "NONE",
             "select": true,
-            "grouping": false
+            "grouping": false,
+            "tId": "Name",
+            "label": "Name"
         }
     ],
     "query": "SELECT PurchaseInvoice.PURCHASEINVOICE_NUMBER as \"Number\", PurchaseInvoice.PURCHASEINVOICE_ORIGINALNUMBER as \"Original Number\", PurchaseInvoice.PURCHASEINVOICE_PURCHASEINVOICETYPE as \"Type\", PurchaseInvoice.PURCHASEINVOICE_DATE as \"Date\", PurchaseInvoice.PURCHASEINVOICE_DUE as \"Due\", PurchaseInvoice.PURCHASEINVOICE_TOTAL as \"Total\", PurchaseInvoice.PURCHASEINVOICE_PAID as \"Paid\", PurchaseInvoice.PURCHASEINVOICE_STATUS as \"Status\", PurchaseInvoice.PURCHASEINVOICE_NAME as \"Name\"\nFROM CODBEX_PURCHASEINVOICE as PurchaseInvoice\nWHERE PurchaseInvoice.PURCHASEINVOICE_TOTAL > PurchaseInvoice.PURCHASEINVOICE_PAID",
@@ -96,5 +114,7 @@
     "security": {
         "generateDefaultRoles": "true",
         "roleRead": "codbex-invoices.Report.UNPAID_PURCHASEINVOICEReadOnly"
-    }
+    },
+    "tId": "PurchaseInvoice",
+    "label": "PurchaseInvoice"
 }
