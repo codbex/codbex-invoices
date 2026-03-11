@@ -224,9 +224,12 @@ export class PurchaseInvoiceItemRepository {
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
+        (entity as PurchaseInvoiceItemEntity).VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
+        if (entity.VATRate === undefined || entity.VATRate === null) {
+            (entity as PurchaseInvoiceItemEntity).VATRate = 20;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -245,7 +248,7 @@ export class PurchaseInvoiceItemRepository {
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Net = entity["Quantity"] * entity["Price"];
         // @ts-ignore
-        (entity as PurchaseInvoiceItemEntity).VAT = entity["Net"] * entity["VATRate"] / 100;
+        (entity as PurchaseInvoiceItemEntity).VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
         // @ts-ignore
         (entity as PurchaseInvoiceItemEntity).Gross = entity["Net"] + entity["VAT"];
         const previousEntity = this.findById(entity.Id);

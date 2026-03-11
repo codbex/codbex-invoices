@@ -13,17 +13,17 @@ export class SalesInvoiceItemRepository extends Repository<SalesInvoiceItemEntit
 
     public override create(entity: SalesInvoiceItemEntity): string | number {
         entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = entity["Net"] * entity["VATRate"] / 100;
+        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
         entity.Gross = entity["Net"] + entity["VAT"];
         return super.create(entity);
     }
 
     public override upsert(entity: SalesInvoiceItemEntity): string | number {
         entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = entity["Net"] * entity["VATRate"] / 100;
+        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
         entity.Gross = entity["Net"] + entity["VAT"];
         entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = entity["Net"] * entity["VATRate"] / 100;
+        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
         entity.Gross = entity["Net"] + entity["VAT"];
         return super.upsert(entity);
     }

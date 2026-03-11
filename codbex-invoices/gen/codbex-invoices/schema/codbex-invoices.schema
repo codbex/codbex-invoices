@@ -47,6 +47,7 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
+                        "defaultValue": "20",
                         "nullable": true,
                         "name": "SALESINVOICEITEM_VATRATE"
                     },
@@ -79,12 +80,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
+                        "unique": true,
                         "name": "SALESINVOICE_NUMBER"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "SALESINVOICE_TYPE"
                     },
                     {
@@ -104,7 +104,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "SALESINVOICE_NET"
                     },
                     {
@@ -116,7 +115,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "SALESINVOICE_GROSS"
                     },
                     {
@@ -125,7 +123,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "SALESINVOICE_DISCOUNT"
                     },
                     {
@@ -134,7 +131,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "SALESINVOICE_TAXES"
                     },
                     {
@@ -142,7 +138,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "SALESINVOICE_VAT"
                     },
                     {
@@ -151,7 +146,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "SALESINVOICE_TOTAL"
                     },
                     {
@@ -160,7 +154,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "SALESINVOICE_PAID"
                     },
                     {
@@ -189,19 +182,16 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "SALESINVOICE_DOCUMENT"
+                        "length": 1000,
+                        "name": "SALESINVOICE_DOCUMENTLINK"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "SALESINVOICE_COMPANY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
-                        "nullable": true,
                         "name": "SALESINVOICE_NAME"
                     },
                     {
@@ -243,12 +233,10 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_ORIGINALNUMBER"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_PURCHASEINVOICETYPE"
                     },
                     {
@@ -268,7 +256,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_NET"
                     },
                     {
@@ -280,7 +267,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_GROSS"
                     },
                     {
@@ -289,7 +275,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_DISCOUNT"
                     },
                     {
@@ -298,7 +283,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_TAXES"
                     },
                     {
@@ -306,7 +290,6 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_VAT"
                     },
                     {
@@ -315,7 +298,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_TOTAL"
                     },
                     {
@@ -324,7 +306,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "0",
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_PAID"
                     },
                     {
@@ -353,9 +334,8 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_DOCUMENT"
+                        "length": 1000,
+                        "name": "PURCHASEINVOICE_DOCUMENTLINK"
                     },
                     {
                         "type": "INTEGER",
@@ -365,13 +345,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 200,
-                        "nullable": true,
                         "name": "PURCHASEINVOICE_NAME"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 36,
-                        "nullable": true,
                         "unique": true,
                         "name": "PURCHASEINVOICE_UUID"
                     },
@@ -437,6 +415,7 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
+                        "defaultValue": "20",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_VATRATE"
                     },
@@ -472,7 +451,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "SALESINVOICESTATUS_NAME"
                     }
                 ]
@@ -491,7 +469,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "PURCHASEINVOICESTATUS_NAME"
                     }
                 ]
@@ -570,7 +547,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "SALESINVOICETYPE_NAME"
                     },
                     {
@@ -616,245 +592,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "PURCHASEINVOICETYPE_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "name": "PURCHASEINVOICETYPE_DIRECTION"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTMETHOD",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTMETHOD_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PAYMENTMETHOD_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_SENTMETHOD",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SENTMETHOD_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SENTMETHOD_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_CUSTOMERPAYMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_ID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_CUSTOMER"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_DATE"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_VALOR"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 34,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COMPANYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 34,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COUNTERPARTYNAME"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 16,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_AMOUNT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_CURRENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_REASON"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COMPANY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "nullable": true,
-                        "unique": true,
-                        "name": "CUSTOMERPAYMENT_UUID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_REFERENCE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_SUPPLIERPAYMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_ID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_SUPPLIER"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_DATE"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_VALOR"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 34,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COMPANYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 34,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COUNTERPARTYNAME"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 16,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_AMOUNT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_CURRENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_REASON"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COMPANY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "nullable": true,
-                        "unique": true,
-                        "name": "SUPPLIERPAYMENT_UUID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_REFERENCE"
                     }
                 ]
             },

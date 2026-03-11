@@ -86,6 +86,35 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.servicePurchaseInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts';
 		$scope.serviceSupplierPayment = '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts';
 
+		$scope.$watch('entity.PurchaseInvoice', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				$http.get($scope.servicePurchaseInvoice + '/' + newValue).then((response) => {
+					let valueFrom = response.data.Supplier;
+					$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts/search', {
+						conditions: [
+							{ propertyName: 'Supplier', operator: 'EQ', value: valueFrom }
+						]
+					}).then((response) => {
+						$scope.optionsSupplierPayment = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						if ($scope.action !== 'select' && newValue !== oldValue) {
+							if ($scope.optionsSupplierPayment.length == 1) {
+								$scope.entity.SupplierPayment = $scope.optionsSupplierPayment[0].value;
+							} else {
+								$scope.entity.SupplierPayment = undefined;
+							}
+						}
+					}, (error) => {
+						console.error(error);
+					});
+				}, (error) => {
+					console.error(error);
+				});
+			}
+		});
+
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({
 				title: description,

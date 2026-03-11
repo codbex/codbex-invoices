@@ -166,11 +166,17 @@ class PurchaseInvoiceController {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Number === null || entity.Number === undefined) {
+            throw new ValidationError(`The 'Number' property is required, provide a valid value`);
+        }
         if (entity.Number?.length > 20) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }
         if (entity.OriginalNumber?.length > 20) {
             throw new ValidationError(`The 'OriginalNumber' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.Type === null || entity.Type === undefined) {
+            throw new ValidationError(`The 'Type' property is required, provide a valid value`);
         }
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);
@@ -193,14 +199,20 @@ class PurchaseInvoiceController {
         if (entity.Operator === null || entity.Operator === undefined) {
             throw new ValidationError(`The 'Operator' property is required, provide a valid value`);
         }
-        if (entity.Document?.length > 200) {
-            throw new ValidationError(`The 'Document' exceeds the maximum length of [200] characters`);
+        if (entity.DocumentLink?.length > 1000) {
+            throw new ValidationError(`The 'DocumentLink' exceeds the maximum length of [1000] characters`);
         }
         if (entity.Company === null || entity.Company === undefined) {
             throw new ValidationError(`The 'Company' property is required, provide a valid value`);
         }
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
         if (entity.Name?.length > 200) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.UUID === null || entity.UUID === undefined) {
+            throw new ValidationError(`The 'UUID' property is required, provide a valid value`);
         }
         if (entity.UUID?.length > 36) {
             throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);

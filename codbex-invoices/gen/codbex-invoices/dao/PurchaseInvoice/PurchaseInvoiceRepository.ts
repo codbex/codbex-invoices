@@ -9,52 +9,52 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 export interface PurchaseInvoiceEntity {
     readonly Id: number;
     Number?: string;
-    OriginalNumber?: string;
-    Type?: number;
+    OriginalNumber: string;
+    Type: number;
     Date: Date;
     Due: Date;
     Supplier: number;
-    Net?: number;
+    Net: number;
     Currency: number;
-    Gross?: number;
-    Discount?: number;
-    Taxes?: number;
-    VAT?: number;
-    Total?: number;
-    Paid?: number;
+    Gross: number;
+    Discount: number;
+    Taxes: number;
+    VAT: number;
+    Total: number;
+    Paid: number;
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod?: number;
     Status: number;
     Operator: number;
-    Document?: string;
+    DocumentLink: string;
     Company?: number;
-    Name?: string;
-    UUID?: string;
+    Name: string;
+    UUID: string;
     Process?: string;
     Reference?: string;
 }
 
 export interface PurchaseInvoiceCreateEntity {
-    readonly OriginalNumber?: string;
-    readonly Type?: number;
+    readonly OriginalNumber: string;
+    readonly Type: number;
     readonly Date: Date;
     readonly Due: Date;
     readonly Supplier: number;
-    readonly Net?: number;
+    readonly Net: number;
     readonly Currency: number;
-    readonly Gross?: number;
-    readonly Discount?: number;
-    readonly Taxes?: number;
-    readonly VAT?: number;
-    readonly Total?: number;
-    readonly Paid?: number;
+    readonly Gross: number;
+    readonly Discount: number;
+    readonly Taxes: number;
+    readonly VAT: number;
+    readonly Total: number;
+    readonly Paid: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
     readonly Status: number;
     readonly Operator: number;
-    readonly Document?: string;
+    readonly DocumentLink: string;
     readonly Company?: number;
     readonly Reference?: string;
 }
@@ -86,7 +86,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
-            Document?: string | string[];
+            DocumentLink?: string | string[];
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
@@ -114,7 +114,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
-            Document?: string | string[];
+            DocumentLink?: string | string[];
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
@@ -142,7 +142,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -170,7 +170,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -198,7 +198,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -226,7 +226,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -254,7 +254,7 @@ export interface PurchaseInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -307,11 +307,13 @@ export class PurchaseInvoiceRepository {
                 name: "OriginalNumber",
                 column: "PURCHASEINVOICE_ORIGINALNUMBER",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Type",
                 column: "PURCHASEINVOICE_PURCHASEINVOICETYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Date",
@@ -335,6 +337,7 @@ export class PurchaseInvoiceRepository {
                 name: "Net",
                 column: "PURCHASEINVOICE_NET",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
@@ -346,31 +349,37 @@ export class PurchaseInvoiceRepository {
                 name: "Gross",
                 column: "PURCHASEINVOICE_GROSS",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Discount",
                 column: "PURCHASEINVOICE_DISCOUNT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Taxes",
                 column: "PURCHASEINVOICE_TAXES",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "VAT",
                 column: "PURCHASEINVOICE_VAT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Total",
                 column: "PURCHASEINVOICE_TOTAL",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Paid",
                 column: "PURCHASEINVOICE_PAID",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Conditions",
@@ -400,9 +409,10 @@ export class PurchaseInvoiceRepository {
                 required: true
             },
             {
-                name: "Document",
-                column: "PURCHASEINVOICE_DOCUMENT",
+                name: "DocumentLink",
+                column: "PURCHASEINVOICE_DOCUMENTLINK",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Company",
@@ -413,11 +423,13 @@ export class PurchaseInvoiceRepository {
                 name: "Name",
                 column: "PURCHASEINVOICE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "UUID",
                 column: "PURCHASEINVOICE_UUID",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Process",
@@ -496,6 +508,8 @@ export class PurchaseInvoiceRepository {
     public update(entity: PurchaseInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as PurchaseInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

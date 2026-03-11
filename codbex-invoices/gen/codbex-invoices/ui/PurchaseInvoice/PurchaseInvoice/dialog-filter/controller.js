@@ -25,7 +25,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.optionsType = params.optionsType;
 		$scope.optionsSupplier = params.optionsSupplier;
 		$scope.optionsCurrency = params.optionsCurrency;
-		$scope.optionsPaymentMethod = params.optionsPaymentMethod;
 		$scope.optionsSentMethod = params.optionsSentMethod;
 		$scope.optionsStatus = params.optionsStatus;
 		$scope.optionsOperator = params.optionsOperator;
@@ -130,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Operator', operator: 'EQ', value: entity.Operator };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Document) {
-			const condition = { propertyName: 'Document', operator: 'LIKE', value: `%${entity.Document}%` };
+		if (entity.DocumentLink) {
+			const condition = { propertyName: 'DocumentLink', operator: 'LIKE', value: `%${entity.DocumentLink}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Company !== undefined) {

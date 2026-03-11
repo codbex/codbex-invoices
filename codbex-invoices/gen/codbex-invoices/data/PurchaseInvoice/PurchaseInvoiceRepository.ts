@@ -24,6 +24,7 @@ export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity>
         entity.Number = new NumberGeneratorService().generate(12);
         entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         return super.upsert(entity);
     }
 

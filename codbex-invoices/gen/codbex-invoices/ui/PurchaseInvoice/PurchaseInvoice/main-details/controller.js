@@ -53,7 +53,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.optionsType = [];
 				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
-				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
@@ -73,7 +72,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
 				$scope.optionsCurrency = data.optionsCurrency;
-				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -87,7 +85,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
 				$scope.optionsCurrency = data.optionsCurrency;
-				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -107,7 +104,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
 				$scope.optionsCurrency = data.optionsCurrency;
-				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -119,7 +115,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts';
 		$scope.serviceSupplier = '/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts';
 		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
-		$scope.servicePaymentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts';
 		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts';
 		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts';
 		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
@@ -204,16 +199,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.createCurrency = () => {
 			Dialogs.showWindow({
 				id: 'Currency-details',
-				params: {
-					action: 'create',
-					entity: {},
-				},
-				closeButton: false
-			});
-		};
-		$scope.createPaymentMethod = () => {
-			Dialogs.showWindow({
-				id: 'PaymentMethod-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -314,23 +299,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
 					title: 'Currency',
-					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
-					type: AlertTypes.Error
-				});
-			});
-		};
-		$scope.refreshPaymentMethod = () => {
-			$scope.optionsPaymentMethod = [];
-			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts').then((response) => {
-				$scope.optionsPaymentMethod = response.data.map(e => ({
-					value: e.Id,
-					text: e.Name
-				}));
-			}, (error) => {
-				console.error(error);
-				const message = error.data ? error.data.message : '';
-				Dialogs.showAlert({
-					title: 'PaymentMethod',
 					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
 					type: AlertTypes.Error
 				});
