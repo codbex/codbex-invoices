@@ -126,8 +126,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Operator', operator: 'EQ', value: entity.Operator };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Document) {
-			const condition = { propertyName: 'Document', operator: 'LIKE', value: `%${entity.Document}%` };
+		if (entity.DocumentLink) {
+			const condition = { propertyName: 'DocumentLink', operator: 'LIKE', value: `%${entity.DocumentLink}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Company !== undefined) {

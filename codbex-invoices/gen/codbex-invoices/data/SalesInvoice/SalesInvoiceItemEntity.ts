@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('SalesInvoiceItemEntity')
 @Table('CODBEX_SALESINVOICEITEM')
@@ -67,6 +67,7 @@ export class SalesInvoiceItemEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
+        defaultValue: `20`,
         nullable: true,
     })
     public VATRate?: number;

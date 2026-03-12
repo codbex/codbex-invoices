@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('SalesInvoiceTypeEntity')
 @Table('CODBEX_SALESINVOICETYPE')
@@ -19,7 +19,6 @@ export class SalesInvoiceTypeEntity {
         name: 'SALESINVOICETYPE_NAME',
         type: 'string',
         length: 20,
-        nullable: true,
     })
     public Name!: string;
 

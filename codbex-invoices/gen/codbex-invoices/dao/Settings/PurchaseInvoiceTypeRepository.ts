@@ -5,12 +5,12 @@ import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface PurchaseInvoiceTypeEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     Direction: number;
 }
 
 export interface PurchaseInvoiceTypeCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly Direction: number;
 }
 
@@ -95,6 +95,7 @@ export class PurchaseInvoiceTypeRepository {
                 name: "Name",
                 column: "PURCHASEINVOICETYPE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Direction",

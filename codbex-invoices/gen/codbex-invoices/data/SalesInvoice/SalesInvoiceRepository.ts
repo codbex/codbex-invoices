@@ -24,6 +24,7 @@ export class SalesInvoiceRepository extends Repository<SalesInvoiceEntity> {
         entity.Number = new NumberGeneratorService().generate(5);
         entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         return super.upsert(entity);
     }
 

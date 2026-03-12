@@ -8,52 +8,52 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface SalesInvoiceEntity {
     readonly Id: number;
-    Number?: string;
-    Type?: number;
+    Number: string;
+    Type: number;
     Customer: number;
     Date: Date;
     Due: Date;
-    Net?: number;
+    Net: number;
     Currency: number;
-    Gross?: number;
-    Discount?: number;
-    Taxes?: number;
-    VAT?: number;
-    Total?: number;
-    Paid?: number;
+    Gross: number;
+    Discount: number;
+    Taxes: number;
+    VAT: number;
+    Total: number;
+    Paid: number;
     Conditions?: string;
     PaymentMethod?: number;
     SentMethod?: number;
     Status: number;
     Operator: number;
-    Document?: string;
-    Company?: number;
-    Name?: string;
+    DocumentLink: string;
+    Company: number;
+    Name: string;
     UUID: string;
     Process?: string;
     Reference?: string;
 }
 
 export interface SalesInvoiceCreateEntity {
-    readonly Type?: number;
+    readonly Type: number;
     readonly Customer: number;
     readonly Date: Date;
     readonly Due: Date;
-    readonly Net?: number;
+    readonly Net: number;
     readonly Currency: number;
-    readonly Gross?: number;
-    readonly Discount?: number;
-    readonly Taxes?: number;
-    readonly VAT?: number;
-    readonly Total?: number;
-    readonly Paid?: number;
+    readonly Gross: number;
+    readonly Discount: number;
+    readonly Taxes: number;
+    readonly VAT: number;
+    readonly Total: number;
+    readonly Paid: number;
     readonly Conditions?: string;
     readonly PaymentMethod?: number;
     readonly SentMethod?: number;
     readonly Status: number;
     readonly Operator: number;
-    readonly Document?: string;
-    readonly Company?: number;
+    readonly DocumentLink: string;
+    readonly Company: number;
     readonly Reference?: string;
 }
 
@@ -83,7 +83,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
-            Document?: string | string[];
+            DocumentLink?: string | string[];
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
@@ -110,7 +110,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number | number[];
             Status?: number | number[];
             Operator?: number | number[];
-            Document?: string | string[];
+            DocumentLink?: string | string[];
             Company?: number | number[];
             Name?: string | string[];
             UUID?: string | string[];
@@ -137,7 +137,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -164,7 +164,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -191,7 +191,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -218,7 +218,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -245,7 +245,7 @@ export interface SalesInvoiceEntityOptions {
             SentMethod?: number;
             Status?: number;
             Operator?: number;
-            Document?: string;
+            DocumentLink?: string;
             Company?: number;
             Name?: string;
             UUID?: string;
@@ -293,11 +293,13 @@ export class SalesInvoiceRepository {
                 name: "Number",
                 column: "SALESINVOICE_NUMBER",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Type",
                 column: "SALESINVOICE_TYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Customer",
@@ -321,6 +323,7 @@ export class SalesInvoiceRepository {
                 name: "Net",
                 column: "SALESINVOICE_NET",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
@@ -332,31 +335,37 @@ export class SalesInvoiceRepository {
                 name: "Gross",
                 column: "SALESINVOICE_GROSS",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Discount",
                 column: "SALESINVOICE_DISCOUNT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Taxes",
                 column: "SALESINVOICE_TAXES",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "VAT",
                 column: "SALESINVOICE_VAT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Total",
                 column: "SALESINVOICE_TOTAL",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Paid",
                 column: "SALESINVOICE_PAID",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Conditions",
@@ -386,19 +395,22 @@ export class SalesInvoiceRepository {
                 required: true
             },
             {
-                name: "Document",
-                column: "SALESINVOICE_DOCUMENT",
+                name: "DocumentLink",
+                column: "SALESINVOICE_DOCUMENTLINK",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Company",
                 column: "SALESINVOICE_COMPANY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Name",
                 column: "SALESINVOICE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "UUID",
@@ -483,6 +495,8 @@ export class SalesInvoiceRepository {
     public update(entity: SalesInvoiceUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as SalesInvoiceEntity).Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

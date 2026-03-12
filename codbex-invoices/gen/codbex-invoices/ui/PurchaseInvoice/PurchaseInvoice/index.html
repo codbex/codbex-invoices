@@ -54,11 +54,11 @@
 								{{next.Total}} |
 								{{next.Paid}} |
 								{{next.Conditions}} |
-								{{optionsPaymentMethodValue(next.PaymentMethod)}} |
+								{{next.PaymentMethod}} |
 								{{optionsSentMethodValue(next.SentMethod)}} |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOperatorValue(next.Operator)}} |
-								{{next.Document}} |
+								<bk-link href="{{next.DocumentLink}}" target="_blank">{{next.DocumentLink}}</bk-link> |
 								{{optionsCompanyValue(next.Company)}} |
 								{{next.Name}} |
 								{{next.UUID}} |

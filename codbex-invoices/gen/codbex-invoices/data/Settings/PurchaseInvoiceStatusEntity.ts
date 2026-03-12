@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('PurchaseInvoiceStatusEntity')
 @Table('CODBEX_PURCHASEINVOICESTATUS')
@@ -19,9 +19,8 @@ export class PurchaseInvoiceStatusEntity {
         name: 'PURCHASEINVOICESTATUS_NAME',
         type: 'string',
         length: 20,
-        nullable: true,
     })
-    public Name?: string;
+    public Name!: string;
 
 }
 

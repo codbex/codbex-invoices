@@ -142,7 +142,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsType: $scope.optionsType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
-				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
@@ -159,7 +158,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsType: $scope.optionsType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
-				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
@@ -174,7 +172,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsType: $scope.optionsType,
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
-				optionsPaymentMethod: $scope.optionsPaymentMethod,
 				optionsSentMethod: $scope.optionsSentMethod,
 				optionsStatus: $scope.optionsStatus,
 				optionsOperator: $scope.optionsOperator,
@@ -223,7 +220,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					optionsType: $scope.optionsType,
 					optionsSupplier: $scope.optionsSupplier,
 					optionsCurrency: $scope.optionsCurrency,
-					optionsPaymentMethod: $scope.optionsPaymentMethod,
 					optionsSentMethod: $scope.optionsSentMethod,
 					optionsStatus: $scope.optionsStatus,
 					optionsOperator: $scope.optionsOperator,
@@ -236,7 +232,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsType = [];
 		$scope.optionsSupplier = [];
 		$scope.optionsCurrency = [];
-		$scope.optionsPaymentMethod = [];
 		$scope.optionsSentMethod = [];
 		$scope.optionsStatus = [];
 		$scope.optionsOperator = [];
@@ -283,21 +278,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Currency',
-				message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
-
-		$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts').then((response) => {
-			$scope.optionsPaymentMethod = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'PaymentMethod',
 				message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
@@ -383,14 +363,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
 					return $scope.optionsCurrency[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentMethodValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentMethod.length; i++) {
-				if ($scope.optionsPaymentMethod[i].value === optionKey) {
-					return $scope.optionsPaymentMethod[i].text;
 				}
 			}
 			return null;

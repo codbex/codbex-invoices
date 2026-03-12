@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('SalesInvoiceEntity')
 @Table('CODBEX_SALESINVOICE')
@@ -19,7 +19,6 @@ export class SalesInvoiceEntity {
         name: 'SALESINVOICE_NUMBER',
         type: 'string',
         length: 20,
-        nullable: true,
     })
     public Number?: string;
 
@@ -27,9 +26,8 @@ export class SalesInvoiceEntity {
     @Column({
         name: 'SALESINVOICE_TYPE',
         type: 'integer',
-        nullable: true,
     })
-    public Type?: number;
+    public Type!: number;
 
     @Documentation('Customer')
     @Column({
@@ -58,9 +56,8 @@ export class SalesInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public Net?: number;
+    public Net!: number;
 
     @Documentation('Currency')
     @Column({
@@ -75,9 +72,8 @@ export class SalesInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public Gross?: number;
+    public Gross!: number;
 
     @Documentation('Discount')
     @Column({
@@ -86,7 +82,6 @@ export class SalesInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Discount?: number;
 
@@ -97,7 +92,6 @@ export class SalesInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Taxes?: number;
 
@@ -107,9 +101,8 @@ export class SalesInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public VAT?: number;
+    public VAT!: number;
 
     @Documentation('Total')
     @Column({
@@ -118,7 +111,6 @@ export class SalesInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Total?: number;
 
@@ -129,7 +121,6 @@ export class SalesInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Paid?: number;
 
@@ -172,29 +163,26 @@ export class SalesInvoiceEntity {
     })
     public Operator!: number;
 
-    @Documentation('Document')
+    @Documentation('DocumentLink')
     @Column({
-        name: 'SALESINVOICE_DOCUMENT',
+        name: 'SALESINVOICE_DOCUMENTLINK',
         type: 'string',
-        length: 200,
-        nullable: true,
+        length: 1000,
     })
-    public Document?: string;
+    public DocumentLink!: string;
 
     @Documentation('Company')
     @Column({
         name: 'SALESINVOICE_COMPANY',
         type: 'integer',
-        nullable: true,
     })
-    public Company?: number;
+    public Company!: number;
 
     @Documentation('Name')
     @Column({
         name: 'SALESINVOICE_NAME',
         type: 'string',
         length: 200,
-        nullable: true,
     })
     public Name?: string;
 

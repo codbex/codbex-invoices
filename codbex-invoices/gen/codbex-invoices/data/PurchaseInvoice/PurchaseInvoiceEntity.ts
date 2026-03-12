@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('PurchaseInvoiceEntity')
 @Table('CODBEX_PURCHASEINVOICE')
@@ -28,17 +28,15 @@ export class PurchaseInvoiceEntity {
         name: 'PURCHASEINVOICE_ORIGINALNUMBER',
         type: 'string',
         length: 20,
-        nullable: true,
     })
-    public OriginalNumber?: string;
+    public OriginalNumber!: string;
 
     @Documentation('Type')
     @Column({
         name: 'PURCHASEINVOICE_PURCHASEINVOICETYPE',
         type: 'integer',
-        nullable: true,
     })
-    public Type?: number;
+    public Type!: number;
 
     @Documentation('Date')
     @Column({
@@ -67,9 +65,8 @@ export class PurchaseInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public Net?: number;
+    public Net!: number;
 
     @Documentation('Currency')
     @Column({
@@ -84,9 +81,8 @@ export class PurchaseInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public Gross?: number;
+    public Gross!: number;
 
     @Documentation('Discount')
     @Column({
@@ -95,7 +91,6 @@ export class PurchaseInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Discount?: number;
 
@@ -106,7 +101,6 @@ export class PurchaseInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Taxes?: number;
 
@@ -116,9 +110,8 @@ export class PurchaseInvoiceEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public VAT?: number;
+    public VAT!: number;
 
     @Documentation('Total')
     @Column({
@@ -127,7 +120,6 @@ export class PurchaseInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Total?: number;
 
@@ -138,7 +130,6 @@ export class PurchaseInvoiceEntity {
         precision: 16,
         scale: 2,
         defaultValue: `0`,
-        nullable: true,
     })
     public Paid?: number;
 
@@ -181,14 +172,13 @@ export class PurchaseInvoiceEntity {
     })
     public Operator!: number;
 
-    @Documentation('Document')
+    @Documentation('DocumentLink')
     @Column({
-        name: 'PURCHASEINVOICE_DOCUMENT',
+        name: 'PURCHASEINVOICE_DOCUMENTLINK',
         type: 'string',
-        length: 200,
-        nullable: true,
+        length: 1000,
     })
-    public Document?: string;
+    public DocumentLink!: string;
 
     @Documentation('Company')
     @Column({
@@ -203,7 +193,6 @@ export class PurchaseInvoiceEntity {
         name: 'PURCHASEINVOICE_NAME',
         type: 'string',
         length: 200,
-        nullable: true,
     })
     public Name?: string;
 
@@ -212,7 +201,6 @@ export class PurchaseInvoiceEntity {
         name: 'PURCHASEINVOICE_UUID',
         type: 'string',
         length: 36,
-        nullable: true,
     })
     public UUID?: string;
 

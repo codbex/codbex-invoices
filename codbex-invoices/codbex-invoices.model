@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SALESINVOICEITEM_ID",
                         "dataNullable": "false",
@@ -18,6 +19,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICEITEM_SALESINVOICE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -39,6 +41,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "300",
                         "dataName": "SALESINVOICEITEM_NAME",
                         "dataNullable": "false",
@@ -53,6 +56,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICEITEM_QUANTITY",
                         "dataNullable": "false",
                         "dataType": "DOUBLE",
@@ -66,6 +70,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICEITEM_UOM",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -85,6 +90,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_PRICE",
                         "dataNullable": "false",
@@ -101,6 +107,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "dataLength": "16",
@@ -119,6 +126,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
+                        "dataDefaultValue": "20",
                         "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_VATRATE",
                         "dataNullable": "true",
@@ -126,6 +135,7 @@
                         "dataScale": "2",
                         "dataType": "DECIMAL",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "VATRate",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -134,8 +144,9 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "round(entity[\"Net\"] * entity[\"VATRate\"] / 100).toFixed(2)",
+                        "calculatedPropertyExpressionUpdate": "round(entity[\"Net\"] * entity[\"VATRate\"] / 100).toFixed(2)",
                         "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
@@ -152,6 +163,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "dataLength": "16",
@@ -200,6 +212,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SALESINVOICE_ID",
                         "dataNullable": "false",
@@ -214,14 +227,17 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(5)",
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_NUMBER",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataOrderBy": "DESC",
                         "dataType": "VARCHAR",
+                        "dataUnique": "true",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "Number",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -230,10 +246,12 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_TYPE",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Type",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -248,6 +266,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_CUSTOMER",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -267,6 +286,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_DATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -280,6 +300,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_DUE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -293,9 +314,10 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_NET",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -308,6 +330,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_CURRENCY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -327,9 +350,10 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_GROSS",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -342,10 +366,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_DISCOUNT",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -358,10 +383,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_TAXES",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -374,9 +400,10 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_VAT",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -389,10 +416,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_TOTAL",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -405,10 +433,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "SALESINVOICE_PAID",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -421,6 +450,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "SALESINVOICE_CONDITIONS",
                         "dataNullable": "true",
@@ -434,6 +464,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_PAYMENTMETHOD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -449,9 +480,10 @@
                         "relationshipName": "SalesInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "PaymentMethod"
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_SENTMETHOD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -467,9 +499,10 @@
                         "relationshipName": "SalesInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "SentMethod"
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_STATUS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -489,6 +522,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_OPERATOR",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -508,23 +542,26 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "200",
-                        "dataName": "SALESINVOICE_DOCUMENT",
-                        "dataNullable": "true",
+                        "auditType": "NONE",
+                        "dataLength": "1000",
+                        "dataName": "SALESINVOICE_DOCUMENTLINK",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
-                        "name": "Document",
+                        "name": "DocumentLink",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "",
-                        "widgetType": "TEXTAREA"
+                        "widgetLength": "1000",
+                        "widgetSize": "fd-col-md--6 fd-col--9",
+                        "widgetType": "URL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICE_COMPANY",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Company",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -539,13 +576,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
                         "dataLength": "200",
                         "dataName": "SALESINVOICE_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -554,6 +594,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
                         "dataLength": "36",
                         "dataName": "SALESINVOICE_UUID",
@@ -562,6 +603,7 @@
                         "dataUnique": "true",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "UUID",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -570,6 +612,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "36",
                         "dataName": "SALESINVOICE_PROCESS",
                         "dataNullable": "true",
@@ -584,6 +627,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "SALESINVOICE_REFERENCE",
                         "dataNullable": "true",
@@ -628,6 +672,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PURCHASEINVOICE_ID",
                         "dataNullable": "false",
@@ -642,6 +687,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(12)",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_NUMBER",
@@ -650,6 +696,7 @@
                         "dataType": "VARCHAR",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "Number",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -658,9 +705,10 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_ORIGINALNUMBER",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "name": "OriginalNumber",
@@ -671,10 +719,12 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_PURCHASEINVOICETYPE",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Type",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -689,6 +739,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_DATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -702,6 +753,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_DUE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -715,6 +767,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_SUPPLIER",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -734,9 +787,10 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_NET",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -749,6 +803,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_CURRENCY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -768,9 +823,10 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_GROSS",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -783,10 +839,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_DISCOUNT",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -799,10 +856,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_TAXES",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -815,9 +873,10 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_VAT",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -830,10 +889,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_TOTAL",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -846,10 +906,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICE_PAID",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "16",
                         "dataScale": "2",
                         "dataType": "DECIMAL",
@@ -862,6 +923,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PURCHASEINVOICE_CONDITIONS",
                         "dataNullable": "true",
@@ -875,24 +937,24 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_PAYMENTMETHOD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
                         "name": "PaymentMethod",
                         "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "DROPDOWN",
+                        "widgetType": "TEXTBOX",
                         "relationshipName": "PurchaseInvoice_PaymentMethod",
                         "relationshipEntityName": "PaymentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "PaymentMethod"
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_SENTMETHOD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -908,9 +970,10 @@
                         "relationshipName": "PurchaseInvoice_SentMethod",
                         "relationshipEntityName": "SentMethod",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": "SentMethod"
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_STATUS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -930,6 +993,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_OPERATOR",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -949,19 +1013,21 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "200",
-                        "dataName": "PURCHASEINVOICE_DOCUMENT",
-                        "dataNullable": "true",
+                        "auditType": "NONE",
+                        "dataLength": "1000",
+                        "dataName": "PURCHASEINVOICE_DOCUMENTLINK",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
-                        "name": "Document",
+                        "name": "DocumentLink",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "",
-                        "widgetType": "TEXTAREA"
+                        "widgetLength": "1000",
+                        "widgetSize": "fd-col-md--6 fd-col--9",
+                        "widgetType": "URL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICE_COMPANY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -981,13 +1047,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
+                        "calculatedPropertyExpressionUpdate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
                         "dataLength": "200",
                         "dataName": "PURCHASEINVOICE_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -996,14 +1065,16 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
                         "dataLength": "36",
                         "dataName": "PURCHASEINVOICE_UUID",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "dataUnique": "true",
                         "description": "",
                         "isCalculatedProperty": "true",
+                        "isRequiredProperty": "true",
                         "name": "UUID",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -1012,6 +1083,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "36",
                         "dataName": "PURCHASEINVOICE_PROCESS",
                         "dataNullable": "true",
@@ -1026,6 +1098,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "36",
                         "dataName": "PURCHASEINVOICE_REFERENCE",
                         "dataNullable": "true",
@@ -1070,6 +1143,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PURCHASEINVOICEITEM_ID",
                         "dataNullable": "true",
@@ -1084,6 +1158,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICEITEM_PURCHASEINVOICE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1104,6 +1179,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "300",
                         "dataName": "PURCHASEINVOICEITEM_NAME",
                         "dataNullable": "false",
@@ -1118,6 +1194,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICEITEM_QUANTITY",
                         "dataNullable": "false",
                         "dataType": "DOUBLE",
@@ -1131,6 +1208,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICEITEM_UOM",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1150,6 +1228,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_PRICE",
                         "dataNullable": "false",
@@ -1166,6 +1245,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Quantity\"] * entity[\"Price\"]",
                         "dataLength": "16",
@@ -1184,6 +1264,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
+                        "dataDefaultValue": "20",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_VATRATE",
                         "dataNullable": "true",
@@ -1191,6 +1273,7 @@
                         "dataScale": "2",
                         "dataType": "DECIMAL",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "VATRate",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -1199,8 +1282,9 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
-                        "calculatedPropertyExpressionUpdate": "entity[\"Net\"] * entity[\"VATRate\"] / 100",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "round(entity[\"Net\"] * entity[\"VATRate\"] / 100).toFixed(2)",
+                        "calculatedPropertyExpressionUpdate": "round(entity[\"Net\"] * entity[\"VATRate\"] / 100).toFixed(2)",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
@@ -1217,6 +1301,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"Net\"] + entity[\"VAT\"]",
                         "dataLength": "16",
@@ -1265,6 +1350,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SALESINVOICESTATUS_ID",
                         "dataNullable": "true",
@@ -1279,11 +1365,13 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "SALESINVOICESTATUS_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -1324,6 +1412,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PURCHASEINVOICESTATUS_ID",
                         "dataNullable": "true",
@@ -1338,11 +1427,13 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICESTATUS_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -1383,6 +1474,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1399,6 +1491,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1414,6 +1507,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -1429,6 +1523,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1444,6 +1539,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1459,6 +1555,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1474,6 +1571,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1489,6 +1587,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CUSTOMER_CITY",
@@ -1507,6 +1606,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CUSTOMER_COUNTRYID",
@@ -1525,6 +1625,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1540,6 +1641,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "36",
@@ -1585,6 +1687,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1601,6 +1704,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1616,6 +1720,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -1631,6 +1736,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1646,6 +1752,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1661,6 +1768,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1676,6 +1784,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1691,6 +1800,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SUPPLIER_CITY",
@@ -1709,6 +1819,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SUPPLIER_COUNTRY",
@@ -1727,6 +1838,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1742,6 +1854,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "36",
@@ -1787,6 +1900,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1803,6 +1917,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1818,6 +1933,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -1833,6 +1949,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1848,6 +1965,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1863,6 +1981,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -1878,6 +1997,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1893,6 +2013,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "COMPANY_CITY",
@@ -1911,6 +2032,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "COMPANY_COUNTRY",
@@ -1929,6 +2051,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1944,6 +2067,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "22",
@@ -1989,6 +2113,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -2005,6 +2130,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "3",
@@ -2020,6 +2146,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "127",
@@ -2035,6 +2162,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "3",
@@ -2050,6 +2178,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_ROUNDING",
@@ -2064,6 +2193,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_BASE",
@@ -2078,6 +2208,7 @@
                         "widgetType": "CHECKBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_RATE",
@@ -2122,6 +2253,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -2138,6 +2270,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -2155,6 +2288,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -2172,6 +2306,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -2189,6 +2324,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -2206,6 +2342,7 @@
                         "widgetType": "EMAIL"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2223,6 +2360,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "EMPLOYEE_ORGANISATION",
@@ -2243,6 +2381,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "calculatedPropertyExpressionUpdate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "dataLength": "150",
@@ -2289,6 +2428,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SALESINVOICEPAYMENT_ID",
                         "dataNullable": "true",
@@ -2303,6 +2443,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICEPAYMENT_SALESINVOICE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2323,6 +2464,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICEPAYMENT_CUSTOMERPAYMENT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2345,6 +2487,7 @@
                         "relationshipEntityPerspectiveLabel": "CustomerPayment"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "",
                         "dataLength": "16",
                         "dataName": "SALESINVOICEPAYMENT_AMOUNT",
@@ -2394,6 +2537,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PURCHASEINVOICEPAYMENT_ID",
                         "dataNullable": "true",
@@ -2408,6 +2552,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICEPAYMENT_PURCHASEINVOICE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2428,12 +2573,17 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
                         "name": "SupplierPayment",
                         "tooltip": "",
+                        "widgetDependsOnEntity": "PurchaseInvoice",
+                        "widgetDependsOnFilterBy": "Supplier",
+                        "widgetDependsOnProperty": "PurchaseInvoice",
+                        "widgetDependsOnValueFrom": "Supplier",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
@@ -2446,6 +2596,7 @@
                         "relationshipEntityPerspectiveLabel": "SupplierPayment"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICEPAYMENT_AMOUNT",
@@ -2495,6 +2646,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -2511,6 +2663,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -2526,6 +2679,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2541,6 +2695,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2556,6 +2711,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -2573,6 +2729,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_NUMERATOR",
@@ -2587,6 +2744,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_DENOMINATOR",
@@ -2601,6 +2759,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_ROUNDING",
@@ -2615,6 +2774,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_BASE",
@@ -2659,6 +2819,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SALESINVOICETYPE_ID",
                         "dataNullable": "true",
@@ -2673,9 +2834,10 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "SALESINVOICETYPE_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -2687,6 +2849,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SALESINVOICETYPE_DIRECTION",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -2732,381 +2895,7 @@
             {
                 "properties": [
                     {
-                        "dataAutoIncrement": "true",
-                        "dataName": "SALESORDER_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Id",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(4)",
-                        "dataLength": "20",
-                        "dataName": "SALESORDER_NUMBER",
-                        "dataNullable": "true",
-                        "dataOrderBy": "DESC",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isCalculatedProperty": "true",
-                        "name": "Number",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "SALESORDER_DATE",
-                        "dataNullable": "true",
-                        "dataType": "DATE",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Date",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "fd-col-md--2 fd-col--3",
-                        "widgetType": "DATE"
-                    },
-                    {
-                        "dataName": "SALESORDER_DUE",
-                        "dataNullable": "true",
-                        "dataType": "DATE",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Due",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "fd-col-md--2 fd-col--3",
-                        "widgetType": "DATE"
-                    },
-                    {
-                        "dataName": "SALESORDER_CUSTOMER",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Customer",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "Customers",
-                        "relationshipName": "SalesOrder_Customer",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_NET",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Net",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "SALESORDER_CURRENCY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Currency",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipName": "SalesOrder_Currency",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Code",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_GROSS",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Gross",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_DISCOUNT",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Discount",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataDefaultValue": "0",
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_TAXES",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Taxes",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_VAT",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "VAT",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_TOTAL",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Total",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataDefaultValue": "0",
-                        "dataLength": "16",
-                        "dataName": "SALESORDER_PAID",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "description": "",
-                        "name": "Paid",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "18",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataLength": "200",
-                        "dataName": "SALESORDER_CONDITIONS",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "name": "Conditions",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "fd-col-md--8 fd-col--12",
-                        "widgetType": "TEXTAREA"
-                    },
-                    {
-                        "dataName": "SALESORDER_SENTMETHOD",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "SentMethod",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "Methods",
-                        "relationshipName": "SalesOrder_SentMethod",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "dataName": "SALESORDER_SALESORDERSTATUS",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "SalesOrderStatus",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "OrdersSettings",
-                        "relationshipName": "SalesOrder_SalesOrderStatus",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "dataName": "SALESORDER_OPERATOR",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Operator",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "Employees",
-                        "relationshipName": "SalesOrder_Employee",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "FirstName",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "dataName": "SALESORDER_COMPANY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Company",
-                        "relationshipEntityPerspectiveLabel": "Entities",
-                        "relationshipEntityPerspectiveName": "Companies",
-                        "relationshipName": "SalesOrder_Company",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
-                        "dataLength": "200",
-                        "dataName": "SALESORDER_NAME",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isCalculatedProperty": "true",
-                        "name": "Name",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "fd-col-md--8 fd-col--12",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
-                        "dataLength": "36",
-                        "dataName": "SALESORDER_UUID",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "dataUnique": "true",
-                        "description": "",
-                        "isCalculatedProperty": "true",
-                        "name": "UUID",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "36",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "36",
-                        "dataName": "SALESORDER_REFERENCE",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "name": "Reference",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "fd-col-md--4 fd-col--6",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "SALESORDER_STORE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Store",
-                        "relationshipEntityPerspectiveLabel": "Stores",
-                        "relationshipEntityPerspectiveName": "Stores",
-                        "relationshipName": "SalesOrder_Store",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN"
-                    }
-                ],
-                "caption": "Manage entity SalesOrder",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SALESORDER\"",
-                "dataName": "SALESORDER",
-                "dataQuery": "",
-                "description": "Manage entity SalesOrder",
-                "generateDefaultRoles": "false",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
-                "menuIndex": "100",
-                "menuKey": "salesorder",
-                "menuLabel": "SalesOrder",
-                "multilingual": "false",
-                "name": "SalesOrder",
-                "perspectiveHeader": "",
-                "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
-                "perspectiveLabel": "Sales Order",
-                "perspectiveName": "SalesOrder",
-                "perspectiveNavId": "",
-                "perspectiveOrder": "510",
-                "perspectiveRole": "",
-                "projectionReferencedEntity": "SalesOrder",
-                "projectionReferencedModel": "/workspace/codbex-orders/codbex-orders.model",
-                "title": "SalesOrder",
-                "tooltip": "SalesOrder",
-                "type": "PROJECTION"
-            },
-            {
-                "properties": [
-                    {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "DEDUCTION_ID",
                         "dataNullable": "true",
@@ -3121,6 +2910,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "DEDUCTION_DEDUCTIONINVOICE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3141,6 +2931,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "DEDUCTION_ADVANCEINVOICE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3189,6 +2980,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PURCHASEINVOICETYPE_ID",
                         "dataNullable": "true",
@@ -3203,9 +2995,10 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICETYPE_NAME",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -3217,6 +3010,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PURCHASEINVOICETYPE_DIRECTION",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -3262,120 +3056,7 @@
             {
                 "properties": [
                     {
-                        "dataAutoIncrement": "true",
-                        "dataName": "PAYMENTMETHOD_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Id",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "20",
-                        "dataName": "PAYMENTMETHOD_NAME",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "name": "Name",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    }
-                ],
-                "caption": "Manage entity PaymentMethod",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTMETHOD\"",
-                "dataName": "PAYMENTMETHOD",
-                "dataQuery": "",
-                "description": "Manage entity PaymentMethod",
-                "generateDefaultRoles": "false",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
-                "menuIndex": "100",
-                "menuKey": "paymentmethod",
-                "menuLabel": "PaymentMethod",
-                "multilingual": "false",
-                "name": "PaymentMethod",
-                "perspectiveHeader": "",
-                "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
-                "perspectiveLabel": "PaymentMethod",
-                "perspectiveName": "Settings",
-                "perspectiveNavId": "",
-                "perspectiveOrder": "100",
-                "perspectiveRole": "",
-                "projectionReferencedEntity": "PaymentMethod",
-                "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
-                "title": "PaymentMethod",
-                "tooltip": "PaymentMethod",
-                "type": "COPIED"
-            },
-            {
-                "properties": [
-                    {
-                        "dataAutoIncrement": "true",
-                        "dataName": "SENTMETHOD_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Id",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "20",
-                        "dataName": "SENTMETHOD_NAME",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "name": "Name",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    }
-                ],
-                "caption": "Manage entity SentMethod",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SENTMETHOD\"",
-                "dataName": "SENTMETHOD",
-                "dataQuery": "",
-                "description": "Manage entity SentMethod",
-                "generateDefaultRoles": "false",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
-                "menuIndex": "100",
-                "menuKey": "sentmethod",
-                "menuLabel": "SentMethod",
-                "multilingual": "false",
-                "name": "SentMethod",
-                "perspectiveHeader": "",
-                "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
-                "perspectiveLabel": "SentMethod",
-                "perspectiveName": "Settings",
-                "perspectiveNavId": "",
-                "perspectiveOrder": "200",
-                "perspectiveRole": "",
-                "projectionReferencedEntity": "SentMethod",
-                "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
-                "title": "SentMethod",
-                "tooltip": "SentMethod",
-                "type": "COPIED"
-            },
-            {
-                "properties": [
-                    {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CUSTOMERPAYMENT_ID",
                         "dataNullable": "true",
@@ -3390,6 +3071,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_CUSTOMER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3408,6 +3090,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_DATE",
                         "dataNullable": "true",
                         "dataOrderBy": "DESC",
@@ -3422,6 +3105,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_VALOR",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -3435,6 +3119,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "34",
                         "dataName": "CUSTOMERPAYMENT_COMPANYIBAN",
                         "dataNullable": "true",
@@ -3448,6 +3133,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "34",
                         "dataName": "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
                         "dataNullable": "true",
@@ -3461,6 +3147,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CUSTOMERPAYMENT_COUNTERPARTYNAME",
                         "dataNullable": "true",
@@ -3474,6 +3161,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "CUSTOMERPAYMENT_AMOUNT",
                         "dataNullable": "true",
@@ -3490,6 +3178,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3508,6 +3197,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CUSTOMERPAYMENT_REASON",
                         "dataNullable": "true",
@@ -3522,6 +3212,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CUSTOMERPAYMENT_DESCRIPTION",
                         "dataNullable": "true",
@@ -3535,6 +3226,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_COMPANY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3552,7 +3244,8 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
                         "dataLength": "20",
                         "dataName": "CUSTOMERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -3567,6 +3260,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
                         "dataLength": "36",
                         "dataName": "CUSTOMERPAYMENT_UUID",
@@ -3583,6 +3277,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "36",
                         "dataName": "CUSTOMERPAYMENT_REFERENCE",
                         "dataNullable": "true",
@@ -3596,13 +3291,14 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CUSTOMERPAYMENT_PAYMENTMETHOD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
                         "name": "PaymentMethod",
                         "relationshipEntityPerspectiveLabel": "methods",
-                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveName": "Settings",
                         "relationshipName": "CustomerPayment_PaymentMethod",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -3632,17 +3328,18 @@
                 "perspectiveLabel": "CustomerPayment",
                 "perspectiveName": "CustomerPayment",
                 "perspectiveNavId": "",
-                "perspectiveOrder": "10",
+                "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "CustomerPayment",
                 "projectionReferencedModel": "/workspace/codbex-payments/codbex-payments.model",
                 "title": "CustomerPayment",
                 "tooltip": "CustomerPayment",
-                "type": "COPIED"
+                "type": "PROJECTION"
             },
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "SUPPLIERPAYMENT_ID",
                         "dataNullable": "true",
@@ -3657,6 +3354,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SUPPLIERPAYMENT_SUPPLIER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3674,6 +3372,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SUPPLIERPAYMENT_DATE",
                         "dataNullable": "true",
                         "dataOrderBy": "DESC",
@@ -3688,6 +3387,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SUPPLIERPAYMENT_VALOR",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -3701,6 +3401,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "34",
                         "dataName": "SUPPLIERPAYMENT_COMPANYIBAN",
                         "dataNullable": "true",
@@ -3714,6 +3415,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "34",
                         "dataName": "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
                         "dataNullable": "true",
@@ -3727,6 +3429,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "SUPPLIERPAYMENT_COUNTERPARTYNAME",
                         "dataNullable": "true",
@@ -3740,6 +3443,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "16",
                         "dataName": "SUPPLIERPAYMENT_AMOUNT",
                         "dataNullable": "true",
@@ -3756,6 +3460,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SUPPLIERPAYMENT_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3774,6 +3479,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "SUPPLIERPAYMENT_REASON",
                         "dataNullable": "true",
@@ -3788,6 +3494,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "SUPPLIERPAYMENT_DESCRIPTION",
                         "dataNullable": "true",
@@ -3801,6 +3508,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "SUPPLIERPAYMENT_COMPANY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3818,7 +3526,8 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
                         "dataLength": "20",
                         "dataName": "SUPPLIERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -3833,6 +3542,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
                         "dataLength": "36",
                         "dataName": "SUPPLIERPAYMENT_UUID",
@@ -3849,6 +3559,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "36",
                         "dataName": "SUPPLIERPAYMENT_REFERENCE",
                         "dataNullable": "true",
@@ -3881,13 +3592,135 @@
                 "perspectiveLabel": "SupplierPayment",
                 "perspectiveName": "SupplierPayment",
                 "perspectiveNavId": "",
-                "perspectiveOrder": "20",
+                "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "SupplierPayment",
                 "projectionReferencedModel": "/workspace/codbex-payments/codbex-payments.model",
                 "title": "SupplierPayment",
                 "tooltip": "SupplierPayment",
-                "type": "COPIED"
+                "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "auditType": "NONE",
+                        "dataAutoIncrement": "true",
+                        "dataName": "PAYMENTMETHOD_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Id",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataLength": "20",
+                        "dataName": "PAYMENTMETHOD_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "true",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity PaymentMethod",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTMETHOD\"",
+                "dataName": "PAYMENTMETHOD",
+                "dataQuery": "",
+                "description": "Manage entity PaymentMethod",
+                "generateDefaultRoles": "false",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "paymentmethod",
+                "menuLabel": "PaymentMethod",
+                "multilingual": "false",
+                "name": "PaymentMethod",
+                "perspectiveHeader": "",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "Settings",
+                "perspectiveNavId": "",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "projectionReferencedEntity": "PaymentMethod",
+                "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
+                "title": "PaymentMethod",
+                "tooltip": "PaymentMethod",
+                "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "auditType": "NONE",
+                        "dataAutoIncrement": "true",
+                        "dataName": "SENTMETHOD_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Id",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataLength": "20",
+                        "dataName": "SENTMETHOD_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "dataUnique": "true",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity SentMethod",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SENTMETHOD\"",
+                "dataName": "SENTMETHOD",
+                "dataQuery": "",
+                "description": "Manage entity SentMethod",
+                "generateDefaultRoles": "false",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "sentmethod",
+                "menuLabel": "SentMethod",
+                "multilingual": "false",
+                "name": "SentMethod",
+                "perspectiveHeader": "",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "Settings",
+                "perspectiveNavId": "",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "projectionReferencedEntity": "SentMethod",
+                "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
+                "title": "SentMethod",
+                "tooltip": "SentMethod",
+                "type": "PROJECTION"
             }
         ],
         "perspectives": [

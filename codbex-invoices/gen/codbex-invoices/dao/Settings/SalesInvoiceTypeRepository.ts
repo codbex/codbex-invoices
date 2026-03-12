@@ -5,12 +5,12 @@ import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface SalesInvoiceTypeEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     Direction: number;
 }
 
 export interface SalesInvoiceTypeCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly Direction: number;
 }
 
@@ -95,6 +95,7 @@ export class SalesInvoiceTypeRepository {
                 name: "Name",
                 column: "SALESINVOICETYPE_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Direction",
