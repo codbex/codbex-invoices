@@ -35,7 +35,9 @@
                         	<bk-form-label for="idOriginalNumber" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_ORIGINALNUMBER' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['OriginalNumber'].$valid ? '' : 'error' }}" text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['OriginalNumber'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
 								<bk-input id="idOriginalNumber"
 	                                name="OriginalNumber"
 	                                state="{{ forms.details['OriginalNumber'].$valid ? '' : 'error' }}"
@@ -43,7 +45,6 @@
 	                                ng-model="entity.OriginalNumber"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_ORIGINALNUMBER)'} }}">
 	                            </bk-input>
@@ -257,7 +258,9 @@
 							<bk-form-label for="idConditions" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_CONDITIONS' | t }}</bk-form-label>
 						</div>
 						<div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Conditions'].$valid ? '' : 'error' }}" text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Conditions'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.lengthMax' | t:{'max':'200.0'} }}">
 								<bk-textarea id="idConditions"
 									name="Conditions"
 									state="{{ forms.details['Conditions'].$valid ? '' : 'error' }}"
@@ -265,7 +268,6 @@
 									ng-model="entity.Conditions"
 	                            	ng-readonly="action === 'select'"
 									ng-maxlength="200.0"
-									input-rules="{ patterns: [''] }"
 									placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_CONDITIONS)'} }}">
 								</bk-textarea>
 							</bk-form-input-message>
@@ -276,14 +278,15 @@
                         	<bk-form-label for="idPaymentMethod" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PAYMENTMETHOD' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}" text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t }}">
 								<bk-input id="idPaymentMethod"
 	                                name="PaymentMethod"
 	                                state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
 									ng-required="false"
 	                                ng-model="entity.PaymentMethod"
 	                                ng-readonly="action === 'select'"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PAYMENTMETHOD)'} }}">
 	                            </bk-input>
@@ -361,7 +364,9 @@
 							<bk-link href="{{entity.DocumentLink}}" target="_blank">{{entity.DocumentLink}}</bk-link>
 						</div>
                         <div ng-show="action !== 'select'" class="fd-col fd-col-md--6 fd-col--9">
-							<bk-form-input-message state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}" text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.lengthMax' | t:{'max':'1000.0'} }}">
 								<bk-input id="idDocumentLink"
 	                                name="DocumentLink"
 	                                state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}"
@@ -369,9 +374,8 @@
 	                                ng-model="entity.DocumentLink"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="1000.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="url"
-	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_DOCUMENTLINK)'} }}">
+	                                placeholder="https://...">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
@@ -443,7 +447,9 @@
                         	<bk-form-label for="idReference" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_REFERENCE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Reference'].$valid ? '' : 'error' }}" text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Reference'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.lengthMax' | t:{'max':'36.0'} }}">
 								<bk-input id="idReference"
 	                                name="Reference"
 	                                state="{{ forms.details['Reference'].$valid ? '' : 'error' }}"
@@ -451,7 +457,6 @@
 	                                ng-model="entity.Reference"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="36.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_REFERENCE)'} }}">
 	                            </bk-input>
