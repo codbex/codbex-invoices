@@ -12,19 +12,19 @@ export class PurchaseInvoiceItemRepository extends Repository<PurchaseInvoiceIte
     }
 
     public override create(entity: PurchaseInvoiceItemEntity): string | number {
-        entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
-        entity.Gross = entity["Net"] + entity["VAT"];
+        entity.Net = entity.Quantity * entity.Price;
+        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.Gross = entity.Net + entity.VAT;
         return super.create(entity);
     }
 
     public override upsert(entity: PurchaseInvoiceItemEntity): string | number {
-        entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
-        entity.Gross = entity["Net"] + entity["VAT"];
-        entity.Net = entity["Quantity"] * entity["Price"];
-        entity.VAT = round(entity["Net"] * entity["VATRate"] / 100).toFixed(2);
-        entity.Gross = entity["Net"] + entity["VAT"];
+        entity.Net = entity.Quantity * entity.Price;
+        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.Gross = entity.Net + entity.VAT;
+        entity.Net = entity.Quantity * entity.Price;
+        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.Gross = entity.Net + entity.VAT;
         return super.upsert(entity);
     }
 

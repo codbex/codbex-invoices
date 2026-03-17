@@ -10,6 +10,7 @@ import { PurchaseInvoiceRepository } from '../../data/PurchaseInvoice/PurchaseIn
 import { PurchaseInvoiceEntity } from '../../data/PurchaseInvoice/PurchaseInvoiceEntity'
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { UUID } from '@aerokit/sdk/utils';
 
 const validationModules = await Extensions.loadExtensionModules('codbex-invoices-PurchaseInvoice-PurchaseInvoice', ['validate']);
 

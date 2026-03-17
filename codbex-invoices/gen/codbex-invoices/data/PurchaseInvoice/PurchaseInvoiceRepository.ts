@@ -5,6 +5,7 @@ import { Extensions } from '@aerokit/sdk/extensions'
 import { PurchaseInvoiceEntity } from './PurchaseInvoiceEntity'
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { UUID } from '@aerokit/sdk/utils';
 
 @Component('PurchaseInvoiceRepository')
 export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity> {
@@ -33,16 +34,16 @@ export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity>
 
     public override create(entity: PurchaseInvoiceEntity): string | number {
         entity.Number = new NumberGeneratorService().generateByType('Purchase Invoice');
-        entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        entity.UUID = entity.UUID = UUID.random();;
         return super.create(entity);
     }
 
     public override upsert(entity: PurchaseInvoiceEntity): string | number {
         entity.Number = new NumberGeneratorService().generateByType('Purchase Invoice');
-        entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
-        entity.UUID = require("sdk/utils/uuid").random();
-        entity.Name = entity["Number"] + "/" + new Date(entity["Date"]).toISOString().slice(0, 10) + "/" + entity["Total"];
+        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        entity.UUID = entity.UUID = UUID.random();;
+        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
         return super.upsert(entity);
     }
 
