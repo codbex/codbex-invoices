@@ -228,7 +228,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(5)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Sales Invoice')",
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_NUMBER",
                         "dataNullable": "false",
@@ -688,7 +688,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(12)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Purchase Invoice')",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_NUMBER",
                         "dataNullable": "true",
