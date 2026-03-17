@@ -48,7 +48,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "20",
-                        "nullable": true,
                         "name": "SALESINVOICEITEM_VATRATE"
                     },
                     {
@@ -416,7 +415,6 @@
                         "precision": "16",
                         "scale": "2",
                         "defaultValue": "20",
-                        "nullable": true,
                         "name": "PURCHASEINVOICEITEM_VATRATE"
                     },
                     {

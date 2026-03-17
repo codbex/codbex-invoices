@@ -69,7 +69,6 @@ export class PurchaseInvoiceItemEntity {
         precision: 16,
         scale: 2,
         defaultValue: `20`,
-        nullable: true,
     })
     public VATRate?: number;
 
