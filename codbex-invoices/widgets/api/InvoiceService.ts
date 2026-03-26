@@ -1,9 +1,10 @@
-import { SalesInvoiceRepository as SalesInvoiceDao } from "../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
-import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceRepository";
+import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../codbex-invoices/gen/codbex-invoices/data/SalesInvoice/SalesInvoiceRepository";
+import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../codbex-invoices/gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceRepository";
 
-import { Controller, Get } from "sdk/http";
+import { Controller, Get, Documentation } from "@aerokit/sdk/http";
 
 @Controller
+@Documentation("codbex-invoices - Widgets API")
 class InvoiceService {
 
     private readonly salesInvoiceDao;
@@ -15,6 +16,7 @@ class InvoiceService {
     }
 
     @Get("/invoiceData")
+    @Documentation("Invoice data for widgets")
     public invoiceData() {
 
         let salesInvoiceTotal: number = 0.0;
