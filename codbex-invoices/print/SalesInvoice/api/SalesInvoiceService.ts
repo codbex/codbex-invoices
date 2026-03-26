@@ -1,15 +1,17 @@
-import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
-import { SalesInvoiceItemRepository as SalesInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceItemRepository";
-import { CustomerRepository as CustomerDao } from "../../../../codbex-partners/gen/codbex-partners/dao/Customers/CustomerRepository";
-import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/dao/Companies/CompanyRepository";
-import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/dao/Settings/CityRepository";
-import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/dao/Settings/CountryRepository";
-import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Settings/PaymentMethodRepository";
-import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/dao/Settings/SentMethodRepository";
+import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../codbex-invoices/gen/codbex-invoices/data/SalesInvoice/SalesInvoiceRepository";
+import { SalesInvoiceItemRepository as SalesInvoiceItemDao } from "../../../../codbex-invoices/gen/codbex-invoices/data/SalesInvoice/SalesInvoiceItemRepository";
+import { CustomerRepository as CustomerDao } from "../../../../codbex-partners/gen/codbex-partners/data/Customers/CustomerRepository";
+import { CompanyRepository as CompanyDao } from "../../../../codbex-companies/gen/codbex-companies/data/Companies/CompanyRepository";
+import { CityRepository as CityDao } from "../../../../codbex-cities/gen/codbex-cities/data/Settings/CityRepository";
+import { CountryRepository as CountryDao } from "../../../../codbex-countries/gen/codbex-countries/data/Settings/CountryRepository";
+import { PaymentMethodRepository as PaymentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/data/Settings/PaymentMethodRepository";
+import { SentMethodRepository as SentMethodDao } from "../../../../codbex-methods/gen/codbex-methods/data/Settings/SentMethodRepository";
 
-import { Controller, Get } from "sdk/http";
+import { Controller, Get, Documentation } from "@aerokit/sdk/http";
+import { Operator } from "@aerokit/sdk/db";
 
 @Controller
+@Documentation("codbex-invoices - Print Sales Invoice")
 class SalesInvoiceService {
 
     private readonly salesInvoiceDao;
@@ -33,43 +35,68 @@ class SalesInvoiceService {
     }
 
     @Get("/:salesInvoiceId")
+    @Documentation("Get sales invoice data for printing")
     public salesInvoiceData(_: any, ctx: any) {
         const salesInvoiceId = ctx.pathParameters.salesInvoiceId;
 
-        let salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
+        const salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
+        if (!salesInvoice) {
+            return {};
+        }
 
-        const paymentMethod = this.paymentMethodDao.findById(salesInvoice.PaymentMethod);
-        const sentMethod = this.sentMethodDao.findById(salesInvoice.SentMethod);
+        const paymentMethod = salesInvoice.PaymentMethod
+            ? this.paymentMethodDao.findById(salesInvoice.PaymentMethod)
+            : undefined;
+        const sentMethod = salesInvoice.SentMethod
+            ? this.sentMethodDao.findById(salesInvoice.SentMethod)
+            : undefined;
 
-        salesInvoice.PaymentMethod = paymentMethod.Name;
-        salesInvoice.SentMethod = sentMethod.Name;
+        if (paymentMethod) {
+            salesInvoice.PaymentMethod = paymentMethod.Name;
+        }
+
+        if (sentMethod) {
+            salesInvoice.SentMethod = sentMethod.Name;
+        }
 
         const salesInvoiceItems = this.salesInvoiceItemDao.findAll({
-            $filter: {
-                equals: {
-                    SalesInvoice: salesInvoice.Id
+            conditions: [
+                {
+                    propertyName: "SalesInvoice",
+                    operator: Operator.EQ,
+                    value: salesInvoice.Id
                 }
-            }
+            ]
         });
 
         let company;
 
         if (salesInvoice.Company) {
             company = this.companyDao.findById(salesInvoice.Company);
-            const city = this.cityDao.findById(company.City);
-            const country = this.countryDao.findById(company.Country);
 
-            company.City = city.Name;
-            company.Country = country.Name;
+            if (company) {
+                const city = company.City ? this.cityDao.findById(company.City) : undefined;
+                const country = company.Country ? this.countryDao.findById(company.Country) : undefined;
+
+                if (city) {
+                    company.City = city.Name;
+                }
+
+                if (country) {
+                    company.Country = country.Name;
+                }
+            }
         }
 
-        const customer = this.customerDao.findById(salesInvoice.Customer);
+        const customer = salesInvoice.Customer
+            ? this.customerDao.findById(salesInvoice.Customer)
+            : undefined;
 
         return {
-            salesInvoice: salesInvoice,
-            salesInvoiceItems: salesInvoiceItems,
-            customer: customer,
-            company: company
-        }
+            salesInvoice,
+            salesInvoiceItems,
+            customer,
+            company
+        };
     }
 }

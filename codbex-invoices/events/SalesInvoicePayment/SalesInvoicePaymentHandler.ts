@@ -1,39 +1,58 @@
-import { SalesInvoiceRepository } from "../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
-import { SalesInvoicePaymentRepository } from "../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoicePaymentRepository";
-import { CustomerPaymentRepository } from "codbex-payments/gen/codbex-payments/dao/CustomerPayment/CustomerPaymentRepository";
+import { SalesInvoiceRepository } from "../../gen/codbex-invoices/data/SalesInvoice/SalesInvoiceRepository";
+import { SalesInvoicePaymentRepository } from "../../gen/codbex-invoices/data/SalesInvoice/SalesInvoicePaymentRepository";
+import { SalesInvoicePaymentEntity } from "../../gen/codbex-invoices/data/SalesInvoice/SalesInvoicePaymentEntity";
+import { CustomerPaymentRepository } from "codbex-payments/gen/codbex-payments/data/CustomerPayment/CustomerPaymentRepository";
+import { EntityEvent, Operator } from "@aerokit/sdk/db";
 
-export const trigger = (event) => {
+export const trigger = (event: EntityEvent<SalesInvoicePaymentEntity>): void => {
+    const salesInvoiceDao = new SalesInvoiceRepository();
+    const salesInvoicePaymentDao = new SalesInvoicePaymentRepository();
+    const customerPaymentDao = new CustomerPaymentRepository();
 
-    const SalesInvoiceDao = new SalesInvoiceRepository();
-    const SalesInvoicePaymentDao = new SalesInvoicePaymentRepository();
-    const CustomerPaymentDao = new CustomerPaymentRepository();
-
-    let item = event.entity;
+    const item = event.entity;
     const operation = event.operation;
 
-    if (operation == "create") {
-
-        const customerPayment = CustomerPaymentDao.findById(item.CustomerPayment);
-
-        item.Amount = Math.min(customerPayment.Amount, item.Amount);
-
-        SalesInvoicePaymentDao.update(item);
+    if (!item.SalesInvoice) {
+        return;
     }
 
-    const items = SalesInvoicePaymentDao.findAll({
-        $filter: {
-            equals: {
-                SalesInvoice: item.SalesInvoice
+    if (operation === "create" && item.CustomerPayment) {
+        const customerPayment = customerPaymentDao.findById(item.CustomerPayment);
+
+        if (customerPayment && item.Id) {
+            const dbItem = salesInvoicePaymentDao.findById(item.Id);
+
+            if (!dbItem) {
+                return;
             }
+
+            dbItem.Amount = Math.min(customerPayment.Amount ?? 0, dbItem.Amount ?? 0);
+            salesInvoicePaymentDao.update(dbItem);
         }
+    }
+
+    const items = salesInvoicePaymentDao.findAll({
+        conditions: [
+            {
+                propertyName: "SalesInvoice",
+                operator: Operator.EQ,
+                value: item.SalesInvoice
+            }
+        ]
     });
 
     let amount = 0;
-    items.forEach(item => amount += item.Amount);
+    for (const row of items) {
+        amount += row.Amount ?? 0;
+    }
 
-    const salesInvoice = SalesInvoiceDao.findById(item.SalesInvoice);
+    const salesInvoice = salesInvoiceDao.findById(item.SalesInvoice);
+    if (!salesInvoice) {
+        return;
+    }
+
     salesInvoice.Paid = amount;
-    salesInvoice.Status = salesInvoice.Paid >= salesInvoice.Total ? 6 : 5;
+    salesInvoice.Status = amount >= (salesInvoice.Total ?? 0) ? 6 : 5;
 
-    SalesInvoiceDao.update(salesInvoice);
-}
+    salesInvoiceDao.update(salesInvoice);
+};

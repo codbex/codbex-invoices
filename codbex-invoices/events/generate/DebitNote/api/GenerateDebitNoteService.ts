@@ -1,7 +1,9 @@
-import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../gen/codbex-invoices/dao/SalesInvoice/SalesInvoiceRepository";
-import { Controller, Get } from "sdk/http";
+import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../../gen/codbex-invoices/data/SalesInvoice/SalesInvoiceRepository";
+
+import { Controller, Get, Documentation } from "@aerokit/sdk/http";
 
 @Controller
+@Documentation("codbex-invoices - Generate Debit Note")
 class GenerateDebitNoteService {
     private readonly salesInvoiceDao;
 
@@ -10,6 +12,7 @@ class GenerateDebitNoteService {
     }
 
     @Get("/salesInvoiceData/:salesInvoiceId")
+    @Documentation("Get Sales Invoice Data")
     public salesInvoiceData(_: any, ctx: any) {
         const salesInvoiceId = ctx.pathParameters.salesInvoiceId;
         const salesInvoice = this.salesInvoiceDao.findById(salesInvoiceId);
