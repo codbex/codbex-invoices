@@ -1,40 +1,59 @@
-import { PurchaseInvoiceRepository } from "../../gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceRepository";
-import { PurchaseInvoicePaymentRepository } from "../../gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoicePaymentRepository";
-import { SupplierPaymentRepository } from "codbex-payments/gen/codbex-payments/dao/SupplierPayment/SupplierPaymentRepository";
+import { PurchaseInvoiceRepository } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceRepository";
+import { PurchaseInvoicePaymentRepository } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoicePaymentRepository";
+import { PurchaseInvoicePaymentEntity } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoicePaymentEntity";
+import { SupplierPaymentRepository } from "codbex-payments/gen/codbex-payments/data/SupplierPayment/SupplierPaymentRepository";
+import { EntityEvent, Operator } from "@aerokit/sdk/db";
 
-export const trigger = (event) => {
+export const trigger = (event: EntityEvent<PurchaseInvoicePaymentEntity>): void => {
+    const purchaseInvoiceDao = new PurchaseInvoiceRepository();
+    const purchaseInvoicePaymentDao = new PurchaseInvoicePaymentRepository();
+    const supplierPaymentDao = new SupplierPaymentRepository();
 
-    const PurchaseInvoiceDao = new PurchaseInvoiceRepository();
-    const PurchaseInvoicePaymentDao = new PurchaseInvoicePaymentRepository();
-    const SupplierPaymentDao = new SupplierPaymentRepository();
-
-    let item = event.entity;
+    const item = event.entity;
     const operation = event.operation;
 
-    if (operation == "create") {
-
-        const supplierPayment = SupplierPaymentDao.findById(item.SupplierPayment);
-
-        item.Amount = Math.min(supplierPayment.Amount, item.Amount);
-
-        PurchaseInvoicePaymentDao.update(item);
+    if (!item.PurchaseInvoice) {
+        return;
     }
 
-    const items = PurchaseInvoicePaymentDao.findAll({
-        $filter: {
-            equals: {
-                PurchaseInvoice: item.PurchaseInvoice
-            }
+    if (operation === "create" && item.SupplierPayment && item.Id) {
+        const dbItem = purchaseInvoicePaymentDao.findById(item.Id);
+        if (!dbItem) {
+            return;
         }
+
+        const supplierPayment = supplierPaymentDao.findById(item.SupplierPayment);
+        if (!supplierPayment) {
+            return;
+        }
+
+        dbItem.Amount = Math.min(supplierPayment.Amount ?? 0, dbItem.Amount ?? 0);
+        purchaseInvoicePaymentDao.update(dbItem);
+    }
+
+
+    const items = purchaseInvoicePaymentDao.findAll({
+        conditions: [
+            {
+                propertyName: "PurchaseInvoice",
+                operator: Operator.EQ,
+                value: item.PurchaseInvoice
+            }
+        ]
     });
 
     let amount = 0;
-    items.forEach(item => amount += item.Amount);
+    for (const row of items) {
+        amount += row.Amount ?? 0;
+    }
 
-    const purchaseInvoice = PurchaseInvoiceDao.findById(item.PurchaseInvoice);
+    const purchaseInvoice = purchaseInvoiceDao.findById(item.PurchaseInvoice);
+    if (!purchaseInvoice) {
+        return;
+    }
+
     purchaseInvoice.Paid = amount;
-    purchaseInvoice.Status = purchaseInvoice.Paid >= purchaseInvoice.Total ? 6 : 5;
+    purchaseInvoice.Status = amount >= (purchaseInvoice.Total ?? 0) ? 6 : 5;
 
-
-    PurchaseInvoiceDao.update(purchaseInvoice);
-}
+    purchaseInvoiceDao.update(purchaseInvoice);
+};

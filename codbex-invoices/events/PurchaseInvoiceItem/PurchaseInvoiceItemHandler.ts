@@ -1,43 +1,59 @@
-import { PurchaseInvoiceRepository } from "../../gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceRepository";
-import { PurchaseInvoiceItemRepository } from "../../gen/codbex-invoices/dao/PurchaseInvoice/PurchaseInvoiceItemRepository";
+import { PurchaseInvoiceRepository } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceRepository";
+import { PurchaseInvoiceItemRepository } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceItemRepository";
+import { PurchaseInvoiceItemEntity } from "../../gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceItemEntity";
+import { EntityEvent, Operator } from "@aerokit/sdk/db";
 
-export const trigger = (event) => {
-    const PurchaseInvoiceDao = new PurchaseInvoiceRepository();
-    const PurchaseInvoiceItemDao = new PurchaseInvoiceItemRepository();
+const validate = () => { };
+
+export const trigger = (event: EntityEvent<PurchaseInvoiceItemEntity>): void => {
+    const purchaseInvoiceDao = new PurchaseInvoiceRepository();
+    const purchaseInvoiceItemDao = new PurchaseInvoiceItemRepository();
     const item = event.entity;
 
-    const items = PurchaseInvoiceItemDao.findAll({
-        $filter: {
-            equals: {
-                PurchaseInvoice: item.PurchaseInvoice
+    if (!item.PurchaseInvoice) {
+        return;
+    }
+
+    const items = purchaseInvoiceItemDao.findAll({
+        conditions: [
+            {
+                propertyName: "PurchaseInvoice",
+                operator: Operator.EQ,
+                value: item.PurchaseInvoice
             }
-        }
+        ]
     });
 
     let net = 0;
     let vat = 0;
     let gross = 0;
-    let total = 0;
 
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].Net) {
-            net += items[i].Net;
-            vat += items[i].VAT;
-            gross += items[i].Gross;
-        }
+    for (const row of items) {
+        net += row.Net ?? 0;
+        vat += row.VAT ?? 0;
+        gross += row.Gross ?? 0;
     }
 
-    const header = PurchaseInvoiceDao.findById(item.PurchaseInvoice);
+    const header = purchaseInvoiceDao.findById(item.PurchaseInvoice);
 
-    header.Total ??= 0;
+    if (!header) {
+        return;
+    }
+
+    const discount = header.Discount ?? 0;
+    const taxes = header.Taxes ?? 0;
+
     header.Net = net;
     header.VAT = vat;
     header.Gross = gross;
+    header.Total = gross - (gross * discount / 100) + (gross * taxes / 100) + vat;
 
-    total = header.Gross - (header.Gross * header.Discount / 100) + (header.Gross * header.Taxes / 100) + header.VAT;
-    header.Total = total;
+    if (header.Name) {
+        const index = header.Name.lastIndexOf("/");
+        if (index >= 0) {
+            header.Name = header.Name.substring(0, index + 1) + header.Total;
+        }
+    }
 
-    header.Name = header.Name.substring(0, header.Name.lastIndexOf("/") + 1) + header.Total;
-
-    PurchaseInvoiceDao.update(header);
-}
+    purchaseInvoiceDao.update(header);
+};
