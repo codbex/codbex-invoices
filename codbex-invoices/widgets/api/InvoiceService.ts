@@ -1,7 +1,9 @@
 import { SalesInvoiceRepository as SalesInvoiceDao } from "../../../codbex-invoices/gen/codbex-invoices/data/SalesInvoice/SalesInvoiceRepository";
 import { PurchaseInvoiceRepository as PurchaseInvoiceDao } from "../../../codbex-invoices/gen/codbex-invoices/data/PurchaseInvoice/PurchaseInvoiceRepository";
 
+
 import { Controller, Get, Documentation } from "@aerokit/sdk/http";
+import { Operator } from "@aerokit/sdk/db";
 
 @Controller
 @Documentation("codbex-invoices - Widgets API")
@@ -19,115 +21,137 @@ class InvoiceService {
     @Documentation("Invoice data for widgets")
     public invoiceData() {
 
-        let salesInvoiceTotal: number = 0.0;
-        let purchaseInvoiceTotal: number = 0.0;
-        let unpaidSalesInvoicesTotal: number = 0.0;
-        let unpaidPurchaseInvoiceTotal: number = 0.0;
-        let receivableTotalNotDue: number = 0;
-        let receivableTotalDue: number = 0;
-        let payableTotalNotDue: number = 0;
-        let payableTotalDue: number = 0;
+        let salesInvoiceTotal = 0;
+        let purchaseInvoiceTotal = 0;
+        let unpaidSalesInvoicesTotal = 0;
+        let unpaidPurchaseInvoiceTotal = 0;
+        let receivableTotalNotDue = 0;
+        let receivableTotalDue = 0;
+        let payableTotalNotDue = 0;
+        let payableTotalDue = 0;
         const currentDate = new Date();
 
         const allSalesInvoices = this.salesInvoiceDao.findAll({});
         allSalesInvoices.forEach(salesInvoice => {
-            salesInvoiceTotal += salesInvoice.Total;
+            salesInvoiceTotal += salesInvoice.Total ?? 0;
         });
 
         const allPurchaseInvoices = this.purchaseInvoiceDao.findAll({});
         allPurchaseInvoices.forEach(purchaseInvoice => {
-            purchaseInvoiceTotal += purchaseInvoice.Total;
+            purchaseInvoiceTotal += purchaseInvoice.Total ?? 0;
         });
 
         const unpaidSalesInvoicesCount = this.salesInvoiceDao.count({
-            $filter: {
-                notEquals: {
-                    //All invoices that don't have the status 'Paid'
-                    SalesInvoiceStatus: 6
+            conditions: [
+                {
+                    propertyName: "SalesInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         const salesInvoicesNotDue = this.salesInvoiceDao.findAll({
-            $filter: {
-                greaterThanOrEqual: {
-                    Due: currentDate
+            conditions: [
+                {
+                    propertyName: "Due",
+                    operator: Operator.GE,
+                    value: currentDate
                 },
-                notEquals: {
-                    //All invoices that don't have the status 'Paid'
-                    SalesInvoiceStatus: 6
+                {
+                    propertyName: "SalesInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         salesInvoicesNotDue.forEach(salesInvoice => {
-            receivableTotalNotDue += salesInvoice.Total;
-            unpaidSalesInvoicesTotal += salesInvoice.Total;
+            receivableTotalNotDue += salesInvoice.Total ?? 0;
+            unpaidSalesInvoicesTotal += salesInvoice.Total ?? 0;
         });
 
         const salesInvoicesDue = this.salesInvoiceDao.findAll({
-            $filter: {
-                lessThan: {
-                    Due: currentDate
+            conditions: [
+                {
+                    propertyName: "Due",
+                    operator: Operator.LT,
+                    value: currentDate
                 },
-                notEquals: {
-                    //All invoices that don't have the status 'Paid'
-                    SalesInvoiceStatus: 6
+                {
+                    propertyName: "SalesInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         salesInvoicesDue.forEach(salesInvoice => {
-            receivableTotalDue += salesInvoice.Total;
-            unpaidSalesInvoicesTotal += salesInvoice.Total;
+            receivableTotalDue += salesInvoice.Total ?? 0;
+            unpaidSalesInvoicesTotal += salesInvoice.Total ?? 0;
         });
 
         const purchaseInvoicesNotDue = this.purchaseInvoiceDao.findAll({
-            $filter: {
-                greaterThanOrEqual: {
-                    Due: currentDate
+            conditions: [
+                {
+                    propertyName: "Due",
+                    operator: Operator.GE,
+                    value: currentDate
+                },
+                {
+                    propertyName: "PurchaseInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         const unpaidPurchaseInvoicesCount = this.purchaseInvoiceDao.count({
-            $filter: {
-                notEquals: {
-                    //All invoices that don't have the status 'Paid'
-                    PurchaseInvoiceStatus: 6
+            conditions: [
+                {
+                    propertyName: "PurchaseInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         purchaseInvoicesNotDue.forEach(purchaseInvoice => {
-            payableTotalNotDue += purchaseInvoice.Total;
-            unpaidPurchaseInvoiceTotal += purchaseInvoice.Total;
+            payableTotalNotDue += purchaseInvoice.Total ?? 0;
+            unpaidPurchaseInvoiceTotal += purchaseInvoice.Total ?? 0;
         });
 
         const purchaseInvoicesDue = this.purchaseInvoiceDao.findAll({
-            $filter: {
-                lessThan: {
-                    Due: currentDate
+            conditions: [
+                {
+                    propertyName: "Due",
+                    operator: Operator.LT,
+                    value: currentDate
+                },
+                {
+                    propertyName: "PurchaseInvoiceStatus",
+                    operator: Operator.NE,
+                    value: 6
                 }
-            }
+            ]
         });
 
         purchaseInvoicesDue.forEach(purchaseInvoice => {
-            payableTotalDue += purchaseInvoice.Total;
-            unpaidPurchaseInvoiceTotal += purchaseInvoice.Total;
+            payableTotalDue += purchaseInvoice.Total ?? 0;
+            unpaidPurchaseInvoiceTotal += purchaseInvoice.Total ?? 0;
         });
 
         return {
-            "SalesInvoiceTotal": salesInvoiceTotal,
-            "PurchaseInvoiceTotal": purchaseInvoiceTotal,
-            "UnpaidSalesInvoicesCount": unpaidSalesInvoicesCount,
-            "UnpaidPurchaseInvoicesCount": unpaidPurchaseInvoicesCount,
-            "UnpaidSalesInvoiceTotal": unpaidSalesInvoicesTotal,
-            "UnpaidPurchaseInvoiceTotal": unpaidPurchaseInvoiceTotal,
-            "ReceivableCurrent": receivableTotalNotDue,
-            "ReceivableOverdue": receivableTotalDue,
-            "PayablesCurrent": payableTotalNotDue,
-            "PayablesOverdue": payableTotalDue
+            SalesInvoiceTotal: salesInvoiceTotal,
+            PurchaseInvoiceTotal: purchaseInvoiceTotal,
+            UnpaidSalesInvoicesCount: unpaidSalesInvoicesCount,
+            UnpaidPurchaseInvoicesCount: unpaidPurchaseInvoicesCount,
+            UnpaidSalesInvoiceTotal: unpaidSalesInvoicesTotal,
+            UnpaidPurchaseInvoiceTotal: unpaidPurchaseInvoiceTotal,
+            ReceivableCurrent: receivableTotalNotDue,
+            ReceivableOverdue: receivableTotalDue,
+            PayablesCurrent: payableTotalNotDue,
+            PayablesOverdue: payableTotalDue
         };
     }
 }
