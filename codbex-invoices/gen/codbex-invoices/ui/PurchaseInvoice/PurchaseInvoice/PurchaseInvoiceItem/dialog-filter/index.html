@@ -130,6 +130,39 @@
 							</bk-step-input>
 	                    </div>
                     </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idCreatedAt" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM_CREATEDAT' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CreatedAt'].$valid ? '' : 'error' }}" text="{{'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idCreatedAt"
+	                                name="CreatedAt"
+	                                state="{{ forms.details['CreatedAt'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.CreatedAt"
+	                                type="text"
+	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM_CREATEDAT)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idCreatedBy" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM_CREATEDBY' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CreatedBy'].$valid ? '' : 'error' }}" text="{{'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idCreatedBy"
+	                                name="CreatedBy"
+	                                state="{{ forms.details['CreatedBy'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.CreatedBy"
+									ng-maxlength="20.0"
+	                                type="text"
+	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEITEM_CREATEDBY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
                 </bk-form-group>
             </bk-fieldset>
         </bk-scrollbar>

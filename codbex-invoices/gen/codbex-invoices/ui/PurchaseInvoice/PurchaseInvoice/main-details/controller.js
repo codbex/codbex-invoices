@@ -68,6 +68,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (data.entity.Due) {
 					data.entity.Due = new Date(data.entity.Due);
 				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
@@ -99,6 +105,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 				if (data.entity.Due) {
 					data.entity.Due = new Date(data.entity.Due);
+				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
 				}
 				$scope.entity = data.entity;
 				$scope.optionsType = data.optionsType;

@@ -7,6 +7,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 
 	let params = ViewParameters.get();
 	if (Object.keys(params).length) {
+		if (params?.entity?.CreatedAtFrom) {
+			params.entity.CreatedAtFrom = new Date(params.entity.CreatedAtFrom);
+		}
+		if (params?.entity?.CreatedAtTo) {
+			params.entity.CreatedAtTo = new Date(params.entity.CreatedAtTo);
+		}
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
@@ -62,6 +68,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Gross !== undefined) {
 			const condition = { propertyName: 'Gross', operator: 'EQ', value: entity.Gross };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.CreatedAtFrom) {
+			const condition = { propertyName: 'CreatedAt', operator: 'GE', value: entity.CreatedAtFrom };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.CreatedAtTo) {
+			const condition = { propertyName: 'CreatedAt', operator: 'LE', value: entity.CreatedAtTo };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.CreatedBy) {
+			const condition = { propertyName: 'CreatedBy', operator: 'LIKE', value: `%${entity.CreatedBy}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoiceItem.entitySearch', data: {

@@ -19,6 +19,8 @@ export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity>
         if (entity) {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Due = entity.Due ? new Date(entity.Due) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         }
         return entity;
     }
@@ -28,6 +30,8 @@ export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity>
         entities.forEach(entity => {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Due = entity.Due ? new Date(entity.Due) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         });
         return entities;
     }

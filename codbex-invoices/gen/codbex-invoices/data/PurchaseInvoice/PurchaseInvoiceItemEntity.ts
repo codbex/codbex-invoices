@@ -92,6 +92,25 @@ export class PurchaseInvoiceItemEntity {
     })
     public Gross?: number;
 
+    @Documentation('CreatedAt')
+    @Column({
+        name: 'PURCHASEINVOICEITEM_CREATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @CreatedAt()
+    public CreatedAt?: Date;
+
+    @Documentation('CreatedBy')
+    @Column({
+        name: 'PURCHASEINVOICEITEM_CREATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @CreatedBy()
+    public CreatedBy?: string;
+
 }
 
 (new PurchaseInvoiceItemEntity());

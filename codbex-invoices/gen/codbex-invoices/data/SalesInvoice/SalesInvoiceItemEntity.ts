@@ -89,6 +89,25 @@ export class SalesInvoiceItemEntity {
     })
     public Gross?: number;
 
+    @Documentation('CreatedAt')
+    @Column({
+        name: 'SALESINVOICEITEM_CREATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @CreatedAt()
+    public CreatedAt?: Date;
+
+    @Documentation('CreatedBy')
+    @Column({
+        name: 'SALESINVOICEITEM_CREATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @CreatedBy()
+    public CreatedBy?: string;
+
 }
 
 (new SalesInvoiceItemEntity());

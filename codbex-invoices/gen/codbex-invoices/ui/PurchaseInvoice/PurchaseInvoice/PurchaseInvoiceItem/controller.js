@@ -114,6 +114,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					response.data.forEach(e => {
+						if (e.CreatedAt) {
+							e.CreatedAt = new Date(e.CreatedAt);
+						}
+					});
+
 					$scope.data = response.data;
 				}, (error) => {
 					const message = error.data ? error.data.message : '';

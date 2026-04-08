@@ -30,6 +30,10 @@
 					<tr bk-table-row>
 						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_CUSTOMERPAYMENT' | t:'CustomerPayment' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_AMOUNT' | t:'Amount' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_CREATEDAT' | t:'CreatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_CREATEDBY' | t:'CreatedBy' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_UPDATEDAT' | t:'UpdatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_UPDATEDBY' | t:'UpdatedBy' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -42,6 +46,10 @@
 							{{optionsCustomerPaymentValue(next.CustomerPayment)}}
 						</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Amount}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedBy}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedBy}}</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>
