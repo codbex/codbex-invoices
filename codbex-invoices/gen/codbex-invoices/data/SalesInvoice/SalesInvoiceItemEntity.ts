@@ -108,6 +108,25 @@ export class SalesInvoiceItemEntity {
     @CreatedBy()
     public CreatedBy?: string;
 
+    @Documentation('UpdatedAt')
+    @Column({
+        name: 'SALESINVOICEITEM_UPDATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @UpdatedAt()
+    public UpdatedAt?: Date;
+
+    @Documentation('UpdatedBy')
+    @Column({
+        name: 'SALESINVOICEITEM_UPDATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @UpdatedBy()
+    public UpdatedBy?: string;
+
 }
 
 (new SalesInvoiceItemEntity());

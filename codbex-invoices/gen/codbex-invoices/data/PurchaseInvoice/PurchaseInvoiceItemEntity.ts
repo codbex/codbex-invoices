@@ -111,6 +111,25 @@ export class PurchaseInvoiceItemEntity {
     @CreatedBy()
     public CreatedBy?: string;
 
+    @Documentation('UpdatedAt')
+    @Column({
+        name: 'PURCHASEINVOICEITEM_UPDATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @UpdatedAt()
+    public UpdatedAt?: Date;
+
+    @Documentation('UpdatedBy')
+    @Column({
+        name: 'PURCHASEINVOICEITEM_UPDATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @UpdatedBy()
+    public UpdatedBy?: string;
+
 }
 
 (new PurchaseInvoiceItemEntity());

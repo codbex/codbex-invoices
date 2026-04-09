@@ -74,6 +74,17 @@
                         "length": 20,
                         "nullable": true,
                         "name": "SALESINVOICEITEM_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_UPDATEDBY"
                     }
                 ]
             },
@@ -498,6 +509,17 @@
                         "length": 20,
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_UPDATEDBY"
                     }
                 ]
             },

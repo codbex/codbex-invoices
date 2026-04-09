@@ -15,6 +15,7 @@ export class SalesInvoiceItemRepository extends Repository<SalesInvoiceItemEntit
         const entity = super.findById(id, options);
         if (entity) {
             entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         }
         return entity;
     }
@@ -23,6 +24,7 @@ export class SalesInvoiceItemRepository extends Repository<SalesInvoiceItemEntit
         const entities = super.findAll(options);
         entities.forEach(entity => {
             entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         });
         return entities;
     }
