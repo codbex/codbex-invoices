@@ -39,6 +39,44 @@ export class PurchaseInvoicePaymentEntity {
     })
     public Amount!: number;
 
+    @Documentation('CreatedAt')
+    @Column({
+        name: 'PURCHASEINVOICEPAYMENT_CREATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @CreatedAt()
+    public CreatedAt?: Date;
+
+    @Documentation('CreatedBy')
+    @Column({
+        name: 'PURCHASEINVOICEPAYMENT_CREATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @CreatedBy()
+    public CreatedBy?: string;
+
+    @Documentation('UpdatedAt')
+    @Column({
+        name: 'PURCHASEINVOICEPAYMENT_UPDATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @UpdatedAt()
+    public UpdatedAt?: Date;
+
+    @Documentation('UpdatedBy')
+    @Column({
+        name: 'PURCHASEINVOICEPAYMENT_UPDATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @UpdatedBy()
+    public UpdatedBy?: string;
+
 }
 
 (new PurchaseInvoicePaymentEntity());

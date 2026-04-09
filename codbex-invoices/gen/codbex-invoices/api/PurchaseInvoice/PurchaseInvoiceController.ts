@@ -47,7 +47,7 @@ class PurchaseInvoiceController {
             this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -223,6 +223,12 @@ class PurchaseInvoiceController {
         }
         if (entity.Reference?.length > 36) {
             throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
+        }
+        if (entity.CreatedBy?.length > 20) {
+            throw new ValidationError(`The 'CreatedBy' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.UpdatedBy?.length > 20) {
+            throw new ValidationError(`The 'UpdatedBy' exceeds the maximum length of [20] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

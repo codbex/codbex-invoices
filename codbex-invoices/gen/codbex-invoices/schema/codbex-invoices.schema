@@ -63,6 +63,28 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEITEM_GROSS"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICEITEM_UPDATEDBY"
                     }
                 ]
             },
@@ -210,6 +232,28 @@
                         "length": 100,
                         "nullable": true,
                         "name": "SALESINVOICE_REFERENCE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICE_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICE_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICE_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICE_UPDATEDBY"
                     }
                 ]
             },
@@ -363,6 +407,28 @@
                         "length": 36,
                         "nullable": true,
                         "name": "PURCHASEINVOICE_REFERENCE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_UPDATEDBY"
                     }
                 ]
             },
@@ -432,6 +498,28 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "PURCHASEINVOICEITEM_GROSS"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEITEM_UPDATEDBY"
                     }
                 ]
             },
@@ -498,6 +586,28 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "SALESINVOICEPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICEPAYMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICEPAYMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SALESINVOICEPAYMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SALESINVOICEPAYMENT_UPDATEDBY"
                     }
                 ]
             },
@@ -528,6 +638,28 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "PURCHASEINVOICEPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEPAYMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEPAYMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEPAYMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICEPAYMENT_UPDATEDBY"
                     }
                 ]
             },

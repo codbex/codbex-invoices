@@ -11,6 +11,24 @@ export class SalesInvoiceItemRepository extends Repository<SalesInvoiceItemEntit
         super((SalesInvoiceItemEntity as EntityConstructor));
     }
 
+    public override findById(id: string | number, options?: Options): SalesInvoiceItemEntity | undefined {
+        const entity = super.findById(id, options);
+        if (entity) {
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
+        }
+        return entity;
+    }
+
+    public override findAll(options?: Options): SalesInvoiceItemEntity[] {
+        const entities = super.findAll(options);
+        entities.forEach(entity => {
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
+        });
+        return entities;
+    }
+
     public override create(entity: SalesInvoiceItemEntity): string | number {
         entity.Net = entity.Quantity * entity.Price;
         entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
