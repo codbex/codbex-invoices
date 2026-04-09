@@ -9,15 +9,17 @@
         "registry": "https://npm.pkg.github.com"
     },
     "dependencies": {
-        "@codbex/codbex-countries": "^1.2.0",
-        "@codbex/codbex-companies": "^1.1.0",
-        "@codbex/codbex-currencies": "^1.2.0",
-        "@codbex/codbex-uoms": "^1.4.0",
-        "@codbex/codbex-partners": "^1.1.0",
-        "@codbex/codbex-methods": "^1.0.0",
-        "@codbex/codbex-employees": "^1.0.0",
-        "@codbex/codbex-payments": "^1.0.0",
-        "@codbex/codbex-cities": "^1.1.0",
-        "@codbex/codbex-number-generator": "^1.1.0"
+        "@codbex/codbex-countries": "^1.3.0",
+        "@codbex/codbex-companies": "^1.2.0",
+        "@codbex/codbex-currencies": "^1.3.0",
+        "@codbex/codbex-uoms": "^1.5.0",
+        "@codbex/codbex-partners": "^1.4.0",
+        "@codbex/codbex-methods": "^1.1.0",
+        "@codbex/codbex-employees": "^1.2.0",
+        "@codbex/codbex-payments": "^1.1.0",
+        "@codbex/codbex-cities": "^1.2.0",
+        "@codbex/codbex-number-generator": "^1.2.0",
+        "@codbex/codbex-number-generator-data": "^1.1.0",
+        "@codbex/codbex-navigation-groups": "^1.0.0"
     }
 }
