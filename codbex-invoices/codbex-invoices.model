@@ -3206,7 +3206,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     }
                 ],
                 "caption": "Manage entity SalesInvoiceType",
@@ -3367,7 +3367,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     }
                 ],
                 "caption": "Manage entity PurchaseInvoiceType",
