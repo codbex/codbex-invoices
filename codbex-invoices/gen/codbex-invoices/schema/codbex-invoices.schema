@@ -101,6 +101,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
+                        "nullable": true,
                         "unique": true,
                         "name": "SALESINVOICE_NUMBER"
                     },
@@ -271,6 +272,7 @@
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
+                        "unique": true,
                         "name": "PURCHASEINVOICE_NUMBER"
                     },
                     {

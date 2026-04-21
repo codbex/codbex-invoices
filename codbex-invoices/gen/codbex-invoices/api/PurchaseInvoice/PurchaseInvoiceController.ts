@@ -167,9 +167,6 @@ class PurchaseInvoiceController {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Number === null || entity.Number === undefined) {
-            throw new ValidationError(`The 'Number' property is required, provide a valid value`);
-        }
         if (entity.Number?.length > 20) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }

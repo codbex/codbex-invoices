@@ -19,6 +19,7 @@ export class SalesInvoiceEntity {
         name: 'SALESINVOICE_NUMBER',
         type: 'string',
         length: 20,
+        nullable: true,
     })
     public Number?: string;
 
