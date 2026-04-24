@@ -26,45 +26,45 @@
 | Net           | DECIMAL   | Precision: 16, Scale: 2, Not Null       | Net amount.            |
 | Currency      | INTEGER   | FK, Not Null                            | Currency reference.    |
 | Gross         | DECIMAL   | Precision: 16, Scale: 2, Not Null       | Gross amount.          |
-| Discount      | DECIMAL   | Default: 0                   | Discount.              |
-| Taxes         | DECIMAL   | Default: 0                   | Additional taxes.      |
-| Vat           | DECIMAL   | Precision: 16, Scale: 2      | VAT amount.            |
-| Total         | DECIMAL   | Default: 0                   | Total amount.          |
-| Paid          | DECIMAL   | Default: 0                   | Paid amount.           |
+| Discount      | DECIMAL   | Default: 0, Not Null                    | Discount.              |
+| Taxes         | DECIMAL   | Default: 0, Not Null                    | Additional taxes.      |
+| Vat           | DECIMAL   | Precision: 16, Scale: 2, Not Null       | VAT amount.            |
+| Total         | DECIMAL   | Default: 0, Not Null                    | Total amount.          |
+| Paid          | DECIMAL   | Default: 0, Not Null                    | Paid amount.           |
 | Conditions    | VARCHAR   | Length: 200, Nullable        | Conditions.            |
 | PaymentMethod | INTEGER   | FK, Nullable                 | Payment method.        |
 | SentMethod    | INTEGER   | FK, Nullable                 | Sending method.        |
-| Status        | INTEGER   | FK                           | Invoice status.        |
-| Operator      | INTEGER   | FK                           | Responsible employee.  |
-| DocumentLink  | VARCHAR   | Length: 1000                 | Document link.         |
-| Company       | INTEGER   | FK                           | Company reference.     |
-| Name          | VARCHAR   | Length: 200                  | Name.                  |
-| Uuid          | VARCHAR   | Length: 36, Unique           | UUID.                  |
+| Status        | INTEGER   | FK, Not Null                            | Invoice status.        |
+| Operator      | INTEGER   | FK, Not Null                            | Responsible employee.  |
+| DocumentLink  | VARCHAR   | Length: 1000, Not Null                  | Document link.         |
+| Company       | INTEGER   | FK, Not Null                            | Company reference.     |
+| Name          | VARCHAR   | Calculated, Length: 200                  | Name.                  |
+| UUID          | VARCHAR   | Calculated, Length: 36, Unique           | UUID.                  |
 | Process       | VARCHAR   | Length: 36, Nullable         | Process reference.     |
 | Reference     | VARCHAR   | Length: 100, Nullable        | External reference.    |
-| CreatedAt     | TIMESTAMP | Nullable                     | Created at.            |
-| CreatedBy     | VARCHAR   | Length: 20, Nullable         | Created by.            |
-| UpdatedAt     | TIMESTAMP | Nullable                     | Updated at.            |
-| UpdatedBy     | VARCHAR   | Length: 20, Nullable         | Updated by.            |
+| CreatedAt     | TIMESTAMP | Audit, Nullable                     | Created at.            |
+| CreatedBy     | VARCHAR   | Audit, Length: 20, Nullable         | Created by.            |
+| UpdatedAt     | TIMESTAMP | Audit, Nullable                     | Updated at.            |
+| UpdatedBy     | VARCHAR   | Audit, Length: 20, Nullable         | Updated by.            |
 
 ### Entity `SalesInvoiceItem`
 
 | Field        | Type      | Details                 | Description           |
 | ------------ | --------- | ----------------------- | --------------------- |
 | Id           | INTEGER   | PK, Identity            | Unique identifier.    |
-| SalesInvoice | INTEGER   | FK                      | Reference to invoice. |
-| Name         | VARCHAR   | Length: 300             | Item name.            |
-| Quantity     | DOUBLE    |                         | Quantity.             |
-| Uom          | INTEGER   | FK                      | Unit of measure.      |
-| Price        | DECIMAL   | Precision: 16, Scale: 2 | Unit price.           |
-| Net          | DECIMAL   | Precision: 16, Scale: 2 | Net amount.           |
-| VatRate      | DECIMAL   | Default: 20             | VAT rate.             |
-| Vat          | DECIMAL   | Precision: 16, Scale: 2 | VAT amount.           |
-| Gross        | DECIMAL   | Precision: 16, Scale: 2 | Gross amount.         |
-| CreatedAt    | TIMESTAMP | Nullable                | Created at.           |
-| CreatedBy    | VARCHAR   | Length: 20, Nullable    | Created by.           |
-| UpdatedAt    | TIMESTAMP | Nullable                | Updated at.           |
-| UpdatedBy    | VARCHAR   | Length: 20, Nullable    | Updated by.           |
+| SalesInvoice | INTEGER   | FK,  Not Null                      | Reference to invoice. |
+| Name         | VARCHAR   | Length: 300,  Not Null             | Item name.            |
+| Quantity     | DOUBLE    | Not Null                       | Quantity.             |
+| Uom          | INTEGER   | FK,  Not Null                      | Unit of measure.      |
+| Price        | DECIMAL   | Precision: 16, Scale: 2,  Not Null | Unit price.           |
+| Net          | DECIMAL   | Calculated, Precision: 16, Scale: 2 | Net amount.           |
+| VatRate      | DECIMAL   | Default: 20,  Not Null             | VAT rate.             |
+| Vat          | DECIMAL   | Calculated, Precision: 16, Scale: 2 | VAT amount.           |
+| Gross        | DECIMAL   | Calculated, Precision: 16, Scale: 2 | Gross amount.         |
+| CreatedAt    | TIMESTAMP | Audit, Nullable                | Created at.           |
+| CreatedBy    | VARCHAR   | Audit, Length: 20, Nullable    | Created by.           |
+| UpdatedAt    | TIMESTAMP | Audit, Nullable                | Updated at.           |
+| UpdatedBy    | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.           |
 
 ### Entity `PurchaseInvoice`
 
@@ -72,67 +72,67 @@
 | ------------------- | --------- | ---------------------------- | ------------------------ |
 | Id                  | INTEGER   | PK, Identity                 | Unique identifier.       |
 | Number              | VARCHAR   | Length: 20, Unique, Nullable | Internal number.         |
-| OriginalNumber      | VARCHAR   | Length: 20                   | Supplier invoice number. |
-| PurchaseInvoiceType | INTEGER   | FK                           | Invoice type.            |
-| Date                | DATE      |                              | Invoice date.            |
-| Due                 | DATE      |                              | Due date.                |
-| Supplier            | INTEGER   | FK                           | Supplier reference.      |
-| Net                 | DECIMAL   | Precision: 16, Scale: 2      | Net amount.              |
-| Currency            | INTEGER   | FK                           | Currency reference.      |
-| Gross               | DECIMAL   | Precision: 16, Scale: 2      | Gross amount.            |
-| Discount            | DECIMAL   | Default: 0                   | Discount.                |
-| Taxes               | DECIMAL   | Default: 0                   | Taxes.                   |
-| Vat                 | DECIMAL   | Precision: 16, Scale: 2      | VAT.                     |
-| Total               | DECIMAL   | Default: 0                   | Total.                   |
-| Paid                | DECIMAL   | Default: 0                   | Paid.                    |
+| OriginalNumber      | VARCHAR   | Length: 20, Not Null                   | Supplier invoice number. |
+| PurchaseInvoiceType | INTEGER   | FK, Not Null                           | Invoice type.            |
+| Date                | DATE      | Not Null                             | Invoice date.            |
+| Due                 | DATE      | Not Null                             | Due date.                |
+| Supplier            | INTEGER   | FK, Not Null                           | Supplier reference.      |
+| Net                 | DECIMAL   | Precision: 16, Scale: 2, Not Null      | Net amount.              |
+| Currency            | INTEGER   | FK, Not Null                           | Currency reference.      |
+| Gross               | DECIMAL   | Precision: 16, Scale: 2, Not Null      | Gross amount.            |
+| Discount            | DECIMAL   | Default: 0, Not Null                   | Discount.                |
+| Taxes               | DECIMAL   | Default: 0, Not Null                   | Taxes.                   |
+| Vat                 | DECIMAL   | Precision: 16, Scale: 2, Not Null      | VAT.                     |
+| Total               | DECIMAL   | Default: 0, Not Null                   | Total.                   |
+| Paid                | DECIMAL   | Default: 0, Not Null                   | Paid.                    |
 | Conditions          | VARCHAR   | Length: 200, Nullable        | Conditions.              |
 | PaymentMethod       | INTEGER   | FK, Nullable                 | Payment method.          |
 | SentMethod          | INTEGER   | FK, Nullable                 | Sending method.          |
-| Status              | INTEGER   | FK                           | Status.                  |
-| Operator            | INTEGER   | FK                           | Responsible employee.    |
-| DocumentLink        | VARCHAR   | Length: 1000                 | Document link.           |
+| Status              | INTEGER   | FK, Not Null                           | Status.                  |
+| Operator            | INTEGER   | FK, Not Null                          | Responsible employee.    |
+| DocumentLink        | VARCHAR   | Length: 1000, Not Null                 | Document link.           |
 | Company             | INTEGER   | FK, Nullable                 | Company reference.       |
-| Name                | VARCHAR   | Length: 200                  | Name.                    |
-| Uuid                | VARCHAR   | Length: 36, Unique           | UUID.                    |
+| Name                | VARCHAR   | Calculated, Length: 200                  | Name.                    |
+| UUID                | VARCHAR   | Calculated, Length: 36, Unique           | UUID.                    |
 | Process             | VARCHAR   | Length: 36, Nullable         | Process.                 |
 | Reference           | VARCHAR   | Length: 36, Nullable         | Reference.               |
-| CreatedAt           | TIMESTAMP | Nullable                     | Created at.              |
-| CreatedBy           | VARCHAR   | Length: 20, Nullable         | Created by.              |
-| UpdatedAt           | TIMESTAMP | Nullable                     | Updated at.              |
-| UpdatedBy           | VARCHAR   | Length: 20, Nullable         | Updated by.              |
+| CreatedAt           | TIMESTAMP | Audit, Nullable                     | Created at.              |
+| CreatedBy           | VARCHAR   | Audit, Length: 20, Nullable         | Created by.              |
+| UpdatedAt           | TIMESTAMP | Audit, Nullable                     | Updated at.              |
+| UpdatedBy           | VARCHAR   | Audit, Length: 20, Nullable         | Updated by.              |
 
 ### Entity `PurchaseInvoiceItem`
 
 | Field           | Type      | Details                           | Description           |
 | --------------- | --------- | --------------------------------- | --------------------- |
 | Id              | INTEGER   | PK, Identity                      | Unique identifier.    |
-| PurchaseInvoice | INTEGER   | FK                                | Reference to invoice. |
-| Name            | VARCHAR   | Length: 300                       | Item name.            |
-| Quantity        | DOUBLE    |                                   | Quantity.             |
-| Uom             | INTEGER   | FK                                | Unit of measure.      |
-| Price           | DECIMAL   | Precision: 16, Scale: 2           | Price.                |
-| Net             | DECIMAL   | Precision: 16, Scale: 2, Nullable | Net.                  |
-| VatRate         | DECIMAL   | Default: 20                       | VAT rate.             |
-| Vat             | DECIMAL   | Precision: 16, Scale: 2, Nullable | VAT.                  |
-| Gross           | DECIMAL   | Precision: 16, Scale: 2, Nullable | Gross.                |
-| CreatedAt       | TIMESTAMP | Nullable                          | Created at.           |
-| CreatedBy       | VARCHAR   | Length: 20, Nullable              | Created by.           |
-| UpdatedAt       | TIMESTAMP | Nullable                          | Updated at.           |
-| UpdatedBy       | VARCHAR   | Length: 20, Nullable              | Updated by.           |
+| PurchaseInvoice | INTEGER   | FK, Not Null                                | Reference to invoice. |
+| Name            | VARCHAR   | Length: 300, Not Null                       | Item name.            |
+| Quantity        | DOUBLE    | Not Null                                 | Quantity.             |
+| Uom             | INTEGER   | FK, Not Null                                | Unit of measure.      |
+| Price           | DECIMAL   | Precision: 16, Scale: 2, Not Null           | Price.                |
+| Net             | DECIMAL   | Calculated, Precision: 16, Scale: 2, Nullable | Net.                  |
+| VatRate         | DECIMAL   | Default: 20, Not Null                       | VAT rate.             |
+| Vat             | DECIMAL   | Calculated, Precision: 16, Scale: 2, Nullable | VAT.                  |
+| Gross           | DECIMAL   | Calculated, Precision: 16, Scale: 2, Nullable | Gross.                |
+| CreatedAt       | TIMESTAMP | Audit, Nullable                          | Created at.           |
+| CreatedBy       | VARCHAR   | Audit, Length: 20, Nullable              | Created by.           |
+| UpdatedAt       | TIMESTAMP | Audit, Nullable                          | Updated at.           |
+| UpdatedBy       | VARCHAR   | Audit, Length: 20, Nullable              | Updated by.           |
 
 ### Entity `SalesInvoiceStatus`
 
 | Field | Type    | Details      | Description        |
 | ----- | ------- | ------------ | ------------------ |
 | Id    | INTEGER | PK, Identity | Unique identifier. |
-| Name  | VARCHAR | Length: 20   | Status name.       |
+| Name  | VARCHAR | Length: 20, Not Null   | Status name.       |
 
 ### Entity `PurchaseInvoiceStatus`
 
 | Field | Type    | Details      | Description        |
 | ----- | ------- | ------------ | ------------------ |
 | Id    | INTEGER | PK, Identity | Unique identifier. |
-| Name  | VARCHAR | Length: 20   | Status name.       |
+| Name  | VARCHAR | Length: 20, Not Null   | Status name.       |
 
 ### Entity `SalesInvoicePayment`
 
@@ -141,11 +141,11 @@
 | Id              | INTEGER   | PK, Identity            | Unique identifier.          |
 | SalesInvoice    | INTEGER   | FK, Nullable            | Invoice reference.          |
 | CustomerPayment | INTEGER   | FK, Nullable            | Customer payment reference. |
-| Amount          | DECIMAL   | Precision: 16, Scale: 2 | Amount applied.             |
-| CreatedAt       | TIMESTAMP | Nullable                | Created at.                 |
-| CreatedBy       | VARCHAR   | Length: 20, Nullable    | Created by.                 |
-| UpdatedAt       | TIMESTAMP | Nullable                | Updated at.                 |
-| UpdatedBy       | VARCHAR   | Length: 20, Nullable    | Updated by.                 |
+| Amount          | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Amount applied.             |
+| CreatedAt       | TIMESTAMP | Audit, Nullable                | Created at.                 |
+| CreatedBy       | VARCHAR   | Audit, Length: 20, Nullable    | Created by.                 |
+| UpdatedAt       | TIMESTAMP | Audit, Nullable                | Updated at.                 |
+| UpdatedBy       | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.                 |
 
 ### Entity `PurchaseInvoicePayment`
 
@@ -154,27 +154,27 @@
 | Id              | INTEGER   | PK, Identity            | Unique identifier.          |
 | PurchaseInvoice | INTEGER   | FK, Nullable            | Invoice reference.          |
 | SupplierPayment | INTEGER   | FK, Nullable            | Supplier payment reference. |
-| Amount          | DECIMAL   | Precision: 16, Scale: 2 | Amount applied.             |
-| CreatedAt       | TIMESTAMP | Nullable                | Created at.                 |
-| CreatedBy       | VARCHAR   | Length: 20, Nullable    | Created by.                 |
-| UpdatedAt       | TIMESTAMP | Nullable                | Updated at.                 |
-| UpdatedBy       | VARCHAR   | Length: 20, Nullable    | Updated by.                 |
+| Amount          | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Amount applied.             |
+| CreatedAt       | TIMESTAMP | Audit, Nullable                | Created at.                 |
+| CreatedBy       | VARCHAR   | Audit, Length: 20, Nullable    | Created by.                 |
+| UpdatedAt       | TIMESTAMP | Audit, Nullable                | Updated at.                 |
+| UpdatedBy       | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.                 |
 
 ### Entity `SalesInvoiceType`
 
 | Field     | Type    | Details      | Description        |
 | --------- | ------- | ------------ | ------------------ |
 | Id        | INTEGER | PK, Identity | Unique identifier. |
-| Name      | VARCHAR | Length: 20   | Type name.         |
-| Direction | INTEGER | FK           | Payment direction. |
+| Name      | VARCHAR | Length: 20,  Not Null   | Type name.         |
+| Direction | INTEGER | FK,  Not Null           | Payment direction. |
 
 ### Entity `PurchaseInvoiceType`
 
 | Field     | Type    | Details      | Description        |
 | --------- | ------- | ------------ | ------------------ |
 | Id        | INTEGER | PK, Identity | Unique identifier. |
-| Name      | VARCHAR | Length: 20   | Type name.         |
-| Direction | INTEGER | FK           | Payment direction. |
+| Name      | VARCHAR | Length: 20,  Not Null   | Type name.         |
+| Direction | INTEGER | FK,  Not Null           | Payment direction. |
 
 ### Entity `Deduction`
 
