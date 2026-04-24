@@ -19,13 +19,13 @@
 | ------------- | --------- | ---------------------------- | ---------------------- |
 | Id            | INTEGER   | PK, Identity                 | Unique identifier.     |
 | Number        | VARCHAR   | Length: 20, Unique, Nullable | Invoice number.        |
-| Type          | INTEGER   | FK                           | Invoice type.          |
-| Customer      | INTEGER   | FK                           | Reference to customer. |
-| Date          | DATE      |                              | Invoice date.          |
-| Due           | DATE      |                              | Due date.              |
-| Net           | DECIMAL   | Precision: 16, Scale: 2      | Net amount.            |
-| Currency      | INTEGER   | FK                           | Currency reference.    |
-| Gross         | DECIMAL   | Precision: 16, Scale: 2      | Gross amount.          |
+| Type          | INTEGER   | FK, Not Null                           | Invoice type.          |
+| Customer      | INTEGER   | FK, Not Null                            | Reference to customer. |
+| Date          | DATE      | Not Null                              | Invoice date.          |
+| Due           | DATE      | Not Null                              | Due date.              |
+| Net           | DECIMAL   | Precision: 16, Scale: 2, Not Null       | Net amount.            |
+| Currency      | INTEGER   | FK, Not Null                            | Currency reference.    |
+| Gross         | DECIMAL   | Precision: 16, Scale: 2, Not Null       | Gross amount.          |
 | Discount      | DECIMAL   | Default: 0                   | Discount.              |
 | Taxes         | DECIMAL   | Default: 0                   | Additional taxes.      |
 | Vat           | DECIMAL   | Precision: 16, Scale: 2      | VAT amount.            |
