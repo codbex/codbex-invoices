@@ -41,8 +41,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsPurchaseInvoice = params.optionsPurchaseInvoice;
-			$scope.optionsUoM = params.optionsUoM;
+			const optionsPurchaseInvoiceMap = new Map();
+			params.optionsPurchaseInvoice?.forEach(e => optionsPurchaseInvoiceMap.set(e.value, e));
+			$scope.optionsPurchaseInvoice = Array.from(optionsPurchaseInvoiceMap.values());
+			const optionsUoMMap = new Map();
+			params.optionsUoM?.forEach(e => optionsUoMMap.set(e.value, e));
+			$scope.optionsUoM = Array.from(optionsUoMMap.values());
 		}
 
 		$scope.create = () => {
@@ -91,7 +95,192 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		$scope.servicePurchaseInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts';
+
+		const lastSearchValuesPurchaseInvoice = new Set();
+		const allValuesPurchaseInvoice = [];
+		let loadMoreOptionsPurchaseInvoiceCounter = 0;
+		$scope.optionsPurchaseInvoiceLoading = false;
+		$scope.optionsPurchaseInvoiceHasMore = true;
+
+		$scope.loadMoreOptionsPurchaseInvoice = () => {
+			const limit = 20;
+			$scope.optionsPurchaseInvoiceLoading = true;
+			$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsPurchaseInvoiceCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesPurchaseInvoice.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Number
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesPurchaseInvoice.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsPurchaseInvoice.find(o => o.value === e.value)) {
+						$scope.optionsPurchaseInvoice.push(e);
+					}
+				})
+				$scope.optionsPurchaseInvoiceHasMore = resultValues.length > 0;
+				$scope.optionsPurchaseInvoiceLoading = false;
+			}, (error) => {
+				$scope.optionsPurchaseInvoiceLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PurchaseInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsPurchaseInvoiceChange = (event) => {
+			if (allValuesPurchaseInvoice.length === 0) {
+				allValuesPurchaseInvoice.push(...$scope.optionsPurchaseInvoice);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesPurchaseInvoice.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsPurchaseInvoice = allValuesPurchaseInvoice;
+				$scope.optionsPurchaseInvoiceHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsPurchaseInvoiceHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesPurchaseInvoice).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/search', {
+						conditions: [
+							{ propertyName: 'Number', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesPurchaseInvoice.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Number
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesPurchaseInvoice.push(e);
+							}
+						});
+						$scope.optionsPurchaseInvoice = allValuesPurchaseInvoice.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'PurchaseInvoice',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesPurchaseInvoice.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
 		$scope.serviceUoM = '/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts';
+
+		const lastSearchValuesUoM = new Set();
+		const allValuesUoM = [];
+		let loadMoreOptionsUoMCounter = 0;
+		$scope.optionsUoMLoading = false;
+		$scope.optionsUoMHasMore = true;
+
+		$scope.loadMoreOptionsUoM = () => {
+			const limit = 20;
+			$scope.optionsUoMLoading = true;
+			$http.get(`/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts?$limit=${limit}&$offset=${++loadMoreOptionsUoMCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesUoM.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesUoM.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsUoM.find(o => o.value === e.value)) {
+						$scope.optionsUoM.push(e);
+					}
+				})
+				$scope.optionsUoMHasMore = resultValues.length > 0;
+				$scope.optionsUoMLoading = false;
+			}, (error) => {
+				$scope.optionsUoMLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'UoM',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsUoMChange = (event) => {
+			if (allValuesUoM.length === 0) {
+				allValuesUoM.push(...$scope.optionsUoM);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesUoM.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsUoM = allValuesUoM;
+				$scope.optionsUoMHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsUoMHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesUoM).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesUoM.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesUoM.push(e);
+							}
+						});
+						$scope.optionsUoM = allValuesUoM.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'UoM',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesUoM.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
+
+		function isText(keycode) {
+			if ((keycode >= 48 && keycode <= 90) || (keycode >= 96 && keycode <= 111) || (keycode >= 186 && keycode <= 222) || [8, 46, 173].includes(keycode)) return true;
+			return false;
+		}
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({

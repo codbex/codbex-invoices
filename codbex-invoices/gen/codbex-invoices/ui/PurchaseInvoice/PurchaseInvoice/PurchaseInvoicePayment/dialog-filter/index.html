@@ -27,8 +27,14 @@
 	                            state="{{ forms.details['SupplierPayment'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.SupplierPayment"
 	                            dropdown-items="optionsSupplierPayment"
+								ng-keyup="onOptionsSupplierPaymentChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICEPAYMENT_SUPPLIERPAYMENT)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'SupplierPayment'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'SupplierPayment'} }}">
+								    <bk-list-action-item ng-if="optionsSupplierPaymentHasMore" ng-click="loadMoreOptionsSupplierPayment()">
+										<bk-busy-indicator ng-if="optionsSupplierPaymentLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsSupplierPaymentLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsSupplierPaymentLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

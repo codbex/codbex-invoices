@@ -27,8 +27,14 @@
 	                            state="{{ forms.details['AdvanceInvoice'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.AdvanceInvoice"
 	                            dropdown-items="optionsAdvanceInvoice"
+								ng-keyup="onOptionsAdvanceInvoiceChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.DEDUCTION_ADVANCEINVOICE)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'AdvanceInvoice'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'AdvanceInvoice'} }}">
+								    <bk-list-action-item ng-if="optionsAdvanceInvoiceHasMore" ng-click="loadMoreOptionsAdvanceInvoice()">
+										<bk-busy-indicator ng-if="optionsAdvanceInvoiceLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsAdvanceInvoiceLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsAdvanceInvoiceLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

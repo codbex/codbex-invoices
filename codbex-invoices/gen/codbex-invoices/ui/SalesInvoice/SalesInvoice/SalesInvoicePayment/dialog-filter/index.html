@@ -27,8 +27,14 @@
 	                            state="{{ forms.details['CustomerPayment'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.CustomerPayment"
 	                            dropdown-items="optionsCustomerPayment"
+								ng-keyup="onOptionsCustomerPaymentChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT_CUSTOMERPAYMENT)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'CustomerPayment'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'CustomerPayment'} }}">
+								    <bk-list-action-item ng-if="optionsCustomerPaymentHasMore" ng-click="loadMoreOptionsCustomerPayment()">
+										<bk-busy-indicator ng-if="optionsCustomerPaymentLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCustomerPaymentLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCustomerPaymentLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

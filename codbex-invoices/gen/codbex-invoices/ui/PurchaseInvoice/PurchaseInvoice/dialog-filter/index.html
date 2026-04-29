@@ -61,8 +61,14 @@
 	                            state="{{ forms.details['Type'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Type"
 	                            dropdown-items="optionsType"
+								ng-keyup="onOptionsTypeChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PURCHASEINVOICETYPE)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Type'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Type'} }}">
+								    <bk-list-action-item ng-if="optionsTypeHasMore" ng-click="loadMoreOptionsType()">
+										<bk-busy-indicator ng-if="optionsTypeLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsTypeLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsTypeLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -132,8 +138,14 @@
 	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Supplier"
 	                            dropdown-items="optionsSupplier"
+								ng-keyup="onOptionsSupplierChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SUPPLIER)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Supplier'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Supplier'} }}">
+								    <bk-list-action-item ng-if="optionsSupplierHasMore" ng-click="loadMoreOptionsSupplier()">
+										<bk-busy-indicator ng-if="optionsSupplierLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsSupplierLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsSupplierLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -160,8 +172,14 @@
 	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Currency"
 	                            dropdown-items="optionsCurrency"
+								ng-keyup="onOptionsCurrencyChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_CURRENCY)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Currency'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Currency'} }}">
+								    <bk-list-action-item ng-if="optionsCurrencyHasMore" ng-click="loadMoreOptionsCurrency()">
+										<bk-busy-indicator ng-if="optionsCurrencyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCurrencyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCurrencyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -285,8 +303,14 @@
 	                            state="{{ forms.details['SentMethod'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.SentMethod"
 	                            dropdown-items="optionsSentMethod"
+								ng-keyup="onOptionsSentMethodChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SENTMETHOD)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'SentMethod'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'SentMethod'} }}">
+								    <bk-list-action-item ng-if="optionsSentMethodHasMore" ng-click="loadMoreOptionsSentMethod()">
+										<bk-busy-indicator ng-if="optionsSentMethodLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsSentMethodLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsSentMethodLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -300,8 +324,14 @@
 	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Status"
 	                            dropdown-items="optionsStatus"
+								ng-keyup="onOptionsStatusChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_STATUS)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Status'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Status'} }}">
+								    <bk-list-action-item ng-if="optionsStatusHasMore" ng-click="loadMoreOptionsStatus()">
+										<bk-busy-indicator ng-if="optionsStatusLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsStatusLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsStatusLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -315,8 +345,14 @@
 	                            state="{{ forms.details['Operator'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Operator"
 	                            dropdown-items="optionsOperator"
+								ng-keyup="onOptionsOperatorChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_OPERATOR)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Operator'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Operator'} }}">
+								    <bk-list-action-item ng-if="optionsOperatorHasMore" ng-click="loadMoreOptionsOperator()">
+										<bk-busy-indicator ng-if="optionsOperatorLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsOperatorLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsOperatorLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -347,8 +383,14 @@
 	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Company"
 	                            dropdown-items="optionsCompany"
+								ng-keyup="onOptionsCompanyChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_COMPANY)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Company'} }}">
+								    <bk-list-action-item ng-if="optionsCompanyHasMore" ng-click="loadMoreOptionsCompany()">
+										<bk-busy-indicator ng-if="optionsCompanyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCompanyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCompanyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

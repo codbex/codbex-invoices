@@ -114,6 +114,52 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					if (optionsPurchaseInvoiceHasMore) {
+						const optionsPurchaseInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.PurchaseInvoice)));
+						if (optionsPurchaseInvoiceSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsPurchaseInvoiceSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsPurchaseInvoice.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Number
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'PurchaseInvoice',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsUoMHasMore) {
+						const optionsUoMSearchValues = Array.from(new Set(response.data.map(e => e.UoM)));
+						if (optionsUoMSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsUoMSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsUoM.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'UoM',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.CreatedAt) {
 							e.CreatedAt = new Date(e.CreatedAt);
@@ -241,12 +287,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsPurchaseInvoice = [];
 		$scope.optionsUoM = [];
 
+		let optionsPurchaseInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts').then((response) => {
-			$scope.optionsPurchaseInvoice = response.data.map(e => ({
-				value: e.Id,
-				text: e.Number
-			}));
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/count').then((response) => {
+			const optionsPurchaseInvoiceCount = response.data.count;
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts').then((response) => {
+				$scope.optionsPurchaseInvoice = response.data.map(e => ({
+					value: e.Id,
+					text: e.Number
+				}));
+				optionsPurchaseInvoiceHasMore = optionsPurchaseInvoiceCount > $scope.optionsPurchaseInvoice.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PurchaseInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -256,12 +315,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsUoMHasMore = true;
 
-		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts').then((response) => {
-			$scope.optionsUoM = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/count').then((response) => {
+			const optionsUoMCount = response.data.count;
+			$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts').then((response) => {
+				$scope.optionsUoM = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsUoMHasMore = optionsUoMCount > $scope.optionsUoM.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'UoM',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';

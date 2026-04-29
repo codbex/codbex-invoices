@@ -114,6 +114,29 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					if (optionsAdvanceInvoiceHasMore) {
+						const optionsAdvanceInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.AdvanceInvoice)));
+						if (optionsAdvanceInvoiceSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsAdvanceInvoiceSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsAdvanceInvoice.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Number
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'AdvanceInvoice',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					$scope.data = response.data;
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
@@ -227,12 +250,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		//----------------Dropdowns-----------------//
 		$scope.optionsAdvanceInvoice = [];
 
+		let optionsAdvanceInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
-			$scope.optionsAdvanceInvoice = response.data.map(e => ({
-				value: e.Id,
-				text: e.Number
-			}));
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/count').then((response) => {
+			const optionsAdvanceInvoiceCount = response.data.count;
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
+				$scope.optionsAdvanceInvoice = response.data.map(e => ({
+					value: e.Id,
+					text: e.Number
+				}));
+				optionsAdvanceInvoiceHasMore = optionsAdvanceInvoiceCount > $scope.optionsAdvanceInvoice.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'AdvanceInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';

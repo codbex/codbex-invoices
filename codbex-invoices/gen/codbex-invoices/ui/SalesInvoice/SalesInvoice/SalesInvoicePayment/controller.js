@@ -114,6 +114,52 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					if (optionsSalesInvoiceHasMore) {
+						const optionsSalesInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.SalesInvoice)));
+						if (optionsSalesInvoiceSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsSalesInvoiceSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsSalesInvoice.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'SalesInvoice',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsCustomerPaymentHasMore) {
+						const optionsCustomerPaymentSearchValues = Array.from(new Set(response.data.map(e => e.CustomerPayment)));
+						if (optionsCustomerPaymentSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsCustomerPaymentSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsCustomerPayment.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'CustomerPayment',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.CreatedAt) {
 							e.CreatedAt = new Date(e.CreatedAt);
@@ -241,12 +287,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsSalesInvoice = [];
 		$scope.optionsCustomerPayment = [];
 
+		let optionsSalesInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
-			$scope.optionsSalesInvoice = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/count').then((response) => {
+			const optionsSalesInvoiceCount = response.data.count;
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
+				$scope.optionsSalesInvoice = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsSalesInvoiceHasMore = optionsSalesInvoiceCount > $scope.optionsSalesInvoice.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'SalesInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -256,12 +315,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsCustomerPaymentHasMore = true;
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts').then((response) => {
-			$scope.optionsCustomerPayment = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/count').then((response) => {
+			const optionsCustomerPaymentCount = response.data.count;
+			$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts').then((response) => {
+				$scope.optionsCustomerPayment = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsCustomerPaymentHasMore = optionsCustomerPaymentCount > $scope.optionsCustomerPayment.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'CustomerPayment',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';

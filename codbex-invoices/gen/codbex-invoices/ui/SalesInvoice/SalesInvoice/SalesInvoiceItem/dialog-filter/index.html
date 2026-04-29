@@ -57,8 +57,14 @@
 	                            state="{{ forms.details['UoM'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.UoM"
 	                            dropdown-items="optionsUoM"
+								ng-keyup="onOptionsUoMChange($event)"
 	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEITEM_UOM)'} }}"
 								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'UoM'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'UoM'} }}">
+								    <bk-list-action-item ng-if="optionsUoMHasMore" ng-click="loadMoreOptionsUoM()">
+										<bk-busy-indicator ng-if="optionsUoMLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsUoMLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsUoMLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

@@ -114,6 +114,52 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
+					if (optionsPurchaseInvoiceHasMore) {
+						const optionsPurchaseInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.PurchaseInvoice)));
+						if (optionsPurchaseInvoiceSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsPurchaseInvoiceSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsPurchaseInvoice.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'PurchaseInvoice',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsSupplierPaymentHasMore) {
+						const optionsSupplierPaymentSearchValues = Array.from(new Set(response.data.map(e => e.SupplierPayment)));
+						if (optionsSupplierPaymentSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsSupplierPaymentSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsSupplierPayment.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'SupplierPayment',
+									message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.CreatedAt) {
 							e.CreatedAt = new Date(e.CreatedAt);
@@ -241,12 +287,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsPurchaseInvoice = [];
 		$scope.optionsSupplierPayment = [];
 
+		let optionsPurchaseInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts').then((response) => {
-			$scope.optionsPurchaseInvoice = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts/count').then((response) => {
+			const optionsPurchaseInvoiceCount = response.data.count;
+			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts').then((response) => {
+				$scope.optionsPurchaseInvoice = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsPurchaseInvoiceHasMore = optionsPurchaseInvoiceCount > $scope.optionsPurchaseInvoice.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PurchaseInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -256,12 +315,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsSupplierPaymentHasMore = true;
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts').then((response) => {
-			$scope.optionsSupplierPayment = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts/count').then((response) => {
+			const optionsSupplierPaymentCount = response.data.count;
+			$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts').then((response) => {
+				$scope.optionsSupplierPayment = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsSupplierPaymentHasMore = optionsSupplierPaymentCount > $scope.optionsSupplierPayment.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'SupplierPayment',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
