@@ -59,6 +59,17 @@ class CASHFLOWService {
             this.handleError(error);
         }
     }
+    
+    @Post("/export")
+    public exportCsv() {
+        try {
+            this.checkPermissions("read");
+
+            return this.repository.exportCsv().map(e => this.transformEntity("read", e));
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
 
     private handleError(error: any) {
         if (error.name === "ForbiddenError") {
