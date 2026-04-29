@@ -88,5 +88,36 @@ export class MonthlyVATRepository {
 
         return Query.executeNamed(sql, parameters, this.datasourceName)[0].REPORT_COUNT;
     }
+    
+    public exportCsv() {
+        const sql = `
+            SELECT
+              CAST(PARSEDATETIME(FORMATDATETIME(t.invoice_date, 'yyyy-MM-01'), 'yyyy-MM-dd') AS DATE) AS "DATE",
+              SUM(t.sales_vat) AS "SALES_VAT",
+              SUM(t.purchase_vat) AS "PURCHASE_VAT",
+              SUM(t.sales_vat) - SUM(t.purchase_vat) AS "PAYABLE_VAT"
+            FROM (
+              SELECT
+                SALESINVOICE_DATE AS invoice_date,
+                COALESCE(SALESINVOICE_VAT, 0) AS sales_vat,
+                CAST(0 AS DECIMAL(18,2)) AS purchase_vat
+              FROM CODBEX_SALESINVOICE
+            
+              UNION ALL
+            
+              SELECT
+                PURCHASEINVOICE_DATE AS invoice_date,
+                CAST(0 AS DECIMAL(18,2)) AS sales_vat,
+                COALESCE(PURCHASEINVOICE_VAT, 0) AS purchase_vat
+              FROM CODBEX_PURCHASEINVOICE
+            ) t
+            GROUP BY CAST(PARSEDATETIME(FORMATDATETIME(t.invoice_date, 'yyyy-MM-01'), 'yyyy-MM-dd') AS DATE)
+            ORDER BY "DATE" DESC
+        `;
+
+        const parameters: NamedQueryParameter[] = [];
+
+        return Query.exportCsv(sql, parameters, this.datasourceName, 'MonthlyVAT');
+    }
 
 }

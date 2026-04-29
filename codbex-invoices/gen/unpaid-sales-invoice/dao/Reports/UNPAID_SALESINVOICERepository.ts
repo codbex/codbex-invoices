@@ -54,5 +54,17 @@ export class UNPAID_SALESINVOICERepository {
 
         return Query.executeNamed(sql, parameters, this.datasourceName)[0].REPORT_COUNT;
     }
+    
+    public exportCsv() {
+        const sql = `
+            SELECT SalesInvoice.SALESINVOICE_NUMBER as "Number", SalesInvoice.SALESINVOICE_TYPE as "Type", SalesInvoice.SALESINVOICE_DATE as "Date", SalesInvoice.SALESINVOICE_DUE as "Due", SalesInvoice.SALESINVOICE_TOTAL as "Total", SalesInvoice.SALESINVOICE_PAID as "Paid", SalesInvoice.SALESINVOICE_STATUS as "Status", SalesInvoice.SALESINVOICE_NAME as "Name"
+            FROM CODBEX_SALESINVOICE as SalesInvoice
+            WHERE SalesInvoice.SALESINVOICE_TOTAL > SalesInvoice.SALESINVOICE_PAID
+        `;
+
+        const parameters: NamedQueryParameter[] = [];
+
+        return Query.exportCsv(sql, parameters, this.datasourceName, 'UNPAID_SALESINVOICE');
+    }
 
 }

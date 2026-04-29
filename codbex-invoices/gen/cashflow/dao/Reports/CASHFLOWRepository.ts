@@ -78,5 +78,32 @@ export class CASHFLOWRepository {
 
         return Query.executeNamed(sql, parameters, this.datasourceName)[0].REPORT_COUNT;
     }
+    
+    public exportCsv() {
+        const sql = `
+            SELECT
+              SUM(t.TRANSACTION_AMOUNT) AS "Net Cashflow",
+              DATE_TRUNC('day', t.TRANSACTION_DATE) AS "Date"
+            FROM (
+              SELECT
+                SALESINVOICE_DATE AS TRANSACTION_DATE,
+                SALESINVOICE_NET  AS TRANSACTION_AMOUNT
+              FROM CODBEX_SALESINVOICE
+            
+              UNION ALL
+            
+              SELECT
+                PURCHASEINVOICE_DATE AS TRANSACTION_DATE,
+                -PURCHASEINVOICE_NET AS TRANSACTION_AMOUNT
+              FROM CODBEX_PURCHASEINVOICE
+            ) t
+            GROUP BY DATE_TRUNC('day', t.TRANSACTION_DATE)
+            ORDER BY "Date" DESC
+        `;
+
+        const parameters: NamedQueryParameter[] = [];
+
+        return Query.exportCsv(sql, parameters, this.datasourceName, 'CASHFLOW');
+    }
 
 }
