@@ -4,13 +4,71 @@
   "brandUrl": "https://www.codbex.com",
   "title": "Invoice Management Application",
   "description": "Managing invoices data",
+  "fileName": "codbex-invoices",
+  "genFolderName": "codbex-invoices",
+  "dataSource": "DefaultDB",
+  "roles": [
+    {
+      "entityName": "SalesInvoiceItem",
+      "roleRead": "codbex-invoices.salesinvoice.SalesInvoiceItemReadOnly",
+      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoiceItemFullAccess"
+    },
+    {
+      "entityName": "SalesInvoice",
+      "roleRead": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly",
+      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+    },
+    {
+      "entityName": "PurchaseInvoice",
+      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly",
+      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
+    },
+    {
+      "entityName": "PurchaseInvoiceItem",
+      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly",
+      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess"
+    },
+    {
+      "entityName": "SalesInvoiceStatus",
+      "roleRead": "codbex-invoices.settings.SalesInvoiceStatusReadOnly",
+      "roleWrite": "codbex-invoices.settings.SalesInvoiceStatusFullAccess"
+    },
+    {
+      "entityName": "PurchaseInvoiceStatus",
+      "roleRead": "codbex-invoices.settings.PurchaseInvoiceStatusReadOnly",
+      "roleWrite": "codbex-invoices.settings.PurchaseInvoiceStatusFullAccess"
+    },
+    {
+      "entityName": "SalesInvoicePayment",
+      "roleRead": "codbex-invoices.salesinvoice.SalesInvoicePaymentReadOnly",
+      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoicePaymentFullAccess"
+    },
+    {
+      "entityName": "PurchaseInvoicePayment",
+      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentReadOnly",
+      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentFullAccess"
+    },
+    {
+      "entityName": "SalesInvoiceType",
+      "roleRead": "codbex-invoices.settings.SalesInvoiceTypeReadOnly",
+      "roleWrite": "codbex-invoices.settings.SalesInvoiceTypeFullAccess"
+    },
+    {
+      "entityName": "Deduction",
+      "roleRead": "codbex-invoices.settings.DeductionReadOnly",
+      "roleWrite": "codbex-invoices.settings.DeductionFullAccess"
+    },
+    {
+      "entityName": "PurchaseInvoiceType",
+      "roleRead": "codbex-invoices.settings.PurchaseInvoiceTypeReadOnly",
+      "roleWrite": "codbex-invoices.settings.PurchaseInvoiceTypeFullAccess"
+    }
+  ],
+  "tprefix": "codbex-invoices-model",
   "projectName": "codbex-invoices",
   "workspaceName": "workspace",
   "filePath": "codbex-invoices.model",
   "templateId": "template-application-angular-v2/template/template.js",
-  "fileName": "codbex-invoices",
-  "genFolderName": "codbex-invoices",
-  "dataSource": "DefaultDB",
   "perspectives": {
     "SalesInvoice": {
       "views": [
@@ -171,64 +229,6 @@
       "role": ""
     }
   },
-  "roles": [
-    {
-      "entityName": "SalesInvoiceItem",
-      "roleRead": "codbex-invoices.salesinvoice.SalesInvoiceItemReadOnly",
-      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoiceItemFullAccess"
-    },
-    {
-      "entityName": "SalesInvoice",
-      "roleRead": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly",
-      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
-    },
-    {
-      "entityName": "PurchaseInvoice",
-      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoiceReadOnly",
-      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoiceFullAccess"
-    },
-    {
-      "entityName": "PurchaseInvoiceItem",
-      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemReadOnly",
-      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoiceItemFullAccess"
-    },
-    {
-      "entityName": "SalesInvoiceStatus",
-      "roleRead": "codbex-invoices.settings.SalesInvoiceStatusReadOnly",
-      "roleWrite": "codbex-invoices.settings.SalesInvoiceStatusFullAccess"
-    },
-    {
-      "entityName": "PurchaseInvoiceStatus",
-      "roleRead": "codbex-invoices.settings.PurchaseInvoiceStatusReadOnly",
-      "roleWrite": "codbex-invoices.settings.PurchaseInvoiceStatusFullAccess"
-    },
-    {
-      "entityName": "SalesInvoicePayment",
-      "roleRead": "codbex-invoices.salesinvoice.SalesInvoicePaymentReadOnly",
-      "roleWrite": "codbex-invoices.salesinvoice.SalesInvoicePaymentFullAccess"
-    },
-    {
-      "entityName": "PurchaseInvoicePayment",
-      "roleRead": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentReadOnly",
-      "roleWrite": "codbex-invoices.purchaseinvoice.PurchaseInvoicePaymentFullAccess"
-    },
-    {
-      "entityName": "SalesInvoiceType",
-      "roleRead": "codbex-invoices.settings.SalesInvoiceTypeReadOnly",
-      "roleWrite": "codbex-invoices.settings.SalesInvoiceTypeFullAccess"
-    },
-    {
-      "entityName": "Deduction",
-      "roleRead": "codbex-invoices.settings.DeductionReadOnly",
-      "roleWrite": "codbex-invoices.settings.DeductionFullAccess"
-    },
-    {
-      "entityName": "PurchaseInvoiceType",
-      "roleRead": "codbex-invoices.settings.PurchaseInvoiceTypeReadOnly",
-      "roleWrite": "codbex-invoices.settings.PurchaseInvoiceTypeFullAccess"
-    }
-  ],
-  "tprefix": "codbex-invoices-model",
   "models": [
     {
       "properties": [
@@ -455,7 +455,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "NUMBER",
           "dataNotNull": true,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -471,8 +471,8 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
-          "calculatedPropertyExpressionUpdate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
+          "calculatedPropertyExpressionCreate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
+          "calculatedPropertyExpressionUpdate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
           "dataLength": "16",
           "dataName": "SALESINVOICEITEM_VAT",
           "dataNullable": false,
@@ -4518,7 +4518,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "NUMBER",
           "dataNotNull": true,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -4534,8 +4534,8 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
-          "calculatedPropertyExpressionUpdate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
+          "calculatedPropertyExpressionCreate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
+          "calculatedPropertyExpressionUpdate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
           "dataLength": "16",
           "dataName": "PURCHASEINVOICEITEM_VAT",
           "dataNullable": true,

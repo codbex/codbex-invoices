@@ -31,17 +31,24 @@ export class PurchaseInvoiceItemRepository extends Repository<PurchaseInvoiceIte
 
     public override create(entity: PurchaseInvoiceItemEntity): string | number {
         entity.Net = entity.Quantity * entity.Price;
-        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
         entity.Gross = entity.Net + entity.VAT;
         return super.create(entity);
     }
 
+    public override update(entity: PurchaseInvoiceItemEntity): void {
+        entity.Net = entity.Quantity * entity.Price;
+        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
+        entity.Gross = entity.Net + entity.VAT;
+        super.update(entity);
+    }
+
     public override upsert(entity: PurchaseInvoiceItemEntity): string | number {
         entity.Net = entity.Quantity * entity.Price;
-        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
         entity.Gross = entity.Net + entity.VAT;
         entity.Net = entity.Quantity * entity.Price;
-        entity.VAT = Math.round(entity.Net * entity.VATRate / 100).toFixed(2);
+        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
         entity.Gross = entity.Net + entity.VAT;
         return super.upsert(entity);
     }

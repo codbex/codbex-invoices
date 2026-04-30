@@ -141,12 +141,12 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
-                        "calculatedPropertyExpressionUpdate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
+                        "calculatedPropertyExpressionCreate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
+                        "calculatedPropertyExpressionUpdate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
                         "dataLength": "16",
                         "dataName": "SALESINVOICEITEM_VAT",
                         "dataNullable": "false",
@@ -1450,12 +1450,12 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
-                        "calculatedPropertyExpressionUpdate": "Math.round(entity.Net * entity.VATRate / 100).toFixed(2)",
+                        "calculatedPropertyExpressionCreate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
+                        "calculatedPropertyExpressionUpdate": "Math.round((entity.Net * entity.VATRate / 100) * 100) / 100",
                         "dataLength": "16",
                         "dataName": "PURCHASEINVOICEITEM_VAT",
                         "dataNullable": "true",
