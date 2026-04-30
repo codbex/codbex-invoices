@@ -44,7 +44,7 @@ class InvoiceService {
         const unpaidSalesInvoicesCount = this.salesInvoiceDao.count({
             conditions: [
                 {
-                    propertyName: "SalesInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
@@ -59,7 +59,7 @@ class InvoiceService {
                     value: currentDate
                 },
                 {
-                    propertyName: "SalesInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
@@ -79,7 +79,7 @@ class InvoiceService {
                     value: currentDate
                 },
                 {
-                    propertyName: "SalesInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
@@ -99,7 +99,7 @@ class InvoiceService {
                     value: currentDate
                 },
                 {
-                    propertyName: "PurchaseInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
@@ -109,7 +109,7 @@ class InvoiceService {
         const unpaidPurchaseInvoicesCount = this.purchaseInvoiceDao.count({
             conditions: [
                 {
-                    propertyName: "PurchaseInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
@@ -129,7 +129,7 @@ class InvoiceService {
                     value: currentDate
                 },
                 {
-                    propertyName: "PurchaseInvoiceStatus",
+                    propertyName: "Status",
                     operator: Operator.NE,
                     value: 6
                 }
