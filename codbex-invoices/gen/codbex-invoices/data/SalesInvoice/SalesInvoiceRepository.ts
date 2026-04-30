@@ -43,6 +43,11 @@ export class SalesInvoiceRepository extends Repository<SalesInvoiceEntity> {
         return super.create(entity);
     }
 
+    public override update(entity: SalesInvoiceEntity): void {
+        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        super.update(entity);
+    }
+
     public override upsert(entity: SalesInvoiceEntity): string | number {
         entity.Number = new NumberGeneratorService().generateByType('Sales Invoice');
         entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;

@@ -43,6 +43,11 @@ export class PurchaseInvoiceRepository extends Repository<PurchaseInvoiceEntity>
         return super.create(entity);
     }
 
+    public override update(entity: PurchaseInvoiceEntity): void {
+        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        super.update(entity);
+    }
+
     public override upsert(entity: PurchaseInvoiceEntity): string | number {
         entity.Number = new NumberGeneratorService().generateByType('Purchase Invoice');
         entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
