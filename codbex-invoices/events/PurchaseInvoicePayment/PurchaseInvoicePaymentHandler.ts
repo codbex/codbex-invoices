@@ -4,7 +4,11 @@ import { PurchaseInvoicePaymentEntity } from "../../gen/codbex-invoices/data/Pur
 import { SupplierPaymentRepository } from "codbex-payments/gen/codbex-payments/data/SupplierPayment/SupplierPaymentRepository";
 import { EntityEvent, Operator } from "@aerokit/sdk/db";
 
-export const trigger = (event: EntityEvent<PurchaseInvoicePaymentEntity>): void => {
+export const validate = () => { };
+
+export const trigger = (data: string): void => {
+    const event: EntityEvent<PurchaseInvoicePaymentEntity> = JSON.parse(data);
+
     const purchaseInvoiceDao = new PurchaseInvoiceRepository();
     const purchaseInvoicePaymentDao = new PurchaseInvoicePaymentRepository();
     const supplierPaymentDao = new SupplierPaymentRepository();

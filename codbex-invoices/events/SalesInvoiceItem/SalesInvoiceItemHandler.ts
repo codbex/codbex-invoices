@@ -3,9 +3,14 @@ import { SalesInvoiceItemRepository } from "../../gen/codbex-invoices/data/Sales
 import { SalesInvoiceItemEntity } from "../../gen/codbex-invoices/data/SalesInvoice/SalesInvoiceItemEntity";
 import { EntityEvent, Operator } from "@aerokit/sdk/db";
 
-export const trigger = (event: EntityEvent<SalesInvoiceItemEntity>): void => {
+export const validate = () => { };
+
+export const trigger = (data: string): void => {
+    const event: EntityEvent<SalesInvoiceItemEntity> = JSON.parse(data);
+
     const salesInvoiceDao = new SalesInvoiceRepository();
     const salesInvoiceItemDao = new SalesInvoiceItemRepository();
+
     const item = event.entity;
 
     if (!item.SalesInvoice) {
