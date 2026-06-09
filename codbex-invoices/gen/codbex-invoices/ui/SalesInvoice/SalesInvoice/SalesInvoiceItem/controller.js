@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceItemController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceItemController';
 	}])
 	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -117,7 +117,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsSalesInvoiceHasMore) {
 						const optionsSalesInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.SalesInvoice)));
 						if (optionsSalesInvoiceSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+							$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsSalesInvoiceSearchValues }
 								]
@@ -140,7 +140,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsUoMHasMore) {
 						const optionsUoMSearchValues = Array.from(new Set(response.data.map(e => e.UoM)));
 						if (optionsUoMSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/search', {
+							$http.post('/services/java/codbex-uoms/gen/codbex_uoms/api/settings/UoMController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsUoMSearchValues }
 								]
@@ -289,9 +289,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		let optionsSalesInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/count').then((response) => {
 			const optionsSalesInvoiceCount = response.data.count;
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
+			$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController').then((response) => {
 				$scope.optionsSalesInvoice = response.data.map(e => ({
 					value: e.Id,
 					text: e.Number
@@ -317,9 +317,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		});
 		let optionsUoMHasMore = true;
 
-		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-uoms/gen/codbex_uoms/api/settings/UoMController/count').then((response) => {
 			const optionsUoMCount = response.data.count;
-			$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts').then((response) => {
+			$http.get('/services/java/codbex-uoms/gen/codbex_uoms/api/settings/UoMController').then((response) => {
 				$scope.optionsUoM = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name

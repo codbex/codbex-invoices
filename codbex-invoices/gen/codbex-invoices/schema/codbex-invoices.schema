@@ -21,12 +21,12 @@
                         "name": "SALESINVOICEITEM_NAME"
                     },
                     {
-                        "type": "DOUBLE",
-                        "name": "SALESINVOICEITEM_QUANTITY"
-                    },
-                    {
                         "type": "INTEGER",
                         "name": "SALESINVOICEITEM_UOM"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "name": "SALESINVOICEITEM_QUANTITY"
                     },
                     {
                         "type": "DECIMAL",
@@ -107,11 +107,11 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "SALESINVOICE_TYPE"
+                        "name": "SALESINVOICE_CUSTOMER"
                     },
                     {
                         "type": "INTEGER",
-                        "name": "SALESINVOICE_CUSTOMER"
+                        "name": "SALESINVOICE_TYPE"
                     },
                     {
                         "type": "DATE",
@@ -203,13 +203,13 @@
                         "name": "SALESINVOICE_OPERATOR"
                     },
                     {
+                        "type": "INTEGER",
+                        "name": "SALESINVOICE_COMPANY"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 1000,
                         "name": "SALESINVOICE_DOCUMENTLINK"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "SALESINVOICE_COMPANY"
                     },
                     {
                         "type": "VARCHAR",
@@ -282,6 +282,10 @@
                     },
                     {
                         "type": "INTEGER",
+                        "name": "PURCHASEINVOICE_SUPPLIER"
+                    },
+                    {
+                        "type": "INTEGER",
                         "name": "PURCHASEINVOICE_PURCHASEINVOICETYPE"
                     },
                     {
@@ -291,10 +295,6 @@
                     {
                         "type": "DATE",
                         "name": "PURCHASEINVOICE_DUE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "PURCHASEINVOICE_SUPPLIER"
                     },
                     {
                         "type": "DECIMAL",
@@ -378,14 +378,13 @@
                         "name": "PURCHASEINVOICE_OPERATOR"
                     },
                     {
+                        "type": "INTEGER",
+                        "name": "PURCHASEINVOICE_COMPANY"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 1000,
                         "name": "PURCHASEINVOICE_DOCUMENTLINK"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PURCHASEINVOICE_COMPANY"
                     },
                     {
                         "type": "VARCHAR",
@@ -455,12 +454,12 @@
                         "name": "PURCHASEINVOICEITEM_NAME"
                     },
                     {
-                        "type": "DOUBLE",
-                        "name": "PURCHASEINVOICEITEM_QUANTITY"
-                    },
-                    {
                         "type": "INTEGER",
                         "name": "PURCHASEINVOICEITEM_UOM"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "name": "PURCHASEINVOICEITEM_QUANTITY"
                     },
                     {
                         "type": "DECIMAL",
@@ -751,15 +750,6 @@
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "SalesInvoice_SalesInvoiceType",
-                "type": "foreignKey",
-                "table": "CODBEX_SALESINVOICE",
-                "constraintName": "SalesInvoice_SalesInvoiceType",
-                "columns": "SALESINVOICE_TYPE",
-                "referencedTable": "CODBEX_SALESINVOICETYPE",
-                "referencedColumns": "SALESINVOICETYPE_ID"
-            },
-            {
                 "name": "SalesInvoice_Customer",
                 "type": "foreignKey",
                 "table": "CODBEX_SALESINVOICE",
@@ -767,6 +757,15 @@
                 "columns": "SALESINVOICE_CUSTOMER",
                 "referencedTable": "CODBEX_CUSTOMER",
                 "referencedColumns": "CUSTOMER_ID"
+            },
+            {
+                "name": "SalesInvoice_SalesInvoiceType",
+                "type": "foreignKey",
+                "table": "CODBEX_SALESINVOICE",
+                "constraintName": "SalesInvoice_SalesInvoiceType",
+                "columns": "SALESINVOICE_TYPE",
+                "referencedTable": "CODBEX_SALESINVOICETYPE",
+                "referencedColumns": "SALESINVOICETYPE_ID"
             },
             {
                 "name": "SalesInvoice_Currency",
@@ -823,15 +822,6 @@
                 "referencedColumns": "COMPANY_ID"
             },
             {
-                "name": "PurchaseInvoice_PurchaseInvoiceType",
-                "type": "foreignKey",
-                "table": "CODBEX_PURCHASEINVOICE",
-                "constraintName": "PurchaseInvoice_PurchaseInvoiceType",
-                "columns": "PURCHASEINVOICE_PURCHASEINVOICETYPE",
-                "referencedTable": "CODBEX_PURCHASEINVOICETYPE",
-                "referencedColumns": "PURCHASEINVOICETYPE_ID"
-            },
-            {
                 "name": "PurchaseInvoice_Supplier",
                 "type": "foreignKey",
                 "table": "CODBEX_PURCHASEINVOICE",
@@ -839,6 +829,15 @@
                 "columns": "PURCHASEINVOICE_SUPPLIER",
                 "referencedTable": "CODBEX_SUPPLIER",
                 "referencedColumns": "SUPPLIER_ID"
+            },
+            {
+                "name": "PurchaseInvoice_PurchaseInvoiceType",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICE",
+                "constraintName": "PurchaseInvoice_PurchaseInvoiceType",
+                "columns": "PURCHASEINVOICE_PURCHASEINVOICETYPE",
+                "referencedTable": "CODBEX_PURCHASEINVOICETYPE",
+                "referencedColumns": "PURCHASEINVOICETYPE_ID"
             },
             {
                 "name": "PurchaseInvoice_Currency",

@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/DeductionController';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -84,7 +84,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceAdvanceInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts';
+		$scope.serviceAdvanceInvoice = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController';
 
 		const lastSearchValuesAdvanceInvoice = new Set();
 		const allValuesAdvanceInvoice = [];
@@ -95,7 +95,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsAdvanceInvoice = () => {
 			const limit = 20;
 			$scope.optionsAdvanceInvoiceLoading = true;
-			$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsAdvanceInvoiceCounter * limit}`)
+			$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsAdvanceInvoiceCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesAdvanceInvoice.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -145,7 +145,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+					$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 						conditions: [
 							{ propertyName: 'Number', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
