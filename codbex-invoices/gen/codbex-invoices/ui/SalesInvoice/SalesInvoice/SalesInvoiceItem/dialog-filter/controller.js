@@ -52,12 +52,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Quantity !== undefined) {
-			const condition = { propertyName: 'Quantity', operator: 'EQ', value: entity.Quantity };
-			filter.$filter.conditions.push(condition);
-		}
 		if (entity.UoM !== undefined) {
 			const condition = { propertyName: 'UoM', operator: 'EQ', value: entity.UoM };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.Quantity !== undefined) {
+			const condition = { propertyName: 'Quantity', operator: 'EQ', value: entity.Quantity };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Price !== undefined) {
@@ -137,7 +137,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsSalesInvoice = () => {
 		const limit = 20;
 		$scope.optionsSalesInvoiceLoading = true;
-		$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
+		$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesSalesInvoice.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -187,7 +187,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+				$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 					conditions: [
 						{ propertyName: 'Number', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -226,7 +226,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsUoM = () => {
 		const limit = 20;
 		$scope.optionsUoMLoading = true;
-		$http.get(`/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts?$limit=${limit}&$offset=${++loadMoreOptionsUoMCounter * limit}`)
+		$http.get(`/services/java/codbex-uoms/gen/codbex_uoms/api/settings/UoMController?$limit=${limit}&$offset=${++loadMoreOptionsUoMCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesUoM.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -276,7 +276,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMController.ts/search', {
+				$http.post('/services/java/codbex-uoms/gen/codbex_uoms/api/settings/UoMController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]

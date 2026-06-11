@@ -113,7 +113,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsSalesInvoice = () => {
 		const limit = 20;
 		$scope.optionsSalesInvoiceLoading = true;
-		$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
+		$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesSalesInvoice.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -163,7 +163,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+				$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -202,7 +202,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsCustomerPayment = () => {
 		const limit = 20;
 		$scope.optionsCustomerPaymentLoading = true;
-		$http.get(`/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCustomerPaymentCounter * limit}`)
+		$http.get(`/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController?$limit=${limit}&$offset=${++loadMoreOptionsCustomerPaymentCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesCustomerPayment.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -252,7 +252,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
+				$http.post('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]

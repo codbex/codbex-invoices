@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(["EntityServiceProvider", (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/PurchaseInvoice/PurchaseInvoiceController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/purchaseinvoice/PurchaseInvoiceController';
 	}])
 	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -50,9 +50,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoice.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsType = [];
 				$scope.optionsSupplier = [];
+				$scope.optionsType = [];
 				$scope.optionsCurrency = [];
+				$scope.optionsPaymentMethod = [];
 				$scope.optionsSentMethod = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOperator = [];
@@ -75,9 +76,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
 				}
 				$scope.entity = data.entity;
-				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
+				$scope.optionsType = data.optionsType;
 				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -88,9 +90,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-invoices.PurchaseInvoice.PurchaseInvoice.createEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
+				$scope.optionsType = data.optionsType;
 				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -113,9 +116,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
 				}
 				$scope.entity = data.entity;
-				$scope.optionsType = data.optionsType;
 				$scope.optionsSupplier = data.optionsSupplier;
+				$scope.optionsType = data.optionsType;
 				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsPaymentMethod = data.optionsPaymentMethod;
 				$scope.optionsSentMethod = data.optionsSentMethod;
 				$scope.optionsStatus = data.optionsStatus;
 				$scope.optionsOperator = data.optionsOperator;
@@ -124,13 +128,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		}});
 
-		$scope.serviceType = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts';
-		$scope.serviceSupplier = '/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts';
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
-		$scope.serviceSentMethod = '/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts';
-		$scope.serviceStatus = '/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts';
-		$scope.serviceOperator = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		$scope.serviceSupplier = '/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController';
+		$scope.serviceType = '/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceTypeController';
+		$scope.serviceCurrency = '/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController';
+		$scope.servicePaymentMethod = '/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController';
+		$scope.serviceSentMethod = '/services/java/codbex-methods/gen/codbex_methods/api/settings/SentMethodController';
+		$scope.serviceStatus = '/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceStatusController';
+		$scope.serviceOperator = '/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController';
+		$scope.serviceCompany = '/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController';
 
 		//-----------------Events-------------------//
 
@@ -188,16 +193,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 		
-		$scope.createType = () => {
-			Dialogs.showWindow({
-				id: 'PurchaseInvoiceType-details',
-				params: {
-					action: 'create',
-					entity: {},
-				},
-				closeButton: false
-			});
-		};
 		$scope.createSupplier = () => {
 			Dialogs.showWindow({
 				id: 'Supplier-details',
@@ -208,9 +203,29 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				closeButton: false
 			});
 		};
+		$scope.createType = () => {
+			Dialogs.showWindow({
+				id: 'PurchaseInvoiceType-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
+		};
 		$scope.createCurrency = () => {
 			Dialogs.showWindow({
 				id: 'Currency-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
+		};
+		$scope.createPaymentMethod = () => {
+			Dialogs.showWindow({
+				id: 'PaymentMethod-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -265,113 +280,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//----------------Dropdowns-----------------//
 
-		const lastSearchValuesType = new Set();
-		const allValuesType = [];
-		let loadMoreOptionsTypeCounter = 0;
-		$scope.optionsTypeLoading = false;
-		$scope.optionsTypeHasMore = true;
-
-		$scope.loadMoreOptionsType = () => {
-			const limit = 20;
-			$scope.optionsTypeLoading = true;
-			$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts?$limit=${limit}&$offset=${++loadMoreOptionsTypeCounter * limit}`)
-			.then((response) => {
-				const optionValues = allValuesType.map(e => e.value);
-				const resultValues = response.data.map(e => ({
-					value: e.Id,
-					text: e.Name
-				}));
-				const newValues = [];
-				resultValues.forEach(e => {
-					if (!optionValues.includes(e.value)) {
-						allValuesType.push(e);
-						newValues.push(e);
-					}
-				});
-				newValues.forEach(e => {
-					if (!$scope.optionsType.find(o => o.value === e.value)) {
-						$scope.optionsType.push(e);
-					}
-				})
-				$scope.optionsTypeHasMore = resultValues.length > 0;
-				$scope.optionsTypeLoading = false;
-			}, (error) => {
-				$scope.optionsTypeLoading = false;
-				console.error(error);
-				const message = error.data ? error.data.message : '';
-				Dialogs.showAlert({
-					title: 'Type',
-					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
-					type: AlertTypes.Error
-				});
-			});
-		};
-
-		$scope.onOptionsTypeChange = (event) => {
-			if (allValuesType.length === 0) {
-				allValuesType.push(...$scope.optionsType);
-			}
-			if (event.originalEvent.target.value === '') {
-				allValuesType.sort((a, b) => a.text.localeCompare(b.text));
-				$scope.optionsType = allValuesType;
-				$scope.optionsTypeHasMore = true;
-			} else if (isText(event.which)) {
-				$scope.optionsTypeHasMore = false;
-				let cacheHit = false;
-				Array.from(lastSearchValuesType).forEach(e => {
-					if (event.originalEvent.target.value.startsWith(e)) {
-						cacheHit = true;
-					}
-				})
-				if (!cacheHit) {
-					$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts/search', {
-						conditions: [
-							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
-						]
-					}).then((response) => {
-						const optionValues = allValuesType.map(e => e.value);
-						const searchResult = response.data.map(e => ({
-							value: e.Id,
-							text: e.Name
-						}));
-						searchResult.forEach(e => {
-							if (!optionValues.includes(e.value)) {
-								allValuesType.push(e);
-							}
-						});
-						$scope.optionsType = allValuesType.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
-					}, (error) => {
-						console.error(error);
-						const message = error.data ? error.data.message : '';
-						Dialogs.showAlert({
-							title: 'Type',
-							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
-							type: AlertTypes.Error
-						});
-					});
-					lastSearchValuesType.add(event.originalEvent.target.value);
-				}
-			}
-		};
-
-		$scope.refreshType = () => {
-			$scope.optionsType = [];
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceTypeController.ts').then((response) => {
-				$scope.optionsType = response.data.map(e => ({
-					value: e.Id,
-					text: e.Name
-				}));
-				allValuesType.length === 0;
-			}, (error) => {
-				console.error(error);
-				const message = error.data ? error.data.message : '';
-				Dialogs.showAlert({
-					title: 'Type',
-					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
-					type: AlertTypes.Error
-				});
-			});
-		};
 		const lastSearchValuesSupplier = new Set();
 		const allValuesSupplier = [];
 		let loadMoreOptionsSupplierCounter = 0;
@@ -381,7 +289,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsSupplier = () => {
 			const limit = 20;
 			$scope.optionsSupplierLoading = true;
-			$http.get(`/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts?$limit=${limit}&$offset=${++loadMoreOptionsSupplierCounter * limit}`)
+			$http.get(`/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController?$limit=${limit}&$offset=${++loadMoreOptionsSupplierCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesSupplier.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -431,7 +339,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts/search', {
+					$http.post('/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -463,7 +371,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshSupplier = () => {
 			$scope.optionsSupplier = [];
-			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts').then((response) => {
+			$http.get('/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController').then((response) => {
 				$scope.optionsSupplier = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -479,6 +387,113 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				});
 			});
 		};
+		const lastSearchValuesType = new Set();
+		const allValuesType = [];
+		let loadMoreOptionsTypeCounter = 0;
+		$scope.optionsTypeLoading = false;
+		$scope.optionsTypeHasMore = true;
+
+		$scope.loadMoreOptionsType = () => {
+			const limit = 20;
+			$scope.optionsTypeLoading = true;
+			$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceTypeController?$limit=${limit}&$offset=${++loadMoreOptionsTypeCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesType.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesType.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsType.find(o => o.value === e.value)) {
+						$scope.optionsType.push(e);
+					}
+				})
+				$scope.optionsTypeHasMore = resultValues.length > 0;
+				$scope.optionsTypeLoading = false;
+			}, (error) => {
+				$scope.optionsTypeLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Type',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsTypeChange = (event) => {
+			if (allValuesType.length === 0) {
+				allValuesType.push(...$scope.optionsType);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesType.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsType = allValuesType;
+				$scope.optionsTypeHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsTypeHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesType).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceTypeController/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesType.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesType.push(e);
+							}
+						});
+						$scope.optionsType = allValuesType.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'Type',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesType.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
+		$scope.refreshType = () => {
+			$scope.optionsType = [];
+			$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceTypeController').then((response) => {
+				$scope.optionsType = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				allValuesType.length === 0;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Type',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
 		const lastSearchValuesCurrency = new Set();
 		const allValuesCurrency = [];
 		let loadMoreOptionsCurrencyCounter = 0;
@@ -488,7 +503,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCurrency = () => {
 			const limit = 20;
 			$scope.optionsCurrencyLoading = true;
-			$http.get(`/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
+			$http.get(`/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCurrency.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -538,7 +553,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+					$http.post('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/search', {
 						conditions: [
 							{ propertyName: 'Code', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -570,7 +585,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshCurrency = () => {
 			$scope.optionsCurrency = [];
-			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
+			$http.get('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController').then((response) => {
 				$scope.optionsCurrency = response.data.map(e => ({
 					value: e.Id,
 					text: e.Code
@@ -586,6 +601,113 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				});
 			});
 		};
+		const lastSearchValuesPaymentMethod = new Set();
+		const allValuesPaymentMethod = [];
+		let loadMoreOptionsPaymentMethodCounter = 0;
+		$scope.optionsPaymentMethodLoading = false;
+		$scope.optionsPaymentMethodHasMore = true;
+
+		$scope.loadMoreOptionsPaymentMethod = () => {
+			const limit = 20;
+			$scope.optionsPaymentMethodLoading = true;
+			$http.get(`/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController?$limit=${limit}&$offset=${++loadMoreOptionsPaymentMethodCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesPaymentMethod.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesPaymentMethod.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsPaymentMethod.find(o => o.value === e.value)) {
+						$scope.optionsPaymentMethod.push(e);
+					}
+				})
+				$scope.optionsPaymentMethodHasMore = resultValues.length > 0;
+				$scope.optionsPaymentMethodLoading = false;
+			}, (error) => {
+				$scope.optionsPaymentMethodLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PaymentMethod',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsPaymentMethodChange = (event) => {
+			if (allValuesPaymentMethod.length === 0) {
+				allValuesPaymentMethod.push(...$scope.optionsPaymentMethod);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesPaymentMethod.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsPaymentMethod = allValuesPaymentMethod;
+				$scope.optionsPaymentMethodHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsPaymentMethodHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesPaymentMethod).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesPaymentMethod.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesPaymentMethod.push(e);
+							}
+						});
+						$scope.optionsPaymentMethod = allValuesPaymentMethod.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'PaymentMethod',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesPaymentMethod.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
+		$scope.refreshPaymentMethod = () => {
+			$scope.optionsPaymentMethod = [];
+			$http.get('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController').then((response) => {
+				$scope.optionsPaymentMethod = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				allValuesPaymentMethod.length === 0;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PaymentMethod',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
 		const lastSearchValuesSentMethod = new Set();
 		const allValuesSentMethod = [];
 		let loadMoreOptionsSentMethodCounter = 0;
@@ -595,7 +717,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsSentMethod = () => {
 			const limit = 20;
 			$scope.optionsSentMethodLoading = true;
-			$http.get(`/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts?$limit=${limit}&$offset=${++loadMoreOptionsSentMethodCounter * limit}`)
+			$http.get(`/services/java/codbex-methods/gen/codbex_methods/api/settings/SentMethodController?$limit=${limit}&$offset=${++loadMoreOptionsSentMethodCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesSentMethod.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -645,7 +767,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts/search', {
+					$http.post('/services/java/codbex-methods/gen/codbex_methods/api/settings/SentMethodController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -677,7 +799,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshSentMethod = () => {
 			$scope.optionsSentMethod = [];
-			$http.get('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/SentMethodController.ts').then((response) => {
+			$http.get('/services/java/codbex-methods/gen/codbex_methods/api/settings/SentMethodController').then((response) => {
 				$scope.optionsSentMethod = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -702,7 +824,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsStatus = () => {
 			const limit = 20;
 			$scope.optionsStatusLoading = true;
-			$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts?$limit=${limit}&$offset=${++loadMoreOptionsStatusCounter * limit}`)
+			$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceStatusController?$limit=${limit}&$offset=${++loadMoreOptionsStatusCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesStatus.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -752,7 +874,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts/search', {
+					$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceStatusController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -784,7 +906,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshStatus = () => {
 			$scope.optionsStatus = [];
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/Settings/PurchaseInvoiceStatusController.ts').then((response) => {
+			$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/settings/PurchaseInvoiceStatusController').then((response) => {
 				$scope.optionsStatus = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -809,7 +931,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsOperator = () => {
 			const limit = 20;
 			$scope.optionsOperatorLoading = true;
-			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts?$limit=${limit}&$offset=${++loadMoreOptionsOperatorCounter * limit}`)
+			$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController?$limit=${limit}&$offset=${++loadMoreOptionsOperatorCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesOperator.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -859,7 +981,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts/search', {
+					$http.post('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController/search', {
 						conditions: [
 							{ propertyName: 'FirstName', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -891,7 +1013,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshOperator = () => {
 			$scope.optionsOperator = [];
-			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
+			$http.get('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController').then((response) => {
 				$scope.optionsOperator = response.data.map(e => ({
 					value: e.Id,
 					text: e.FirstName
@@ -916,7 +1038,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCompany = () => {
 			const limit = 20;
 			$scope.optionsCompanyLoading = true;
-			$http.get(`/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
+			$http.get(`/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCompany.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -966,7 +1088,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+					$http.post('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -998,7 +1120,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshCompany = () => {
 			$scope.optionsCompany = [];
-			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+			$http.get('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController').then((response) => {
 				$scope.optionsCompany = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
