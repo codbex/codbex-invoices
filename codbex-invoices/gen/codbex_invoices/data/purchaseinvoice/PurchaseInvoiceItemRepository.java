@@ -12,17 +12,17 @@ public class PurchaseInvoiceItemRepository extends JavaRepository<PurchaseInvoic
 
     @Override
     public PurchaseInvoiceItemEntity save(PurchaseInvoiceItemEntity entity) {
-        entity.Net = entity.Quantity * entity.Price;
-        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
-        entity.Gross = entity.Net + entity.VAT;
+        entity.Net = java.math.BigDecimal.valueOf(entity.Quantity).multiply(entity.Price);
+        entity.VAT = entity.Net.multiply(entity.VATRate).divide(java.math.BigDecimal.valueOf(100), 2, java.math.RoundingMode.HALF_UP);
+        entity.Gross = entity.Net.add(entity.VAT);
         return super.save(entity);
     }
 
     @Override
     public PurchaseInvoiceItemEntity update(PurchaseInvoiceItemEntity entity) {
-        entity.Net = entity.Quantity * entity.Price;
-        entity.VAT = Math.round((entity.Net * entity.VATRate / 100) * 100) / 100;
-        entity.Gross = entity.Net + entity.VAT;
+        entity.Net = java.math.BigDecimal.valueOf(entity.Quantity).multiply(entity.Price);
+        entity.VAT = entity.Net.multiply(entity.VATRate).divide(java.math.BigDecimal.valueOf(100), 2, java.math.RoundingMode.HALF_UP);
+        entity.Gross = entity.Net.add(entity.VAT);
         return super.update(entity);
     }
 }
