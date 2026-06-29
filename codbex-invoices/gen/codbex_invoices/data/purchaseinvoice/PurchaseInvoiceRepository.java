@@ -12,7 +12,7 @@ public class PurchaseInvoiceRepository extends JavaRepository<PurchaseInvoiceEnt
 
     @Override
     public PurchaseInvoiceEntity save(PurchaseInvoiceEntity entity) {
-        entity.Number = new NumberGeneratorService().generateByType('Purchase Invoice');
+        entity.Number = new NumberGeneratorService().generateByType("Purchase Invoice");
         entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
         entity.UUID = entity.UUID = UUID.random();;
         return super.save(entity);
