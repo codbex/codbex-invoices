@@ -14,7 +14,7 @@ public class PurchaseInvoiceRepository extends JavaRepository<PurchaseInvoiceEnt
     public PurchaseInvoiceEntity save(PurchaseInvoiceEntity entity) {
         entity.Number = new Generator().generateByType("Purchase Invoice");
         entity.Name = entity.getNumber() + "/" + new java.text.SimpleDateFormat("yyyy-MM-dd").format(entity.getDate()) + "/" + entity.getTotal();
-        entity.UUID = UUID.random();
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 

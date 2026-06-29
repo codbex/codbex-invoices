@@ -1393,7 +1393,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "UUID.random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "SALESINVOICE_UUID",
           "dataNullable": false,
@@ -1607,7 +1607,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import org.eclipse.dirigible.sdk.utils;\nimport codbex_number_generator.gen.codbex_number_generator.service.Generator;",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils.Uuid;\nimport codbex-number-generator.service.Generator;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "salesinvoice",
@@ -2328,7 +2328,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "UUID.random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "SALESINVOICE_UUID",
             "dataNullable": false,
@@ -3257,7 +3257,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "UUID.random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "PURCHASEINVOICE_UUID",
           "dataNullable": false,
@@ -3471,7 +3471,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import org.eclipse.dirigible.sdk.utils;\nimport codbex_number_generator.gen.codbex_number_generator.service.Generator;",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils.Uuid;\nimport codbex-number-generator.service.Generator;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "purchaseinvoice",
@@ -4222,7 +4222,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "UUID.random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "PURCHASEINVOICE_UUID",
             "dataNullable": false,

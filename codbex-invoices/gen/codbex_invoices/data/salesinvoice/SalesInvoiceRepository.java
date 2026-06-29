@@ -14,7 +14,7 @@ public class SalesInvoiceRepository extends JavaRepository<SalesInvoiceEntity> {
     public SalesInvoiceEntity save(SalesInvoiceEntity entity) {
         entity.Number = new Generator().generateByType("Sales Invoice");
         entity.Name = entity.getNumber() + "/" + new java.text.SimpleDateFormat("yyyy-MM-dd").format(entity.getDate()) + "/" + entity.getTotal();
-        entity.UUID = UUID.random();
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 
