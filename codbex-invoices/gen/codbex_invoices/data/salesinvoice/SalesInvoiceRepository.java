@@ -13,14 +13,14 @@ public class SalesInvoiceRepository extends JavaRepository<SalesInvoiceEntity> {
     @Override
     public SalesInvoiceEntity save(SalesInvoiceEntity entity) {
         entity.Number = new NumberGeneratorService().generateByType("Sales Invoice");
-        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        entity.Name = entity.getNumber() + "/" + new java.text.SimpleDateFormat("yyyy-MM-dd").format(entity.getDate()) + "/" + entity.getTotal();
         entity.UUID = entity.UUID = UUID.random();;
         return super.save(entity);
     }
 
     @Override
     public SalesInvoiceEntity update(SalesInvoiceEntity entity) {
-        entity.Name = entity.Number + "/" + new Date(entity.Date).toISOString().slice(0, 10) + "/" + entity.Total;
+        entity.Name = entity.getNumber() + "/" + new java.text.SimpleDateFormat("yyyy-MM-dd").format(entity.getDate()) + "/" + entity.getTotal();
         return super.update(entity);
     }
 }

@@ -1361,8 +1361,8 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
-          "calculatedPropertyExpressionUpdate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
+          "calculatedPropertyExpressionCreate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
+          "calculatedPropertyExpressionUpdate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
           "dataLength": "200",
           "dataName": "SALESINVOICE_NAME",
           "dataNullable": false,
@@ -2296,8 +2296,8 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
-            "calculatedPropertyExpressionUpdate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
+            "calculatedPropertyExpressionCreate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
+            "calculatedPropertyExpressionUpdate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
             "dataLength": "200",
             "dataName": "SALESINVOICE_NAME",
             "dataNullable": false,
@@ -3225,8 +3225,8 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
-          "calculatedPropertyExpressionUpdate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
+          "calculatedPropertyExpressionCreate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
+          "calculatedPropertyExpressionUpdate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
           "dataLength": "200",
           "dataName": "PURCHASEINVOICE_NAME",
           "dataNullable": false,
@@ -4190,8 +4190,8 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
-            "calculatedPropertyExpressionUpdate": "entity.Number + \"/\" + new Date(entity.Date).toISOString().slice(0, 10) + \"/\" + entity.Total",
+            "calculatedPropertyExpressionCreate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
+            "calculatedPropertyExpressionUpdate": "entity.getNumber() + \"/\" + new java.text.SimpleDateFormat(\"yyyy-MM-dd\").format(entity.getDate()) + \"/\" + entity.getTotal()",
             "dataLength": "200",
             "dataName": "PURCHASEINVOICE_NAME",
             "dataNullable": false,
