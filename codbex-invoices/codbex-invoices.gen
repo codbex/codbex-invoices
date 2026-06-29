@@ -735,7 +735,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Sales Invoice\")",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Sales Invoice\")",
           "dataLength": "20",
           "dataName": "SALESINVOICE_NUMBER",
           "dataNullable": true,
@@ -1393,7 +1393,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+          "calculatedPropertyExpressionCreate": "UUID.random()",
           "dataLength": "36",
           "dataName": "SALESINVOICE_UUID",
           "dataNullable": false,
@@ -1607,7 +1607,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import codbex-number-generator.service.Generator;\nimport org.eclipse.dirigible.sdk.utils;",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils;\nimport codbex_number_generator.gen.codbex_number_generator.service.Generator;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "salesinvoice",
@@ -1669,7 +1669,7 @@
       "masterProperties": {
         "title": {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Sales Invoice\")",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Sales Invoice\")",
           "dataLength": "20",
           "dataName": "SALESINVOICE_NUMBER",
           "dataNullable": true,
@@ -2328,7 +2328,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+            "calculatedPropertyExpressionCreate": "UUID.random()",
             "dataLength": "36",
             "dataName": "SALESINVOICE_UUID",
             "dataNullable": false,
@@ -2569,7 +2569,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Purchase Invoice\")",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Purchase Invoice\")",
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
@@ -3257,7 +3257,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+          "calculatedPropertyExpressionCreate": "UUID.random()",
           "dataLength": "36",
           "dataName": "PURCHASEINVOICE_UUID",
           "dataNullable": false,
@@ -3471,7 +3471,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import codbex-number-generator.service.Generator;\nimport org.eclipse.dirigible.sdk.utils;",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils;\nimport codbex_number_generator.gen.codbex_number_generator.service.Generator;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "purchaseinvoice",
@@ -3533,7 +3533,7 @@
       "masterProperties": {
         "title": {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Purchase Invoice\")",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Purchase Invoice\")",
           "dataLength": "20",
           "dataName": "PURCHASEINVOICE_NUMBER",
           "dataNullable": true,
@@ -4222,7 +4222,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+            "calculatedPropertyExpressionCreate": "UUID.random()",
             "dataLength": "36",
             "dataName": "PURCHASEINVOICE_UUID",
             "dataNullable": false,

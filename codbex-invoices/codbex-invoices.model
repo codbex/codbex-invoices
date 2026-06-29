@@ -286,7 +286,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Sales Invoice\")",
+                        "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Sales Invoice\")",
                         "dataLength": "20",
                         "dataName": "SALESINVOICE_NUMBER",
                         "dataNullable": "true",
@@ -652,7 +652,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+                        "calculatedPropertyExpressionCreate": "UUID.random()",
                         "dataLength": "36",
                         "dataName": "SALESINVOICE_UUID",
                         "dataNullable": "false",
@@ -763,7 +763,7 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "importsCode": "aW1wb3J0IGNvZGJleC1udW1iZXItZ2VuZXJhdG9yLnNlcnZpY2UuR2VuZXJhdG9yOwppbXBvcnQgb3JnLmVjbGlwc2UuZGlyaWdpYmxlLnNkay51dGlsczs=",
+                "importsCode": "aW1wb3J0IG9yZy5lY2xpcHNlLmRpcmlnaWJsZS5zZGsudXRpbHM7CmltcG9ydCBjb2RiZXhfbnVtYmVyX2dlbmVyYXRvci5nZW4uY29kYmV4X251bWJlcl9nZW5lcmF0b3Iuc2VydmljZS5HZW5lcmF0b3I7",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "salesinvoice",
@@ -802,7 +802,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType(\"Purchase Invoice\")",
+                        "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Purchase Invoice\")",
                         "dataLength": "20",
                         "dataName": "PURCHASEINVOICE_NUMBER",
                         "dataNullable": "true",
@@ -1182,7 +1182,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "entity.UUID = UUID.random();",
+                        "calculatedPropertyExpressionCreate": "UUID.random()",
                         "dataLength": "36",
                         "dataName": "PURCHASEINVOICE_UUID",
                         "dataNullable": "false",
@@ -1293,7 +1293,7 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "importsCode": "aW1wb3J0IGNvZGJleC1udW1iZXItZ2VuZXJhdG9yLnNlcnZpY2UuR2VuZXJhdG9yOwppbXBvcnQgb3JnLmVjbGlwc2UuZGlyaWdpYmxlLnNkay51dGlsczs=",
+                "importsCode": "aW1wb3J0IG9yZy5lY2xpcHNlLmRpcmlnaWJsZS5zZGsudXRpbHM7CmltcG9ydCBjb2RiZXhfbnVtYmVyX2dlbmVyYXRvci5nZW4uY29kYmV4X251bWJlcl9nZW5lcmF0b3Iuc2VydmljZS5HZW5lcmF0b3I7",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "purchaseinvoice",
