@@ -41,10 +41,10 @@
 							item-title="{{next.Number}}">
 							<bk-list-byline align="left">
 								{{next.OriginalNumber}} |
+								{{optionsSupplierValue(next.Supplier)}} |
 								{{optionsTypeValue(next.Type)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
-								{{optionsSupplierValue(next.Supplier)}} |
 								{{next.Net}} |
 								{{optionsCurrencyValue(next.Currency)}} |
 								{{next.Gross}} |
@@ -54,12 +54,12 @@
 								{{next.Total}} |
 								{{next.Paid}} |
 								{{next.Conditions}} |
-								{{next.PaymentMethod}} |
+								{{optionsPaymentMethodValue(next.PaymentMethod)}} |
 								{{optionsSentMethodValue(next.SentMethod)}} |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOperatorValue(next.Operator)}} |
-								<bk-link href="{{next.DocumentLink}}" target="_blank">{{next.DocumentLink}}</bk-link> |
 								{{optionsCompanyValue(next.Company)}} |
+								<bk-link href="{{next.DocumentLink}}" target="_blank">{{next.DocumentLink}}</bk-link> |
 								{{next.Name}} |
 								{{next.UUID}} |
 								{{next.Process}} |

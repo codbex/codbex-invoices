@@ -40,8 +40,8 @@
 						<bk-list-content
 							item-title="{{next.Number}}">
 							<bk-list-byline align="left">
-								{{optionsTypeValue(next.Type)}} |
 								{{optionsCustomerValue(next.Customer)}} |
+								{{optionsTypeValue(next.Type)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Due | date: "dd/MMM/yyyy"}} |
 								{{next.Net}} |
@@ -57,8 +57,8 @@
 								{{optionsSentMethodValue(next.SentMethod)}} |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOperatorValue(next.Operator)}} |
-								<bk-link href="{{next.DocumentLink}}" target="_blank">{{next.DocumentLink}}</bk-link> |
 								{{optionsCompanyValue(next.Company)}} |
+								<bk-link href="{{next.DocumentLink}}" target="_blank">{{next.DocumentLink}}</bk-link> |
 								{{next.Name}} |
 								{{next.UUID}} |
 								{{next.Process}} |

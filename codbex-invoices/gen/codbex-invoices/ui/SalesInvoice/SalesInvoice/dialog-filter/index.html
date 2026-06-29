@@ -36,27 +36,6 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idType" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_TYPE' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <bk-combobox-input input-id="idType"
-	                            name="Type"
-	                            state="{{ forms.details['Type'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Type"
-	                            dropdown-items="optionsType"
-								ng-keyup="onOptionsTypeChange($event)"
-	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICE_TYPE)'} }}"
-								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Type'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Type'} }}">
-								    <bk-list-action-item ng-if="optionsTypeHasMore" ng-click="loadMoreOptionsType()">
-										<bk-busy-indicator ng-if="optionsTypeLoading" size="m"></bk-busy-indicator>
-										<span ng-if="!optionsTypeLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
-										<span ng-if="!optionsTypeLoading">More Options</span>
-									</bk-list-action-item>
-	                        </bk-combobox-input>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idCustomer" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_CUSTOMER' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -72,6 +51,27 @@
 										<bk-busy-indicator ng-if="optionsCustomerLoading" size="m"></bk-busy-indicator>
 										<span ng-if="!optionsCustomerLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
 										<span ng-if="!optionsCustomerLoading">More Options</span>
+									</bk-list-action-item>
+	                        </bk-combobox-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idType" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_TYPE' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <bk-combobox-input input-id="idType"
+	                            name="Type"
+	                            state="{{ forms.details['Type'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Type"
+	                            dropdown-items="optionsType"
+								ng-keyup="onOptionsTypeChange($event)"
+	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICE_TYPE)'} }}"
+								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Type'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Type'} }}">
+								    <bk-list-action-item ng-if="optionsTypeHasMore" ng-click="loadMoreOptionsType()">
+										<bk-busy-indicator ng-if="optionsTypeLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsTypeLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsTypeLoading">More Options</span>
 									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
@@ -346,23 +346,6 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idDocumentLink" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_DOCUMENTLINK' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-							<bk-form-input-message state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}" text="{{'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t}}">
-								<bk-input id="idDocumentLink"
-	                                name="DocumentLink"
-	                                state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.DocumentLink"
-									ng-maxlength="1000.0"
-	                                type="url"
-	                                placeholder="https://...">
-	                            </bk-input>
-							</bk-form-input-message>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idCompany" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_COMPANY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -380,6 +363,23 @@
 										<span ng-if="!optionsCompanyLoading">More Options</span>
 									</bk-list-action-item>
 	                        </bk-combobox-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idDocumentLink" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.SALESINVOICE_DOCUMENTLINK' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}" text="{{'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idDocumentLink"
+	                                name="DocumentLink"
+	                                state="{{ forms.details['DocumentLink'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DocumentLink"
+									ng-maxlength="1000.0"
+	                                type="url"
+	                                placeholder="https://...">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
 					<bk-form-item class="fd-row">

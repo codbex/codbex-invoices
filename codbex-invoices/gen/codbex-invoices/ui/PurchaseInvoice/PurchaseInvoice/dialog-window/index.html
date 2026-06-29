@@ -55,6 +55,29 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idSupplier" ng-required="true" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SUPPLIER' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-combobox-input input-id="idSupplier"
+	                            name="Supplier"
+	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.Supplier"
+	                            is-readonly="action === 'select'"
+	                            dropdown-items="optionsSupplier"
+								ng-keyup="onOptionsSupplierChange($event)"
+	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SUPPLIER)'} }}"
+								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Supplier'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Supplier'} }}">
+								    <bk-list-action-item ng-if="optionsSupplierHasMore" ng-click="loadMoreOptionsSupplier()">
+										<bk-busy-indicator ng-if="optionsSupplierLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsSupplierLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsSupplierLoading">More Options</span>
+									</bk-list-action-item>
+	                        </bk-combobox-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idType" ng-required="true" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PURCHASEINVOICETYPE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
@@ -108,29 +131,6 @@
 	                                type="date">
 	                            </bk-input>
 							</bk-form-input-message>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idSupplier" ng-required="true" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SUPPLIER' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <bk-combobox-input input-id="idSupplier"
-	                            name="Supplier"
-	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
-	                            ng-model="entity.Supplier"
-	                            is-readonly="action === 'select'"
-	                            dropdown-items="optionsSupplier"
-								ng-keyup="onOptionsSupplierChange($event)"
-	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_SUPPLIER)'} }}"
-								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Supplier'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Supplier'} }}">
-								    <bk-list-action-item ng-if="optionsSupplierHasMore" ng-click="loadMoreOptionsSupplier()">
-										<bk-busy-indicator ng-if="optionsSupplierLoading" size="m"></bk-busy-indicator>
-										<span ng-if="!optionsSupplierLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
-										<span ng-if="!optionsSupplierLoading">More Options</span>
-									</bk-list-action-item>
-	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
@@ -286,19 +286,22 @@
                         	<bk-form-label for="idPaymentMethod" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PAYMENTMETHOD' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-invoices:codbex-invoices-model.messages.error.incorrectInput' | t }}">
-								<bk-input id="idPaymentMethod"
-	                                name="PaymentMethod"
-	                                state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
-									ng-required="false"
-	                                ng-model="entity.PaymentMethod"
-	                                ng-readonly="action === 'select'"
-	                                type="text"
-	                                placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputEnter' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PAYMENTMETHOD)'} }}">
-	                            </bk-input>
-							</bk-form-input-message>
+	                        <bk-combobox-input input-id="idPaymentMethod"
+	                            name="PaymentMethod"
+	                            state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
+	                            ng-model="entity.PaymentMethod"
+	                            is-readonly="action === 'select'"
+	                            dropdown-items="optionsPaymentMethod"
+								ng-keyup="onOptionsPaymentMethodChange($event)"
+	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_PAYMENTMETHOD)'} }}"
+								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'PaymentMethod'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'PaymentMethod'} }}">
+								    <bk-list-action-item ng-if="optionsPaymentMethodHasMore" ng-click="loadMoreOptionsPaymentMethod()">
+										<bk-busy-indicator ng-if="optionsPaymentMethodLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsPaymentMethodLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsPaymentMethodLoading">More Options</span>
+									</bk-list-action-item>
+	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
@@ -372,6 +375,29 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idCompany" ng-required="true" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_COMPANY' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-combobox-input input-id="idCompany"
+	                            name="Company"
+	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.Company"
+	                            is-readonly="action === 'select'"
+	                            dropdown-items="optionsCompany"
+								ng-keyup="onOptionsCompanyChange($event)"
+	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_COMPANY)'} }}"
+								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Company'} }}">
+								    <bk-list-action-item ng-if="optionsCompanyHasMore" ng-click="loadMoreOptionsCompany()">
+										<bk-busy-indicator ng-if="optionsCompanyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCompanyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCompanyLoading">More Options</span>
+									</bk-list-action-item>
+	                        </bk-combobox-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idDocumentLink" ng-required="false" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_DOCUMENTLINK' | t }}</bk-form-label>
                         </div>
 						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col fd-col-md--6 fd-col--9">
@@ -392,29 +418,6 @@
 	                                placeholder="https://...">
 	                            </bk-input>
 							</bk-form-input-message>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompany" ng-required="true" colon="true">{{ 'codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_COMPANY' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <bk-combobox-input input-id="idCompany"
-	                            name="Company"
-	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
-	                            ng-model="entity.Company"
-	                            is-readonly="action === 'select'"
-	                            dropdown-items="optionsCompany"
-								ng-keyup="onOptionsCompanyChange($event)"
-	                            placeholder="{{ 'codbex-invoices:codbex-invoices-model.messages.inputSearch' | t:{'name':'$t(codbex-invoices:codbex-invoices-model.t.PURCHASEINVOICE_COMPANY)'} }}"
-								btn-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-invoices:codbex-invoices-model.aria.options' | t:{'name':'Company'} }}">
-								    <bk-list-action-item ng-if="optionsCompanyHasMore" ng-click="loadMoreOptionsCompany()">
-										<bk-busy-indicator ng-if="optionsCompanyLoading" size="m"></bk-busy-indicator>
-										<span ng-if="!optionsCompanyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
-										<span ng-if="!optionsCompanyLoading">More Options</span>
-									</bk-list-action-item>
-	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
 					<bk-form-item class="fd-row">

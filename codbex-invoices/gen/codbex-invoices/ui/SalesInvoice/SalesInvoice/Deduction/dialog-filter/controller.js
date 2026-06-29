@@ -68,7 +68,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsAdvanceInvoice = () => {
 		const limit = 20;
 		$scope.optionsAdvanceInvoiceLoading = true;
-		$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsAdvanceInvoiceCounter * limit}`)
+		$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsAdvanceInvoiceCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesAdvanceInvoice.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -118,7 +118,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+				$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 					conditions: [
 						{ propertyName: 'Number', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]

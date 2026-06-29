@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoicePaymentController';
 	}])
 	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -117,7 +117,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsSalesInvoiceHasMore) {
 						const optionsSalesInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.SalesInvoice)));
 						if (optionsSalesInvoiceSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+							$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsSalesInvoiceSearchValues }
 								]
@@ -140,7 +140,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsCustomerPaymentHasMore) {
 						const optionsCustomerPaymentSearchValues = Array.from(new Set(response.data.map(e => e.CustomerPayment)));
 						if (optionsCustomerPaymentSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
+							$http.post('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsCustomerPaymentSearchValues }
 								]
@@ -289,9 +289,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		let optionsSalesInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/count').then((response) => {
 			const optionsSalesInvoiceCount = response.data.count;
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
+			$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController').then((response) => {
 				$scope.optionsSalesInvoice = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -317,9 +317,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		});
 		let optionsCustomerPaymentHasMore = true;
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController/count').then((response) => {
 			const optionsCustomerPaymentCount = response.data.count;
-			$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts').then((response) => {
+			$http.get('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController').then((response) => {
 				$scope.optionsCustomerPayment = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name

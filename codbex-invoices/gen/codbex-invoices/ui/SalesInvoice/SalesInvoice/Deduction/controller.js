@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/DeductionController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/DeductionController';
 	}])
 	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -117,7 +117,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsAdvanceInvoiceHasMore) {
 						const optionsAdvanceInvoiceSearchValues = Array.from(new Set(response.data.map(e => e.AdvanceInvoice)));
 						if (optionsAdvanceInvoiceSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+							$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsAdvanceInvoiceSearchValues }
 								]
@@ -252,9 +252,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		let optionsAdvanceInvoiceHasMore = true;
 
-		$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/count').then((response) => {
 			const optionsAdvanceInvoiceCount = response.data.count;
-			$http.get('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts').then((response) => {
+			$http.get('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController').then((response) => {
 				$scope.optionsAdvanceInvoice = response.data.map(e => ({
 					value: e.Id,
 					text: e.Number

@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoicePaymentController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoicePaymentController';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -94,7 +94,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceSalesInvoice = '/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts';
+		$scope.serviceSalesInvoice = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController';
 
 		const lastSearchValuesSalesInvoice = new Set();
 		const allValuesSalesInvoice = [];
@@ -105,7 +105,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsSalesInvoice = () => {
 			const limit = 20;
 			$scope.optionsSalesInvoiceLoading = true;
-			$http.get(`/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
+			$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesSalesInvoice.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -155,7 +155,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-invoices/gen/codbex-invoices/api/SalesInvoice/SalesInvoiceController.ts/search', {
+					$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -185,7 +185,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}
 		};
 
-		$scope.serviceCustomerPayment = '/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts';
+		$scope.serviceCustomerPayment = '/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController';
 
 		const lastSearchValuesCustomerPayment = new Set();
 		const allValuesCustomerPayment = [];
@@ -196,7 +196,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCustomerPayment = () => {
 			const limit = 20;
 			$scope.optionsCustomerPaymentLoading = true;
-			$http.get(`/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCustomerPaymentCounter * limit}`)
+			$http.get(`/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController?$limit=${limit}&$offset=${++loadMoreOptionsCustomerPaymentCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCustomerPayment.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -246,7 +246,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
+					$http.post('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -281,35 +281,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			if ((keycode >= 48 && keycode <= 90) || (keycode >= 96 && keycode <= 111) || (keycode >= 186 && keycode <= 222) || [8, 46, 173].includes(keycode)) return true;
 			return false;
 		}
-
-		$scope.$watch('entity.SalesInvoice', function (newValue, oldValue) {
-			if (newValue !== undefined && newValue !== null) {
-				$http.get($scope.serviceSalesInvoice + '/' + newValue).then((response) => {
-					let valueFrom = response.data.Customer;
-					$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentController.ts/search', {
-						conditions: [
-							{ propertyName: 'Customer', operator: 'EQ', value: valueFrom }
-						]
-					}).then((response) => {
-						$scope.optionsCustomerPayment = response.data.map(e => ({
-							value: e.Id,
-							text: e.Name
-						}));
-						if ($scope.action !== 'select' && newValue !== oldValue) {
-							if ($scope.optionsCustomerPayment.length == 1) {
-								$scope.entity.CustomerPayment = $scope.optionsCustomerPayment[0].value;
-							} else {
-								$scope.entity.CustomerPayment = undefined;
-							}
-						}
-					}, (error) => {
-						console.error(error);
-					});
-				}, (error) => {
-					console.error(error);
-				});
-			}
-		});
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({
