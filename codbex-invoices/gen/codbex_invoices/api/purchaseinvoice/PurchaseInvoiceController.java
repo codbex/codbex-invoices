@@ -5,7 +5,6 @@ import gen.codbex_invoices.data.purchaseinvoice.PurchaseInvoiceRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class PurchaseInvoiceController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Number", "OriginalNumber", "Supplier", "Type", "Date", "Due", "Net", "Currency", "Gross", "Discount", "Taxes", "VAT", "Total", "Paid", "Conditions", "PaymentMethod", "SentMethod", "Status", "Operator", "Company", "DocumentLink", "Name", "UUID", "Process", "Reference", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private PurchaseInvoiceRepository repository;
+    private final PurchaseInvoiceRepository repository;
+
+    public PurchaseInvoiceController(PurchaseInvoiceRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List PurchaseInvoice")

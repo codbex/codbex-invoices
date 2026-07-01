@@ -1,0 +1,6 @@
+{
+    "module": "codbex-invoices/gen/codbex-invoices/ui/SalesInvoice/perspective.js",
+    "extensionPoint": "application-perspectives",
+    "description": "codbex-invoices - Perspective - SalesInvoice",
+    "role": "codbex-invoices.salesinvoice.SalesInvoiceReadOnly,codbex-invoices.salesinvoice.SalesInvoiceFullAccess"
+}

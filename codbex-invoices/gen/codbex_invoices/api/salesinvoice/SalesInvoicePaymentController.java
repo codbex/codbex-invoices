@@ -5,7 +5,6 @@ import gen.codbex_invoices.data.salesinvoice.SalesInvoicePaymentRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class SalesInvoicePaymentController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "SalesInvoice", "CustomerPayment", "Amount", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private SalesInvoicePaymentRepository repository;
+    private final SalesInvoicePaymentRepository repository;
+
+    public SalesInvoicePaymentController(SalesInvoicePaymentRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List SalesInvoicePayment")

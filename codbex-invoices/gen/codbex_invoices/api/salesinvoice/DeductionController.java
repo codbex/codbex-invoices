@@ -5,7 +5,6 @@ import gen.codbex_invoices.data.salesinvoice.DeductionRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class DeductionController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "DeductionInvoice", "AdvanceInvoice");
 
-    @Inject
-    private DeductionRepository repository;
+    private final DeductionRepository repository;
+
+    public DeductionController(DeductionRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List Deduction")
