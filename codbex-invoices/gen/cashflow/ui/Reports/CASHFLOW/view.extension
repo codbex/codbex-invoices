@@ -1,6 +1,0 @@
-{
-    "module": "codbex-invoices/gen/cashflow/ui/Reports/CASHFLOW/view.js",
-    "extensionPoint": "application-reports",
-    "description": "codbex-invoices - Application View",
-    "role": "codbex-invoices.Report.CASHFLOWReadOnly"
-}

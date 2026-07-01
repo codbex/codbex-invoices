@@ -1,0 +1,299 @@
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoicePaymentController';
+	}])
+	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
+		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'SalesInvoicePayment successfully created';
+		let propertySuccessfullyUpdated = 'SalesInvoicePayment successfully updated';
+		$scope.entity = {};
+		$scope.forms = {
+			details: {},
+		};
+		$scope.formHeaders = {
+			select: 'SalesInvoicePayment Details',
+			create: 'Create SalesInvoicePayment',
+			update: 'Update SalesInvoicePayment'
+		};
+		$scope.action = 'select';
+
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadSelect', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadCreate', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-invoices:codbex-invoices-model.defaults.formHeadUpdate', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-invoices:codbex-invoices-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)' });
+		});
+
+		let params = ViewParameters.get();
+		if (Object.keys(params).length) {
+			$scope.action = params.action;
+
+			if (params.entity.CreatedAt) {
+				params.entity.CreatedAt = new Date(params.entity.CreatedAt);
+			}
+			if (params.entity.UpdatedAt) {
+				params.entity.UpdatedAt = new Date(params.entity.UpdatedAt);
+			}
+			$scope.entity = params.entity;
+			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			const optionsSalesInvoiceMap = new Map();
+			params.optionsSalesInvoice?.forEach(e => optionsSalesInvoiceMap.set(e.value, e));
+			$scope.optionsSalesInvoice = Array.from(optionsSalesInvoiceMap.values());
+			const optionsCustomerPaymentMap = new Map();
+			params.optionsCustomerPayment?.forEach(e => optionsCustomerPaymentMap.set(e.value, e));
+			$scope.optionsCustomerPayment = Array.from(optionsCustomerPaymentMap.values());
+		}
+
+		$scope.create = () => {
+			let entity = $scope.entity;
+			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
+			EntityService.create(entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.SalesInvoicePayment.entityCreated', data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
+				});
+				$scope.cancel();
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToCreate', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
+			});
+		};
+
+		$scope.update = () => {
+			let id = $scope.entity.Id;
+			let entity = $scope.entity;
+			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
+			EntityService.update(id, entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-invoices.SalesInvoice.SalesInvoicePayment.entityUpdated', data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
+				});
+				$scope.cancel();
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT'),
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToUpdate', { name: '$t(codbex-invoices:codbex-invoices-model.t.SALESINVOICEPAYMENT)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
+			});
+		};
+
+		$scope.serviceSalesInvoice = '/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController';
+
+		const lastSearchValuesSalesInvoice = new Set();
+		const allValuesSalesInvoice = [];
+		let loadMoreOptionsSalesInvoiceCounter = 0;
+		$scope.optionsSalesInvoiceLoading = false;
+		$scope.optionsSalesInvoiceHasMore = true;
+
+		$scope.loadMoreOptionsSalesInvoice = () => {
+			const limit = 20;
+			$scope.optionsSalesInvoiceLoading = true;
+			$http.get(`/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController?$limit=${limit}&$offset=${++loadMoreOptionsSalesInvoiceCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesSalesInvoice.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesSalesInvoice.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsSalesInvoice.find(o => o.value === e.value)) {
+						$scope.optionsSalesInvoice.push(e);
+					}
+				})
+				$scope.optionsSalesInvoiceHasMore = resultValues.length > 0;
+				$scope.optionsSalesInvoiceLoading = false;
+			}, (error) => {
+				$scope.optionsSalesInvoiceLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'SalesInvoice',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsSalesInvoiceChange = (event) => {
+			if (allValuesSalesInvoice.length === 0) {
+				allValuesSalesInvoice.push(...$scope.optionsSalesInvoice);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesSalesInvoice.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsSalesInvoice = allValuesSalesInvoice;
+				$scope.optionsSalesInvoiceHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsSalesInvoiceHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesSalesInvoice).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/java/codbex-invoices/gen/codbex_invoices/api/salesinvoice/SalesInvoiceController/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesSalesInvoice.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesSalesInvoice.push(e);
+							}
+						});
+						$scope.optionsSalesInvoice = allValuesSalesInvoice.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'SalesInvoice',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesSalesInvoice.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
+		$scope.serviceCustomerPayment = '/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController';
+
+		const lastSearchValuesCustomerPayment = new Set();
+		const allValuesCustomerPayment = [];
+		let loadMoreOptionsCustomerPaymentCounter = 0;
+		$scope.optionsCustomerPaymentLoading = false;
+		$scope.optionsCustomerPaymentHasMore = true;
+
+		$scope.loadMoreOptionsCustomerPayment = () => {
+			const limit = 20;
+			$scope.optionsCustomerPaymentLoading = true;
+			$http.get(`/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController?$limit=${limit}&$offset=${++loadMoreOptionsCustomerPaymentCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesCustomerPayment.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesCustomerPayment.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsCustomerPayment.find(o => o.value === e.value)) {
+						$scope.optionsCustomerPayment.push(e);
+					}
+				})
+				$scope.optionsCustomerPaymentHasMore = resultValues.length > 0;
+				$scope.optionsCustomerPaymentLoading = false;
+			}, (error) => {
+				$scope.optionsCustomerPaymentLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'CustomerPayment',
+					message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsCustomerPaymentChange = (event) => {
+			if (allValuesCustomerPayment.length === 0) {
+				allValuesCustomerPayment.push(...$scope.optionsCustomerPayment);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesCustomerPayment.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsCustomerPayment = allValuesCustomerPayment;
+				$scope.optionsCustomerPaymentHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsCustomerPaymentHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesCustomerPayment).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/java/codbex-payments/gen/codbex_payments/api/customerpayment/CustomerPaymentController/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesCustomerPayment.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesCustomerPayment.push(e);
+							}
+						});
+						$scope.optionsCustomerPayment = allValuesCustomerPayment.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'CustomerPayment',
+							message: LocaleService.t('codbex-invoices:codbex-invoices-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesCustomerPayment.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
+
+		function isText(keycode) {
+			if ((keycode >= 48 && keycode <= 90) || (keycode >= 96 && keycode <= 111) || (keycode >= 186 && keycode <= 222) || [8, 46, 173].includes(keycode)) return true;
+			return false;
+		}
+
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: description,
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
+
+		$scope.cancel = () => {
+			$scope.entity = {};
+			$scope.action = 'select';
+			Dialogs.closeWindow({ id: 'SalesInvoicePayment-details' });
+		};
+	});
